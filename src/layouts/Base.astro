@@ -1,0 +1,226 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = 'DG Ingeniería SRL — Ingeniería aplicada con certeza técnica. Estudios integrales de infraestructura en Paraguay.',
+  ogImage = '/img/og-dg-default.jpg'
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, 'https://dgingenieriapy.com');
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={description}>
+  <link rel="canonical" href={canonicalURL}>
+
+  <!-- OG Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content={`${title} — DG Ingeniería`}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={ogImage}>
+  <meta property="og:url" content={canonicalURL}>
+  <meta property="og:site_name" content="DG Ingeniería SRL">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={`${title} — DG Ingeniería`}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={ogImage}>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <title>{title} — DG Ingeniería</title>
+</head>
+<body class="bg-cream text-slate-dg">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 bg-cream/92 backdrop-blur-md border-b border-slate-dg/10 h-[68px]">
+    <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 flex items-center justify-between h-full">
+      <a href="/" class="flex items-center gap-2.5">
+        <img src="/img/dg-isotipo.png" alt="DG" class="h-[34px] w-auto">
+        <div class="flex flex-col leading-tight">
+          <span class="font-bold text-[16px] tracking-tight text-slate-dg">DG Ingeniería</span>
+          <span class="text-[9.5px] font-medium tracking-[1.8px] uppercase text-gray-neutral">Infraestructura Inteligente</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-7">
+        <a href="/nosotros" class="text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">Nosotros</a>
+        <a href="/sectores" class="text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">Sectores</a>
+        <a href="/proyectos" class="text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">Proyectos</a>
+        <a href="/blog" class="text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">Blog</a>
+        <a href="/contacto" class="bg-arena text-white px-5 py-2.5 rounded-md font-semibold text-[13.5px] hover:bg-arena-light transition-colors shadow-sm">Contacto</a>
+      </nav>
+
+      <!-- Mobile Hamburger -->
+      <button id="mobile-toggle" class="md:hidden flex flex-col gap-[5px] p-2" aria-label="Menú">
+        <span class="w-5 h-[2px] bg-slate-dg rounded transition-transform" id="bar1"></span>
+        <span class="w-5 h-[2px] bg-slate-dg rounded transition-opacity" id="bar2"></span>
+        <span class="w-5 h-[2px] bg-slate-dg rounded transition-transform" id="bar3"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden absolute top-[68px] left-0 w-full bg-cream/98 backdrop-blur-lg border-b border-slate-dg/10 shadow-lg">
+      <div class="max-w-[1200px] mx-auto px-5 py-6 flex flex-col gap-4">
+        <a href="/nosotros" class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">Nosotros</a>
+        <a href="/sectores" class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">Sectores</a>
+        <a href="/proyectos" class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">Proyectos</a>
+        <a href="/blog" class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">Blog</a>
+        <a href="/contacto" class="bg-arena text-white px-5 py-3 rounded-md font-semibold text-center mt-2">Contacto</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <!-- STICKY CTA (visible on scroll) -->
+  <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 z-40 translate-y-full transition-transform duration-300 ease-out">
+    <div class="bg-slate-dg/95 sticky-cta border-t border-cream/10 py-3">
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 flex items-center justify-between">
+        <p class="text-cream/70 text-sm font-medium hidden sm:block">¿Tiene un proyecto de infraestructura?</p>
+        <div class="flex items-center gap-4 w-full sm:w-auto justify-center sm:justify-end">
+          <a href="/contacto" class="bg-arena text-white px-5 py-2 rounded-md font-semibold text-sm hover:bg-arena-light transition-colors">Hablemos</a>
+          <a href="tel:+595981815180" class="text-cream/50 text-sm hover:text-cream transition-colors hidden sm:inline">+595 981 815 180</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-dg text-cream/40 pt-16 pb-8">
+    <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+      <!-- Footer top -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <!-- Brand -->
+        <div class="lg:col-span-1">
+          <img src="/img/dg-blanco.png" alt="DG Ingeniería" class="h-10 w-auto opacity-60 mb-4">
+          <p class="text-sm leading-relaxed text-cream/35 mb-5">Ingeniería aplicada a infraestructura.<br>Asunción, Paraguay.</p>
+          <div class="flex gap-3">
+            <a href="https://www.linkedin.com/company/dg-ingenieria-srl" target="_blank" rel="noopener" class="w-9 h-9 rounded-full border border-cream/10 flex items-center justify-center text-cream/30 hover:text-cream hover:border-cream/30 transition-colors" aria-label="LinkedIn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/dgingenieria_py/" target="_blank" rel="noopener" class="w-9 h-9 rounded-full border border-cream/10 flex items-center justify-center text-cream/30 hover:text-cream hover:border-cream/30 transition-colors" aria-label="Instagram">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://twitter.com/vdp2007" target="_blank" rel="noopener" class="w-9 h-9 rounded-full border border-cream/10 flex items-center justify-center text-cream/30 hover:text-cream hover:border-cream/30 transition-colors" aria-label="Twitter">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Sectores -->
+        <div>
+          <h5 class="text-[11px] font-semibold uppercase tracking-[2px] text-cream/25 mb-5">Sectores</h5>
+          <a href="/sectores/vialidad" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Vialidad</a>
+          <a href="/sectores/pavimentos" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Pavimentos</a>
+          <a href="/sectores/aeropuertos" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Aeropuertos</a>
+          <a href="/sectores/puertos" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Puertos y Fluvial</a>
+          <a href="/sectores/fiscalizacion" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Fiscalización</a>
+          <a href="/sectores/plantas-industriales" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Plantas Industriales</a>
+        </div>
+
+        <!-- Empresa -->
+        <div>
+          <h5 class="text-[11px] font-semibold uppercase tracking-[2px] text-cream/25 mb-5">Empresa</h5>
+          <a href="/nosotros" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Nosotros</a>
+          <a href="/proyectos" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Proyectos</a>
+          <a href="/blog" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Blog</a>
+          <a href="/contacto" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Contacto</a>
+        </div>
+
+        <!-- Contacto -->
+        <div>
+          <h5 class="text-[11px] font-semibold uppercase tracking-[2px] text-cream/25 mb-5">Contacto</h5>
+          <a href="mailto:info@dgingenieriasrl.com" class="block text-cream/45 text-[13px] mb-3 hover:text-cream transition-colors">info@dgingenieriasrl.com</a>
+          <a href="tel:+595981815180" class="block text-cream/45 text-[13px] mb-3 hover:text-cream transition-colors">+595 981 815 180</a>
+          <p class="text-cream/30 text-[13px] leading-relaxed mt-4">Asunción, Paraguay<br>Atención L-V 08:30 — 18:00</p>
+        </div>
+      </div>
+
+      <!-- Footer bottom -->
+      <div class="pt-6 border-t border-cream/[0.06] flex flex-col md:flex-row items-center justify-between gap-3">
+        <p class="text-xs tracking-wide text-cream/25">&copy; 2026 DG Ingeniería SRL — Todos los derechos reservados</p>
+        <p class="text-[10px] tracking-wide text-cream/15">Ingeniería aplicada con certeza técnica</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Mobile menu toggle
+    const toggle = document.getElementById('mobile-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+      });
+    }
+
+    // Sticky CTA — show after scrolling past hero
+    const stickyCta = document.getElementById('sticky-cta');
+    if (stickyCta) {
+      let shown = false;
+      const observer = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting && !shown) {
+          stickyCta.classList.remove('translate-y-full');
+          stickyCta.classList.add('translate-y-0');
+          shown = true;
+        }
+      }, { threshold: 0 });
+
+      const hero = document.querySelector('[data-hero]');
+      if (hero) observer.observe(hero);
+    }
+
+    // Animate elements on scroll
+    const animateOnScroll = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-up');
+          animateOnScroll.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('[data-animate]').forEach(el => {
+      animateOnScroll.observe(el);
+    });
+  </script>
+
+</body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+
+  /* Text justification — applied after all Tailwind processing */
+  p {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+  }
+  /* Exceptions: centered headings, footer, nav, cards, very short texts */
+  .text-center p,
+  footer p,
+  nav p,
+  header p,
+  .sector-card p {
+    text-align: inherit !important;
+  }
+</style>

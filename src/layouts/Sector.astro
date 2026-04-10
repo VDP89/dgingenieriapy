@@ -1,0 +1,72 @@
+---
+import Base from './Base.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  subtitle: string;
+  capacidades: string[];
+  experiencia?: string[];
+}
+
+const { title, description, subtitle, capacidades, experiencia = [] } = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <!-- Hero del sector -->
+  <section class="bg-slate-dg text-cream py-16 md:py-24">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <a href="/sectores" class="text-cream/50 text-sm hover:text-cream transition-colors mb-6 inline-block">← Todos los sectores</a>
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight mb-6">{title}</h1>
+      <p class="text-lg text-cream/65 max-w-2xl leading-relaxed">{subtitle}</p>
+    </div>
+  </section>
+
+  <!-- Contenido principal -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20 grid grid-cols-1 lg:grid-cols-3 gap-16">
+
+      <!-- Columna principal -->
+      <div class="lg:col-span-2">
+        <slot />
+      </div>
+
+      <!-- Sidebar -->
+      <aside>
+        <!-- Capacidades -->
+        <div class="bg-white rounded-lg border border-slate-dg/10 p-6 mb-6">
+          <h3 class="text-sm font-semibold uppercase tracking-[2px] text-gray-neutral mb-4">Capacidades</h3>
+          <ul class="space-y-3">
+            {capacidades.map((cap) => (
+              <li class="flex items-start gap-3 text-sm text-slate-dg/80">
+                <svg class="w-4 h-4 mt-0.5 text-arena flex-shrink-0" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="4 9 8 13 14 5"/>
+                </svg>
+                {cap}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Experiencia -->
+        {experiencia.length > 0 && (
+          <div class="bg-cream-deep rounded-lg p-6">
+            <h3 class="text-sm font-semibold uppercase tracking-[2px] text-gray-neutral mb-4">Experiencia</h3>
+            <ul class="space-y-2">
+              {experiencia.map((exp) => (
+                <li class="text-sm text-slate-dg/70">{exp}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <!-- CTA -->
+        <div class="mt-6">
+          <a href="/contacto" class="block text-center bg-slate-dg text-cream px-6 py-3 rounded font-semibold text-sm hover:bg-slate-light transition-colors">
+            Consultar sobre este sector
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Base>

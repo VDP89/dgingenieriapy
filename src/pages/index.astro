@@ -1,0 +1,405 @@
+---
+import Base from '../layouts/Base.astro';
+
+const sectores = [
+  {
+    slug: 'vialidad', title: 'Infraestructura Vial',
+    desc: 'Diseño geométrico, análisis estructural de pavimentos y control técnico de caminos y rutas.',
+    color: 'from-sector-vial/90 to-sector-vial/40',
+    icon: '🛣️', tag: 'BID · MOPC'
+  },
+  {
+    slug: 'pavimentos', title: 'Pavimentos',
+    desc: 'Evaluación estructural, deflectometría y diseño de paquetes para todos los tipos de pavimento.',
+    color: 'from-sector-pav/90 to-sector-pav/40',
+    icon: '📐', tag: 'Maestría UNA'
+  },
+  {
+    slug: 'aeropuertos', title: 'Aeropuertos',
+    desc: 'Pavimentos aeronáuticos, plataformas, hangares privados. Normativa OACI y DINAC.',
+    color: 'from-sector-aero/90 to-sector-aero/40',
+    icon: '✈️', tag: 'SkyPathPro'
+  },
+  {
+    slug: 'puertos', title: 'Puertos y Fluvial',
+    desc: 'Batimetría multihaz, estudios geotécnicos, diseño de muelles y control de dragado.',
+    color: 'from-sector-puertos/90 to-sector-puertos/40',
+    icon: '⚓', tag: 'USD 477K+'
+  },
+  {
+    slug: 'fiscalizacion', title: 'Fiscalización de Obra',
+    desc: 'Gerencia técnica, control de calidad, seguimiento volumétrico y verificación contractual.',
+    color: 'from-sector-civil/90 to-sector-civil/40',
+    icon: '🔍', tag: 'ERGON'
+  },
+  {
+    slug: 'plantas-industriales', title: 'Plantas Industriales',
+    desc: 'Diseño de plataformas, movimiento de suelos, accesos y fiscalización de obra industrial.',
+    color: 'from-sector-plantas/90 to-sector-plantas/40',
+    icon: '🏭', tag: 'FLUODER'
+  },
+  {
+    slug: 'urbanizaciones', title: 'Urbanizaciones',
+    desc: 'Nivelación, diseño de plataformas, vialidad interna y servicios para desarrollo urbano.',
+    color: 'from-sector-urb/90 to-sector-urb/40',
+    icon: '🏘️', tag: ''
+  },
+  {
+    slug: 'solar', title: 'Energía Solar',
+    desc: 'Consultoría técnica en energía solar y ERNC. Bases de diseño para infraestructura energética.',
+    color: 'from-sector-solar/90 to-sector-solar/40',
+    icon: '☀️', tag: 'ERNC'
+  },
+];
+
+const verbos = [
+  { num: '01', title: 'Relevamos', desc: 'Datos precisos para decisiones técnicas fundadas' },
+  { num: '02', title: 'Analizamos', desc: 'Interpretación territorial, operativa y normativa' },
+  { num: '03', title: 'Diseñamos', desc: 'Soluciones geométricas, estructurales y operativas' },
+  { num: '04', title: 'Coordinamos', desc: 'Geotecnia, hidrología y especialidades integradas' },
+  { num: '05', title: 'Controlamos', desc: 'Verificación técnica y volumétrica en cada etapa' },
+];
+
+const stats = [
+  { value: '10+', label: 'Años de trayectoria' },
+  { value: '8', label: 'Áreas de especialización' },
+  { value: 'BID · MOPC · CAF', label: 'Organismos contratantes' },
+];
+
+const alianzas = ['BID', 'MOPC', 'CAF', 'Grupo Favero', 'PROINTEC', 'Grimaux'];
+---
+
+<Base title="Inicio">
+
+  <!-- ============================================ -->
+  <!-- HERO — Full-bleed with photo placeholder     -->
+  <!-- ============================================ -->
+  <section data-hero class="relative min-h-[85vh] flex items-center overflow-hidden">
+    <!-- PLACEHOLDER: Replace src with real photo -->
+    <!-- Recommended: drone shot of road/infrastructure, 1920x1080+ -->
+    <div class="absolute inset-0 bg-slate-dg">
+      <div class="absolute inset-0 bg-gradient-to-br from-slate-dg via-slate-dg/95 to-slate-light/80"></div>
+      <!-- Geometric pattern as placeholder texture -->
+      <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    </div>
+
+    <!-- Decorative elements -->
+    <div class="absolute top-[10%] right-[5%] w-[500px] h-[500px] border border-cream/[0.04] rounded-full"></div>
+    <div class="absolute bottom-[15%] right-[15%] w-[300px] h-[300px] border border-arena/[0.06] rounded-full"></div>
+
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 py-20">
+      <div class="max-w-[680px]">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="h-px w-10 bg-arena"></div>
+          <span class="text-[11px] font-semibold tracking-[3px] uppercase text-arena">DG Ingeniería SRL</span>
+        </div>
+
+        <h1 class="text-display text-cream text-4xl md:text-[56px] lg:text-[64px] mb-6">
+          Ingeniería aplicada<br>
+          <span class="text-arena">con certeza técnica</span>
+        </h1>
+
+        <p class="text-[17px] leading-relaxed text-cream/60 mb-10 max-w-[520px]">
+          Acompañamos proyectos de infraestructura desde el relevamiento hasta la ejecución. Más de 10 años integrando datos, ingeniería y coordinación técnica en Paraguay y la región.
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="/contacto" class="bg-arena text-white px-7 py-3.5 rounded-md font-semibold text-sm hover:bg-arena-light transition-all shadow-lg shadow-arena/20">Solicitar consulta</a>
+          <a href="#sectores" class="text-cream/60 border border-cream/15 px-7 py-3.5 rounded-md font-semibold text-sm hover:text-cream hover:border-cream/40 hover:bg-cream/[0.05] transition-all">Explorar sectores</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+      <span class="text-[10px] tracking-[2px] uppercase text-cream/30 font-medium">Scroll</span>
+      <svg class="w-5 h-5 text-cream/30 animate-bounce-slow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- STATS BAR                                    -->
+  <!-- ============================================ -->
+  <div class="bg-white border-b border-slate-dg/8 py-8">
+    <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 flex justify-center gap-10 md:gap-20 flex-wrap">
+      {stats.map((s, i) => (
+        <div class="text-center" data-animate>
+          <div class="text-[28px] md:text-[32px] font-extrabold text-slate-dg tracking-tight">{s.value}</div>
+          <div class="text-[10px] text-gray-neutral font-semibold uppercase tracking-[2px] mt-1">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- PROYECTO DESTACADO                           -->
+  <!-- ============================================ -->
+  <section class="py-16 md:py-24 bg-cream">
+    <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-xl overflow-hidden shadow-xl shadow-slate-dg/8">
+        <!-- Text side -->
+        <div class="bg-slate-dg p-8 md:p-12 lg:p-14 flex flex-col justify-center order-2 lg:order-1">
+          <div class="flex items-center gap-2 mb-5">
+            <span class="text-[10px] font-bold tracking-[2px] uppercase text-arena">Proyecto destacado</span>
+            <div class="h-px flex-1 bg-cream/10"></div>
+          </div>
+          <h2 class="text-cream text-2xl md:text-3xl font-extrabold tracking-tight leading-tight mb-4">
+            Estudios de Ingeniería Vial — BID/MOPC
+          </h2>
+          <p class="text-cream/55 text-[15px] leading-relaxed mb-6">
+            Relevamiento, diseño geométrico y análisis estructural de pavimentos para tramos de rutas nacionales. Proyecto financiado por el Banco Interamericano de Desarrollo.
+          </p>
+          <div class="flex flex-wrap gap-x-8 gap-y-3 mb-8">
+            <div>
+              <div class="text-[11px] font-semibold tracking-[1.5px] uppercase text-cream/30">Cliente</div>
+              <div class="text-cream/80 text-sm font-medium mt-0.5">MOPC / BID</div>
+            </div>
+            <div>
+              <div class="text-[11px] font-semibold tracking-[1.5px] uppercase text-cream/30">Alcance</div>
+              <div class="text-cream/80 text-sm font-medium mt-0.5">Estudio integral</div>
+            </div>
+            <div>
+              <div class="text-[11px] font-semibold tracking-[1.5px] uppercase text-cream/30">Sector</div>
+              <div class="text-cream/80 text-sm font-medium mt-0.5">Vialidad</div>
+            </div>
+          </div>
+          <a href="/sectores/vialidad" class="text-arena font-semibold text-sm hover:text-arena-light transition-colors inline-flex items-center gap-2 group">
+            Ver sector vialidad
+            <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </a>
+        </div>
+
+        <!-- Image side — PLACEHOLDER -->
+        <!-- Replace: photo of road project, drone shot, or field work -->
+        <div class="relative h-[280px] lg:h-auto min-h-[350px] order-1 lg:order-2 bg-gradient-to-br from-sector-vial to-sector-vial/60">
+          <div class="absolute inset-0 opacity-[0.06]" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
+          <div class="absolute bottom-6 right-6 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
+            <span class="text-white/70 text-xs font-medium tracking-wide">PLACEHOLDER — Foto de obra vial</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECTORES — Cards con color/foto              -->
+  <!-- ============================================ -->
+  <section id="sectores" class="py-16 md:py-24 bg-white">
+    <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
+        <div>
+          <span class="text-[11px] font-bold tracking-[3px] uppercase text-arena mb-3 block">Áreas de expertise</span>
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Sectores</h2>
+        </div>
+        <p class="text-gray-neutral text-[15px] max-w-[380px] mt-4 md:mt-0 leading-relaxed">
+          Experiencia documentada en cada sector, con capacidad de respuesta integral.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {sectores.map((s, i) => (
+          <a
+            href={`/sectores/${s.slug}`}
+            class="sector-card group relative rounded-xl overflow-hidden h-[220px] flex flex-col justify-end"
+            data-animate
+          >
+            <!-- PLACEHOLDER gradient background — replace with bg-[url('/img/sector-xxx.jpg')] bg-cover bg-center -->
+            <div class={`absolute inset-0 bg-gradient-to-br ${s.color}`}></div>
+            <div class="absolute inset-0 opacity-[0.05]" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 28px 28px;"></div>
+
+            <!-- Hover overlay -->
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
+
+            <!-- Content -->
+            <div class="relative z-10 p-5">
+              {s.tag && <span class="text-[9px] font-bold tracking-[2px] uppercase text-white/50 bg-white/10 px-2 py-0.5 rounded mb-2 inline-block">{s.tag}</span>}
+              <h3 class="text-white font-bold text-[16px] leading-tight mb-1">{s.title}</h3>
+              <p class="text-white/50 text-[12px] leading-snug line-clamp-2 group-hover:text-white/70 transition-colors">{s.desc}</p>
+            </div>
+
+            <!-- Arrow -->
+            <div class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <span class="text-white text-sm">&rarr;</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 5 VERBOS — Enfoque DG                       -->
+  <!-- ============================================ -->
+  <section class="py-16 md:py-24 bg-cream-deep">
+    <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+      <div class="text-center mb-14">
+        <span class="text-[11px] font-bold tracking-[3px] uppercase text-arena mb-3 block">Metodología</span>
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Nuestro enfoque</h2>
+        <p class="text-base text-gray-neutral max-w-[500px] mx-auto leading-relaxed">
+          Cinco etapas que garantizan certeza técnica en cada proyecto.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap justify-center">
+        {verbos.map((v, i) => (
+          <div class="text-center px-5 py-8 basis-full sm:basis-1/2 md:basis-1/5 min-w-[180px] relative group" data-animate>
+            {i < verbos.length - 1 && <div class="absolute right-0 top-[25%] h-[50%] w-px bg-slate-dg/8 hidden md:block"></div>}
+
+            <!-- Number -->
+            <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-arena/10 flex items-center justify-center">
+              <span class="text-[13px] font-extrabold text-arena">{v.num}</span>
+            </div>
+
+            <h3 class="text-lg font-extrabold mb-2 group-hover:text-arena transition-colors">{v.title}</h3>
+            <p class="text-[13px] text-gray-neutral leading-snug">{v.desc}</p>
+
+            <!-- Connector arrow (visible on md+) -->
+            {i < verbos.length - 1 && (
+              <div class="absolute right-[-8px] top-1/2 -translate-y-1/2 text-arena/30 hidden md:block">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M9 5l7 7-7 7"/>
+                </svg>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SEGUNDO PROYECTO DESTACADO (opcional)        -->
+  <!-- ============================================ -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
+        <!-- Image — PLACEHOLDER -->
+        <div class="lg:col-span-3 relative rounded-xl overflow-hidden h-[300px] md:h-[400px] bg-gradient-to-br from-sector-puertos to-sector-puertos/50">
+          <div class="absolute inset-0 opacity-[0.06]" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
+          <div class="absolute bottom-6 right-6 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
+            <span class="text-white/70 text-xs font-medium tracking-wide">PLACEHOLDER — Foto Puerto Torocuá</span>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="lg:col-span-2" data-animate>
+          <span class="text-[10px] font-bold tracking-[2px] uppercase text-arena mb-3 block">Infraestructura portuaria</span>
+          <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-tight mb-4">
+            Puerto Torocuá — Estudios de Ingeniería
+          </h2>
+          <p class="text-gray-neutral text-[15px] leading-relaxed mb-6">
+            Batimetría multihaz, estudios geotécnicos en lecho fluvial y diseño de infraestructura portuaria sobre el río Paraguay. Inversión de USD 477.000+.
+          </p>
+          <div class="flex gap-6 mb-6">
+            <div>
+              <div class="text-[22px] font-extrabold text-slate-dg">USD 477K</div>
+              <div class="text-[10px] font-semibold tracking-[1.5px] uppercase text-gray-neutral mt-0.5">Inversión</div>
+            </div>
+            <div class="w-px bg-slate-dg/10"></div>
+            <div>
+              <div class="text-[22px] font-extrabold text-slate-dg">2024</div>
+              <div class="text-[10px] font-semibold tracking-[1.5px] uppercase text-gray-neutral mt-0.5">Año</div>
+            </div>
+          </div>
+          <a href="/sectores/puertos" class="text-arena font-semibold text-sm hover:text-arena-light transition-colors inline-flex items-center gap-2 group">
+            Ver sector puertos <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- FIRMA / NOSOTROS                             -->
+  <!-- ============================================ -->
+  <section class="bg-cream py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div data-animate>
+        <span class="text-[11px] font-bold tracking-[3px] uppercase text-arena mb-3 block">Sobre DG</span>
+        <h2 class="text-3xl font-extrabold tracking-tight leading-tight mb-5">10 años de certeza técnica en infraestructura</h2>
+        <p class="text-[15px] text-slate-dg/75 leading-relaxed mb-6">
+          DG Ingeniería es una firma de ingeniería aplicada fundada en Paraguay. Operamos con un equipo base de especialistas y una red de profesionales que se integra según la necesidad de cada proyecto.
+        </p>
+        <ul class="space-y-0 mb-8">
+          {[
+            'Contratista directo de organismos multilaterales (BID, CAF)',
+            'Red de profesionales según la escala del proyecto',
+            'Metodología propia: datos, criterio y control en cada etapa',
+            'Proyectos ejecutados en múltiples regiones y contextos',
+          ].map((item) => (
+            <li class="flex items-start gap-3 py-3 text-[14px] text-slate-dg/75 border-b border-slate-dg/[0.06]">
+              <div class="w-5 h-5 rounded-full bg-arena/15 flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-3 h-3 text-arena" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="4 9 8 13 14 5"/>
+                </svg>
+              </div>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <a href="/nosotros" class="border border-slate-dg/25 text-slate-dg px-6 py-3 rounded-md font-semibold text-sm hover:border-arena hover:text-arena transition-all inline-flex items-center gap-2 group">
+          Sobre nosotros <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+        </a>
+      </div>
+
+      <!-- Quote card -->
+      <div class="bg-white rounded-xl p-8 md:p-10 border border-slate-dg/8 shadow-sm" data-animate>
+        <div class="w-10 h-10 rounded-full bg-arena/10 flex items-center justify-center mb-5">
+          <svg class="w-5 h-5 text-arena" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+          </svg>
+        </div>
+        <p class="text-lg font-medium leading-relaxed text-slate-dg italic mb-6">
+          "Damos certeza técnica para que cada decisión del proyecto se tome con claridad desde el inicio."
+        </p>
+        <div class="h-px bg-slate-dg/8 mb-5"></div>
+        <div class="flex items-center gap-4 flex-wrap">
+          {['Datos', 'Criterio', 'Decisiones', 'Diseño', 'Control'].map((step, i) => (
+            <Fragment>
+              <span class="text-[12px] font-semibold text-gray-neutral px-3 py-1.5 bg-cream rounded-md border border-slate-dg/8">{step}</span>
+              {i < 4 && <span class="text-arena/40 text-xs">&rarr;</span>}
+            </Fragment>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- ALIANZAS                                     -->
+  <!-- ============================================ -->
+  <section class="bg-white py-14 border-y border-slate-dg/6">
+    <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+      <div class="text-center mb-8">
+        <span class="text-[10px] font-bold tracking-[3px] uppercase text-gray-neutral/50">Alianzas y organismos</span>
+      </div>
+      <div class="flex justify-center items-center gap-8 md:gap-14 flex-wrap max-w-[900px] mx-auto">
+        {alianzas.map((a) => (
+          <div class="text-[13px] font-bold text-slate-dg/20 tracking-[2.5px] uppercase py-2 hover:text-slate-dg/60 transition-colors cursor-default">{a}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- CTA FINAL                                    -->
+  <!-- ============================================ -->
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <!-- Background -->
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="absolute top-[10%] left-[10%] w-[400px] h-[400px] border border-cream/[0.03] rounded-full"></div>
+
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Tiene un proyecto de infraestructura?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[480px] mx-auto">Desde el relevamiento hasta la ejecución. Hablemos sobre cómo podemos dar certeza técnica a su proyecto.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contacto" class="bg-arena text-white px-8 py-4 rounded-md font-semibold text-sm hover:bg-arena-light transition-all shadow-lg shadow-arena/20">Solicitar consulta</a>
+        <a href="mailto:info@dgingenieriasrl.com" class="text-cream/50 border border-cream/15 px-8 py-4 rounded-md font-semibold text-sm hover:text-cream hover:border-cream/30 transition-all">info@dgingenieriasrl.com</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

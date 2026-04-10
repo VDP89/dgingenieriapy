@@ -1,0 +1,50 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const sectores = [
+  { slug: 'vialidad', title: 'Infraestructura Vial', desc: 'Diseño geométrico, análisis estructural de pavimentos y control técnico de caminos y rutas.' },
+  { slug: 'pavimentos', title: 'Pavimentos', desc: 'Evaluación estructural, deflectometría y diseño de paquetes para todos los tipos de pavimento.' },
+  { slug: 'aeropuertos', title: 'Aeropuertos y Aeronáutica', desc: 'Pavimentos aeronáuticos, plataformas, hangares privados. Normativa OACI y DINAC.' },
+  { slug: 'puertos', title: 'Infraestructura Fluvial y Portuaria', desc: 'Batimetría multihaz, estudios geotécnicos, diseño de muelles y control de dragado.' },
+  { slug: 'fiscalizacion', title: 'Fiscalización y Control de Obra', desc: 'Gerencia técnica, control de calidad, seguimiento volumétrico y verificación contractual.' },
+  { slug: 'plantas-industriales', title: 'Plantas Industriales y Agroindustriales', desc: 'Diseño de plataformas, movimiento de suelos, accesos y fiscalización de obra industrial.' },
+  { slug: 'urbanizaciones', title: 'Urbanizaciones', desc: 'Nivelación, diseño de plataformas, vialidad interna y servicios para desarrollo urbano.' },
+  { slug: 'solar', title: 'Energía Solar', desc: 'Consultoría técnica en energía solar y ERNC. Bases de diseño para infraestructura energética.' },
+];
+---
+
+<Base title="Sectores">
+
+  <!-- HERO -->
+  <section class="bg-slate-dg text-cream py-16 md:py-28">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight mb-4">Sectores</h1>
+      <p class="text-lg text-cream/65 max-w-2xl leading-relaxed">Experiencia documentada en cada sector, con capacidad de respuesta integral desde el diseño hasta el control</p>
+    </div>
+  </section>
+
+  <!-- GRID DE SECTORES -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-slate-dg/10 border border-slate-dg/10 rounded-lg overflow-hidden">
+        {sectores.map((s) => (
+          <a href={`/sectores/${s.slug}`} class="bg-white p-8 hover:bg-cream transition-colors group block">
+            <h4 class="text-[15px] font-semibold mb-2 group-hover:text-arena transition-colors leading-snug">{s.title}</h4>
+            <p class="text-[13px] text-gray-neutral leading-snug mb-4">{s.desc}</p>
+            <span class="text-sm text-slate-dg/30 group-hover:text-arena group-hover:translate-x-1 transition-all inline-block">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-slate-dg text-cream text-center py-16 md:py-20">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <h2 class="text-2xl md:text-3xl font-bold mb-3">¿Necesitas especialización en algún sector?</h2>
+      <p class="text-base text-cream/50 mb-8 max-w-[440px] mx-auto">Contáctanos para conocer cómo podemos acompañar tu proyecto.</p>
+      <a href="/contacto" class="bg-arena text-white px-6 py-3 rounded font-semibold text-sm hover:bg-arena-light transition-colors inline-block">Solicitar consulta</a>
+    </div>
+  </section>
+
+</Base>

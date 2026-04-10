@@ -1,0 +1,146 @@
+---
+import Base from '../layouts/Base.astro';
+
+const verbos = [
+  { num: '01', title: 'Relevamos', desc: 'Datos precisos para decisiones técnicas fundadas' },
+  { num: '02', title: 'Analizamos', desc: 'Interpretación territorial, operativa y normativa' },
+  { num: '03', title: 'Diseñamos', desc: 'Soluciones geométricas, estructurales y operativas' },
+  { num: '04', title: 'Coordinamos', desc: 'Geotecnia, hidrología y especialidades integradas' },
+  { num: '05', title: 'Controlamos', desc: 'Verificación técnica y volumétrica en cada etapa' },
+];
+
+const pasos = ['Datos', 'Criterio', 'Decisiones', 'Diseño', 'Control'];
+---
+
+<Base title="Sobre DG Ingeniería">
+
+  <!-- HERO -->
+  <section class="bg-slate-dg text-cream py-16 md:py-28">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight mb-4">Sobre DG Ingeniería</h1>
+      <p class="text-lg text-cream/65 max-w-2xl leading-relaxed">Ingeniería aplicada con certeza técnica en infraestructura.</p>
+    </div>
+  </section>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-24">
+        <!-- Columna izquierda -->
+        <div>
+          <div class="mb-8">
+            <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-4">La firma</h2>
+            <p class="text-base text-slate-dg/80 leading-relaxed mb-4">DG Ingeniería es una firma de ingeniería aplicada fundada en Paraguay hace más de 10 años. Operamos desde Asunción con un equipo base de especialistas en infraestructura integrado por ingenieros con formación académica rigurosa y experiencia en obras de escala regional y nacional.</p>
+            <p class="text-base text-slate-dg/80 leading-relaxed mb-4">Trabajamos con una red de profesionales especializados que se integra según la naturaleza y escala de cada proyecto. Esta estructura nos permite mantener certeza técnica en disciplinas diversas: vialidad, pavimentos, aeropuertos, infraestructura portuaria, fiscalización de obras, plantas industriales, urbanizaciones y energía solar.</p>
+            <p class="text-base text-slate-dg/80 leading-relaxed">Contratistas directos de organismos multilaterales como el BID y la CAF, hemos ejecutado proyectos en múltiples regiones y contextos, desarrollando metodologías propias de trabajo que garantizan calidad y consistencia en cada etapa.</p>
+          </div>
+        </div>
+
+        <!-- Columna derecha: stat boxes -->
+        <div class="space-y-6">
+          <div class="bg-white rounded-lg border border-slate-dg/10 p-8">
+            <div class="text-[36px] font-extrabold text-arena tracking-tight mb-2">10+</div>
+            <h3 class="text-sm font-semibold uppercase tracking-[2px] text-gray-neutral">Años de trayectoria</h3>
+            <p class="text-sm text-slate-dg/70 mt-3">Operando en infraestructura desde la fundación en Paraguay.</p>
+          </div>
+          <div class="bg-white rounded-lg border border-slate-dg/10 p-8">
+            <div class="text-[36px] font-extrabold text-arena tracking-tight mb-2">8</div>
+            <h3 class="text-sm font-semibold uppercase tracking-[2px] text-gray-neutral">Áreas de especialización</h3>
+            <p class="text-sm text-slate-dg/70 mt-3">Desde vialidad y pavimentos hasta energía solar e infraestructura portuaria.</p>
+          </div>
+          <div class="bg-cream-deep rounded-lg p-8">
+            <h3 class="text-sm font-semibold uppercase tracking-[2px] text-gray-neutral mb-3">Contratistas de</h3>
+            <p class="text-sm text-slate-dg/70">BID, MOPC, CAF, PROINTEC, Grupo Favero, Grimaux.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECCIÓN: VICTOR FUNDADOR -->
+      <div class="bg-cream rounded-lg p-10 border border-slate-dg/10 mb-24">
+        <h3 class="text-lg font-bold text-slate-dg mb-3">Fundada por Victor Del Puerto</h3>
+        <p class="text-base text-slate-dg/80 leading-relaxed">Ingeniero civil con más de una década de experiencia en proyectos de infraestructura regional. Victor fundó DG Ingeniería con la visión de ofrecer certeza técnica en cada decisión de proyecto, integrando datos, análisis riguroso y coordinación disciplinaria.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5 VERBOS / ENFOQUE -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <div class="text-center mb-14">
+        <h2 class="text-2xl md:text-4xl font-bold tracking-tight mb-4">Nuestro enfoque</h2>
+        <p class="text-base text-gray-neutral max-w-[540px] mx-auto leading-relaxed">Cinco etapas que estructuran cada proyecto, garantizando que cada decisión se tome con claridad y fundamento técnico.</p>
+      </div>
+      <div class="flex flex-wrap justify-center">
+        {verbos.map((v, i) => (
+          <div class="text-center px-5 py-8 basis-1/5 min-w-[180px] relative group hover:bg-arena/[0.06] transition-colors">
+            {i < verbos.length - 1 && <div class="absolute right-0 top-[30%] h-[40%] w-px bg-slate-dg/10"></div>}
+            <div class="text-[11px] font-bold text-arena tracking-[2px] mb-2">{v.num}</div>
+            <h3 class="text-lg font-bold mb-2">{v.title}</h3>
+            <p class="text-[13px] text-gray-neutral leading-snug">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MODELO OPERATIVO -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <div class="text-center mb-14">
+        <h2 class="text-2xl md:text-4xl font-bold tracking-tight mb-4">Modelo operativo</h2>
+        <p class="text-base text-gray-neutral max-w-[640px] mx-auto leading-relaxed">Flujo metodológico que estructura cada proyecto desde la recolección de datos hasta la verificación final.</p>
+      </div>
+
+      <div class="max-w-[900px] mx-auto">
+        <div class="flex items-center justify-center gap-4 flex-wrap">
+          {pasos.map((paso, i) => (
+            <>
+              <div class="flex items-center justify-center">
+                <div class="bg-slate-dg text-cream font-bold text-sm px-6 py-4 rounded text-center min-w-[120px]">
+                  {paso}
+                </div>
+              </div>
+              {i < pasos.length - 1 && (
+                <div class="text-arena text-2xl font-light hidden sm:block">→</div>
+              )}
+            </>
+          ))}
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mt-12">
+          <div class="bg-cream-deep rounded-lg p-6 text-center">
+            <h4 class="font-semibold text-slate-dg mb-2">Datos</h4>
+            <p class="text-xs text-slate-dg/70 leading-snug">Relevamiento preciso, topografía, información territorial y normativa.</p>
+          </div>
+          <div class="bg-cream-deep rounded-lg p-6 text-center">
+            <h4 class="font-semibold text-slate-dg mb-2">Criterio</h4>
+            <p class="text-xs text-slate-dg/70 leading-snug">Análisis técnico, interpretación de condiciones y evaluación de alternativas.</p>
+          </div>
+          <div class="bg-cream-deep rounded-lg p-6 text-center">
+            <h4 class="font-semibold text-slate-dg mb-2">Decisiones</h4>
+            <p class="text-xs text-slate-dg/70 leading-snug">Definición de solución técnica basada en análisis riguroso y fundamentos.</p>
+          </div>
+          <div class="bg-cream-deep rounded-lg p-6 text-center">
+            <h4 class="font-semibold text-slate-dg mb-2">Diseño</h4>
+            <p class="text-xs text-slate-dg/70 leading-snug">Documentación completa, planos, especificaciones técnicas y detalles constructivos.</p>
+          </div>
+          <div class="bg-cream-deep rounded-lg p-6 text-center">
+            <h4 class="font-semibold text-slate-dg mb-2">Control</h4>
+            <p class="text-xs text-slate-dg/70 leading-snug">Verificación en ejecución, seguimiento volumétrico y conformidad técnica.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-slate-dg text-cream text-center py-16 md:py-20">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <h2 class="text-2xl md:text-3xl font-bold mb-3">¿Tiene un proyecto de infraestructura?</h2>
+      <p class="text-base text-cream/50 mb-8 max-w-[440px] mx-auto">Desde el relevamiento hasta la ejecución. Hablemos.</p>
+      <a href="/contacto" class="bg-arena text-white px-6 py-3 rounded font-semibold text-sm hover:bg-arena-light transition-colors inline-block">Solicitar consulta</a>
+    </div>
+  </section>
+
+</Base>

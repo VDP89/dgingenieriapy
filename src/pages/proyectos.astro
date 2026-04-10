@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Proyectos">
+
+  <!-- HERO -->
+  <section class="bg-slate-dg text-cream py-16 md:py-28">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight mb-4">Proyectos</h1>
+      <p class="text-lg text-cream/65 max-w-2xl leading-relaxed">Portafolio de proyectos ejecutados</p>
+    </div>
+  </section>
+
+  <!-- EMPTY STATE -->
+  <section class="py-20 md:py-32">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <div class="max-w-[560px] mx-auto text-center">
+        <div class="inline-block mb-6 p-4 rounded-lg bg-cream-deep">
+          <svg class="w-12 h-12 text-arena/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 9h18"/>
+            <path d="M9 3v18"/>
+          </svg>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-dg mb-3">Portafolio en desarrollo</h2>
+        <p class="text-base text-gray-neutral leading-relaxed mb-8">Próximamente: portafolio visual con los proyectos más representativos de DG Ingeniería. Incluye infraestructura vial, pavimentos, aeropuertos, plantas industriales y más.</p>
+        <a href="/" class="inline-block border border-slate-dg/30 text-slate-dg px-6 py-3 rounded font-semibold text-sm hover:border-slate-dg hover:bg-slate-dg/[0.05] transition-all">
+          Volver al inicio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-slate-dg text-cream text-center py-16 md:py-20">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <h2 class="text-2xl md:text-3xl font-bold mb-3">¿Quieres conocer más sobre nuestros proyectos?</h2>
+      <p class="text-base text-cream/50 mb-8 max-w-[440px] mx-auto">Contáctanos para una presentación detallada de nuestra experiencia en infraestructura.</p>
+      <a href="/contacto" class="bg-arena text-white px-6 py-3 rounded font-semibold text-sm hover:bg-arena-light transition-colors inline-block">Solicitar consulta</a>
+    </div>
+  </section>
+
+</Base>

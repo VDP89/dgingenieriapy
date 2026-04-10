@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  /* DG Brand Colors */
+  --color-slate-dg: #1E2A3A;
+  --color-slate-light: #2D3E50;
+  --color-cream: #F5F4F0;
+  --color-cream-deep: #E8E6DF;
+  --color-arena: #C4956A;
+  --color-arena-light: #D4A87D;
+  --color-gray-neutral: #5C6B7A;
+  --color-border-dg: #D1D5DB;
+
+  /* Sector Colors */
+  --color-sector-vial: #3B6B8A;
+  --color-sector-pav: #7A6B52;
+  --color-sector-aero: #4A7C8F;
+  --color-sector-puertos: #2E5A7E;
+  --color-sector-civil: #8A5C3A;
+  --color-sector-plantas: #5A7A4A;
+  --color-sector-urb: #6A5A7A;
+  --color-sector-solar: #B8860B;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ============================================ */
+/* BASE LAYER — integrates with Tailwind reset  */
+/* ============================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-slate-dg);
+    background: var(--color-cream);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Justified text for ALL paragraphs by default */
+  p {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+}
+
+/* ============================================ */
+/* COMPONENTS LAYER                             */
+/* ============================================ */
+@layer components {
+  /* Display typography — extra weight for hero/titles */
+  .text-display {
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+  }
+
+  /* Sector card hover */
+  .sector-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .sector-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 12px 40px rgba(30, 42, 58, 0.15);
+  }
+
+  /* Exceptions: short texts inside cards should stay left-aligned */
+  .sector-card p {
+    text-align: left;
+  }
+
+  /* Gradient overlays for placeholder images */
+  .gradient-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--overlay-from, rgba(30,42,58,0.85)), var(--overlay-to, rgba(30,42,58,0.4)));
+    z-index: 1;
+  }
+
+  /* Sticky CTA bar */
+  .sticky-cta {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+/* ============================================ */
+/* UTILITIES LAYER                              */
+/* ============================================ */
+@layer utilities {
+  /* Scroll indicator animation */
+  .animate-bounce-slow {
+    animation: bounce-slow 2s ease-in-out infinite;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.6s ease-out both;
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+}
+
+/* ============================================ */
+/* KEYFRAMES (outside layers)                   */
+/* ============================================ */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}

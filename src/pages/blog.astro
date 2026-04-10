@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Blog">
+
+  <!-- HERO -->
+  <section class="bg-slate-dg text-cream py-16 md:py-28">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight mb-4">Blog</h1>
+      <p class="text-lg text-cream/65 max-w-2xl leading-relaxed">Artículos técnicos y análisis de ingeniería — próximamente</p>
+    </div>
+  </section>
+
+  <!-- EMPTY STATE -->
+  <section class="py-20 md:py-32">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <div class="max-w-[560px] mx-auto text-center">
+        <div class="inline-block mb-6 p-4 rounded-lg bg-cream-deep">
+          <svg class="w-12 h-12 text-arena/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-dg mb-3">Estamos preparando contenido técnico</h2>
+        <p class="text-base text-gray-neutral leading-relaxed mb-8">Artículos sobre metodologías de ingeniería, casos de estudio, análisis técnico de proyectos de infraestructura y buenas prácticas en diseño y ejecución.</p>
+        <a href="/" class="inline-block border border-slate-dg/30 text-slate-dg px-6 py-3 rounded font-semibold text-sm hover:border-slate-dg hover:bg-slate-dg/[0.05] transition-all">
+          Volver al inicio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-slate-dg text-cream text-center py-16 md:py-20">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <h2 class="text-2xl md:text-3xl font-bold mb-3">¿Tienes alguna consulta técnica?</h2>
+      <p class="text-base text-cream/50 mb-8 max-w-[440px] mx-auto">Contáctanos directamente para hablar sobre tu proyecto o consulta de ingeniería.</p>
+      <a href="/contacto" class="bg-arena text-white px-6 py-3 rounded font-semibold text-sm hover:bg-arena-light transition-colors inline-block">Solicitar consulta</a>
+    </div>
+  </section>
+
+</Base>
