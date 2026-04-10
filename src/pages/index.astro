@@ -6,48 +6,56 @@ const sectores = [
     slug: 'vialidad', title: 'Diseño de Proyectos Viales',
     desc: 'Diseño, revisiones, auditorías y control técnico de caminos y rutas. Factibilidad y código SNIP.',
     color: 'from-sector-vial/90 to-sector-vial/40',
+    img: '/img/sector-vial.jpg',
     icon: '🛣️', tag: 'BID · MOPC'
   },
   {
     slug: 'pavimentos', title: 'Pavimentos',
     desc: 'Evaluación estructural, deflectometría y diseño de paquetes para todos los tipos de pavimento.',
     color: 'from-sector-pav/90 to-sector-pav/40',
+    img: '',
     icon: '📐', tag: 'Expertise'
   },
   {
     slug: 'aeropuertos', title: 'Aeropuertos, Hangares y Pistas',
     desc: 'Ingeniería de infraestructura aeronáutica: pistas, plataformas y hangares. Normativa OACI y DINAC.',
     color: 'from-sector-aero/90 to-sector-aero/40',
+    img: '',
     icon: '✈️', tag: 'Proyectos'
   },
   {
     slug: 'puertos', title: 'Puertos y Fluvial',
     desc: 'Análisis de situaciones portuarias, estudios de ingeniería, coordinación de especialidades y soluciones de embarque.',
     color: 'from-sector-puertos/90 to-sector-puertos/40',
+    img: '/img/sector-puertos.jpeg',
     icon: '⚓', tag: 'Estudios'
   },
   {
     slug: 'fiscalizacion', title: 'Fiscalización de Obra',
     desc: 'Gerencia técnica, control de calidad, seguimiento volumétrico y verificación contractual.',
     color: 'from-sector-civil/90 to-sector-civil/40',
+    img: '/img/sector-fiscal.jpg',
     icon: '🔍', tag: 'ERGON'
   },
   {
     slug: 'plantas-industriales', title: 'Plantas Industriales',
     desc: 'Diseño de plataformas, movimiento de suelos, accesos y fiscalización de obra industrial.',
     color: 'from-sector-plantas/90 to-sector-plantas/40',
+    img: '/img/sector-plantas.jpg',
     icon: '🏭', tag: 'Industria'
   },
   {
     slug: 'urbanizaciones', title: 'Urbanizaciones',
     desc: 'Nivelación, diseño de plataformas, vialidad interna y servicios para desarrollo urbano.',
     color: 'from-sector-urb/90 to-sector-urb/40',
+    img: '/img/sector-urb.jpg',
     icon: '🏘️', tag: ''
   },
   {
     slug: 'solar', title: 'Energía Solar y Data Centers',
     desc: 'Estudios y diseños de ingeniería para el desarrollo de infraestructura energética y centros de datos.',
     color: 'from-sector-solar/90 to-sector-solar/40',
+    img: '',
     icon: '☀️', tag: 'Ingeniería'
   },
 ];
@@ -173,11 +181,9 @@ const alianzas = ['BID', 'MOPC', 'CAF', 'Tecnoedil', 'COMYCSA', 'FLUODER', 'Jopl
 
         <!-- Image side — PLACEHOLDER -->
         <!-- Replace: photo of road project, drone shot, or field work -->
-        <div class="relative h-[280px] lg:h-auto min-h-[350px] order-1 lg:order-2 bg-gradient-to-br from-sector-vial to-sector-vial/60">
-          <div class="absolute inset-0 opacity-[0.06]" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
-          <div class="absolute bottom-6 right-6 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
-            <span class="text-white/70 text-xs font-medium tracking-wide">PLACEHOLDER — Foto de obra vial</span>
-          </div>
+        <div class="relative h-[280px] lg:h-auto min-h-[350px] order-1 lg:order-2">
+          <img src="/img/obras_civiles.jpg" alt="Obras civiles DG Ingeniería" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-l from-transparent to-black/20"></div>
         </div>
       </div>
     </div>
@@ -205,9 +211,12 @@ const alianzas = ['BID', 'MOPC', 'CAF', 'Tecnoedil', 'COMYCSA', 'FLUODER', 'Jopl
             class="sector-card group relative rounded-xl overflow-hidden h-[220px] flex flex-col justify-end"
             data-animate
           >
-            <!-- PLACEHOLDER gradient background — replace with bg-[url('/img/sector-xxx.jpg')] bg-cover bg-center -->
-            <div class={`absolute inset-0 bg-gradient-to-br ${s.color}`}></div>
-            <div class="absolute inset-0 opacity-[0.05]" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 28px 28px;"></div>
+            {s.img ? (
+              <img src={s.img} alt={s.title} class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            ) : (
+              <div class={`absolute inset-0 bg-gradient-to-br ${s.color}`}></div>
+            )}
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
 
             <!-- Hover overlay -->
             <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
@@ -276,11 +285,9 @@ const alianzas = ['BID', 'MOPC', 'CAF', 'Tecnoedil', 'COMYCSA', 'FLUODER', 'Jopl
     <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
       <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
         <!-- Image — PLACEHOLDER -->
-        <div class="lg:col-span-3 relative rounded-xl overflow-hidden h-[300px] md:h-[400px] bg-gradient-to-br from-sector-puertos to-sector-puertos/50">
-          <div class="absolute inset-0 opacity-[0.06]" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
-          <div class="absolute bottom-6 right-6 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
-            <span class="text-white/70 text-xs font-medium tracking-wide">PLACEHOLDER — Foto Puerto Torocuá</span>
-          </div>
+        <div class="lg:col-span-3 relative rounded-xl overflow-hidden h-[300px] md:h-[400px]">
+          <img src="/img/proyecto-puertos.jpg" alt="Estudios Puerto Torocuá" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
         </div>
 
         <!-- Text -->
