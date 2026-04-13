@@ -60,12 +60,22 @@ const sectores = [
   },
 ];
 
-const verbos = [
-  { num: '01', title: 'Relevamos', desc: 'Datos precisos para decisiones técnicas fundadas' },
-  { num: '02', title: 'Analizamos', desc: 'Interpretación territorial, operativa y normativa' },
-  { num: '03', title: 'Diseñamos', desc: 'Soluciones geométricas, estructurales y operativas' },
-  { num: '04', title: 'Coordinamos', desc: 'Geotecnia, hidrología y especialidades integradas' },
-  { num: '05', title: 'Controlamos', desc: 'Verificación técnica y volumétrica en cada etapa' },
+const capacidades = [
+  {
+    title: 'Precisión desde el origen',
+    desc: 'Relevamiento geoespacial de alta resolución que genera modelos digitales del terreno, ortomosaicos y nubes de puntos. La base técnica del proyecto se define con datos precisos desde el primer día.',
+    icon: 'crosshair',
+  },
+  {
+    title: 'Visibilidad total en obra',
+    desc: 'Seguimiento de avance en tiempo real, alertas tempranas ante desviaciones y reportes ejecutivos diferenciados por stakeholder. El inversor tiene visibilidad completa del estado de su proyecto.',
+    icon: 'monitor',
+  },
+  {
+    title: 'Análisis con herramientas propias',
+    desc: 'Desarrollamos soluciones de cálculo específicas para cada disciplina, calibradas con datos reales de proyectos ejecutados en Paraguay. Precisión local, no genérica.',
+    icon: 'tool',
+  },
 ];
 
 const stats = [
@@ -239,39 +249,42 @@ const alianzas = ['BID', 'MOPC', 'CAF', 'Tecnoedil', 'COMYCSA', 'FLUODER', 'Jopl
   </section>
 
   <!-- ============================================ -->
-  <!-- 5 VERBOS — Enfoque DG                       -->
+  <!-- CAPACIDADES — Lo que nos diferencia          -->
   <!-- ============================================ -->
   <section class="py-16 md:py-24 bg-cream-deep">
     <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
       <div class="text-center mb-14">
-        <span class="text-[11px] font-bold tracking-[3px] uppercase text-arena mb-3 block">Metodología</span>
-        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Nuestro enfoque</h2>
-        <p class="text-base text-gray-neutral max-w-[500px] mx-auto leading-relaxed">
-          Cinco etapas que garantizan certeza técnica en cada proyecto.
+        <span class="text-[11px] font-bold tracking-[3px] uppercase text-arena mb-3 block">Capacidades</span>
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Lo que nos diferencia</h2>
+        <p class="text-base text-gray-neutral max-w-[540px] mx-auto leading-relaxed">
+          Integramos tecnología propia y datos de alta resolución para que cada decisión de proyecto tenga respaldo técnico real.
         </p>
       </div>
 
-      <div class="flex flex-wrap justify-center">
-        {verbos.map((v, i) => (
-          <div class="text-center px-5 py-8 basis-full sm:basis-1/2 md:basis-1/5 min-w-[180px] relative group" data-animate>
-            {i < verbos.length - 1 && <div class="absolute right-0 top-[25%] h-[50%] w-px bg-slate-dg/8 hidden md:block"></div>}
-
-            <!-- Number -->
-            <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-arena/10 flex items-center justify-center">
-              <span class="text-[13px] font-extrabold text-arena">{v.num}</span>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {capacidades.map((c) => (
+          <div class="bg-white rounded-xl p-8 border border-slate-dg/8 shadow-sm hover:shadow-md transition-shadow" data-animate>
+            <!-- Icon -->
+            <div class="w-12 h-12 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
+              {c.icon === 'crosshair' && (
+                <svg class="w-6 h-6 text-arena" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="3" /><path d="M12 2v4m0 12v4M2 12h4m12 0h4" />
+                </svg>
+              )}
+              {c.icon === 'monitor' && (
+                <svg class="w-6 h-6 text-arena" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8m-4-4v4" /><path d="M6 10h4m2 0h6M6 13h3" />
+                </svg>
+              )}
+              {c.icon === 'tool' && (
+                <svg class="w-6 h-6 text-arena" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                </svg>
+              )}
             </div>
 
-            <h3 class="text-lg font-extrabold mb-2 group-hover:text-arena transition-colors">{v.title}</h3>
-            <p class="text-[13px] text-gray-neutral leading-snug">{v.desc}</p>
-
-            <!-- Connector arrow (visible on md+) -->
-            {i < verbos.length - 1 && (
-              <div class="absolute right-[-8px] top-1/2 -translate-y-1/2 text-arena/30 hidden md:block">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M9 5l7 7-7 7"/>
-                </svg>
-              </div>
-            )}
+            <h3 class="text-lg font-extrabold tracking-tight mb-3">{c.title}</h3>
+            <p class="text-[14px] text-slate-dg/70 leading-relaxed">{c.desc}</p>
           </div>
         ))}
       </div>
