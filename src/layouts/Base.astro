@@ -1,4 +1,6 @@
 ---
+import { ClientRouter } from 'astro:transitions';
+
 interface Props {
   title: string;
   description?: string;
@@ -43,6 +45,9 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://dgingenieriapy.com');
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <title>{title} — DG Ingeniería</title>
+
+  <!-- Smooth page transitions -->
+  <ClientRouter />
 </head>
 <body class="bg-cream text-slate-dg">
 
