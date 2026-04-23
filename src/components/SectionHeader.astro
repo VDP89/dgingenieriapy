@@ -1,0 +1,60 @@
+---
+/**
+ * <SectionHeader> — encabezado semantico de seccion.
+ * Kicker uppercase arena + h2 + lead opcional.
+ *
+ * align:  'left' (default) | 'center' | 'split' (h2 izq, lead der en md+)
+ * tone:   'light' (default, sobre cream/white) | 'dark' (sobre slate)
+ */
+interface Props {
+  kicker?: string;
+  title: string;
+  titleAccent?: string;
+  lead?: string;
+  align?: 'left' | 'center' | 'split';
+  tone?: 'light' | 'dark';
+  class?: string;
+}
+
+const {
+  kicker,
+  title,
+  titleAccent,
+  lead,
+  align = 'left',
+  tone = 'light',
+  class: extra = '',
+} = Astro.props;
+
+const titleColor = tone === 'dark' ? 'text-cream' : 'text-slate-dg';
+const leadColor = tone === 'dark' ? 'text-cream/60' : 'text-gray-neutral';
+const kickerColor = tone === 'dark' ? 'text-arena' : 'text-arena';
+
+const wrapAlign = {
+  left: '',
+  center: 'text-center',
+  split: 'flex flex-col md:flex-row md:items-end md:justify-between',
+}[align];
+
+const blockAlign = align === 'center' ? 'mx-auto max-w-[540px]' : '';
+---
+
+<div class={`${wrapAlign} ${extra}`}>
+  <div>
+    {kicker && (
+      <span class={`text-[11px] font-bold tracking-[3px] uppercase ${kickerColor} mb-3 block`}>
+        {kicker}
+      </span>
+    )}
+    <h2 class={`text-3xl md:text-4xl font-extrabold tracking-tight ${titleColor} ${align === 'center' ? 'mb-4' : ''}`}>
+      {title}
+      {titleAccent && <span class="text-arena"> {titleAccent}</span>}
+    </h2>
+  </div>
+
+  {lead && (
+    <p class={`text-[15px] ${leadColor} leading-relaxed ${align === 'center' ? `mt-4 ${blockAlign}` : align === 'split' ? 'max-w-[380px] mt-4 md:mt-0' : 'mt-4'}`}>
+      {lead}
+    </p>
+  )}
+</div>

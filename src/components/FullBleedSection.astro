@@ -1,0 +1,56 @@
+---
+/**
+ * <FullBleedSection> — wrapper de seccion con background full-viewport + container constrained.
+ * Padding vertical responsivo via prop. El contenido queda centrado en max-w-[1200px].
+ *
+ * bg:      'cream' (default) | 'white' | 'slate' | 'cream-deep' | 'none' (transparente)
+ * padding: 'sm' (py-14) | 'md' (py-16 md:py-24, default) | 'lg' (py-20 md:py-28)
+ * border:  'top' | 'bottom' | 'both' | 'none' (default) — borde slate/6
+ * id:      anchor id para scroll (#sectores, etc)
+ */
+interface Props {
+  bg?: 'cream' | 'white' | 'slate' | 'cream-deep' | 'none';
+  padding?: 'sm' | 'md' | 'lg';
+  border?: 'top' | 'bottom' | 'both' | 'none';
+  id?: string;
+  class?: string;
+}
+
+const {
+  bg = 'cream',
+  padding = 'md',
+  border = 'none',
+  id,
+  class: extra = '',
+} = Astro.props;
+
+const bgMap = {
+  cream: 'bg-cream',
+  white: 'bg-white',
+  slate: 'bg-slate-dg',
+  'cream-deep': 'bg-cream-deep',
+  none: '',
+};
+
+const padMap = {
+  sm: 'py-14',
+  md: 'py-16 md:py-24',
+  lg: 'py-20 md:py-28',
+};
+
+const borderMap = {
+  top: 'border-t border-slate-dg/[0.06]',
+  bottom: 'border-b border-slate-dg/[0.06]',
+  both: 'border-y border-slate-dg/[0.06]',
+  none: '',
+};
+---
+
+<section
+  id={id}
+  class={`${bgMap[bg]} ${padMap[padding]} ${borderMap[border]} ${extra}`}
+>
+  <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+    <slot />
+  </div>
+</section>

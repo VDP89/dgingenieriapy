@@ -1,0 +1,113 @@
+---
+import Button from './Button.astro';
+
+/**
+ * <ProjectCard> — card split image+text para proyectos destacados.
+ * Layout: 1/2 imagen + 1/2 texto en lg, stacked en mobile.
+ *
+ * variant: 'dark' (default) → panel texto slate, bg oscuro, usado en home principal
+ *          'light'          → panel texto cream, usado como segunda aparicion
+ * imageSide: 'right' (default) | 'left'
+ * layout:    'equal' (50/50) | 'wide-image' (60/40 con img mas grande)
+ */
+interface Props {
+  kicker: string;
+  title: string;
+  description: string;
+  metrics?: Array<{ label: string; value: string }>;
+  img: string;
+  imgAlt: string;
+  href: string;
+  ctaLabel: string;
+  variant?: 'dark' | 'light';
+  imageSide?: 'left' | 'right';
+  layout?: 'equal' | 'wide-image';
+}
+
+const {
+  kicker,
+  title,
+  description,
+  metrics = [],
+  img,
+  imgAlt,
+  href,
+  ctaLabel,
+  variant = 'dark',
+  imageSide = 'right',
+  layout = 'equal',
+} = Astro.props;
+
+const textOrder = imageSide === 'right' ? 'order-2 lg:order-1' : 'order-2 lg:order-2';
+const imgOrder = imageSide === 'right' ? 'order-1 lg:order-2' : 'order-1 lg:order-1';
+
+const gridCols =
+  layout === 'wide-image'
+    ? 'grid-cols-1 lg:grid-cols-5'
+    : 'grid-cols-1 lg:grid-cols-2';
+
+const textSpan = layout === 'wide-image' ? 'lg:col-span-2' : '';
+const imgSpan = layout === 'wide-image' ? 'lg:col-span-3' : '';
+
+const isDark = variant === 'dark';
+const panelBg = isDark ? 'bg-slate-dg' : 'bg-white';
+const titleColor = isDark ? 'text-cream' : 'text-slate-dg';
+const descColor = isDark ? 'text-cream/55' : 'text-gray-neutral';
+const metaLabelColor = isDark ? 'text-cream/30' : 'text-gray-neutral';
+const metaValueColor = isDark ? 'text-cream/80' : 'text-slate-dg';
+const rule = isDark ? 'bg-cream/10' : 'bg-slate-dg/10';
+---
+
+<div class={`grid ${gridCols} gap-0 rounded-xl overflow-hidden shadow-xl shadow-slate-dg/8 ${isDark ? '' : 'items-center gap-8'}`}>
+  <!-- Text panel -->
+  <div class={`${textSpan} ${textOrder} ${isDark ? `${panelBg} p-8 md:p-12 lg:p-14 flex flex-col justify-center` : ''}`} data-animate>
+    <div class="flex items-center gap-2 mb-5">
+      <span class="text-[10px] font-bold tracking-[2px] uppercase text-arena">{kicker}</span>
+      <div class={`h-px flex-1 ${rule}`}></div>
+    </div>
+
+    <h2 class={`${titleColor} text-2xl md:text-3xl font-extrabold tracking-tight leading-tight mb-4`}>
+      {title}
+    </h2>
+
+    <p class={`${descColor} text-[15px] leading-relaxed mb-6`}>
+      {description}
+    </p>
+
+    {metrics.length > 0 && (
+      <div class={`flex flex-wrap gap-x-8 gap-y-3 mb-8 ${isDark ? '' : 'gap-6'}`}>
+        {metrics.map((m, i) => (
+          <>
+            <div>
+              <div class={`text-[11px] font-semibold tracking-[1.5px] uppercase ${metaLabelColor}`}>
+                {m.label}
+              </div>
+              <div class={`${metaValueColor} ${isDark ? 'text-sm font-medium mt-0.5' : 'text-[22px] font-extrabold'}`}>
+                {m.value}
+              </div>
+            </div>
+            {!isDark && i < metrics.length - 1 && (
+              <div class="w-px bg-slate-dg/10"></div>
+            )}
+          </>
+        ))}
+      </div>
+    )}
+
+    <Button href={href} variant="link">{ctaLabel}</Button>
+  </div>
+
+  <!-- Image panel -->
+  <div class={`${imgSpan} ${imgOrder} relative h-[280px] lg:h-auto min-h-[350px] ${!isDark ? 'rounded-xl overflow-hidden h-[300px] md:h-[400px]' : ''}`}>
+    <img
+      src={img}
+      alt={imgAlt}
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="lazy"
+    />
+    <div class={`absolute inset-0 bg-gradient-to-${imageSide === 'right' ? 'l' : 'r'} from-transparent ${isDark ? 'to-black/20' : 'to-transparent via-transparent'}`}></div>
+    {!isDark && (
+      <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+    )}
+  </div>
+</div>

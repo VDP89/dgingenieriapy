@@ -1,0 +1,71 @@
+---
+/**
+ * <Button> — CTA unificado DG.
+ *
+ * variant:  'primary'   → fondo arena, texto blanco (accion principal)
+ *           'secondary' → borde slate, texto slate (accion neutra light-bg)
+ *           'ghost-dark'→ borde cream, texto cream (sobre fondos oscuros)
+ *           'link'      → texto arena con flecha animada
+ * size:     'md' (default) | 'lg'
+ * magnetic: true → cursor-reactive micro-movimiento (desktop, respeta reduced-motion)
+ * href:     si presente → <a>, si no → <button>
+ */
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'ghost-dark' | 'link';
+  size?: 'md' | 'lg';
+  magnetic?: boolean;
+  type?: 'button' | 'submit';
+  class?: string;
+  ariaLabel?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  magnetic = false,
+  type = 'button',
+  class: extra = '',
+  ariaLabel,
+} = Astro.props;
+
+const sizeMap = {
+  md: 'px-7 py-3.5 text-sm',
+  lg: 'px-8 py-4 text-sm',
+};
+
+const variantMap = {
+  primary:
+    'bg-arena text-white hover:bg-arena-light shadow-lg shadow-arena/20',
+  secondary:
+    'border border-slate-dg/25 text-slate-dg hover:border-arena hover:text-arena',
+  'ghost-dark':
+    'text-cream/60 border border-cream/15 hover:text-cream hover:border-cream/40 hover:bg-cream/[0.05]',
+  link:
+    'text-arena hover:text-arena-light inline-flex items-center gap-2 group',
+};
+
+const base =
+  variant === 'link'
+    ? `font-semibold ${extra}`
+    : `rounded-md font-semibold inline-block transition-all ${sizeMap[size]} ${variantMap[variant]} ${extra}`;
+
+const magnetAttr = magnetic ? { 'data-magnetic': '' } : {};
+---
+
+{href ? (
+  <a href={href} class={base} aria-label={ariaLabel} {...magnetAttr}>
+    <slot />
+    {variant === 'link' && (
+      <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+    )}
+  </a>
+) : (
+  <button type={type} class={base} aria-label={ariaLabel} {...magnetAttr}>
+    <slot />
+    {variant === 'link' && (
+      <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+    )}
+  </button>
+)}

@@ -1,0 +1,45 @@
+---
+/**
+ * <MetricBlock> — bloque numero + label. Base del stats bar del home.
+ *
+ * size:  'sm' (default, stats bar) | 'md' (inline proyecto) | 'lg' (hero page)
+ * tone:  'light' (default) | 'dark' (sobre slate)
+ * align: 'center' (default) | 'left'
+ */
+interface Props {
+  value: string;
+  label: string;
+  size?: 'sm' | 'md' | 'lg';
+  tone?: 'light' | 'dark';
+  align?: 'center' | 'left';
+}
+
+const {
+  value,
+  label,
+  size = 'sm',
+  tone = 'light',
+  align = 'center',
+} = Astro.props;
+
+const valueSize = {
+  sm: 'text-[28px] md:text-[32px]',
+  md: 'text-[22px]',
+  lg: 'text-4xl md:text-5xl',
+}[size];
+
+const labelSize = {
+  sm: 'text-[10px] tracking-[2px]',
+  md: 'text-[10px] tracking-[1.5px]',
+  lg: 'text-[11px] tracking-[2px]',
+}[size];
+
+const valueColor = tone === 'dark' ? 'text-cream' : 'text-slate-dg';
+const labelColor = tone === 'dark' ? 'text-cream/50' : 'text-gray-neutral';
+const alignClass = align === 'center' ? 'text-center' : '';
+---
+
+<div class={alignClass} data-animate>
+  <div class={`${valueSize} font-extrabold ${valueColor} tracking-tight`}>{value}</div>
+  <div class={`${labelSize} ${labelColor} font-semibold uppercase mt-1`}>{label}</div>
+</div>

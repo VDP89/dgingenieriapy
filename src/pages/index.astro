@@ -1,62 +1,68 @@
 ---
 import Base from '../layouts/Base.astro';
+import Button from '../components/Button.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import SectorCard from '../components/SectorCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import MetricBlock from '../components/MetricBlock.astro';
+import FullBleedSection from '../components/FullBleedSection.astro';
 
 const sectores = [
   {
     slug: 'vialidad', title: 'Diseño de Proyectos Viales',
     desc: 'Diseño, revisiones, auditorías y control técnico de caminos y rutas. Factibilidad y código SNIP.',
-    color: 'from-sector-vial/90 to-sector-vial/40',
+    gradientClass: 'from-sector-vial/90 to-sector-vial/40',
     img: '/img/sector-vial.jpg',
-    icon: '🛣️', tag: 'BID · MOPC'
+    tag: 'BID · MOPC'
   },
   {
     slug: 'pavimentos', title: 'Pavimentos',
     desc: 'Evaluación estructural, deflectometría y diseño de paquetes para todos los tipos de pavimento.',
-    color: 'from-sector-pav/90 to-sector-pav/40',
+    gradientClass: 'from-sector-pav/90 to-sector-pav/40',
     img: '/img/sector-pav.png',
-    icon: '📐', tag: 'Expertise'
+    tag: 'Expertise'
   },
   {
     slug: 'aeropuertos', title: 'Aeropuertos, Hangares y Pistas',
     desc: 'Ingeniería de infraestructura aeronáutica: pistas, plataformas y hangares. Normativa OACI y DINAC.',
-    color: 'from-sector-aero/90 to-sector-aero/40',
+    gradientClass: 'from-sector-aero/90 to-sector-aero/40',
     img: '/img/sector-aero.jpg',
-    icon: '✈️', tag: 'Proyectos'
+    tag: 'Proyectos'
   },
   {
     slug: 'puertos', title: 'Puertos y Fluvial',
     desc: 'Análisis de situaciones portuarias, estudios de ingeniería, coordinación de especialidades y soluciones de embarque.',
-    color: 'from-sector-puertos/90 to-sector-puertos/40',
+    gradientClass: 'from-sector-puertos/90 to-sector-puertos/40',
     img: '/img/sector-puertos.jpeg',
-    icon: '⚓', tag: 'Estudios'
+    tag: 'Estudios'
   },
   {
     slug: 'fiscalizacion', title: 'Gerencia y Fiscalización',
     desc: 'Control técnico, seguimiento de avance, gestión contractual y reportes ejecutivos para inversores y desarrolladores.',
-    color: 'from-sector-civil/90 to-sector-civil/40',
+    gradientClass: 'from-sector-civil/90 to-sector-civil/40',
     img: '/img/sector-civil.png',
-    icon: '🔍', tag: 'ERGON'
+    tag: 'ERGON'
   },
   {
     slug: 'plantas-industriales', title: 'Plantas Industriales',
     desc: 'Diseño de plataformas, movimiento de suelos, accesos y fiscalización de obra industrial.',
-    color: 'from-sector-plantas/90 to-sector-plantas/40',
+    gradientClass: 'from-sector-plantas/90 to-sector-plantas/40',
     img: '/img/sector-plantas.jpg',
-    icon: '🏭', tag: 'Industria'
+    tag: 'Industria'
   },
   {
     slug: 'urbanizaciones', title: 'Urbanizaciones',
     desc: 'Nivelación, diseño de plataformas, vialidad interna y servicios para desarrollo urbano.',
-    color: 'from-sector-urb/90 to-sector-urb/40',
+    gradientClass: 'from-sector-urb/90 to-sector-urb/40',
     img: '/img/sector-urb.jpg',
-    icon: '🏘️', tag: ''
+    tag: ''
   },
   {
     slug: 'solar', title: 'Energía Solar y Data Centers',
     desc: 'Estudios y diseños de ingeniería para el desarrollo de infraestructura energética y centros de datos.',
-    color: 'from-sector-solar/90 to-sector-solar/40',
+    gradientClass: 'from-sector-solar/90 to-sector-solar/40',
     img: '/img/sector-solar.png',
-    icon: '☀️', tag: 'Ingeniería'
+    tag: 'Ingeniería'
   },
 ];
 
@@ -122,6 +128,7 @@ const heroSlides = [
 
   <!-- ============================================ -->
   <!-- HERO SLIDER — 4 slides, ken burns, crossfade -->
+  <!-- Stays inline: JS+style coupled, 1-off usage. -->
   <!-- ============================================ -->
   <section data-hero class="hero-slider relative min-h-[85vh] flex items-center overflow-hidden bg-slate-dg">
 
@@ -130,14 +137,13 @@ const heroSlides = [
       {heroSlides.map((s, i) => (
         <div class={`hero-slide absolute inset-0 transition-opacity duration-[1200ms] ease-in-out ${i === 0 ? 'opacity-100 is-active' : 'opacity-0'}`} data-slide={i}>
           <div class="hero-slide-img absolute inset-0 bg-cover bg-center" style={`background-image: url(${s.img})`}></div>
-          <!-- Dark overlay for text legibility -->
           <div class="absolute inset-0 bg-gradient-to-br from-slate-dg/90 via-slate-dg/75 to-slate-dg/50"></div>
           <div class="absolute inset-0 bg-gradient-to-t from-slate-dg/60 via-transparent to-transparent"></div>
         </div>
       ))}
     </div>
 
-    <!-- Decorative rings (kept, sit above slides) -->
+    <!-- Decorative rings -->
     <div class="absolute top-[10%] right-[5%] w-[500px] h-[500px] border border-cream/[0.06] rounded-full pointer-events-none"></div>
     <div class="absolute bottom-[15%] right-[15%] w-[300px] h-[300px] border border-arena/[0.08] rounded-full pointer-events-none"></div>
 
@@ -162,15 +168,15 @@ const heroSlides = [
           </div>
         ))}
 
-        <!-- Fixed CTAs (never change) -->
+        <!-- Fixed CTAs -->
         <div class="flex flex-wrap gap-4">
-          <a href="/contacto" data-magnetic class="bg-arena text-white px-7 py-3.5 rounded-md font-semibold text-sm hover:bg-arena-light transition-all shadow-lg shadow-arena/20 inline-block">Realizar consulta</a>
-          <a href="#sectores" class="text-cream/60 border border-cream/15 px-7 py-3.5 rounded-md font-semibold text-sm hover:text-cream hover:border-cream/40 hover:bg-cream/[0.05] transition-all">Explorar sectores</a>
+          <Button href="/contacto" variant="primary" magnetic>Realizar consulta</Button>
+          <Button href="#sectores" variant="ghost-dark">Explorar sectores</Button>
         </div>
       </div>
     </div>
 
-    <!-- Slide controls: dots -->
+    <!-- Dots -->
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
       {heroSlides.map((_, i) => (
         <button
@@ -181,7 +187,7 @@ const heroSlides = [
       ))}
     </div>
 
-    <!-- Slide counter -->
+    <!-- Counter -->
     <div class="absolute bottom-8 right-5 md:right-8 lg:right-12 z-20 text-[11px] tracking-[2px] uppercase text-cream/40 font-medium flex items-center gap-3 hidden md:flex">
       <span data-slide-current>01</span>
       <span class="w-8 h-px bg-cream/15"></span>
@@ -200,7 +206,7 @@ const heroSlides = [
 
       let current = 0;
       const total = slides.length;
-      const DURATION = 6500; // ms per slide
+      const DURATION = 6500;
       let timer: ReturnType<typeof setInterval>;
 
       const goTo = (idx: number) => {
@@ -238,7 +244,6 @@ const heroSlides = [
         hero.addEventListener('mouseleave', start);
       }
 
-      // Respect reduced motion
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (!prefersReduced) start();
     })();
@@ -264,7 +269,6 @@ const heroSlides = [
   </script>
 
   <style>
-    /* Ken burns effect on active slide only */
     .hero-slide-img {
       transform: scale(1.02);
       transition: transform 8s ease-out;
@@ -277,220 +281,129 @@ const heroSlides = [
   <!-- ============================================ -->
   <!-- STATS BAR                                    -->
   <!-- ============================================ -->
-  <div class="bg-white border-b border-slate-dg/8 py-8">
+  <div class="bg-white border-b border-slate-dg/[0.08] py-8">
     <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 flex justify-center gap-10 md:gap-20 flex-wrap">
-      {stats.map((s, i) => (
-        <div class="text-center" data-animate>
-          <div class="text-[28px] md:text-[32px] font-extrabold text-slate-dg tracking-tight">{s.value}</div>
-          <div class="text-[10px] text-gray-neutral font-semibold uppercase tracking-[2px] mt-1">{s.label}</div>
-        </div>
+      {stats.map((s) => (
+        <MetricBlock value={s.value} label={s.label} size="sm" />
       ))}
     </div>
   </div>
 
   <!-- ============================================ -->
-  <!-- PROYECTO DESTACADO                           -->
+  <!-- PROYECTO DESTACADO — Ruta PY05                -->
   <!-- ============================================ -->
-  <section class="py-16 md:py-24 bg-cream">
-    <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-xl overflow-hidden shadow-xl shadow-slate-dg/8">
-        <!-- Text side -->
-        <div class="bg-slate-dg p-8 md:p-12 lg:p-14 flex flex-col justify-center order-2 lg:order-1">
-          <div class="flex items-center gap-2 mb-5">
-            <span class="text-[10px] font-bold tracking-[2px] uppercase text-arena">Proyecto destacado</span>
-            <div class="h-px flex-1 bg-cream/10"></div>
-          </div>
-          <h2 class="text-cream text-2xl md:text-3xl font-extrabold tracking-tight leading-tight mb-4">
-            Ruta PY05 — Factibilidad Técnica, Económica y Ambiental
-          </h2>
-          <p class="text-cream/55 text-[15px] leading-relaxed mb-6">
-            Estudio de factibilidad para el mejoramiento de 179 km de ruta en el Chaco paraguayo, tramo Pozo Colorado – Fortín Gral. Díaz. Diseño geométrico, estudio de tránsito, diseño de pavimentos y evaluación económica bajo metodología SNIP.
-          </p>
-          <div class="flex flex-wrap gap-x-8 gap-y-3 mb-8">
-            <div>
-              <div class="text-[11px] font-semibold tracking-[1.5px] uppercase text-cream/30">Cliente</div>
-              <div class="text-cream/80 text-sm font-medium mt-0.5">MOPC</div>
-            </div>
-            <div>
-              <div class="text-[11px] font-semibold tracking-[1.5px] uppercase text-cream/30">Longitud</div>
-              <div class="text-cream/80 text-sm font-medium mt-0.5">179 km</div>
-            </div>
-            <div>
-              <div class="text-[11px] font-semibold tracking-[1.5px] uppercase text-cream/30">Alcance</div>
-              <div class="text-cream/80 text-sm font-medium mt-0.5">Factibilidad integral</div>
-            </div>
-          </div>
-          <a href="/sectores/vialidad" class="text-arena font-semibold text-sm hover:text-arena-light transition-colors inline-flex items-center gap-2 group">
-            Ver sector vialidad
-            <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
-          </a>
-        </div>
+  <FullBleedSection bg="cream" padding="md">
+    <ProjectCard
+      kicker="Proyecto destacado"
+      title="Ruta PY05 — Factibilidad Técnica, Económica y Ambiental"
+      description="Estudio de factibilidad para el mejoramiento de 179 km de ruta en el Chaco paraguayo, tramo Pozo Colorado – Fortín Gral. Díaz. Diseño geométrico, estudio de tránsito, diseño de pavimentos y evaluación económica bajo metodología SNIP."
+      metrics={[
+        { label: 'Cliente', value: 'MOPC' },
+        { label: 'Longitud', value: '179 km' },
+        { label: 'Alcance', value: 'Factibilidad integral' },
+      ]}
+      img="/img/destacado-bid.jpg"
+      imgAlt="Ruta PY05 — Chaco paraguayo"
+      href="/sectores/vialidad"
+      ctaLabel="Ver sector vialidad"
+      variant="dark"
+      imageSide="right"
+      layout="equal"
+    />
+  </FullBleedSection>
 
-        <!-- Image side — PLACEHOLDER -->
-        <!-- Replace: photo of road project, drone shot, or field work -->
-        <div class="relative h-[280px] lg:h-auto min-h-[350px] order-1 lg:order-2">
-          <img src="/img/destacado-bid.jpg" alt="Ruta PY05 — Chaco paraguayo" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-          <div class="absolute inset-0 bg-gradient-to-l from-transparent to-black/20"></div>
-        </div>
-      </div>
+  <!-- ============================================ -->
+  <!-- SECTORES                                     -->
+  <!-- ============================================ -->
+  <FullBleedSection bg="white" padding="md" id="sectores">
+    <SectionHeader
+      kicker="Áreas de expertise"
+      title="Sectores"
+      lead="Experiencia documentada en cada sector, con capacidad de respuesta integral."
+      align="split"
+      class="mb-12"
+    />
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {sectores.map((s) => (
+        <SectorCard
+          slug={s.slug}
+          title={s.title}
+          desc={s.desc}
+          img={s.img}
+          gradientClass={s.gradientClass}
+          tag={s.tag}
+        />
+      ))}
     </div>
-  </section>
+  </FullBleedSection>
 
   <!-- ============================================ -->
-  <!-- SECTORES — Cards con color/foto              -->
+  <!-- CAPACIDADES                                  -->
   <!-- ============================================ -->
-  <section id="sectores" class="py-16 md:py-24 bg-white">
-    <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
-        <div>
-          <span class="text-[11px] font-bold tracking-[3px] uppercase text-arena mb-3 block">Áreas de expertise</span>
-          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Sectores</h2>
-        </div>
-        <p class="text-gray-neutral text-[15px] max-w-[380px] mt-4 md:mt-0 leading-relaxed">
-          Experiencia documentada en cada sector, con capacidad de respuesta integral.
-        </p>
-      </div>
+  <FullBleedSection bg="cream-deep" padding="md">
+    <SectionHeader
+      kicker="Capacidades"
+      title="Lo que nos diferencia"
+      lead="Integramos tecnología propia y datos de alta resolución para que cada decisión de proyecto tenga respaldo técnico real."
+      align="center"
+      class="mb-14"
+    />
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {sectores.map((s, i) => (
-          <a
-            href={`/sectores/${s.slug}`}
-            class="sector-card group relative rounded-xl overflow-hidden h-[240px] flex flex-col justify-end transform transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-slate-dg/30"
-            data-animate
-          >
-            <!-- Image with zoom on hover -->
-            <div class="absolute inset-0 overflow-hidden">
-              {s.img ? (
-                <img src={s.img} alt={s.title} class="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-110" loading="lazy" />
-              ) : (
-                <div class={`absolute inset-0 bg-gradient-to-br ${s.color} transition-transform duration-[900ms] ease-out group-hover:scale-110`}></div>
-              )}
-            </div>
-
-            <!-- Base gradient -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent transition-opacity duration-500 group-hover:opacity-90"></div>
-
-            <!-- Arena accent on hover -->
-            <div class="absolute inset-0 bg-gradient-to-t from-arena/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-            <!-- Bottom accent bar -->
-            <div class="absolute bottom-0 left-0 right-0 h-[3px] bg-arena scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out z-20"></div>
-
-            <!-- Content -->
-            <div class="relative z-10 p-5 transform transition-transform duration-500 group-hover:-translate-y-1">
-              {s.tag && <span class="text-[9px] font-bold tracking-[2px] uppercase text-white/60 bg-white/10 backdrop-blur-sm px-2 py-0.5 rounded mb-2 inline-block group-hover:bg-arena/80 group-hover:text-white transition-colors duration-300">{s.tag}</span>}
-              <h3 class="text-white font-bold text-[16px] leading-tight mb-1">{s.title}</h3>
-              <p class="text-white/60 text-[12px] leading-snug line-clamp-2 group-hover:text-white/90 transition-colors duration-300">{s.desc}</p>
-
-              <!-- CTA appears on hover -->
-              <div class="mt-3 flex items-center gap-2 text-arena text-[11px] font-semibold tracking-[1.5px] uppercase opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-out">
-                <span>Ver sector</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                  <path d="M5 12h14M13 5l7 7-7 7"/>
-                </svg>
-              </div>
-            </div>
-
-            <!-- Arrow badge top-right -->
-            <div class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all duration-400 z-20">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M7 17L17 7M17 7H8M17 7v9"/>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {capacidades.map((c) => (
+        <div class="bg-white rounded-xl p-8 border border-slate-dg/[0.08] shadow-sm hover:shadow-md transition-shadow" data-animate>
+          <div class="w-12 h-12 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
+            {c.icon === 'crosshair' && (
+              <svg class="w-6 h-6 text-arena" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="3" /><path d="M12 2v4m0 12v4M2 12h4m12 0h4" />
               </svg>
-            </div>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================ -->
-  <!-- CAPACIDADES — Lo que nos diferencia          -->
-  <!-- ============================================ -->
-  <section class="py-16 md:py-24 bg-cream-deep">
-    <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
-      <div class="text-center mb-14">
-        <span class="text-[11px] font-bold tracking-[3px] uppercase text-arena mb-3 block">Capacidades</span>
-        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Lo que nos diferencia</h2>
-        <p class="text-base text-gray-neutral max-w-[540px] mx-auto leading-relaxed">
-          Integramos tecnología propia y datos de alta resolución para que cada decisión de proyecto tenga respaldo técnico real.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {capacidades.map((c) => (
-          <div class="bg-white rounded-xl p-8 border border-slate-dg/8 shadow-sm hover:shadow-md transition-shadow" data-animate>
-            <!-- Icon -->
-            <div class="w-12 h-12 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
-              {c.icon === 'crosshair' && (
-                <svg class="w-6 h-6 text-arena" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="3" /><path d="M12 2v4m0 12v4M2 12h4m12 0h4" />
-                </svg>
-              )}
-              {c.icon === 'monitor' && (
-                <svg class="w-6 h-6 text-arena" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                  <rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8m-4-4v4" /><path d="M6 10h4m2 0h6M6 13h3" />
-                </svg>
-              )}
-              {c.icon === 'tool' && (
-                <svg class="w-6 h-6 text-arena" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                </svg>
-              )}
-            </div>
-
-            <h3 class="text-lg font-extrabold tracking-tight mb-3">{c.title}</h3>
-            <p class="text-[14px] text-slate-dg/70 leading-relaxed">{c.desc}</p>
+            )}
+            {c.icon === 'monitor' && (
+              <svg class="w-6 h-6 text-arena" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8m-4-4v4" /><path d="M6 10h4m2 0h6M6 13h3" />
+              </svg>
+            )}
+            {c.icon === 'tool' && (
+              <svg class="w-6 h-6 text-arena" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+              </svg>
+            )}
           </div>
-        ))}
-      </div>
+          <h3 class="text-lg font-extrabold tracking-tight mb-3">{c.title}</h3>
+          <p class="text-[14px] text-slate-dg/70 leading-relaxed">{c.desc}</p>
+        </div>
+      ))}
     </div>
-  </section>
+  </FullBleedSection>
 
   <!-- ============================================ -->
-  <!-- SEGUNDO PROYECTO DESTACADO (opcional)        -->
+  <!-- SEGUNDO PROYECTO — Puerto Torocuá             -->
   <!-- ============================================ -->
-  <section class="py-16 md:py-24 bg-white">
-    <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
-        <!-- Image — PLACEHOLDER -->
-        <div class="lg:col-span-3 relative rounded-xl overflow-hidden h-[300px] md:h-[400px]">
-          <img src="/img/proyecto-puertos.jpg" alt="Estudios Puerto Torocuá" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-        </div>
-
-        <!-- Text -->
-        <div class="lg:col-span-2" data-animate>
-          <span class="text-[10px] font-bold tracking-[2px] uppercase text-arena mb-3 block">Infraestructura portuaria</span>
-          <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-tight mb-4">
-            Puerto Torocuá — Estudios de Ingeniería
-          </h2>
-          <p class="text-gray-neutral text-[15px] leading-relaxed mb-6">
-            Análisis de situaciones portuarias sobre el río Paraná. Estudios de ingeniería, interconexión de especialidades y soluciones técnicas para infraestructura de embarque.
-          </p>
-          <div class="flex gap-6 mb-6">
-            <div>
-              <div class="text-[22px] font-extrabold text-slate-dg">Río Paraná</div>
-              <div class="text-[10px] font-semibold tracking-[1.5px] uppercase text-gray-neutral mt-0.5">Ubicación</div>
-            </div>
-            <div class="w-px bg-slate-dg/10"></div>
-            <div>
-              <div class="text-[22px] font-extrabold text-slate-dg">Estudios</div>
-              <div class="text-[10px] font-semibold tracking-[1.5px] uppercase text-gray-neutral mt-0.5">Alcance</div>
-            </div>
-          </div>
-          <a href="/sectores/puertos" class="text-arena font-semibold text-sm hover:text-arena-light transition-colors inline-flex items-center gap-2 group">
-            Ver sector puertos <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <FullBleedSection bg="white" padding="md">
+    <ProjectCard
+      kicker="Infraestructura portuaria"
+      title="Puerto Torocuá — Estudios de Ingeniería"
+      description="Análisis de situaciones portuarias sobre el río Paraná. Estudios de ingeniería, interconexión de especialidades y soluciones técnicas para infraestructura de embarque."
+      metrics={[
+        { label: 'Ubicación', value: 'Río Paraná' },
+        { label: 'Alcance', value: 'Estudios' },
+      ]}
+      img="/img/proyecto-puertos.jpg"
+      imgAlt="Estudios Puerto Torocuá"
+      href="/sectores/puertos"
+      ctaLabel="Ver sector puertos"
+      variant="light"
+      imageSide="left"
+      layout="wide-image"
+    />
+  </FullBleedSection>
 
   <!-- ============================================ -->
   <!-- FIRMA / NOSOTROS                             -->
   <!-- ============================================ -->
-  <section class="bg-cream py-16 md:py-24">
-    <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+  <FullBleedSection bg="cream" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       <div data-animate>
         <span class="text-[11px] font-bold tracking-[3px] uppercase text-arena mb-3 block">Sobre DG</span>
         <h2 class="text-3xl font-extrabold tracking-tight leading-tight mb-5">10 años dando claridad técnica a proyectos complejos</h2>
@@ -514,13 +427,13 @@ const heroSlides = [
             </li>
           ))}
         </ul>
-        <a href="/nosotros" class="border border-slate-dg/25 text-slate-dg px-6 py-3 rounded-md font-semibold text-sm hover:border-arena hover:text-arena transition-all inline-flex items-center gap-2 group">
-          Sobre nosotros <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
-        </a>
+        <Button href="/nosotros" variant="secondary">
+          Sobre nosotros <span class="group-hover:translate-x-1 transition-transform inline-block ml-2">&rarr;</span>
+        </Button>
       </div>
 
       <!-- Quote card -->
-      <div class="bg-white rounded-xl p-8 md:p-10 border border-slate-dg/8 shadow-sm" data-animate>
+      <div class="bg-white rounded-xl p-8 md:p-10 border border-slate-dg/[0.08] shadow-sm" data-animate>
         <div class="w-10 h-10 rounded-full bg-arena/10 flex items-center justify-center mb-5">
           <svg class="w-5 h-5 text-arena" fill="currentColor" viewBox="0 0 24 24">
             <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
@@ -529,40 +442,37 @@ const heroSlides = [
         <p class="text-lg font-medium leading-relaxed text-slate-dg italic mb-6">
           "Cada decisión de proyecto merece claridad técnica. Eso es lo que entregamos."
         </p>
-        <div class="h-px bg-slate-dg/8 mb-5"></div>
+        <div class="h-px bg-slate-dg/[0.08] mb-5"></div>
         <div class="flex items-center gap-4 flex-wrap">
           {['Datos', 'Criterio', 'Decisiones', 'Diseño', 'Control'].map((step, i) => (
             <Fragment>
-              <span class="text-[12px] font-semibold text-gray-neutral px-3 py-1.5 bg-cream rounded-md border border-slate-dg/8">{step}</span>
+              <span class="text-[12px] font-semibold text-gray-neutral px-3 py-1.5 bg-cream rounded-md border border-slate-dg/[0.08]">{step}</span>
               {i < 4 && <span class="text-arena/40 text-xs">&rarr;</span>}
             </Fragment>
           ))}
         </div>
       </div>
     </div>
-  </section>
+  </FullBleedSection>
 
   <!-- ============================================ -->
   <!-- ALIANZAS                                     -->
   <!-- ============================================ -->
-  <section class="bg-white py-14 border-y border-slate-dg/6">
-    <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
-      <div class="text-center mb-8">
-        <span class="text-[10px] font-bold tracking-[3px] uppercase text-gray-neutral/50">Alianzas y clientes</span>
-      </div>
-      <div class="flex justify-center items-center gap-8 md:gap-14 flex-wrap max-w-[900px] mx-auto">
-        {alianzas.map((a) => (
-          <div class="text-[13px] font-bold text-slate-dg/20 tracking-[2.5px] uppercase py-2 hover:text-slate-dg/60 transition-colors cursor-default">{a}</div>
-        ))}
-      </div>
+  <FullBleedSection bg="white" padding="sm" border="both">
+    <div class="text-center mb-8">
+      <span class="text-[10px] font-bold tracking-[3px] uppercase text-gray-neutral/50">Alianzas y clientes</span>
     </div>
-  </section>
+    <div class="flex justify-center items-center gap-8 md:gap-14 flex-wrap max-w-[900px] mx-auto">
+      {alianzas.map((a) => (
+        <div class="text-[13px] font-bold text-slate-dg/20 tracking-[2.5px] uppercase py-2 hover:text-slate-dg/60 transition-colors cursor-default">{a}</div>
+      ))}
+    </div>
+  </FullBleedSection>
 
   <!-- ============================================ -->
   <!-- CTA FINAL                                    -->
   <!-- ============================================ -->
   <section class="relative py-20 md:py-28 overflow-hidden">
-    <!-- Background -->
     <div class="absolute inset-0 bg-slate-dg"></div>
     <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
     <div class="absolute top-[10%] left-[10%] w-[400px] h-[400px] border border-cream/[0.03] rounded-full"></div>
@@ -571,8 +481,8 @@ const heroSlides = [
       <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Necesita claridad en su próximo proyecto?</h2>
       <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[480px] mx-auto">Desde la factibilidad hasta el control final. Hablemos sobre cómo dar certeza a cada decisión.</p>
       <div class="flex flex-wrap justify-center gap-4">
-        <a href="/contacto" class="bg-arena text-white px-8 py-4 rounded-md font-semibold text-sm hover:bg-arena-light transition-all shadow-lg shadow-arena/20">Realizar consulta</a>
-        <a href="mailto:info@dgingenieriasrl.com" class="text-cream/50 border border-cream/15 px-8 py-4 rounded-md font-semibold text-sm hover:text-cream hover:border-cream/30 transition-all">info@dgingenieriasrl.com</a>
+        <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
+        <Button href="mailto:info@dgingenieriasrl.com" variant="ghost-dark" size="lg">info@dgingenieriasrl.com</Button>
       </div>
     </div>
   </section>

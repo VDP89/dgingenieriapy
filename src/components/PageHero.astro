@@ -1,0 +1,81 @@
+---
+/**
+ * <PageHero> — hero simple para paginas internas (NO para home, que usa slider propio).
+ * Imagen full-bleed + overlay oscuro + kicker/titulo/accent/subtitle + CTAs en slot.
+ *
+ * height:  'sm' (min-h-[50vh]) | 'md' (default, min-h-[65vh]) | 'lg' (min-h-[85vh])
+ * align:   'left' (default) | 'center'
+ */
+interface Props {
+  img: string;
+  imgAlt?: string;
+  kicker?: string;
+  title: string;
+  titleAccent?: string;
+  subtitle?: string;
+  height?: 'sm' | 'md' | 'lg';
+  align?: 'left' | 'center';
+}
+
+const {
+  img,
+  imgAlt = '',
+  kicker,
+  title,
+  titleAccent,
+  subtitle,
+  height = 'md',
+  align = 'left',
+} = Astro.props;
+
+const heightMap = {
+  sm: 'min-h-[50vh]',
+  md: 'min-h-[65vh]',
+  lg: 'min-h-[85vh]',
+};
+
+const alignWrap = align === 'center' ? 'text-center mx-auto' : '';
+const alignRule = align === 'center' ? 'justify-center' : '';
+---
+
+<section class={`relative ${heightMap[height]} flex items-center overflow-hidden bg-slate-dg`}>
+  <!-- Image -->
+  <div class="absolute inset-0">
+    <img
+      src={img}
+      alt={imgAlt}
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-dg/90 via-slate-dg/75 to-slate-dg/50"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-dg/60 via-transparent to-transparent"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 py-20 w-full">
+    <div class={`max-w-[680px] ${alignWrap}`}>
+      {kicker && (
+        <div class={`flex items-center gap-3 mb-8 ${alignRule}`}>
+          <div class="h-px w-10 bg-arena"></div>
+          <span class="text-[11px] font-semibold tracking-[3px] uppercase text-arena">{kicker}</span>
+        </div>
+      )}
+
+      <h1 class="text-display text-cream text-4xl md:text-[56px] lg:text-[64px] mb-6 leading-[1.05]">
+        {title}
+        {titleAccent && (
+          <><br /><span class="text-arena">{titleAccent}</span></>
+        )}
+      </h1>
+
+      {subtitle && (
+        <p class="text-[17px] leading-relaxed text-cream/70 mb-10 max-w-[520px]">
+          {subtitle}
+        </p>
+      )}
+
+      <div class={`flex flex-wrap gap-4 ${alignRule}`}>
+        <slot />
+      </div>
+    </div>
+  </div>
+</section>
