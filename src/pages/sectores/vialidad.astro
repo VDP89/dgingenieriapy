@@ -1,31 +1,239 @@
 ---
-import Sector from '../../layouts/Sector.astro';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FullBleedSection from '../../components/FullBleedSection.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Button from '../../components/Button.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+
+const capacidades = [
+  {
+    title: 'Diseño geométrico',
+    desc: 'Trazado horizontal, vertical y de secciones. Criterios de seguridad, operatividad y economía de construcción.',
+    icon: 'route',
+  },
+  {
+    title: 'Estudios de tránsito',
+    desc: 'Volúmenes, composición vehicular y comportamiento de flujos para dimensionar cada elemento de la infraestructura.',
+    icon: 'traffic',
+  },
+  {
+    title: 'Relevamiento topográfico',
+    desc: 'Técnicas fotogramétricas y clásicas. Base cartográfica de precisión para optimizar trazados.',
+    icon: 'topo',
+  },
+  {
+    title: 'Análisis estructural de pavimentos',
+    desc: 'Verificación de capacidad de carga, alternativas de mejora y dimensionado con criterios técnico-económicos.',
+    icon: 'layers',
+  },
+  {
+    title: 'Hidráulica vial y drenaje',
+    desc: 'Compatibilización con relieve y contexto local. Secciones críticas verificadas mediante modelado específico.',
+    icon: 'water',
+  },
+  {
+    title: 'Factibilidad y SNIP',
+    desc: 'Documentación de factibilidad técnica, económica y ambiental bajo metodología SNIP para organismos multilaterales.',
+    icon: 'docs',
+  },
+  {
+    title: 'Auditoría y revisión',
+    desc: 'Verificación de cumplimiento normativo, consistencia de diseño, revisión de presupuestos y especificaciones técnicas.',
+    icon: 'audit',
+  },
+];
+
+const experiencia = [
+  { label: 'Rutas nacionales', detail: 'Diseño y fiscalización en obras MOPC' },
+  { label: 'Programas BID y CAF', detail: 'Contratista directo de organismos multilaterales' },
+  { label: 'Programas CREMA y CCOMA', detail: 'Mantenimiento y conservación vial por resultados' },
+  { label: 'Caminos departamentales', detail: 'Apoyo a gobernaciones y municipalidades' },
+];
 ---
 
-<Sector
+<Base
   title="Diseño de Proyectos Viales"
-  description="Diseño, revisiones, auditorías y control técnico de caminos y rutas"
-  subtitle="Diseño, revisiones, auditorías y control técnico de caminos y rutas. Factibilidad y código SNIP."
-  capacidades={[
-    "Diseño geométrico de caminos",
-    "Análisis estructural de pavimentos",
-    "Relevamiento topográfico y fotogramétrico",
-    "Estudios de tránsito",
-    "Hidráulica vial y drenaje",
-    "Factibilidad y código SNIP",
-    "Auditorías y revisiones de proyectos"
-  ]}
-  experiencia={[
-    "Rutas nacionales",
-    "Programas BID y CAF",
-    "Programas CREMA y CCOMA",
-    "Caminos departamentales"
-  ]}
+  description="Diseño, revisiones, auditorías y control técnico de caminos y rutas. Factibilidad SNIP, programas BID/CAF y MOPC."
 >
-  <div class="prose prose-slate max-w-none">
-    <h2>Proyectos Viales Integrales</h2>
-    <p>Abordamos proyectos viales de forma integral: desde los estudios de factibilidad y preparación de documentación SNIP, pasando por el diseño ejecutivo, hasta la revisión y auditoría de proyectos elaborados por terceros. Realizamos relevamientos topográficos de precisión mediante técnicas fotogramétricas y clásicas, generando la base cartográfica necesaria para optimizar trazados. Evaluamos volúmenes de tránsito, composición vehicular y comportamiento de flujos para dimensionar correctamente cada elemento de la infraestructura.</p>
-    <p>El diseño geométrico sigue criterios de seguridad vial, operatividad y economía de construcción. Aplicamos normativas nacionales e internacionales, considerando velocidades de operación reales, radios de curvatura seguros y sobreancho para giros. Nuestro enfoque integra aspectos de drenaje, hidráulica vial y compatibilización con el relieve y contexto local. Realizamos análisis de secciones críticas mediante modelado estructural, verificando capacidad de carga y evaluando alternativas de mejora con criterios técnico-económicos.</p>
-    <p>Complementamos el diseño con servicios de revisión y auditoría técnica de proyectos viales: verificación de cumplimiento normativo, análisis de consistencia de diseño, revisión de presupuestos y especificaciones técnicas. Durante la ejecución, brindamos control técnico integral con reportes periódicos de avance, documentación de ensayos y registros fotográficos.</p>
-  </div>
-</Sector>
+
+  <!-- ============================================ -->
+  <!-- PAGE HERO                                    -->
+  <!-- ============================================ -->
+  <PageHero
+    img="/img/sector-vial.jpg"
+    imgAlt="Proyecto vial en Paraguay"
+    kicker="Sectores · Vialidad"
+    title="Diseño de proyectos"
+    titleAccent="viales"
+    subtitle="Estudios de factibilidad, diseño ejecutivo, relevamiento topográfico y auditoría técnica para caminos y rutas."
+    height="md"
+  >
+    <Button href="/contacto" variant="primary" magnetic>Consultar proyecto</Button>
+    <Button href="/sectores" variant="ghost-dark">Todos los sectores</Button>
+  </PageHero>
+
+  <!-- ============================================ -->
+  <!-- INTRO — enfoque integral                     -->
+  <!-- ============================================ -->
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="Enfoque"
+          title="Proyectos viales"
+          titleAccent="integrales"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>
+          Abordamos proyectos viales desde los estudios de factibilidad y la preparación de documentación SNIP hasta el diseño ejecutivo y la revisión de proyectos elaborados por terceros.
+        </p>
+        <p>
+          El diseño geométrico sigue criterios de seguridad vial, operatividad y economía de construcción. Aplicamos normativas nacionales e internacionales, considerando velocidades de operación reales, radios de curvatura seguros y sobreancho para giros.
+        </p>
+        <p>
+          Durante la ejecución brindamos control técnico integral con reportes periódicos de avance, documentación de ensayos y registros fotográficos.
+        </p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <!-- ============================================ -->
+  <!-- CAPACIDADES                                  -->
+  <!-- ============================================ -->
+  <FullBleedSection bg="cream-deep" padding="md">
+    <SectionHeader
+      kicker="Capacidades"
+      title="Lo que hacemos"
+      lead="Servicios integrados que cubren el ciclo completo del proyecto vial, desde el relevamiento hasta la fiscalización."
+      align="center"
+      class="mb-14"
+    />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {capacidades.map((c) => (
+        <div class="bg-white rounded-xl p-7 border border-slate-dg/[0.08] shadow-sm hover:shadow-md transition-shadow" data-animate>
+          <div class="w-11 h-11 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
+            <!-- Icon strategy: a curated set per capability -->
+            {c.icon === 'route' && (
+              <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M4 19h6a4 4 0 0 0 0-8H8a4 4 0 0 1 0-8h10M4 19l3-3m-3 3 3 3M20 3l-3 3m3-3-3-3"/>
+              </svg>
+            )}
+            {c.icon === 'traffic' && (
+              <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M9 20H4V4h5m6 0h5v16h-5M9 8h6M9 12h6M9 16h6"/>
+              </svg>
+            )}
+            {c.icon === 'topo' && (
+              <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M3 20h18M5 16c3-4 5-4 7-1s5 3 7-1m-14 0V8m14 8V8M5 8c3-4 5-4 7-1s5 3 7-1"/>
+              </svg>
+            )}
+            {c.icon === 'layers' && (
+              <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="m12 3-9 5 9 5 9-5-9-5Zm-9 11 9 5 9-5M3 11l9 5 9-5"/>
+              </svg>
+            )}
+            {c.icon === 'water' && (
+              <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M12 2s6 8 6 13a6 6 0 0 1-12 0c0-5 6-13 6-13Z"/>
+              </svg>
+            )}
+            {c.icon === 'docs' && (
+              <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z"/><path d="M14 2v6h6M9 13h6M9 17h6"/>
+              </svg>
+            )}
+            {c.icon === 'audit' && (
+              <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="7"/><path d="m20 20-4.35-4.35M9 11l2 2 4-4"/>
+              </svg>
+            )}
+          </div>
+          <h3 class="text-[17px] font-extrabold tracking-tight mb-2 text-slate-dg">{c.title}</h3>
+          <p class="text-[13.5px] text-slate-dg/65 leading-relaxed">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <!-- ============================================ -->
+  <!-- PROYECTO DE REFERENCIA — Ruta PY05            -->
+  <!-- ============================================ -->
+  <FullBleedSection bg="white" padding="md">
+    <SectionHeader
+      kicker="Proyecto de referencia"
+      title="Ruta PY05"
+      titleAccent="— Factibilidad integral"
+      class="mb-10"
+    />
+
+    <ProjectCard
+      kicker="MOPC · Chaco paraguayo"
+      title="179 km de factibilidad técnica, económica y ambiental"
+      description="Estudio para el mejoramiento del tramo Pozo Colorado – Fortín Gral. Díaz. Diseño geométrico, estudio de tránsito, diseño de pavimentos y evaluación económica bajo metodología SNIP."
+      metrics={[
+        { label: 'Cliente', value: 'MOPC' },
+        { label: 'Longitud', value: '179 km' },
+        { label: 'Alcance', value: 'Factibilidad integral' },
+      ]}
+      img="/img/destacado-bid.jpg"
+      imgAlt="Ruta PY05 — Chaco paraguayo"
+      href="/contacto"
+      ctaLabel="Consultar proyecto similar"
+      variant="dark"
+      imageSide="right"
+      layout="equal"
+    />
+  </FullBleedSection>
+
+  <!-- ============================================ -->
+  <!-- EXPERIENCIA — programas y contratantes        -->
+  <!-- ============================================ -->
+  <FullBleedSection bg="cream" padding="md">
+    <SectionHeader
+      kicker="Experiencia"
+      title="Programas y contratantes"
+      lead="Contratista directo de organismos multilaterales con experiencia documentada en programas de inversión y mantenimiento vial."
+      align="center"
+      class="mb-14"
+    />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[900px] mx-auto">
+      {experiencia.map((e) => (
+        <div class="bg-white rounded-xl p-6 border border-slate-dg/[0.08] flex items-start gap-4" data-animate>
+          <div class="w-10 h-10 rounded-full bg-arena/12 flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-arena" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="4 9 8 13 14 5"/>
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-[15px] font-extrabold text-slate-dg tracking-tight mb-1">{e.label}</h4>
+            <p class="text-[13px] text-slate-dg/60 leading-relaxed">{e.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <!-- ============================================ -->
+  <!-- CTA FINAL — slate oscuro                      -->
+  <!-- ============================================ -->
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="absolute top-[10%] left-[10%] w-[400px] h-[400px] border border-cream/[0.03] rounded-full"></div>
+
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Tiene un proyecto vial?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[520px] mx-auto">Factibilidad, diseño ejecutivo, revisión o fiscalización. Hablemos sobre cómo podemos dar claridad técnica al proyecto.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
+        <Button href="/sectores" variant="ghost-dark" size="lg">Otros sectores</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>

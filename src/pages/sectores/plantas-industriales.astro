@@ -1,28 +1,120 @@
 ---
-import Sector from '../../layouts/Sector.astro';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FullBleedSection from '../../components/FullBleedSection.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Button from '../../components/Button.astro';
+
+const capacidades = [
+  { title: 'Plataformas industriales', desc: 'Diseño con cargas concentradas de equipamiento, pendientes de drenaje y accesibilidad para mantenimiento y ampliaciones futuras.', icon: 'platform' },
+  { title: 'Movimiento de suelos', desc: 'Sistemas de nivelación con terraplenado, corte o estabilización. Análisis de capacidad portante y optimización de volúmenes.', icon: 'earth' },
+  { title: 'Accesos viales industriales', desc: 'Diseño para tránsito pesado frecuente: camiones, maquinaria agrícola, vehículos de servicio. Soluciones según tipo de suelo.', icon: 'truck' },
+  { title: 'Pavimentos industriales', desc: 'Espesores adecuados y drenaje subsuperficial para evitar fallas por saturación. Alternativas con materiales locales.', icon: 'layers' },
+  { title: 'Drenaje y servicios', desc: 'Sistemas de drenaje y escorrentía que protejan la operación en eventos de lluvia intensa. Integración con servicios de sitio.', icon: 'water' },
+  { title: 'Fiscalización de obra', desc: 'Control de calidad, ensayos de compactación y resistencia, coordinación de especialidades múltiples y documentación técnica.', icon: 'audit' },
+];
+
+const experiencia = [
+  { label: 'Proyectos agroindustriales', detail: 'Infraestructura de soporte para operaciones del agro' },
+  { label: 'Diseño y fiscalización combinados', detail: 'Servicio integral desde el diseño hasta el control de obra' },
+];
 ---
 
-<Sector
+<Base
   title="Plantas Industriales"
-  description="Ingeniería integral para infraestructura industrial"
-  subtitle="Ingeniería integral para infraestructura industrial: diseño, accesos y fiscalización"
-  capacidades={[
-    "Diseño de plataformas industriales",
-    "Movimiento de suelos",
-    "Accesos viales industriales",
-    "Pavimentos industriales",
-    "Drenaje y servicios",
-    "Fiscalización de obra"
-  ]}
-  experiencia={[
-    "Proyectos agroindustriales",
-    "Diseño y fiscalización combinados"
-  ]}
+  description="Ingeniería integral para infraestructura industrial y agroindustrial. Plataformas, movimiento de suelos, accesos, pavimentos y fiscalización de obra."
 >
-  <div class="prose prose-slate max-w-none">
-    <h2>Infraestructura para Operaciones Industriales</h2>
-    <p>Las plantas industriales y agroindustriales requieren obras civiles de apoyo: plataformas de funcionamiento, accesos viales, sistemas de drenaje y servicios. Realizamos estudios topográficos de sitio, incluyendo relevamiento de servicios existentes para definir con precisión el layout de obra. El diseño de plataformas considera cargas concentradas del equipamiento industrial, pendientes necesarias para drenaje, y accesibilidad para mantenimiento y ampliaciones futuras. Analizamos capacidad portante del suelo, diseñando sistemas de nivelación que pueden incluir terraplenado, corte o estabilización.</p>
-    <p>Los accesos viales industriales deben soportar tránsito pesado frecuente: camiones de carga, maquinaria agrícola, vehículos de servicio. Diseñamos pavimentos industriales con espesores adecuados y drenaje subsuperficial que evite fallas por saturación. Evaluamos alternativas constructivas según tipo de suelo y disponibilidad de materiales locales, adaptando la solución a cada contexto operacional y económico. Integramos sistemas de drenaje y escorrentía que protejan la operación en eventos de lluvia intensa.</p>
-    <p>La fiscalización de plantas industriales combina control de calidad con coordinación de especialidades múltiples: estructuras, sanitarias, eléctricas. Verificamos cumplimiento de normas constructivas, realizamos ensayos de compactación y resistencia, y generamos documentación técnica de todo lo ejecutado.</p>
-  </div>
-</Sector>
+
+  <PageHero
+    img="/img/sector-plantas.jpg"
+    imgAlt="Infraestructura industrial"
+    kicker="Sectores · Industria"
+    title="Infraestructura"
+    titleAccent="para operaciones industriales"
+    subtitle="Plataformas, accesos, movimiento de suelos y fiscalización para plantas industriales y agroindustriales. Servicio integral desde el diseño hasta la ejecución."
+    height="md"
+  >
+    <Button href="/contacto" variant="primary" magnetic>Consultar proyecto</Button>
+    <Button href="/sectores" variant="ghost-dark">Todos los sectores</Button>
+  </PageHero>
+
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="Enfoque"
+          title="Ingeniería de sitio"
+          titleAccent="orientada a la operación"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>Las plantas industriales y agroindustriales requieren obras civiles de apoyo: plataformas de funcionamiento, accesos viales, sistemas de drenaje y servicios. Realizamos estudios topográficos de sitio, incluyendo relevamiento de servicios existentes para definir con precisión el layout de obra.</p>
+        <p>El diseño de plataformas considera cargas concentradas del equipamiento, pendientes necesarias para drenaje y accesibilidad para mantenimiento y ampliaciones futuras. Analizamos capacidad portante del suelo, diseñando sistemas de nivelación que pueden incluir terraplenado, corte o estabilización.</p>
+        <p>Los accesos viales industriales deben soportar tránsito pesado frecuente: camiones de carga, maquinaria agrícola y vehículos de servicio. Diseñamos pavimentos industriales con espesores adecuados y drenaje subsuperficial que evite fallas por saturación.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream-deep" padding="md">
+    <SectionHeader
+      kicker="Capacidades"
+      title="Lo que hacemos"
+      lead="Servicios integrados que cubren el ciclo completo de la obra industrial: del movimiento de suelos a la fiscalización final."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {capacidades.map((c) => (
+        <div class="bg-white rounded-xl p-7 border border-slate-dg/[0.08] shadow-sm hover:shadow-md transition-shadow" data-animate>
+          <div class="w-11 h-11 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
+            {c.icon === 'platform' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 12h18M3 12v8h18v-8M6 12V6h12v6"/></svg>}
+            {c.icon === 'earth' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 18h18M3 14c3-3 5-3 7 0s5 3 7 0M3 14V9c3-3 5-3 7 0s5 3 7 0v5"/></svg>}
+            {c.icon === 'truck' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M1 17V5h13v12M14 9h5l3 4v4h-8"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>}
+            {c.icon === 'layers' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m12 3-9 5 9 5 9-5-9-5Zm-9 11 9 5 9-5M3 11l9 5 9-5"/></svg>}
+            {c.icon === 'water' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2s6 8 6 13a6 6 0 0 1-12 0c0-5 6-13 6-13Z"/></svg>}
+            {c.icon === 'audit' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.35-4.35M9 11l2 2 4-4"/></svg>}
+          </div>
+          <h3 class="text-[17px] font-extrabold tracking-tight mb-2 text-slate-dg">{c.title}</h3>
+          <p class="text-[13.5px] text-slate-dg/65 leading-relaxed">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream" padding="md">
+    <SectionHeader
+      kicker="Experiencia"
+      title="Proyectos industriales"
+      lead="Infraestructura civil de soporte para operaciones industriales y agroindustriales, con diseño y fiscalización combinados."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[900px] mx-auto">
+      {experiencia.map((e) => (
+        <div class="bg-white rounded-xl p-6 border border-slate-dg/[0.08] flex items-start gap-4" data-animate>
+          <div class="w-10 h-10 rounded-full bg-arena/12 flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-arena" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 9 8 13 14 5"/></svg>
+          </div>
+          <div>
+            <h4 class="text-[15px] font-extrabold text-slate-dg tracking-tight mb-1">{e.label}</h4>
+            <p class="text-[13px] text-slate-dg/60 leading-relaxed">{e.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Tiene una planta o acceso industrial?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[520px] mx-auto">Plataformas, movimiento de suelos, accesos o pavimentos industriales. Hablemos sobre las obras civiles que hacen posible la operación.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
+        <Button href="/sectores" variant="ghost-dark" size="lg">Otros sectores</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>

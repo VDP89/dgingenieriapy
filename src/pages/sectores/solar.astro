@@ -1,23 +1,90 @@
 ---
-import Sector from '../../layouts/Sector.astro';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FullBleedSection from '../../components/FullBleedSection.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Button from '../../components/Button.astro';
+
+const capacidades = [
+  { title: 'Estudios de ingeniería base', desc: 'Topografía, capacidad portante del suelo y factibilidad técnica del sitio para plantas solares y data centers.', icon: 'topo' },
+  { title: 'Obras civiles de soporte', desc: 'Diseño de la ingeniería civil que hace posible la operación: plataformas, cimentaciones y elementos estructurales.', icon: 'platform' },
+  { title: 'Accesos, plataformas y movimiento de suelos', desc: 'Nivelación del sitio, accesos de construcción y mantenimiento, plataformas con requerimientos especiales de carga.', icon: 'earth' },
+  { title: 'Coordinación de especialidades', desc: 'Integración con especialidades propias: climatización, energía, comunicaciones. Traducción técnica entre disciplinas.', icon: 'network' },
+  { title: 'Factibilidad técnica de sitio', desc: 'Evaluación de restricciones, propuestas constructivas y documentación para decisiones tempranas de inversión.', icon: 'docs' },
+];
 ---
 
-<Sector
+<Base
   title="Energía Solar y Data Centers"
-  description="Estudios y diseños de ingeniería base para infraestructura energética y centros de datos"
-  subtitle="Estudios y diseños de ingeniería para el desarrollo de infraestructura energética y centros de datos"
-  capacidades={[
-    "Estudios de ingeniería base",
-    "Diseño de obras civiles de soporte",
-    "Accesos, plataformas y movimiento de suelos",
-    "Coordinación de especialidades",
-    "Factibilidad técnica de sitio"
-  ]}
+  description="Ingeniería civil base para plantas solares y data centers. Accesos, plataformas, movimiento de suelos y coordinación de especialidades."
 >
-  <div class="prose prose-slate max-w-none">
-    <h2>Ingeniería Base para Infraestructura Energética</h2>
-    <p>Los proyectos de energía solar y data centers requieren obras civiles e ingeniería de base que hagan viable su construcción y operación. Nuestro aporte se centra en los estudios y diseños de ingeniería que soportan estas infraestructuras: accesos viales, plataformas, movimiento de suelos, drenaje y coordinación de especialidades técnicas. No diseñamos los sistemas eléctricos o de generación en sí, sino la ingeniería civil que los hace posibles.</p>
-    <p>Para plantas solares, realizamos estudios de factibilidad técnica del sitio: topografía, capacidad portante del suelo, diseño de accesos para construcción y mantenimiento, y sistemas de drenaje que protejan la infraestructura. En data centers, el abordaje es similar: preparación del sitio, diseño de plataformas con requerimientos especiales de carga, accesos logísticos y coordinación con las especialidades propias de este tipo de instalaciones (climatización, energía, comunicaciones).</p>
-    <p>En ambos casos, nuestro valor está en integrar las distintas disciplinas de ingeniería civil necesarias para que el proyecto avance con certeza técnica desde las etapas tempranas. Evaluamos restricciones del sitio, proponemos soluciones constructivas y generamos la documentación técnica que permite al desarrollador tomar decisiones informadas sobre su inversión.</p>
-  </div>
-</Sector>
+
+  <PageHero
+    img="/img/sector-solar.png"
+    imgAlt="Infraestructura solar y data centers"
+    kicker="Sectores · Energía e infraestructura digital"
+    title="Ingeniería base"
+    titleAccent="para infraestructura energética"
+    subtitle="Obras civiles e ingeniería de base para plantas solares y data centers. Accesos, plataformas y coordinación con las especialidades propias de cada tipo de instalación."
+    height="md"
+  >
+    <Button href="/contacto" variant="primary" magnetic>Consultar proyecto</Button>
+    <Button href="/sectores" variant="ghost-dark">Todos los sectores</Button>
+  </PageHero>
+
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="Enfoque"
+          title="Obras civiles"
+          titleAccent="que hacen posible la operación"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>Los proyectos de energía solar y data centers requieren obras civiles e ingeniería de base que hagan viable su construcción y operación. Nuestro aporte se centra en los estudios y diseños de ingeniería que soportan estas infraestructuras: accesos viales, plataformas, movimiento de suelos, drenaje y coordinación de especialidades técnicas.</p>
+        <p>No diseñamos los sistemas eléctricos o de generación en sí. Diseñamos la ingeniería civil que los hace posibles. Para plantas solares, realizamos estudios de factibilidad técnica del sitio, capacidad portante del suelo, accesos para construcción y mantenimiento, y sistemas de drenaje que protejan la infraestructura.</p>
+        <p>En data centers, el abordaje es similar: preparación del sitio, diseño de plataformas con requerimientos especiales de carga, accesos logísticos y coordinación con especialidades propias de este tipo de instalaciones (climatización, energía, comunicaciones). Nuestro valor está en integrar las distintas disciplinas de ingeniería civil necesarias para que el proyecto avance con certeza técnica desde etapas tempranas.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream-deep" padding="md">
+    <SectionHeader
+      kicker="Capacidades"
+      title="Lo que hacemos"
+      lead="Ingeniería civil especializada que prepara el sitio y coordina las especialidades propias de cada tipo de infraestructura energética o digital."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {capacidades.map((c) => (
+        <div class="bg-white rounded-xl p-7 border border-slate-dg/[0.08] shadow-sm hover:shadow-md transition-shadow" data-animate>
+          <div class="w-11 h-11 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
+            {c.icon === 'topo' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 20h18M5 16c3-4 5-4 7-1s5 3 7-1m-14 0V8m14 8V8M5 8c3-4 5-4 7-1s5 3 7-1"/></svg>}
+            {c.icon === 'platform' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 12h18M3 12v8h18v-8M6 12V6h12v6"/></svg>}
+            {c.icon === 'earth' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 18h18M3 14c3-3 5-3 7 0s5 3 7 0M3 14V9c3-3 5-3 7 0s5 3 7 0v5"/></svg>}
+            {c.icon === 'network' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 7l3 3m7-3-3 3m-7 7 3-3m7 3-3-3"/></svg>}
+            {c.icon === 'docs' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>}
+          </div>
+          <h3 class="text-[17px] font-extrabold tracking-tight mb-2 text-slate-dg">{c.title}</h3>
+          <p class="text-[13.5px] text-slate-dg/65 leading-relaxed">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Tiene un proyecto solar o data center?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[520px] mx-auto">Ingeniería civil de base, accesos, plataformas o coordinación de especialidades. Hablemos sobre cómo preparar el sitio del proyecto.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
+        <Button href="/sectores" variant="ghost-dark" size="lg">Otros sectores</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>

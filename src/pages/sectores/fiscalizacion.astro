@@ -1,29 +1,121 @@
 ---
-import Sector from '../../layouts/Sector.astro';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FullBleedSection from '../../components/FullBleedSection.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Button from '../../components/Button.astro';
+
+const capacidades = [
+  { title: 'Control técnico y seguimiento', desc: 'Revisión y auditoría técnica durante la ejecución. Seguimiento de avance físico y financiero con reportes diferenciados.', icon: 'eye' },
+  { title: 'Gestión contractual', desc: 'Verificación de cumplimiento contractual, control de presupuesto, certificaciones y adicionales con trazabilidad documentada.', icon: 'docs' },
+  { title: 'Curva S y valor ganado', desc: 'Análisis de desviaciones mediante Curva S actualizada, SPI y CPI. Detección temprana de desvíos de plazo y costo.', icon: 'chart' },
+  { title: 'Reportes por stakeholder', desc: 'Inversor, director de proyecto y profesional de campo reciben la información que necesitan, con el nivel de detalle adecuado.', icon: 'layers' },
+  { title: 'Coordinación de especialidades', desc: 'Articulación técnica entre disciplinas en obra: estructuras, sanitarias, eléctricas, urbanismo. Evita ruido y retrabajos.', icon: 'network' },
+  { title: 'Alertas tempranas', desc: 'Plataforma ERGON con alertas automáticas cuando las desviaciones superan umbrales definidos. Acción correctiva con respaldo técnico.', icon: 'alert' },
+];
+
+const experiencia = [
+  { label: 'Obras civiles de edificación', detail: 'Gerencia técnica con visión de inversor' },
+  { label: 'Desarrollos residenciales', detail: 'Control integral multi-lote con reportes diferenciados' },
+  { label: 'Infraestructura vial y urbana', detail: 'Fiscalización técnica en obras públicas y privadas' },
+];
 ---
 
-<Sector
+<Base
   title="Gerencia y Fiscalización"
-  description="Control técnico, seguimiento de avance y gestión contractual para inversores y desarrolladores"
-  subtitle="Los ojos técnicos del inversor en obra. Control, seguimiento y reportes con certeza técnica."
-  capacidades={[
-    "Control técnico y seguimiento de avance",
-    "Gestión contractual y de presupuesto",
-    "Curva S y análisis de desviaciones",
-    "Reportes ejecutivos por stakeholder",
-    "Coordinación de especialidades en obra",
-    "Alertas tempranas y acciones correctivas"
-  ]}
-  experiencia={[
-    "Obras civiles de edificación",
-    "Desarrollos residenciales",
-    "Infraestructura vial y urbana"
-  ]}
+  description="Los ojos técnicos del inversor en obra. Control, seguimiento, gestión contractual y reportes ejecutivos con plataforma ERGON."
 >
-  <div class="prose prose-slate max-w-none">
-    <h2>Gerencia Técnica con Visión de Inversor</h2>
-    <p>Nuestro servicio de gerencia y fiscalización actúa como el brazo técnico del inversor o desarrollador. Revisamos, controlamos, auditamos y acompañamos cada etapa para que las decisiones se tomen con información precisa. Realizamos seguimiento de avance físico y financiero, verificamos cumplimiento contractual y generamos reportes diferenciados según el nivel de detalle que necesita cada actor del proyecto.</p>
-    <p>Trabajamos en tres niveles de servicio. Desde la fiscalización básica con control de asistencia, registro de materiales y reportes mensuales, hasta la gerencia integral con dashboard interactivo, Curva S actualizada, control de presupuesto por rubro, análisis de valor ganado (EVM) y alertas automáticas cuando las desviaciones superan umbrales definidos. La plataforma ERGON integra estos datos en tiempo real, permitiendo al inversor tener visibilidad completa del estado de su obra.</p>
-    <p>Cada stakeholder recibe la información que necesita: el inversor ve un resumen ejecutivo con porcentaje de avance, desvío presupuestario y pronóstico de entrega. El director de proyecto accede al dashboard completo con Curva S y estado contractual. El profesional de campo trabaja con planillas de control diario y seguimiento por rubro. Esta diferenciación garantiza que la información fluya sin ruido y cada decisión tenga respaldo técnico documentado.</p>
-  </div>
-</Sector>
+
+  <PageHero
+    img="/img/sector-civil.png"
+    imgAlt="Fiscalización de obra"
+    kicker="Sectores · Gerencia de obra"
+    title="Los ojos técnicos"
+    titleAccent="del inversor en obra"
+    subtitle="Control técnico, seguimiento de avance y reportes ejecutivos diferenciados. Plataforma ERGON con visibilidad en tiempo real del estado de la obra."
+    height="md"
+  >
+    <Button href="/contacto" variant="primary" magnetic>Consultar fiscalización</Button>
+    <Button href="/sectores" variant="ghost-dark">Todos los sectores</Button>
+  </PageHero>
+
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="Enfoque"
+          title="Gerencia técnica"
+          titleAccent="con visión de inversor"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>Nuestro servicio de gerencia y fiscalización actúa como el brazo técnico del inversor o desarrollador. Revisamos, controlamos, auditamos y acompañamos cada etapa para que las decisiones se tomen con información precisa.</p>
+        <p>Trabajamos en tres niveles de servicio: desde la fiscalización básica con control de asistencia, registro de materiales y reportes mensuales, hasta la gerencia integral con dashboard interactivo, Curva S actualizada, control de presupuesto por rubro, análisis de valor ganado (EVM) y alertas automáticas cuando las desviaciones superan umbrales definidos.</p>
+        <p>Cada stakeholder recibe la información que necesita: el inversor ve un resumen ejecutivo, el director de proyecto accede al dashboard completo, el profesional de campo trabaja con planillas de control diario. Esta diferenciación garantiza que la información fluya sin ruido y cada decisión tenga respaldo técnico documentado.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream-deep" padding="md">
+    <SectionHeader
+      kicker="Capacidades"
+      title="Lo que hacemos"
+      lead="Servicios integrados que van desde el control técnico en obra hasta la visibilidad ejecutiva en tiempo real con la plataforma ERGON."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {capacidades.map((c) => (
+        <div class="bg-white rounded-xl p-7 border border-slate-dg/[0.08] shadow-sm hover:shadow-md transition-shadow" data-animate>
+          <div class="w-11 h-11 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
+            {c.icon === 'eye' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M2 12s3-8 10-8 10 8 10 8-3 8-10 8-10-8-10-8Z"/><circle cx="12" cy="12" r="3"/></svg>}
+            {c.icon === 'docs' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>}
+            {c.icon === 'chart' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 3v18h18M7 14l4-4 4 4 5-5"/></svg>}
+            {c.icon === 'layers' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m12 3-9 5 9 5 9-5-9-5Zm-9 11 9 5 9-5M3 11l9 5 9-5"/></svg>}
+            {c.icon === 'network' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 7l3 3m7-3-3 3m-7 7 3-3m7 3-3-3"/></svg>}
+            {c.icon === 'alert' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0ZM12 9v4m0 4h.01"/></svg>}
+          </div>
+          <h3 class="text-[17px] font-extrabold tracking-tight mb-2 text-slate-dg">{c.title}</h3>
+          <p class="text-[13.5px] text-slate-dg/65 leading-relaxed">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream" padding="md">
+    <SectionHeader
+      kicker="Experiencia"
+      title="Obras fiscalizadas"
+      lead="Gerencia y fiscalización en obras civiles, desarrollos residenciales e infraestructura pública y privada."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[900px] mx-auto">
+      {experiencia.map((e) => (
+        <div class="bg-white rounded-xl p-6 border border-slate-dg/[0.08] flex items-start gap-4" data-animate>
+          <div class="w-10 h-10 rounded-full bg-arena/12 flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-arena" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 9 8 13 14 5"/></svg>
+          </div>
+          <div>
+            <h4 class="text-[15px] font-extrabold text-slate-dg tracking-tight mb-1">{e.label}</h4>
+            <p class="text-[13px] text-slate-dg/60 leading-relaxed">{e.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Necesita visibilidad técnica de su obra?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[520px] mx-auto">Control, fiscalización o gerencia integral con plataforma ERGON. Hablemos sobre el nivel de visibilidad que necesita.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
+        <Button href="/sectores" variant="ghost-dark" size="lg">Otros sectores</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>

@@ -1,30 +1,122 @@
 ---
-import Sector from '../../layouts/Sector.astro';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FullBleedSection from '../../components/FullBleedSection.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Button from '../../components/Button.astro';
+
+const capacidades = [
+  { title: 'Pavimentos flexibles (AASHTO)', desc: 'Diseño de estructuras asfálticas bajo metodología AASHTO 93, calibrada al contexto local y a las cargas reales del proyecto.', icon: 'layers' },
+  { title: 'Pavimentos rígidos', desc: 'Diseño de losas de hormigón con criterios de fatiga, transferencia de carga y detalles constructivos.', icon: 'grid' },
+  { title: 'Deflectometría', desc: 'Evaluación estructural mediante ensayos no destructivos. Cálculo de módulos efectivos por capa y diagnóstico del estado real.', icon: 'wave' },
+  { title: 'Refuerzos y rehabilitación', desc: 'Sobrecapas, reciclado en frío, fresado y reemplazo selectivo. Inventario de daños con clasificación y cuantificación.', icon: 'tool' },
+  { title: 'Pavimentos industriales', desc: 'Diseño para cargas puntuales y concentradas propias de operaciones industriales: playones, accesos pesados, plataformas logísticas.', icon: 'factory' },
+  { title: 'Bajo volumen de tránsito', desc: 'Soluciones para caminos rurales y secundarios: empedrados, adoquines, tratamientos bituminosos y macadan de penetración.', icon: 'road' },
+];
+
+const experiencia = [
+  { label: 'Más de 25 proyectos', detail: 'Ejecutados con diseño y/o fiscalización DG' },
+  { label: 'Asfalto, hormigón, empedrados, adoquines', detail: 'Experiencia en todas las tipologías principales' },
+  { label: 'AASHTO y MEPDG', detail: 'Metodologías internacionales aplicadas con calibración local' },
+  { label: 'Cobertura multirregional', detail: 'Proyectos en distintas regiones del país' },
+];
 ---
 
-<Sector
+<Base
   title="Pavimentos"
-  description="Evaluación, diseño y control de pavimentos para infraestructura vial e industrial"
-  subtitle="Evaluación, diseño y control de pavimentos para todo tipo de estructura vial e industrial"
-  capacidades={[
-    "Diseño de pavimentos flexibles (AASHTO)",
-    "Diseño de pavimentos rígidos",
-    "Deflectometría y evaluación estructural",
-    "Diseño de refuerzos y rehabilitación",
-    "Pavimentos industriales",
-    "Soluciones para bajo volumen de tránsito"
-  ]}
-  experiencia={[
-    "Más de 25 proyectos ejecutados",
-    "Asfalto, hormigón, empedrados, adoquines",
-    "Metodologías AASHTO y MEPDG",
-    "Cobertura multirregional"
-  ]}
+  description="Evaluación, diseño y control de pavimentos para infraestructura vial e industrial. AASHTO, MEPDG, deflectometría y más de 25 proyectos."
 >
-  <div class="prose prose-slate max-w-none">
-    <h2>Diagnóstico y Diseño de Estructuras de Pavimento</h2>
-    <p>El comportamiento de un pavimento depende de múltiples variables: carga de tránsito, capacidad de soporte del suelo, materiales disponibles y condiciones climáticas. Realizamos evaluaciones estructurales mediante ensayos de deflectometría de precisión, que miden la respuesta elástica del pavimento bajo carga. A partir de esta información, calculamos el módulo de elasticidad efectivo de cada capa y diagnosticamos el estado estructural, identificando zonas de deterioro que requieren intervención.</p>
-    <p>En DG trabajamos con todas las tipologías de pavimento según las necesidades del proyecto: asfalto, hormigón, empedrados, adoquines y caminos de bajo volumen de tránsito. Para cada caso aplicamos metodologías AASHTO y MEPDG, evaluando opciones constructivas con criterios técnico-económicos adaptados al contexto local, disponibilidad de materiales y experiencia de ejecución. En pavimentos industriales, diseñamos estructuras para cargas puntuales o concentradas propias de la operación.</p>
-    <p>Para pavimentos en servicio, diseñamos estrategias de refuerzo y rehabilitación optimizadas: sobrecapas, reciclado en frío, fresado y reemplazo selectivo. Ejecutamos estudios de inventario de daños con clasificación de fallas, cuantificando extensión y severidad, lo que permite dimensionar correctamente los trabajos y presupuestar con precisión.</p>
-  </div>
-</Sector>
+
+  <PageHero
+    img="/img/sector-pav.png"
+    imgAlt="Evaluación de pavimentos"
+    kicker="Sectores · Pavimentos"
+    title="Evaluación y diseño"
+    titleAccent="de pavimentos"
+    subtitle="Deflectometría, AASHTO y MEPDG para todos los tipos de pavimento: flexibles, rígidos, empedrados, adoquines e industriales."
+    height="md"
+  >
+    <Button href="/contacto" variant="primary" magnetic>Consultar proyecto</Button>
+    <Button href="/sectores" variant="ghost-dark">Todos los sectores</Button>
+  </PageHero>
+
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="Enfoque"
+          title="Diagnóstico y diseño"
+          titleAccent="con calibración local"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>El comportamiento de un pavimento depende de múltiples variables: cargas de tránsito, capacidad de soporte del suelo, materiales disponibles y condiciones climáticas. Evaluamos cada proyecto con ensayos de deflectometría que permiten calcular el módulo efectivo de cada capa y diagnosticar el estado estructural real.</p>
+        <p>Trabajamos con todas las tipologías de pavimento según las necesidades del proyecto: asfalto, hormigón, empedrados, adoquines y caminos de bajo volumen. Para cada caso aplicamos metodologías AASHTO y MEPDG adaptadas al contexto local, disponibilidad de materiales y experiencia de ejecución.</p>
+        <p>En pavimentos en servicio, diseñamos estrategias de refuerzo y rehabilitación optimizadas, con inventario de daños, clasificación de fallas y cuantificación precisa para presupuestar intervenciones.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream-deep" padding="md">
+    <SectionHeader
+      kicker="Capacidades"
+      title="Lo que hacemos"
+      lead="Servicios integrados que cubren el ciclo completo del pavimento, desde el diagnóstico hasta el diseño de rehabilitación."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {capacidades.map((c) => (
+        <div class="bg-white rounded-xl p-7 border border-slate-dg/[0.08] shadow-sm hover:shadow-md transition-shadow" data-animate>
+          <div class="w-11 h-11 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
+            {c.icon === 'layers' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m12 3-9 5 9 5 9-5-9-5Zm-9 11 9 5 9-5M3 11l9 5 9-5"/></svg>}
+            {c.icon === 'grid' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>}
+            {c.icon === 'wave' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M2 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0 4 3 6 0"/></svg>}
+            {c.icon === 'tool' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>}
+            {c.icon === 'factory' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M2 20V8l6 4V8l6 4V8l6 4v8H2Zm4 0v-4m4 4v-4m4 4v-4m4 4v-4"/></svg>}
+            {c.icon === 'road' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 22 10 2M20 22 14 2M12 6v2m0 4v2m0 4v2"/></svg>}
+          </div>
+          <h3 class="text-[17px] font-extrabold tracking-tight mb-2 text-slate-dg">{c.title}</h3>
+          <p class="text-[13.5px] text-slate-dg/65 leading-relaxed">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream" padding="md">
+    <SectionHeader
+      kicker="Experiencia"
+      title="Trayectoria documentada"
+      lead="Más de 25 proyectos ejecutados en todas las tipologías principales, con metodologías internacionales calibradas al contexto local."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[900px] mx-auto">
+      {experiencia.map((e) => (
+        <div class="bg-white rounded-xl p-6 border border-slate-dg/[0.08] flex items-start gap-4" data-animate>
+          <div class="w-10 h-10 rounded-full bg-arena/12 flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-arena" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 9 8 13 14 5"/></svg>
+          </div>
+          <div>
+            <h4 class="text-[15px] font-extrabold text-slate-dg tracking-tight mb-1">{e.label}</h4>
+            <p class="text-[13px] text-slate-dg/60 leading-relaxed">{e.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Tiene un proyecto de pavimentos?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[520px] mx-auto">Diseño, evaluación, refuerzo o fiscalización. Hablemos sobre cómo abordar el pavimento del proyecto.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
+        <Button href="/sectores" variant="ghost-dark" size="lg">Otros sectores</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>

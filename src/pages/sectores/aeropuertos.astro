@@ -1,29 +1,122 @@
 ---
-import Sector from '../../layouts/Sector.astro';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FullBleedSection from '../../components/FullBleedSection.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Button from '../../components/Button.astro';
+
+const capacidades = [
+  { title: 'Pavimentos aeronáuticos', desc: 'Metodología FAARFIELD de la FAA para pistas y calles de rodaje. Cargas especiales de tren de aterrizaje y presiones de contacto.', icon: 'plane' },
+  { title: 'Plataformas y calles de rodaje', desc: 'Diseño combinando criterios aeronáuticos con seguridad operacional: márgenes, capacidad de maniobra, señalización y demarcación OACI.', icon: 'grid' },
+  { title: 'Pistas privadas', desc: 'Ingeniería completa para pistas privadas: relevamiento, diseño geométrico, pavimento y drenaje.', icon: 'runway' },
+  { title: 'Hangares privados', desc: 'Análisis de cargas según normas constructivas, dimensionado de estructuras y cimentaciones adaptadas al ambiente aeronáutico.', icon: 'hangar' },
+  { title: 'Drenaje aeronáutico', desc: 'Sistemas de subdrenaje para mantener capacidad portante durante operaciones. Crítico para continuidad del servicio.', icon: 'water' },
+  { title: 'Marco regulatorio DINAC/OACI', desc: 'Asesoría en procedimientos de homologación, documentación técnica, ensayos de validación y auditorías de cumplimiento.', icon: 'docs' },
+];
+
+const experiencia = [
+  { label: 'Aeropuerto Silvio Pettirossi', detail: 'Pavimentos aeronáuticos' },
+  { label: 'Pistas privadas', detail: 'Diseño completo e ingeniería de sitio' },
+  { label: 'Hangares privados', detail: 'Estructura y cimentaciones especializadas' },
+  { label: 'Normativa DINAC', detail: 'Homologación de obras e instalaciones' },
+];
 ---
 
-<Sector
+<Base
   title="Aeropuertos, Hangares y Pistas"
-  description="Ingeniería de infraestructura aeronáutica bajo normativa OACI"
-  subtitle="Ingeniería de infraestructura aeronáutica: pistas, plataformas y hangares bajo normativa OACI y DINAC"
-  capacidades={[
-    "Pavimentos aeronáuticos (FAARFIELD)",
-    "Diseño de plataformas y calles de rodaje",
-    "Pistas privadas y hangares privados",
-    "Estudios de performance aeronáutica",
-    "Marco regulatorio DINAC/OACI"
-  ]}
-  experiencia={[
-    "Pavimentos en Aeropuerto Silvio Pettirossi",
-    "Pistas privadas",
-    "Hangares privados",
-    "Normativa DINAC"
-  ]}
+  description="Ingeniería de infraestructura aeronáutica bajo normativa OACI y DINAC. FAARFIELD, pistas, plataformas, hangares privados y aeropuertos comerciales."
 >
-  <div class="prose prose-slate max-w-none">
-    <h2>Ingeniería de Infraestructura Aeronáutica</h2>
-    <p>La infraestructura aeronáutica opera bajo normativa internacional estricta (OACI/ICAO) y regulaciones nacionales de la autoridad aeronáutica (DINAC). Los pavimentos aeronáuticos requieren análisis de cargas especiales: tren de aterrizaje de aeronaves, presiones de contacto puntuales de gran magnitud, y ciclos de carga concentrados. Aplicamos metodología FAARFIELD de la FAA para dimensionar pistas y calles de rodaje, considerando categoría de aeronave de diseño, frecuencia de operaciones y vida de proyecto.</p>
-    <p>Trabajamos en pistas privadas, hangares privados y pavimentos de aeropuertos como el Silvio Pettirossi. En plataformas y áreas de estacionamiento, combinamos criterios aeronáuticos con seguridad operacional: márgenes de seguridad, capacidad de maniobra, señalización y demarcación conforme a OACI. Para hangares, realizamos análisis de cargas según normas constructivas nacionales, dimensionando estructuras y cimentaciones adaptadas al ambiente aeronáutico. El drenaje es crítico: diseñamos sistemas de subdrenaje para mantener capacidad portante durante operaciones.</p>
-    <p>Brindamos asesoría en procedimientos DINAC para homologación de obras e instalaciones, incluyendo documentación técnica requerida, ensayos de validación y auditorías de cumplimiento normativo.</p>
-  </div>
-</Sector>
+
+  <PageHero
+    img="/img/sector-aero.jpg"
+    imgAlt="Infraestructura aeronáutica"
+    kicker="Sectores · Aeronáutica"
+    title="Infraestructura"
+    titleAccent="aeronáutica"
+    subtitle="Pistas, plataformas y hangares bajo normativa OACI y DINAC. Metodología FAARFIELD para pavimentos con cargas especiales de aeronaves."
+    height="md"
+  >
+    <Button href="/contacto" variant="primary" magnetic>Consultar proyecto</Button>
+    <Button href="/sectores" variant="ghost-dark">Todos los sectores</Button>
+  </PageHero>
+
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="Enfoque"
+          title="Ingeniería bajo"
+          titleAccent="normativa internacional"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>La infraestructura aeronáutica opera bajo normativa internacional estricta (OACI) y regulaciones nacionales de la autoridad aeronáutica (DINAC). Los pavimentos requieren análisis de cargas especiales: tren de aterrizaje, presiones de contacto puntuales y ciclos de carga concentrados.</p>
+        <p>Aplicamos metodología FAARFIELD de la FAA para dimensionar pistas y calles de rodaje, considerando categoría de aeronave de diseño, frecuencia de operaciones y vida de proyecto. En plataformas combinamos criterios aeronáuticos con seguridad operacional: márgenes, capacidad de maniobra, señalización y demarcación conforme a OACI.</p>
+        <p>Brindamos asesoría en procedimientos DINAC para homologación de obras e instalaciones, incluyendo documentación técnica, ensayos de validación y auditorías de cumplimiento normativo.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream-deep" padding="md">
+    <SectionHeader
+      kicker="Capacidades"
+      title="Lo que hacemos"
+      lead="Servicios integrados desde pavimentos con FAARFIELD hasta homologación DINAC, cubriendo el ciclo completo de la obra aeronáutica."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {capacidades.map((c) => (
+        <div class="bg-white rounded-xl p-7 border border-slate-dg/[0.08] shadow-sm hover:shadow-md transition-shadow" data-animate>
+          <div class="w-11 h-11 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
+            {c.icon === 'plane' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>}
+            {c.icon === 'grid' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>}
+            {c.icon === 'runway' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 21 21 3M7 19h4m2-12h4"/></svg>}
+            {c.icon === 'hangar' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 21V11l9-6 9 6v10M3 21h18M7 21v-6h10v6"/></svg>}
+            {c.icon === 'water' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2s6 8 6 13a6 6 0 0 1-12 0c0-5 6-13 6-13Z"/></svg>}
+            {c.icon === 'docs' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>}
+          </div>
+          <h3 class="text-[17px] font-extrabold tracking-tight mb-2 text-slate-dg">{c.title}</h3>
+          <p class="text-[13.5px] text-slate-dg/65 leading-relaxed">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream" padding="md">
+    <SectionHeader
+      kicker="Experiencia"
+      title="Proyectos y referencias"
+      lead="Experiencia en aeropuertos comerciales, pistas privadas y hangares con homologación DINAC."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[900px] mx-auto">
+      {experiencia.map((e) => (
+        <div class="bg-white rounded-xl p-6 border border-slate-dg/[0.08] flex items-start gap-4" data-animate>
+          <div class="w-10 h-10 rounded-full bg-arena/12 flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-arena" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 9 8 13 14 5"/></svg>
+          </div>
+          <div>
+            <h4 class="text-[15px] font-extrabold text-slate-dg tracking-tight mb-1">{e.label}</h4>
+            <p class="text-[13px] text-slate-dg/60 leading-relaxed">{e.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Tiene un proyecto aeronáutico?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[520px] mx-auto">Pistas, hangares, plataformas o asesoría DINAC. Hablemos sobre cómo abordar la ingeniería aeronáutica del proyecto.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
+        <Button href="/sectores" variant="ghost-dark" size="lg">Otros sectores</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>

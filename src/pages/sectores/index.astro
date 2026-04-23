@@ -1,49 +1,114 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FullBleedSection from '../../components/FullBleedSection.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import SectorCard from '../../components/SectorCard.astro';
+import Button from '../../components/Button.astro';
 
 const sectores = [
-  { slug: 'vialidad', title: 'Diseño de Proyectos Viales', desc: 'Diseño, revisiones, auditorías y control técnico de caminos y rutas. Factibilidad y código SNIP.' },
-  { slug: 'pavimentos', title: 'Pavimentos', desc: 'Evaluación estructural, deflectometría y diseño de paquetes para todos los tipos de pavimento.' },
-  { slug: 'aeropuertos', title: 'Aeropuertos, Hangares y Pistas', desc: 'Ingeniería de infraestructura aeronáutica: pistas, plataformas y hangares. Normativa OACI y DINAC.' },
-  { slug: 'puertos', title: 'Puertos y Fluvial', desc: 'Análisis de situaciones portuarias, estudios de ingeniería, coordinación de especialidades y soluciones de embarque.' },
-  { slug: 'fiscalizacion', title: 'Gerencia y Fiscalización', desc: 'Control técnico, seguimiento de avance, gestión contractual y reportes ejecutivos para inversores y desarrolladores.' },
-  { slug: 'plantas-industriales', title: 'Plantas Industriales', desc: 'Diseño de plataformas, movimiento de suelos, accesos y fiscalización de obra industrial.' },
-  { slug: 'urbanizaciones', title: 'Urbanizaciones', desc: 'Nivelación, vialidad interna, coordinación de especialidades para desarrollos urbanos.' },
-  { slug: 'solar', title: 'Energía Solar y Data Centers', desc: 'Estudios y diseños de ingeniería para el desarrollo de infraestructura energética y centros de datos.' },
+  {
+    slug: 'vialidad', title: 'Diseño de Proyectos Viales',
+    desc: 'Diseño, revisiones, auditorías y control técnico de caminos y rutas. Factibilidad y código SNIP.',
+    img: '/img/sector-vial.jpg',
+    tag: 'BID · MOPC',
+  },
+  {
+    slug: 'pavimentos', title: 'Pavimentos',
+    desc: 'Evaluación estructural, deflectometría y diseño de paquetes para todos los tipos de pavimento.',
+    img: '/img/sector-pav.png',
+    tag: 'Expertise',
+  },
+  {
+    slug: 'aeropuertos', title: 'Aeropuertos, Hangares y Pistas',
+    desc: 'Ingeniería de infraestructura aeronáutica: pistas, plataformas y hangares. Normativa OACI y DINAC.',
+    img: '/img/sector-aero.jpg',
+    tag: 'OACI · DINAC',
+  },
+  {
+    slug: 'puertos', title: 'Puertos y Fluvial',
+    desc: 'Análisis de situaciones portuarias, estudios de ingeniería, coordinación de especialidades y soluciones de embarque.',
+    img: '/img/sector-puertos.jpeg',
+    tag: 'Estudios',
+  },
+  {
+    slug: 'fiscalizacion', title: 'Gerencia y Fiscalización',
+    desc: 'Control técnico, seguimiento de avance, gestión contractual y reportes ejecutivos para inversores y desarrolladores.',
+    img: '/img/sector-civil.png',
+    tag: 'ERGON',
+  },
+  {
+    slug: 'plantas-industriales', title: 'Plantas Industriales',
+    desc: 'Diseño de plataformas, movimiento de suelos, accesos y fiscalización de obra industrial.',
+    img: '/img/sector-plantas.jpg',
+    tag: 'Industria',
+  },
+  {
+    slug: 'urbanizaciones', title: 'Urbanizaciones',
+    desc: 'Nivelación, vialidad interna, coordinación de especialidades para desarrollos urbanos.',
+    img: '/img/sector-urb.jpg',
+    tag: 'Desarrollo',
+  },
+  {
+    slug: 'solar', title: 'Energía Solar y Data Centers',
+    desc: 'Estudios y diseños de ingeniería para el desarrollo de infraestructura energética y centros de datos.',
+    img: '/img/sector-solar.png',
+    tag: 'Ingeniería base',
+  },
 ];
 ---
 
-<Base title="Sectores">
+<Base title="Sectores" description="Ocho sectores de especialización en ingeniería de infraestructura. Experiencia documentada con organismos multilaterales, desarrolladores e industrias.">
 
-  <!-- HERO -->
-  <section class="bg-slate-dg text-cream py-16 md:py-28">
-    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
-      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight mb-4">Sectores</h1>
-      <p class="text-lg text-cream/65 max-w-2xl leading-relaxed">Experiencia documentada en cada sector, con capacidad de respuesta integral desde el diseño hasta el control</p>
+  <PageHero
+    img="/img/destacado-bid.jpg"
+    imgAlt="Proyectos de infraestructura DG"
+    kicker="Áreas de especialización"
+    title="Ocho sectores,"
+    titleAccent="una forma de trabajar"
+    subtitle="Experiencia documentada en cada sector, con capacidad de respuesta integral desde la factibilidad hasta el control final."
+    height="md"
+  >
+    <Button href="#sectores" variant="primary" magnetic>Explorar sectores</Button>
+    <Button href="/contacto" variant="ghost-dark">Realizar consulta</Button>
+  </PageHero>
+
+  <FullBleedSection bg="white" padding="md" id="sectores">
+    <SectionHeader
+      kicker="Nuestros sectores"
+      title="Especialización"
+      titleAccent="con enfoque integral"
+      lead="Cada sector se aborda con el mismo criterio: datos precisos desde el origen, coordinación técnica entre especialidades y control en cada etapa."
+      align="center"
+      class="mb-14"
+    />
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {sectores.map((s) => (
+        <SectorCard
+          slug={s.slug}
+          title={s.title}
+          desc={s.desc}
+          img={s.img}
+          tag={s.tag}
+        />
+      ))}
     </div>
-  </section>
+  </FullBleedSection>
 
-  <!-- GRID DE SECTORES -->
-  <section class="py-16 md:py-24 bg-white">
-    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-slate-dg/10 border border-slate-dg/10 rounded-lg overflow-hidden">
-        {sectores.map((s) => (
-          <a href={`/sectores/${s.slug}`} class="bg-white p-8 hover:bg-cream transition-colors group block">
-            <h4 class="text-[15px] font-semibold mb-2 group-hover:text-arena transition-colors leading-snug">{s.title}</h4>
-            <p class="text-[13px] text-gray-neutral leading-snug mb-4">{s.desc}</p>
-            <span class="text-sm text-slate-dg/30 group-hover:text-arena group-hover:translate-x-1 transition-all inline-block">→</span>
-          </a>
-        ))}
+  <!-- CTA FINAL -->
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="absolute top-[10%] left-[10%] w-[400px] h-[400px] border border-cream/[0.03] rounded-full"></div>
+
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Necesita especialización en algún sector?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[520px] mx-auto">Contáctenos para conocer cómo podemos acompañar cada etapa de su proyecto.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
+        <Button href="/proyectos" variant="ghost-dark" size="lg">Ver proyectos</Button>
       </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="bg-slate-dg text-cream text-center py-16 md:py-20">
-    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
-      <h2 class="text-2xl md:text-3xl font-bold mb-3">¿Necesitas especialización en algún sector?</h2>
-      <p class="text-base text-cream/50 mb-8 max-w-[440px] mx-auto">Contáctanos para conocer cómo podemos acompañar tu proyecto.</p>
-      <a href="/contacto" class="bg-arena text-white px-6 py-3 rounded font-semibold text-sm hover:bg-arena-light transition-colors inline-block">Realizar consulta</a>
     </div>
   </section>
 

@@ -1,28 +1,119 @@
 ---
-import Sector from '../../layouts/Sector.astro';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FullBleedSection from '../../components/FullBleedSection.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Button from '../../components/Button.astro';
+
+const capacidades = [
+  { title: 'Plataformas urbanas', desc: 'Diseño de niveles de terrazas con pendientes de drenaje, estabilidad de taludes y compatibilidad con expansiones futuras.', icon: 'platform' },
+  { title: 'Nivelación y movimiento de suelos', desc: 'Topografía de precisión que optimiza movimientos de suelo minimizando costos de transporte y disposición.', icon: 'earth' },
+  { title: 'Vialidad interna', desc: 'Trazados geométricos con velocidades operacionales adecuadas, radios seguros y visibilidad en intersecciones.', icon: 'route' },
+  { title: 'Coordinación de especialidades', desc: 'Drenaje pluvial, agua potable, cloacas y energía eléctrica integradas en un diseño coherente sin conflictos entre redes.', icon: 'network' },
+  { title: 'Topografía y geodesia', desc: 'Base cartográfica de precisión para el proyecto completo. Relevamiento de servicios existentes y replanteo de obra.', icon: 'topo' },
+];
+
+const experiencia = [
+  { label: 'Urbanización Rialto', detail: 'Desarrollo urbano con coordinación integral de especialidades' },
+  { label: 'Urbanización Luthold', detail: 'Nivelación, vialidad y servicios' },
+  { label: 'Aguas Claras', detail: 'Ingeniería de sitio para desarrollo residencial' },
+];
 ---
 
-<Sector
+<Base
   title="Urbanizaciones"
-  description="Ingeniería de sitio y coordinación de especialidades para desarrollos urbanos"
-  subtitle="Ingeniería de sitio, vialidad interna y coordinación de especialidades para desarrollos urbanos"
-  capacidades={[
-    "Diseño de plataformas urbanas",
-    "Nivelación y movimiento de suelos",
-    "Vialidad interna",
-    "Coordinación de especialidades",
-    "Topografía y geodesia"
-  ]}
-  experiencia={[
-    "Urbanización Rialto",
-    "Urbanización Luthold",
-    "Aguas Claras"
-  ]}
+  description="Ingeniería de sitio y coordinación de especialidades para desarrollos urbanos. Experiencia en Rialto, Luthold y Aguas Claras."
 >
-  <div class="prose prose-slate max-w-none">
-    <h2>Ingeniería de Sitio para Desarrollos Urbanos</h2>
-    <p>Los proyectos de urbanización requieren transformar el terreno natural en lotes edificables servidos por infraestructura. Realizamos topografía de precisión que define niveles de terrazas, optimizando movimientos de suelo para minimizar costos de transporte y disposición. El diseño de plataformas considera pendientes de drenaje, estabilidad de taludes y compatibilidad con expansiones futuras. Nuestra experiencia en desarrollos como Rialto, Luthold y Aguas Claras nos da la base práctica para abordar estos proyectos con eficiencia.</p>
-    <p>La vialidad interna facilita acceso eficiente a todos los lotes con circulación segura. Diseñamos trazados geométricos que consideran velocidades operacionales reducidas, radios de curvatura seguros y visibilidad en intersecciones. Cada calle se dimensiona según volumen esperado de tránsito: vías principales más robustas, calles internas de menor jerarquía.</p>
-    <p>Nuestro rol principal en urbanizaciones es la coordinación integral de especialidades: drenaje pluvial, agua potable, cloacas, energía eléctrica. Aseguramos que todas se integren en un diseño coherente, evitando conflictos entre redes y facilitando una construcción ordenada. Una urbanización bien coordinada reduce costos, evita retrabajos y entrega lotes listos para edificar.</p>
-  </div>
-</Sector>
+
+  <PageHero
+    img="/img/sector-urb.jpg"
+    imgAlt="Desarrollo urbano"
+    kicker="Sectores · Desarrollo urbano"
+    title="Ingeniería de sitio"
+    titleAccent="para desarrollos urbanos"
+    subtitle="Nivelación, vialidad interna y coordinación de especialidades para transformar terreno natural en lotes edificables servidos."
+    height="md"
+  >
+    <Button href="/contacto" variant="primary" magnetic>Consultar proyecto</Button>
+    <Button href="/sectores" variant="ghost-dark">Todos los sectores</Button>
+  </PageHero>
+
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="Enfoque"
+          title="De terreno natural"
+          titleAccent="a lotes edificables"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>Los proyectos de urbanización requieren transformar el terreno natural en lotes edificables servidos por infraestructura. Realizamos topografía de precisión que define niveles de terrazas, optimizando movimientos de suelo para minimizar costos de transporte y disposición.</p>
+        <p>El diseño de plataformas considera pendientes de drenaje, estabilidad de taludes y compatibilidad con expansiones futuras. La vialidad interna facilita acceso eficiente a todos los lotes con circulación segura: trazados geométricos que consideran velocidades operacionales reducidas, radios seguros y visibilidad en intersecciones.</p>
+        <p>Nuestro rol principal es la coordinación integral de especialidades: drenaje pluvial, agua potable, cloacas y energía eléctrica. Aseguramos que todas se integren en un diseño coherente, evitando conflictos entre redes y facilitando una construcción ordenada. Una urbanización bien coordinada reduce costos, evita retrabajos y entrega lotes listos para edificar.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream-deep" padding="md">
+    <SectionHeader
+      kicker="Capacidades"
+      title="Lo que hacemos"
+      lead="Servicios integrados que cubren el ciclo completo del desarrollo urbano, desde la nivelación hasta la coordinación de redes."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {capacidades.map((c) => (
+        <div class="bg-white rounded-xl p-7 border border-slate-dg/[0.08] shadow-sm hover:shadow-md transition-shadow" data-animate>
+          <div class="w-11 h-11 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
+            {c.icon === 'platform' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 12h18M3 12v8h18v-8M6 12V6h12v6"/></svg>}
+            {c.icon === 'earth' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 18h18M3 14c3-3 5-3 7 0s5 3 7 0M3 14V9c3-3 5-3 7 0s5 3 7 0v5"/></svg>}
+            {c.icon === 'route' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 19h6a4 4 0 0 0 0-8H8a4 4 0 0 1 0-8h10M4 19l3-3m-3 3 3 3M20 3l-3 3m3-3-3-3"/></svg>}
+            {c.icon === 'network' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 7l3 3m7-3-3 3m-7 7 3-3m7 3-3-3"/></svg>}
+            {c.icon === 'topo' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 20h18M5 16c3-4 5-4 7-1s5 3 7-1m-14 0V8m14 8V8M5 8c3-4 5-4 7-1s5 3 7-1"/></svg>}
+          </div>
+          <h3 class="text-[17px] font-extrabold tracking-tight mb-2 text-slate-dg">{c.title}</h3>
+          <p class="text-[13.5px] text-slate-dg/65 leading-relaxed">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream" padding="md">
+    <SectionHeader
+      kicker="Experiencia"
+      title="Desarrollos urbanos ejecutados"
+      lead="Ingeniería de sitio para desarrollos residenciales con coordinación integral de especialidades."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[900px] mx-auto">
+      {experiencia.map((e) => (
+        <div class="bg-white rounded-xl p-6 border border-slate-dg/[0.08] flex items-start gap-4" data-animate>
+          <div class="w-10 h-10 rounded-full bg-arena/12 flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-arena" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 9 8 13 14 5"/></svg>
+          </div>
+          <div>
+            <h4 class="text-[15px] font-extrabold text-slate-dg tracking-tight mb-1">{e.label}</h4>
+            <p class="text-[13px] text-slate-dg/60 leading-relaxed">{e.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Tiene un desarrollo urbano?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[520px] mx-auto">Nivelación, vialidad interna o coordinación de especialidades. Hablemos sobre cómo dar coherencia técnica al desarrollo.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
+        <Button href="/sectores" variant="ghost-dark" size="lg">Otros sectores</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>
