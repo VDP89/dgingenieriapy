@@ -276,18 +276,20 @@ const heroSlides = [
   </script>
 
   <style>
-    /* Ken burns: usar @keyframes para que arranque en render inicial.
-       Con `transition` el slide 1 nacia ya en estado final y el navegador
-       no disparaba la animacion hasta el segundo cambio de clase. */
+    /* Ken burns con zoom-in (0-84%) + zoom-out suave en el ultimo ~1s (84-100%).
+       Duracion 6.5s = DURATION del JS para que la animacion termine EXACTO cuando
+       el slide pierde is-active. Asi no hay snap: el ultimo frame ya es scale(1.02),
+       igual al base rule. El zoom-out acompana visualmente al fade-out del slide. */
     @keyframes ken-burns {
-      from { transform: scale(1.02); }
-      to   { transform: scale(1.12); }
+      0%   { transform: scale(1.02); }
+      84%  { transform: scale(1.12); }
+      100% { transform: scale(1.02); }
     }
     .hero-slide-img {
       transform: scale(1.02);
     }
     .hero-slide.is-active .hero-slide-img {
-      animation: ken-burns 8s ease-out forwards;
+      animation: ken-burns 6.5s ease-in-out forwards;
     }
     @media (prefers-reduced-motion: reduce) {
       .hero-slide.is-active .hero-slide-img { animation: none; }
