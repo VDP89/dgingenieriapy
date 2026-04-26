@@ -61,6 +61,7 @@ async function main() {
     const webpPath = join(SRC_DIR, `${name}.webp`);
 
     const pipeline = sharp(backup)
+      .rotate() // aplica EXIF orientation antes de procesar; evita fotos rotadas
       .resize({ width: MAX_WIDTH, withoutEnlargement: true });
 
     // Re-encode al formato destino
