@@ -116,8 +116,18 @@ const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- LCP preload — la pagina puede pasar la imagen del hero principal -->
-  {preloadImg && <link rel="preload" as="image" href={preloadImg} fetchpriority="high" />}
+  <!-- LCP preload — la pagina puede pasar la imagen del hero principal.
+       Si es .webp se agrega type="image/webp" para que browsers sin soporte
+       no preloadeen el recurso (evita doble descarga cuando el hero es <picture>). -->
+  {preloadImg && (
+    <link
+      rel="preload"
+      as="image"
+      href={preloadImg}
+      fetchpriority="high"
+      type={preloadImg.endsWith('.webp') ? 'image/webp' : undefined}
+    />
+  )}
 
   <!-- Favicon — DG isotipo sobre fondo crema -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
