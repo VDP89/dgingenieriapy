@@ -10,9 +10,18 @@ const verbos = [
 ];
 
 const pasos = ['Datos', 'Criterio', 'Decisiones', 'Diseño', 'Control'];
+
+const breadcrumbs = [
+  { name: 'Inicio', url: '/' },
+  { name: 'Nosotros', url: '/nosotros' },
+];
 ---
 
-<Base title="Sobre DG Ingeniería">
+<Base
+  title="Sobre DG Ingeniería"
+  description="DG Ingeniería SRL — equipo técnico paraguayo con experiencia en infraestructura vial, portuaria, aeronáutica e industrial. Datos, criterio, decisiones, diseño y control."
+  breadcrumbs={breadcrumbs}
+>
 
   <!-- HERO -->
   <section class="bg-slate-dg text-cream py-16 md:py-28">

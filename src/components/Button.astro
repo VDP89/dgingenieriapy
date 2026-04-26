@@ -46,10 +46,12 @@ const variantMap = {
     'text-arena hover:text-arena-light inline-flex items-center gap-2 group',
 };
 
+const focus = 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena focus-visible:ring-offset-2 focus-visible:ring-offset-cream';
+
 const base =
   variant === 'link'
-    ? `font-semibold ${extra}`
-    : `rounded-md font-semibold inline-block transition-all ${sizeMap[size]} ${variantMap[variant]} ${extra}`;
+    ? `font-semibold rounded-sm ${focus} ${extra}`
+    : `rounded-md font-semibold inline-block transition-all ${focus} ${sizeMap[size]} ${variantMap[variant]} ${extra}`;
 
 const magnetAttr = magnetic ? { 'data-magnetic': '' } : {};
 ---

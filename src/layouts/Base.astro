@@ -5,15 +5,90 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  /** Imagen LCP a precargar (ej. hero principal de la pagina). */
+  preloadImg?: string;
+  /** Breadcrumb para JSON-LD en paginas internas. */
+  breadcrumbs?: Array<{ name: string; url: string }>;
 }
 
 const {
   title,
   description = 'DG Ingeniería SRL — Claridad técnica para proyectos de infraestructura en Paraguay.',
-  ogImage = '/img/og-dg-default.jpg'
+  ogImage = '/img/og-dg-default.jpg',
+  preloadImg,
+  breadcrumbs,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, 'https://dgingenieriapy.com');
+const isHome = Astro.url.pathname === '/';
+
+// JSON-LD: Organization + LocalBusiness siempre. Breadcrumb solo si se provee.
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'DG Ingeniería SRL',
+  url: 'https://dgingenieriapy.com',
+  logo: 'https://dgingenieriapy.com/img/dg-isotipo.png',
+  email: 'info@dgingenieriasrl.com',
+  telephone: '+595976335132',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Asunción',
+    addressCountry: 'PY',
+  },
+  sameAs: [
+    'https://www.linkedin.com/company/dg-ingenieria-srl',
+    'https://www.instagram.com/dgingenieria_py/',
+    'https://www.facebook.com/dgingenieriaSRL',
+  ],
+};
+
+const businessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'DG Ingeniería SRL',
+  image: 'https://dgingenieriapy.com/img/og-dg-default.jpg',
+  description,
+  url: 'https://dgingenieriapy.com',
+  email: 'info@dgingenieriasrl.com',
+  telephone: '+595976335132',
+  priceRange: '$$$',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Asunción',
+    addressCountry: 'PY',
+  },
+  areaServed: { '@type': 'Country', name: 'Paraguay' },
+  knowsAbout: [
+    'Diseño de proyectos viales',
+    'Pavimentos',
+    'Aeropuertos y pistas',
+    'Puertos y fluvial',
+    'Gerencia y fiscalización',
+    'Plantas industriales',
+    'Urbanizaciones',
+    'Energía solar y data centers',
+  ],
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '08:30',
+    closes: '18:00',
+  },
+};
+
+const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs.map((b, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: b.name,
+        item: new URL(b.url, 'https://dgingenieriapy.com').toString(),
+      })),
+    }
+  : null;
 ---
 
 <!DOCTYPE html>
@@ -41,6 +116,9 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://dgingenieriapy.com');
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+  <!-- LCP preload — la pagina puede pasar la imagen del hero principal -->
+  {preloadImg && <link rel="preload" as="image" href={preloadImg} fetchpriority="high" />}
+
   <!-- Favicon — DG isotipo sobre fondo crema -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -49,16 +127,26 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://dgingenieriapy.com');
 
   <title>{title} — DG Ingeniería</title>
 
+  <!-- JSON-LD: Organization + ProfessionalService (siempre); BreadcrumbList si la pagina lo provee. -->
+  <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
+  {breadcrumbSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  )}
+
   <!-- Smooth page transitions -->
   <ClientRouter />
 </head>
 <body class="bg-cream text-slate-dg">
 
+  <!-- Skip to content para teclado / lectores de pantalla -->
+  <a href="#main" class="skip-link">Saltar al contenido</a>
+
   <!-- NAV -->
   <header class="sticky top-0 z-50 bg-cream/92 backdrop-blur-md border-b border-slate-dg/10 h-[68px]">
     <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 flex items-center justify-between h-full">
-      <a href="/" class="flex items-center gap-2.5">
-        <img src="/img/dg-isotipo.png" alt="DG" class="h-[34px] w-auto">
+      <a href="/" class="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena focus-visible:ring-offset-2 focus-visible:ring-offset-cream rounded-sm">
+        <img src="/img/dg-isotipo.png" alt="DG Ingeniería" class="h-[34px] w-auto" width="34" height="34">
         <div class="flex flex-col leading-tight">
           <span class="font-bold text-[16px] tracking-tight text-slate-dg">DG Ingeniería</span>
           <span class="text-[9.5px] font-medium tracking-[1.8px] uppercase text-gray-neutral">Infraestructura Inteligente</span>
@@ -66,16 +154,21 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://dgingenieriapy.com');
       </a>
 
       <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-7">
-        <a href="/nosotros" class="text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">Nosotros</a>
-        <a href="/sectores" class="text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">Sectores</a>
-        <a href="/proyectos" class="text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">Proyectos</a>
-        <a href="/blog" class="text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">Insights</a>
-        <a href="/contacto" class="bg-arena text-white px-5 py-2.5 rounded-md font-semibold text-[13.5px] hover:bg-arena-light transition-colors shadow-sm">Contacto</a>
+      <nav class="hidden md:flex items-center gap-7" aria-label="Principal">
+        <a href="/nosotros" class="nav-link text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">Nosotros</a>
+        <a href="/sectores" class="nav-link text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">Sectores</a>
+        <a href="/proyectos" class="nav-link text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">Proyectos</a>
+        <a href="/contacto" class="bg-arena text-white px-5 py-2.5 rounded-md font-semibold text-[13.5px] hover:bg-arena-light transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena focus-visible:ring-offset-2 focus-visible:ring-offset-cream">Contacto</a>
       </nav>
 
       <!-- Mobile Hamburger -->
-      <button id="mobile-toggle" class="md:hidden flex flex-col gap-[5px] p-2" aria-label="Menú">
+      <button
+        id="mobile-toggle"
+        class="md:hidden flex flex-col gap-[5px] p-2 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
         <span class="w-5 h-[2px] bg-slate-dg rounded transition-transform" id="bar1"></span>
         <span class="w-5 h-[2px] bg-slate-dg rounded transition-opacity" id="bar2"></span>
         <span class="w-5 h-[2px] bg-slate-dg rounded transition-transform" id="bar3"></span>
@@ -83,18 +176,17 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://dgingenieriapy.com');
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden absolute top-[68px] left-0 w-full bg-cream/98 backdrop-blur-lg border-b border-slate-dg/10 shadow-lg">
+    <nav id="mobile-menu" class="hidden md:hidden absolute top-[68px] left-0 w-full bg-cream/98 backdrop-blur-lg border-b border-slate-dg/10 shadow-lg" aria-label="Mobile">
       <div class="max-w-[1200px] mx-auto px-5 py-6 flex flex-col gap-4">
         <a href="/nosotros" class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">Nosotros</a>
         <a href="/sectores" class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">Sectores</a>
         <a href="/proyectos" class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">Proyectos</a>
-        <a href="/blog" class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">Insights</a>
         <a href="/contacto" class="bg-arena text-white px-5 py-3 rounded-md font-semibold text-center mt-2">Contacto</a>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <main>
+  <main id="main">
     <slot />
   </main>
 
@@ -151,7 +243,6 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://dgingenieriapy.com');
           <h5 class="text-[11px] font-semibold uppercase tracking-[2px] text-cream/25 mb-5">Empresa</h5>
           <a href="/nosotros" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Nosotros</a>
           <a href="/proyectos" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Proyectos</a>
-          <a href="/blog" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Insights</a>
           <a href="/contacto" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Contacto</a>
         </div>
 
@@ -174,12 +265,14 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://dgingenieriapy.com');
 
   <!-- Scripts -->
   <script>
-    // Mobile menu toggle
+    // Mobile menu toggle — sincroniza aria-expanded para lectores de pantalla
     const toggle = document.getElementById('mobile-toggle');
     const menu = document.getElementById('mobile-menu');
     if (toggle && menu) {
       toggle.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
+        const open = menu.classList.toggle('hidden');
+        toggle.setAttribute('aria-expanded', String(!open));
+        toggle.setAttribute('aria-label', !open ? 'Cerrar menú' : 'Abrir menú');
       });
     }
 
@@ -220,17 +313,24 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://dgingenieriapy.com');
 <style is:global>
   @import '../styles/global.css';
 
-  /* Text justification — applied after all Tailwind processing */
-  p {
-    text-align: justify !important;
-    text-justify: inter-word !important;
+  /* Nav links — underline arena animado en hover/focus */
+  .nav-link {
+    position: relative;
+    padding-block: 0.25rem;
   }
-  /* Exceptions: centered headings, footer, nav, cards, very short texts */
-  .text-center p,
-  footer p,
-  nav p,
-  header p,
-  .sector-card p {
-    text-align: inherit !important;
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 1.5px;
+    background: var(--color-arena);
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform var(--motion-base) var(--ease-out);
+  }
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after {
+    transform: scaleX(1);
+    transform-origin: left center;
   }
 </style>

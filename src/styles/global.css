@@ -29,15 +29,17 @@
   /* ----- Typography ----- */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 
-  /* Fluid display sizes — hero / page heroes */
-  --text-display-xl: 4rem;     /* 64px — hero home */
-  --text-display-lg: 3.5rem;   /* 56px — page hero */
-  --text-display-md: 2.75rem;  /* 44px — CTA section */
-  --text-display-sm: 2.25rem;  /* 36px — section h2 large */
+  /* Fluid display sizes — escalan suave de mobile (360px) a desktop (1440px+).
+     Formula: clamp(min, fluid, max) donde fluid = base + (delta * vw).
+     Evita los saltos de breakpoint en titulares grandes. */
+  --text-display-xl: clamp(2.5rem, 1.6rem + 4.5vw, 4rem);     /* 40px → 64px */
+  --text-display-lg: clamp(2.25rem, 1.5rem + 3.75vw, 3.5rem); /* 36px → 56px */
+  --text-display-md: clamp(2rem, 1.5rem + 2.5vw, 2.75rem);    /* 32px → 44px */
+  --text-display-sm: clamp(1.75rem, 1.4rem + 1.75vw, 2.25rem);/* 28px → 36px */
 
-  /* Reading / content */
-  --text-h2: 2rem;             /* 32px — section title default */
-  --text-h3: 1.5rem;           /* 24px — card/heading */
+  /* Reading / content (fluid en h2/h3, fijos en body sizes) */
+  --text-h2: clamp(1.5rem, 1.15rem + 1.75vw, 2rem);    /* 24px → 32px */
+  --text-h3: clamp(1.25rem, 1.05rem + 1vw, 1.5rem);    /* 20px → 24px */
   --text-lead: 1.0625rem;      /* 17px — hero subtitle */
   --text-body: 0.9375rem;      /* 15px — paragraph */
   --text-small: 0.8125rem;     /* 13px — meta */
@@ -87,10 +89,27 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Justified text for ALL paragraphs by default */
+  /* Texto del cuerpo alineado a la izquierda — mejor legibilidad que justified
+     en pantalla (espacio entre palabras irregular). */
   p {
-    text-align: justify;
-    text-justify: inter-word;
+    text-align: left;
+  }
+
+  /* Focus visible coherente para teclado en todo elemento interactivo. */
+  :focus-visible {
+    outline: 2px solid var(--color-arena);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Honrar reduced-motion globalmente. */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
@@ -132,6 +151,28 @@
   .sticky-cta {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Skip-to-content link — visible solo al recibir foco con teclado. */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    z-index: 100;
+    background: var(--color-slate-dg);
+    color: var(--color-cream);
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: top var(--motion-fast) var(--ease-out);
+  }
+  .skip-link:focus,
+  .skip-link:focus-visible {
+    top: 1rem;
+    outline: 2px solid var(--color-arena);
+    outline-offset: 2px;
   }
 }
 

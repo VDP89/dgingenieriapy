@@ -12,15 +12,23 @@ const capacidades = [
   { title: 'Coordinación de especialidades', desc: 'Integración con especialidades propias: climatización, energía, comunicaciones. Traducción técnica entre disciplinas.', icon: 'network' },
   { title: 'Factibilidad técnica de sitio', desc: 'Evaluación de restricciones, propuestas constructivas y documentación para decisiones tempranas de inversión.', icon: 'docs' },
 ];
+const breadcrumbs = [
+  { name: 'Inicio', url: '/' },
+  { name: 'Sectores', url: '/sectores' },
+  { name: 'Energía Solar y Data Centers', url: '/sectores/solar' },
+];
+
 ---
 
 <Base
   title="Energía Solar y Data Centers"
   description="Ingeniería civil base para plantas solares y data centers. Accesos, plataformas, movimiento de suelos y coordinación de especialidades."
+  preloadImg="/img/sector-solar.jpg"
+  breadcrumbs={breadcrumbs}
 >
 
   <PageHero
-    img="/img/sector-solar.png"
+    img="/img/sector-solar.jpg"
     imgAlt="Infraestructura solar y data centers"
     kicker="Sectores · Energía e infraestructura digital"
     title="Ingeniería base"

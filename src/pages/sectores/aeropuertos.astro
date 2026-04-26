@@ -20,11 +20,19 @@ const experiencia = [
   { label: 'Hangares privados', detail: 'Estructura y cimentaciones especializadas' },
   { label: 'Normativa DINAC', detail: 'Homologación de obras e instalaciones' },
 ];
+const breadcrumbs = [
+  { name: 'Inicio', url: '/' },
+  { name: 'Sectores', url: '/sectores' },
+  { name: 'Aeropuertos, Hangares y Pistas', url: '/sectores/aeropuertos' },
+];
+
 ---
 
 <Base
   title="Aeropuertos, Hangares y Pistas"
   description="Ingeniería de infraestructura aeronáutica bajo normativa OACI y DINAC. FAARFIELD, pistas, plataformas, hangares privados y aeropuertos comerciales."
+  preloadImg="/img/sector-aero.jpg"
+  breadcrumbs={breadcrumbs}
 >
 
   <PageHero

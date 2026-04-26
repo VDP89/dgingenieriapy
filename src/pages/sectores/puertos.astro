@@ -19,15 +19,23 @@ const experiencia = [
   { label: 'Estudios portuarios', detail: 'Análisis de situaciones y coordinación de especialidades' },
   { label: 'Río Paraná', detail: 'Experiencia en infraestructura fluvial paraguaya' },
 ];
+const breadcrumbs = [
+  { name: 'Inicio', url: '/' },
+  { name: 'Sectores', url: '/sectores' },
+  { name: 'Puertos y Fluvial', url: '/sectores/puertos' },
+];
+
 ---
 
 <Base
   title="Puertos y Fluvial"
   description="Estudios de ingeniería portuaria y fluvial. Análisis de situaciones, coordinación de especialidades e interconexión de disciplinas. Experiencia en Torocuá, río Paraná."
+  preloadImg="/img/sector-puertos.jpg"
+  breadcrumbs={breadcrumbs}
 >
 
   <PageHero
-    img="/img/sector-puertos.jpeg"
+    img="/img/sector-puertos.jpg"
     imgAlt="Infraestructura portuaria"
     kicker="Sectores · Puertos y fluvial"
     title="Estudios de ingeniería"

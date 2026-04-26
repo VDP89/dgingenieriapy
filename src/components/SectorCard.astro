@@ -20,22 +20,31 @@ const {
   gradientClass = 'from-slate-dg/90 to-slate-dg/40',
   tag,
 } = Astro.props;
+
+const webp = img?.replace(/\.(jpe?g|png)$/i, '.webp');
 ---
 
 <a
   href={`/sectores/${slug}`}
-  class="sector-card group relative rounded-xl overflow-hidden h-[240px] flex flex-col justify-end transform transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-slate-dg/30"
+  class="sector-card group relative rounded-xl overflow-hidden h-[240px] flex flex-col justify-end transform transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-slate-dg/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
   data-animate
+  style={`view-transition-name: sector-${slug};`}
 >
   <!-- Image / gradient -->
   <div class="absolute inset-0 overflow-hidden">
     {img ? (
-      <img
-        src={img}
-        alt={title}
-        class="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-110"
-        loading="lazy"
-      />
+      <picture>
+        <source srcset={webp} type="image/webp" />
+        <img
+          src={img}
+          alt={title}
+          width="800"
+          height="600"
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-110"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
     ) : (
       <div class={`absolute inset-0 bg-gradient-to-br ${gradientClass} transition-transform duration-[900ms] ease-out group-hover:scale-110`}></div>
     )}
