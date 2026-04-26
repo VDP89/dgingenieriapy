@@ -4,6 +4,9 @@
 // - Genera .webp sibling q=80
 // - Originales movidos a public/img/_raw/ como respaldo
 //
+// Idempotente: re-correr siempre comprime desde el ORIGINAL en _raw/,
+// nunca desde la salida ya optimizada (evita degradar lossy sobre lossy).
+//
 // Uso: node scripts/optimize-images.mjs
 
 import { readdir, mkdir, rename, stat } from 'node:fs/promises';
@@ -32,8 +35,19 @@ const PNG_PHOTOS = new Set([
 
 const fmt = (b) => `${(b / 1024 / 1024).toFixed(2)} MB`;
 
+// Busca el respaldo del original por base name (sin importar la extension
+// actual en public/img/). Asi en re-runs se procesa siempre desde el
+// archivo crudo, aunque el output haya cambiado de PNG a JPG.
+async function findBackupByBaseName(rawFiles, baseName) {
+  for (const candidate of rawFiles) {
+    if (parse(candidate).name === baseName) return join(RAW_DIR, candidate);
+  }
+  return null;
+}
+
 async function main() {
   await mkdir(RAW_DIR, { recursive: true });
+  const rawFiles = await readdir(RAW_DIR).catch(() => []);
   const files = await readdir(SRC_DIR);
   let totalBefore = 0;
   let totalAfter = 0;
@@ -49,13 +63,21 @@ async function main() {
 
     totalBefore += s.size;
 
-    // 1. Backup original
-    const backup = join(RAW_DIR, file);
-    try { await stat(backup); } catch { await rename(src, backup); }
+    // 1. Resolver el archivo fuente: si ya hay backup por base name lo usamos
+    //    como original. Si no, movemos el actual a _raw/ y ese pasa a ser
+    //    el original "intocable" para futuras corridas.
+    let backup = await findBackupByBaseName(rawFiles, name);
+    if (!backup) {
+      backup = join(RAW_DIR, file);
+      await rename(src, backup);
+      rawFiles.push(file);
+    }
 
-    // 2. Decidir formato de salida
-    const isPngPhoto = PNG_PHOTOS.has(file);
-    const outExt = isPngPhoto ? '.jpg' : (lower === '.jpeg' ? '.jpg' : lower);
+    // 2. Decidir formato de salida segun el ORIGINAL en _raw/, no el actual.
+    const origExt = parse(backup).ext.toLowerCase();
+    const origFile = parse(backup).base;
+    const isPngPhoto = PNG_PHOTOS.has(origFile);
+    const outExt = isPngPhoto ? '.jpg' : (origExt === '.jpeg' ? '.jpg' : origExt);
     const outName = name + outExt;
     const outPath = join(SRC_DIR, outName);
     const webpPath = join(SRC_DIR, `${name}.webp`);
