@@ -18,11 +18,19 @@ const experiencia = [
   { label: 'Proyectos agroindustriales', detail: 'Infraestructura de soporte para operaciones del agro' },
   { label: 'Diseño y fiscalización combinados', detail: 'Servicio integral desde el diseño hasta el control de obra' },
 ];
+const breadcrumbs = [
+  { name: 'Inicio', url: '/' },
+  { name: 'Sectores', url: '/sectores' },
+  { name: 'Plantas Industriales', url: '/sectores/plantas-industriales' },
+];
+
 ---
 
 <Base
   title="Plantas Industriales"
   description="Ingeniería integral para infraestructura industrial y agroindustrial. Plataformas, movimiento de suelos, accesos, pavimentos y fiscalización de obra."
+  preloadImg="/img/sector-plantas.jpg"
+  breadcrumbs={breadcrumbs}
 >
 
   <PageHero

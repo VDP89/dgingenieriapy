@@ -50,11 +50,19 @@ const experiencia = [
   { label: 'Programas CREMA y CCOMA', detail: 'Mantenimiento y conservación vial por resultados' },
   { label: 'Caminos departamentales', detail: 'Apoyo a gobernaciones y municipalidades' },
 ];
+const breadcrumbs = [
+  { name: 'Inicio', url: '/' },
+  { name: 'Sectores', url: '/sectores' },
+  { name: 'Diseño de Proyectos Viales', url: '/sectores/vialidad' },
+];
+
 ---
 
 <Base
   title="Diseño de Proyectos Viales"
   description="Diseño, revisiones, auditorías y control técnico de caminos y rutas. Factibilidad SNIP, programas BID/CAF y MOPC."
+  preloadImg="/img/sector-vial.jpg"
+  breadcrumbs={breadcrumbs}
 >
 
   <!-- ============================================ -->

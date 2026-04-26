@@ -18,11 +18,19 @@ const experiencia = [
   { label: 'Urbanización Luthold', detail: 'Nivelación, vialidad y servicios' },
   { label: 'Aguas Claras', detail: 'Ingeniería de sitio para desarrollo residencial' },
 ];
+const breadcrumbs = [
+  { name: 'Inicio', url: '/' },
+  { name: 'Sectores', url: '/sectores' },
+  { name: 'Urbanizaciones', url: '/sectores/urbanizaciones' },
+];
+
 ---
 
 <Base
   title="Urbanizaciones"
   description="Ingeniería de sitio y coordinación de especialidades para desarrollos urbanos. Experiencia en Rialto, Luthold y Aguas Claras."
+  preloadImg="/img/sector-urb.jpg"
+  breadcrumbs={breadcrumbs}
 >
 
   <PageHero

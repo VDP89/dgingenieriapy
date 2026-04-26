@@ -1,44 +1,218 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import FullBleedSection from '../components/FullBleedSection.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Button from '../components/Button.astro';
+
+/**
+ * Portafolio de proyectos. Cada item se muestra como card en un grid filtrable
+ * por sector. Los slugs validados se enlazan a las paginas de sector existentes.
+ *
+ * Para sumar un proyecto: agregar entrada al array `proyectos` con datos
+ * verificados (no inventar). Imagenes en /public/img/.
+ */
+const proyectos = [
+  {
+    title: 'Ruta PY05 — Factibilidad integral',
+    cliente: 'MOPC · BID',
+    sector: 'vialidad',
+    sectorLabel: 'Vialidad',
+    ubicacion: 'Chaco, Paraguay',
+    año: '2023–2024',
+    metricaClave: '179 km',
+    metricaLabel: 'Tramo evaluado',
+    desc: 'Diseño geométrico, estudio de tránsito, pavimentos y evaluación económica bajo metodología SNIP.',
+    img: '/img/destacado-bid.jpg',
+    destacado: true,
+  },
+  {
+    title: 'Puerto Torocuá — Estudios de ingeniería',
+    cliente: 'Grupo Favero',
+    sector: 'puertos',
+    sectorLabel: 'Puertos y fluvial',
+    ubicacion: 'Río Paraná, Paraguay',
+    año: '2022–2023',
+    metricaClave: 'Río Paraná',
+    metricaLabel: 'Hidrovía',
+    desc: 'Análisis de situaciones portuarias, coordinación de especialidades e interconexión técnica.',
+    img: '/img/proyecto-puertos.jpg',
+    destacado: true,
+  },
+];
+
+const filtros = [
+  { slug: 'todos', label: 'Todos' },
+  { slug: 'vialidad', label: 'Vialidad' },
+  { slug: 'pavimentos', label: 'Pavimentos' },
+  { slug: 'aeropuertos', label: 'Aeropuertos' },
+  { slug: 'puertos', label: 'Puertos' },
+  { slug: 'fiscalizacion', label: 'Fiscalización' },
+  { slug: 'plantas-industriales', label: 'Plantas' },
+  { slug: 'urbanizaciones', label: 'Urbanizaciones' },
+  { slug: 'solar', label: 'Solar / Data Centers' },
+];
+
+const breadcrumbs = [
+  { name: 'Inicio', url: '/' },
+  { name: 'Proyectos', url: '/proyectos' },
+];
 ---
 
-<Base title="Proyectos">
+<Base
+  title="Proyectos"
+  description="Portafolio de proyectos de infraestructura ejecutados por DG Ingeniería SRL: vialidad, puertos, pavimentos, plantas industriales y más."
+  preloadImg="/img/destacado-bid.jpg"
+  breadcrumbs={breadcrumbs}
+>
 
-  <!-- HERO -->
-  <section class="bg-slate-dg text-cream py-16 md:py-28">
-    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
-      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight mb-4">Proyectos</h1>
-      <p class="text-lg text-cream/65 max-w-2xl leading-relaxed">Portafolio de proyectos ejecutados</p>
-    </div>
-  </section>
+  <PageHero
+    img="/img/destacado-bid.jpg"
+    imgAlt="Portafolio DG Ingeniería"
+    kicker="Trayectoria documentada"
+    title="Proyectos"
+    titleAccent="ejecutados con criterio"
+    subtitle="Portafolio en construcción. Cada proyecto se incorpora una vez validado el alcance, los datos y las imágenes con el cliente."
+    height="md"
+  >
+    <Button href="/contacto" variant="primary" magnetic>Solicitar referencias</Button>
+    <Button href="/sectores" variant="ghost-dark">Ver sectores</Button>
+  </PageHero>
 
-  <!-- EMPTY STATE -->
-  <section class="py-20 md:py-32">
-    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
-      <div class="max-w-[560px] mx-auto text-center">
-        <div class="inline-block mb-6 p-4 rounded-lg bg-cream-deep">
-          <svg class="w-12 h-12 text-arena/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="3" y="3" width="18" height="18" rx="2"/>
-            <path d="M3 9h18"/>
-            <path d="M9 3v18"/>
-          </svg>
-        </div>
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-dg mb-3">Portafolio en desarrollo</h2>
-        <p class="text-base text-gray-neutral leading-relaxed mb-8">Próximamente: portafolio visual con los proyectos más representativos de DG Ingeniería. Incluye infraestructura vial, pavimentos, aeropuertos, plantas industriales y más.</p>
-        <a href="/" class="inline-block border border-slate-dg/30 text-slate-dg px-6 py-3 rounded font-semibold text-sm hover:border-slate-dg hover:bg-slate-dg/[0.05] transition-all">
-          Volver al inicio
-        </a>
-      </div>
+  <FullBleedSection bg="white" padding="md">
+    <SectionHeader
+      kicker="Portafolio"
+      title="Proyectos"
+      titleAccent="seleccionados"
+      lead="Selección representativa de proyectos por sector. El portafolio completo se entrega bajo solicitud para procesos de adjudicación."
+      align="center"
+      class="mb-10"
+    />
+
+    <!-- Filtros (visual, sin JS de filtrado todavia) -->
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-12" role="tablist" aria-label="Filtrar proyectos por sector">
+      {filtros.map((f, i) => (
+        <button
+          type="button"
+          data-filter={f.slug}
+          class={`filter-chip text-[12px] font-semibold tracking-[1px] uppercase px-4 py-2 rounded-full border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena focus-visible:ring-offset-2 focus-visible:ring-offset-cream ${i === 0 ? 'bg-slate-dg text-cream border-slate-dg is-active' : 'bg-transparent text-slate-dg/70 border-slate-dg/15 hover:border-slate-dg/40 hover:text-slate-dg'}`}
+          aria-pressed={i === 0 ? 'true' : 'false'}
+        >
+          {f.label}
+        </button>
+      ))}
     </div>
-  </section>
+
+    <!-- Grid de proyectos -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-projects-grid>
+      {proyectos.map((p) => {
+        const webp = p.img.replace(/\.(jpe?g|png)$/i, '.webp');
+        return (
+          <article
+            data-sector={p.sector}
+            class="project-card group relative rounded-xl overflow-hidden bg-slate-dg shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
+            data-animate
+          >
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <picture>
+                <source srcset={webp} type="image/webp" />
+                <img
+                  src={p.img}
+                  alt={p.title}
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                  decoding="async"
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
+                />
+              </picture>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-dg via-slate-dg/40 to-transparent"></div>
+              {p.destacado && (
+                <span class="absolute top-4 left-4 text-[10px] font-bold tracking-[2px] uppercase text-arena bg-slate-dg/80 backdrop-blur-sm px-3 py-1 rounded">
+                  Destacado
+                </span>
+              )}
+              <span class="absolute top-4 right-4 text-[10px] font-semibold tracking-[1.5px] uppercase text-cream/80 bg-cream/10 backdrop-blur-sm px-3 py-1 rounded">
+                {p.sectorLabel}
+              </span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-cream text-lg font-extrabold tracking-tight leading-tight mb-2">{p.title}</h3>
+              <p class="text-cream/55 text-[13.5px] leading-relaxed mb-5">{p.desc}</p>
+              <dl class="grid grid-cols-2 gap-x-4 gap-y-3 pt-5 border-t border-cream/10">
+                <div>
+                  <dt class="text-[10px] font-semibold tracking-[1.5px] uppercase text-cream/40">Cliente</dt>
+                  <dd class="text-cream/85 text-[13px] font-medium mt-0.5">{p.cliente}</dd>
+                </div>
+                <div>
+                  <dt class="text-[10px] font-semibold tracking-[1.5px] uppercase text-cream/40">Año</dt>
+                  <dd class="text-cream/85 text-[13px] font-medium mt-0.5">{p.año}</dd>
+                </div>
+                <div>
+                  <dt class="text-[10px] font-semibold tracking-[1.5px] uppercase text-cream/40">Ubicación</dt>
+                  <dd class="text-cream/85 text-[13px] font-medium mt-0.5">{p.ubicacion}</dd>
+                </div>
+                <div>
+                  <dt class="text-[10px] font-semibold tracking-[1.5px] uppercase text-cream/40">{p.metricaLabel}</dt>
+                  <dd class="text-arena text-[13px] font-bold mt-0.5">{p.metricaClave}</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- Estado para cuando no hay match en el filtro -->
+    <p data-empty class="hidden text-center text-gray-neutral text-sm mt-12">
+      Sin proyectos publicados en este sector todavía. <a href="/contacto" class="text-arena hover:text-arena-light underline">Consultar referencias</a>.
+    </p>
+  </FullBleedSection>
 
   <!-- CTA -->
-  <section class="bg-slate-dg text-cream text-center py-16 md:py-20">
-    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
-      <h2 class="text-2xl md:text-3xl font-bold mb-3">¿Quieres conocer más sobre nuestros proyectos?</h2>
-      <p class="text-base text-cream/50 mb-8 max-w-[440px] mx-auto">Contáctanos para una presentación detallada de nuestra experiencia en infraestructura.</p>
-      <a href="/contacto" class="bg-arena text-white px-6 py-3 rounded font-semibold text-sm hover:bg-arena-light transition-colors inline-block">Realizar consulta</a>
+  <FullBleedSection bg="slate" padding="md">
+    <div class="text-center max-w-[640px] mx-auto">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Necesita referencias para una licitación?</h2>
+      <p class="text-cream/55 text-base md:text-lg mb-10">Entregamos portafolio completo con alcances, contratantes, plazos y métricas verificadas, ajustado al pliego del proceso.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/contacto" variant="primary" size="lg">Solicitar portafolio completo</Button>
+        <Button href="/sectores" variant="ghost-dark" size="lg">Ver sectores</Button>
+      </div>
     </div>
-  </section>
+  </FullBleedSection>
+
+  <script>
+    // Filtrado client-side: clic en chip -> ocultar cards que no matchean.
+    const chips = document.querySelectorAll<HTMLButtonElement>('.filter-chip');
+    const cards = document.querySelectorAll<HTMLElement>('[data-sector]');
+    const empty = document.querySelector<HTMLElement>('[data-empty]');
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const target = chip.dataset.filter || 'todos';
+
+        chips.forEach((c) => {
+          const active = c === chip;
+          c.classList.toggle('is-active', active);
+          c.classList.toggle('bg-slate-dg', active);
+          c.classList.toggle('text-cream', active);
+          c.classList.toggle('border-slate-dg', active);
+          c.classList.toggle('bg-transparent', !active);
+          c.classList.toggle('text-slate-dg/70', !active);
+          c.classList.toggle('border-slate-dg/15', !active);
+          c.setAttribute('aria-pressed', String(active));
+        });
+
+        let visible = 0;
+        cards.forEach((card) => {
+          const match = target === 'todos' || card.dataset.sector === target;
+          card.style.display = match ? '' : 'none';
+          if (match) visible++;
+        });
+
+        if (empty) empty.classList.toggle('hidden', visible > 0);
+      });
+    });
+  </script>
 
 </Base>

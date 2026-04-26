@@ -56,6 +56,8 @@ const descColor = isDark ? 'text-cream/55' : 'text-gray-neutral';
 const metaLabelColor = isDark ? 'text-cream/30' : 'text-gray-neutral';
 const metaValueColor = isDark ? 'text-cream/80' : 'text-slate-dg';
 const rule = isDark ? 'bg-cream/10' : 'bg-slate-dg/10';
+
+const webp = img.replace(/\.(jpe?g|png)$/i, '.webp');
 ---
 
 <div class={`grid ${gridCols} gap-0 rounded-xl overflow-hidden shadow-xl shadow-slate-dg/8 ${isDark ? '' : 'items-center gap-8'}`}>
@@ -99,12 +101,18 @@ const rule = isDark ? 'bg-cream/10' : 'bg-slate-dg/10';
 
   <!-- Image panel -->
   <div class={`${imgSpan} ${imgOrder} relative h-[280px] lg:h-auto min-h-[350px] ${!isDark ? 'rounded-xl overflow-hidden h-[300px] md:h-[400px]' : ''}`}>
-    <img
-      src={img}
-      alt={imgAlt}
-      class="absolute inset-0 w-full h-full object-cover"
-      loading="lazy"
-    />
+    <picture>
+      <source srcset={webp} type="image/webp" />
+      <img
+        src={img}
+        alt={imgAlt}
+        width="1600"
+        height="1100"
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
     <div class={`absolute inset-0 bg-gradient-to-${imageSide === 'right' ? 'l' : 'r'} from-transparent ${isDark ? 'to-black/20' : 'to-transparent via-transparent'}`}></div>
     {!isDark && (
       <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>

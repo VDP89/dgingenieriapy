@@ -4,3 +4,6 @@ dist/
 .astro/
 
 .vercel
+
+# Originales sin optimizar — respaldo local de scripts/optimize-images.mjs
+public/img/_raw/

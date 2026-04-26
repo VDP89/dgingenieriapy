@@ -19,15 +19,23 @@ const experiencia = [
   { label: 'Desarrollos residenciales', detail: 'Control integral multi-lote con reportes diferenciados' },
   { label: 'Infraestructura vial y urbana', detail: 'Fiscalización técnica en obras públicas y privadas' },
 ];
+const breadcrumbs = [
+  { name: 'Inicio', url: '/' },
+  { name: 'Sectores', url: '/sectores' },
+  { name: 'Gerencia y Fiscalización', url: '/sectores/fiscalizacion' },
+];
+
 ---
 
 <Base
   title="Gerencia y Fiscalización"
   description="Los ojos técnicos del inversor en obra. Control, seguimiento, gestión contractual y reportes ejecutivos con plataforma ERGON."
+  preloadImg="/img/sector-civil.jpg"
+  breadcrumbs={breadcrumbs}
 >
 
   <PageHero
-    img="/img/sector-civil.png"
+    img="/img/sector-civil.jpg"
     imgAlt="Fiscalización de obra"
     kicker="Sectores · Gerencia de obra"
     title="Los ojos técnicos"

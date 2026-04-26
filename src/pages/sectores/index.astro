@@ -16,7 +16,7 @@ const sectores = [
   {
     slug: 'pavimentos', title: 'Pavimentos',
     desc: 'Evaluación estructural, deflectometría y diseño de paquetes para todos los tipos de pavimento.',
-    img: '/img/sector-pav.png',
+    img: '/img/sector-pav.jpg',
     tag: 'Expertise',
   },
   {
@@ -28,13 +28,13 @@ const sectores = [
   {
     slug: 'puertos', title: 'Puertos y Fluvial',
     desc: 'Análisis de situaciones portuarias, estudios de ingeniería, coordinación de especialidades y soluciones de embarque.',
-    img: '/img/sector-puertos.jpeg',
+    img: '/img/sector-puertos.jpg',
     tag: 'Estudios',
   },
   {
     slug: 'fiscalizacion', title: 'Gerencia y Fiscalización',
     desc: 'Control técnico, seguimiento de avance, gestión contractual y reportes ejecutivos para inversores y desarrolladores.',
-    img: '/img/sector-civil.png',
+    img: '/img/sector-civil.jpg',
     tag: 'ERGON',
   },
   {
@@ -52,13 +52,23 @@ const sectores = [
   {
     slug: 'solar', title: 'Energía Solar y Data Centers',
     desc: 'Estudios y diseños de ingeniería para el desarrollo de infraestructura energética y centros de datos.',
-    img: '/img/sector-solar.png',
+    img: '/img/sector-solar.jpg',
     tag: 'Ingeniería base',
   },
 ];
+
+const breadcrumbs = [
+  { name: 'Inicio', url: '/' },
+  { name: 'Sectores', url: '/sectores' },
+];
 ---
 
-<Base title="Sectores" description="Ocho sectores de especialización en ingeniería de infraestructura. Experiencia documentada con organismos multilaterales, desarrolladores e industrias.">
+<Base
+  title="Sectores"
+  description="Ocho sectores de especialización en ingeniería de infraestructura. Experiencia documentada con organismos multilaterales, desarrolladores e industrias."
+  preloadImg="/img/destacado-bid.jpg"
+  breadcrumbs={breadcrumbs}
+>
 
   <PageHero
     img="/img/destacado-bid.jpg"
