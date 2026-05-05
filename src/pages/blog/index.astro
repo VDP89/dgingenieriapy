@@ -1,0 +1,110 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const published = [
+  {
+    href: '/blog/fiscalizacion-con-visibilidad',
+    tag: 'Fiscalización',
+    title: 'Fiscalización con visibilidad real de obra',
+    desc: 'La diferencia entre informar y dar visibilidad: que el dato llegue al decisor mientras la decisión todavía está abierta. Caso real de auditoría altimétrica.',
+    date: '6 de mayo de 2026',
+    read: '8 min',
+  },
+];
+
+const upcoming = [
+  {
+    tag: 'Especificaciones',
+    title: 'Especificaciones técnicas que previenen pleitos',
+    desc: 'Cómo redactar especificaciones que cierren brechas antes de que se conviertan en disputa contractual.',
+  },
+  {
+    tag: 'Riesgo',
+    title: 'Margen conservador ≠ gestión del riesgo',
+    desc: 'La diferencia entre cubrirse con un sobreprecio y entender de dónde viene la incertidumbre del proyecto.',
+  },
+];
+---
+
+<Base
+  title="Insights"
+  description="Perspectivas técnicas desde la práctica. Análisis, criterio y lecciones de proyectos reales en infraestructura."
+>
+
+  <!-- HERO -->
+  <section class="bg-slate-dg text-cream py-16 md:py-28">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight mb-4">Insights</h1>
+      <p class="text-lg text-cream/65 max-w-2xl leading-relaxed">Perspectivas técnicas desde la práctica. Análisis, criterio y lecciones de proyectos reales.</p>
+    </div>
+  </section>
+
+  <!-- PUBLICADOS -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <div class="flex items-center gap-3 mb-10">
+        <div class="h-px w-8 bg-arena"></div>
+        <span class="text-[11px] font-bold tracking-[3px] uppercase text-arena">Publicados</span>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6">
+        {published.map((item) => (
+          <a
+            href={item.href}
+            class="group rounded-xl border border-slate-dg/12 bg-white p-8 md:p-10 hover:border-arena/40 hover:shadow-md transition-all"
+          >
+            <div class="flex items-center gap-3 mb-4 text-[11px] tracking-[2px] uppercase">
+              <span class="font-bold text-arena">{item.tag}</span>
+              <span class="text-slate-dg/30" aria-hidden="true">·</span>
+              <span class="text-slate-dg/55">{item.date}</span>
+              <span class="text-slate-dg/30" aria-hidden="true">·</span>
+              <span class="text-slate-dg/55">{item.read} de lectura</span>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-dg mb-4 leading-snug group-hover:text-arena transition-colors">{item.title}</h2>
+            <p class="text-[15px] md:text-base text-slate-dg/65 leading-relaxed max-w-[680px]">{item.desc}</p>
+            <div class="mt-6 flex items-center gap-2 text-[13px] font-semibold text-arena group-hover:gap-3 transition-all">
+              <span>Leer Insight</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROXIMAMENTE -->
+  <section class="py-12 md:py-16 bg-cream-deep">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <div class="flex items-center gap-3 mb-10">
+        <div class="h-px w-8 bg-slate-dg/30"></div>
+        <span class="text-[11px] font-bold tracking-[3px] uppercase text-slate-dg/55">Próximamente</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {upcoming.map((item) => (
+          <div class="group rounded-xl border border-slate-dg/10 bg-white p-8 hover:border-arena/30 hover:shadow-sm transition-all">
+            <span class="text-[10px] font-bold tracking-[2px] uppercase text-arena/60 mb-3 block">{item.tag}</span>
+            <h3 class="text-lg font-bold tracking-tight text-slate-dg mb-3 leading-snug">{item.title}</h3>
+            <p class="text-[14px] text-slate-dg/60 leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-12 max-w-[520px]">
+        <p class="text-[15px] text-slate-dg/60 leading-relaxed">
+          Cada artículo parte de un caso real de proyecto. Próximas entregas mensuales durante el segundo trimestre.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-slate-dg text-cream text-center py-16 md:py-20">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <h2 class="text-2xl md:text-3xl font-bold mb-3">¿Tiene una consulta técnica?</h2>
+      <p class="text-base text-cream/50 mb-8 max-w-[440px] mx-auto">Hablemos directamente sobre su proyecto.</p>
+      <a href="/contacto" class="bg-arena text-white px-6 py-3 rounded font-semibold text-sm hover:bg-arena-light transition-colors inline-block">Realizar consulta</a>
+    </div>
+  </section>
+
+</Base>

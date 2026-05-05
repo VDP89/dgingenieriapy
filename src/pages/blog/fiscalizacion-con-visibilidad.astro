@@ -1,0 +1,159 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FullBleedSection from '../../components/FullBleedSection.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Button from '../../components/Button.astro';
+
+const pubDate = '6 de mayo de 2026';
+const readTime = '8 min de lectura';
+---
+
+<Base
+  title="Fiscalización con visibilidad real de obra"
+  description="La diferencia entre informar y dar visibilidad: que el dato llegue al decisor mientras la decisión todavía está abierta. Caso real de auditoría altimétrica."
+  ogImage="/img/sector-fiscal.jpg"
+>
+
+  <PageHero
+    img="/img/sector-fiscal.jpg"
+    imgAlt="Auditoría técnica de obra civil"
+    kicker="Insights · Fiscalización"
+    title="Fiscalización"
+    titleAccent="con visibilidad real de obra"
+    subtitle="La diferencia entre informar y dar visibilidad: que el dato llegue al decisor mientras la decisión todavía está abierta."
+    height="md"
+  >
+    <Button href="/contacto" variant="primary" magnetic>Consultar fiscalización</Button>
+    <Button href="/sectores/fiscalizacion" variant="ghost-dark">Ver el servicio</Button>
+  </PageHero>
+
+  <!-- Meta info -->
+  <section class="border-b border-slate-dg/10 bg-cream">
+    <div class="max-w-[820px] mx-auto px-5 md:px-8 py-5 flex items-center gap-5 text-[12.5px] text-slate-dg/55 tracking-wide">
+      <span class="font-semibold uppercase tracking-[2px] text-arena/85 text-[11px]">Insight #1</span>
+      <span aria-hidden="true">·</span>
+      <span>{pubDate}</span>
+      <span aria-hidden="true">·</span>
+      <span>{readTime}</span>
+    </div>
+  </section>
+
+  <!-- Cuerpo del articulo -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <p class="text-[19px] text-slate-dg leading-[1.7] font-medium">
+        Una planta industrial sobre el río necesitaba ampliar su predio. El modelo digital del terreno que llegó como antecedente del proyecto mostraba que con una cota de 61,80 metros la lámina de agua se acercaba peligrosamente a las estructuras nuevas. La pregunta del cliente era directa: ¿cuánto más alto hay que rellenar?
+      </p>
+
+      <p>
+        Antes de responder, el equipo técnico hizo una pregunta diferente: ¿de dónde viene la cota de ese modelo? El antecedente era un MDT heredado, sin trazabilidad documentada al sistema oficial de referencias altimétricas. Auditar el dato base costaba un relevamiento aerofotogramétrico nuevo y un mojón vinculado a la regla de Villeta y a la Red Geodésica Nacional. Era trabajo extra, presupuesto extra, y otra semana de obra a la espera.
+      </p>
+
+      <p>
+        Cuando el modelo nuevo se cargó sobre el predio, la cota crítica se movió. La lámina pasaba diecisiete centímetros por debajo de lo que decía el modelo heredado. El relleno que el cliente estaba a punto de presupuestar no solo era innecesario en su escala original, sino que el problema que pretendía resolver no existía con la misma forma. La estructura no estaba comprometida.
+      </p>
+
+      <p>
+        <strong class="text-slate-dg">Resultado:</strong> tranquilidad de los gerentes y menor coste en la obra proyectada en cuanto a volúmenes de suelos. Y, sobre todo, la decisión se tomó con un dato base verificado contra la red oficial, no contra un modelo heredado de origen incierto.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="El concepto"
+        title="Información disponible"
+        titleAccent="en el momento de la decisión"
+      />
+
+      <p>
+        En obra el problema rara vez es la falta de información. Hay planillas, partes diarios, certificados, fotos, actas. Lo que suele faltar es que esa información llegue al decisor correcto mientras la decisión todavía está abierta.
+      </p>
+
+      <p>
+        Un reporte mensual con la situación de la obra al cierre del período cumple una función contractual y de archivo. Para cuando llega al inversor, las decisiones de las cuatro semanas anteriores ya se tomaron, y las acciones correctivas que el reporte sugiere se aplican sobre un estado que ya cambió. Visibilidad útil es la información que se cruza con la decisión antes de que la decisión se cierre.
+      </p>
+
+      <p>
+        Esa visibilidad útil tiene tres anclajes en la práctica. El dato base con el que se va a tomar una decisión técnica debe tener trazabilidad verificable antes de que la decisión se tome. El avance físico y el avance financiero deben verse en la misma vista, con la misma cadencia. El inversor, el director de proyecto y el profesional de campo reciben la información que cada uno necesita, con el nivel de detalle que cada uno puede procesar.
+      </p>
+
+      <p>
+        El caso del mojón geodésico es un ejemplo concreto del primer anclaje. Los otros dos se construyen con la misma lógica: con datos verificados, con vistas integradas, y con reportes diferenciados por rol.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="Tres capas"
+        title="Lo que la fiscalización"
+        titleAccent="con visibilidad incluye"
+      />
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">1. Trazabilidad del dato base</h3>
+      <p>
+        Antes de fiscalizar la ejecución, hay que poder defender el dato sobre el que se está ejecutando. Cota de referencia, sistema de coordenadas, MDT, planos de proyecto: cada uno tiene un origen y un encadenamiento de validaciones. Si esa cadena está rota, todo lo que se mide después arrastra el error.
+      </p>
+      <p>
+        En la práctica esto se traduce en exigir mojones vinculados a la Red Geodésica Nacional cuando hay obra de altimetría sensible, en pedir el origen documentado de los MDT heredados, en correr una verificación cruzada con relevamiento independiente cuando el costo del error supera el costo de la auditoría. Es un paso que se atraviesa una sola vez al inicio del proyecto y que evita decisiones tomadas sobre datos que no resisten una revisión.
+      </p>
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">2. Avance físico y financiero en la misma vista</h3>
+      <p>
+        El avance físico cuenta lo que pasó en obra. El avance financiero cuenta lo que se certificó. Cuando viven en planillas separadas, el desfase entre lo ejecutado y lo pagado se descubre tarde, y cuando el desfase se descubre tarde, las acciones correctivas tienen menos margen.
+      </p>
+      <p>
+        Una Curva S actualizada con el avance real, junto al presupuesto comprometido y al certificado del período, permite resolver una sola pregunta: ¿la obra está donde tiene que estar, en plazo y en costo? Indicadores como el SPI y el CPI del análisis de valor ganado son la versión cuantitativa de esa pregunta. La detección temprana de desviaciones depende de tener una vista integrada que se actualice con la cadencia del proyecto.
+      </p>
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">3. Reportes diferenciados por rol</h3>
+      <p>
+        Un inversor necesita ver un resumen ejecutivo: dónde está la obra hoy, qué pasó esta semana que cambia el horizonte del proyecto, dónde hay que tomar una decisión en los próximos quince días. Un director de proyecto necesita el dashboard completo: avances por rubro, partidas con desviación, certificaciones pendientes, alertas activas. Un profesional de campo necesita planillas operativas: control diario, registro de materiales, partes con foto.
+      </p>
+      <p>
+        Esos tres niveles describen la misma obra desde tres ángulos. Cuando los tres se generan a partir de un único origen de datos, la información es coherente entre roles, las reuniones se acortan, y cada decisión se toma con el detalle apropiado a quien la firma.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream-deep" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="Cierre"
+        title="Lo que se mide"
+        titleAccent="son las decisiones que cambian"
+      />
+
+      <p>
+        El valor de la fiscalización con visibilidad se mide en las decisiones que cambia. En el caso del mojón, la decisión que cambió fue presupuestaria: el cliente no necesitó el relleno que estaba a punto de contratar. En otras obras, la decisión que cambia es la apertura o no de un frente, la modificación de una secuencia constructiva, la intervención sobre una partida con desvío de costo antes de que el desvío se vuelva irreversible.
+      </p>
+
+      <p>
+        <strong class="text-slate-dg">Resultado:</strong> tranquilidad de los gerentes ante un dato técnico verificado, decisiones presupuestarias con respaldo documentado, y una obra que avanza sin cargas innecesarias en su volumetría. La fiscalización entrega valor cuando la información llega a tiempo de modificar el siguiente paso.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- CTA final -->
+  <section class="relative py-20 md:py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[40px] mb-4">¿Tiene una obra en curso o por iniciar?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[520px] mx-auto">Hablemos sobre el nivel de visibilidad técnica que su proyecto necesita.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
+        <Button href="/blog" variant="ghost-dark" size="lg">Ver más Insights</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>
