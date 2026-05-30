@@ -7,13 +7,91 @@ import Button from '../../components/Button.astro';
 
 const pubDate = '6 de mayo de 2026';
 const readTime = '8 min de lectura';
+
+// JSON-LD: Article — pieza editorial citable + entity SEO
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Fiscalización con visibilidad real de obra',
+  description: 'La diferencia entre informar y dar visibilidad: que el dato llegue al decisor mientras la decisión todavía está abierta. Caso real de auditoría altimétrica.',
+  image: 'https://dgingenieriapy.com/img/sector-fiscal.jpg',
+  author: { '@id': 'https://victordelpuerto.com/#person' },
+  datePublished: '2026-05-06',
+  dateModified: '2026-05-06',
+  publisher: {
+    '@type': 'Organization',
+    name: 'DG Ingeniería SRL',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://dgingenieriapy.com/img/dg-isotipo.png',
+    },
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://dgingenieriapy.com/blog/fiscalizacion-con-visibilidad/',
+  },
+  inLanguage: 'es-PY',
+  articleSection: 'Fiscalización de obras',
+  keywords: 'fiscalización de obras, gerencia técnica, ERGON, curva S, valor ganado, auditoría altimétrica, Red Geodésica Nacional, mojón geodésico, MDT, Paraguay',
+};
+
+// JSON-LD: FAQ — citation surface para LLMs y rich results Google
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '¿Qué diferencia hay entre informar y dar visibilidad en obra?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Informar es entregar el dato al cierre del período (reporte mensual). Dar visibilidad es que el dato llegue al decisor mientras la decisión todavía está abierta. Visibilidad útil es información que se cruza con la decisión antes de que la decisión se cierre, no después.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Qué tres capas tiene la fiscalización con visibilidad real?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '(1) Trazabilidad del dato base: cota de referencia, MDT y planos con cadena de validaciones documentada. (2) Avance físico y financiero en la misma vista: Curva S actualizada, SPI y CPI del análisis de valor ganado. (3) Reportes diferenciados por rol: inversor recibe resumen ejecutivo, director de proyecto recibe dashboard, profesional de campo recibe planillas operativas.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Cuándo conviene exigir un mojón vinculado a la Red Geodésica Nacional?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Cuando hay obra de altimetría sensible y el costo del error supera el costo de la auditoría. Pedir el origen documentado de los MDT heredados y correr verificación cruzada con relevamiento independiente evita decisiones tomadas sobre datos que no resisten una revisión técnica.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Cómo se mide el valor de la fiscalización con visibilidad?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Se mide en las decisiones que cambia. En el caso del mojón geodésico, la decisión que cambió fue presupuestaria: el cliente no necesitó el relleno que estaba a punto de contratar. En otras obras, la decisión que cambia es la apertura de un frente, la modificación de una secuencia constructiva, o la intervención sobre una partida con desvío de costo antes de que sea irreversible.',
+      },
+    },
+  ],
+};
+
+const breadcrumbs = [
+  { name: 'Inicio', url: '/' },
+  { name: 'Insights', url: '/blog' },
+  { name: 'Fiscalización con visibilidad real de obra', url: '/blog/fiscalizacion-con-visibilidad' },
+];
 ---
 
 <Base
   title="Fiscalización con visibilidad real de obra"
   description="La diferencia entre informar y dar visibilidad: que el dato llegue al decisor mientras la decisión todavía está abierta. Caso real de auditoría altimétrica."
   ogImage="/img/sector-fiscal.jpg"
+  breadcrumbs={breadcrumbs}
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
 
   <PageHero
     img="/img/sector-fiscal.jpg"

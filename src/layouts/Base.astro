@@ -89,6 +89,32 @@ const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0
       })),
     }
   : null;
+
+// JSON-LD: Person para Víctor Del Puerto (founder/CEO). Cross-link entity SEO
+// entre DG corporate y track personal (blog, paper Lucy, GitHub).
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': 'https://victordelpuerto.com/#person',
+  name: 'Víctor Del Puerto',
+  givenName: 'Víctor',
+  familyName: 'Del Puerto',
+  jobTitle: 'Gerente General',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'DG Ingeniería SRL',
+    url: 'https://dgingenieriapy.com',
+  },
+  url: 'https://victordelpuerto.com',
+  sameAs: [
+    'https://www.linkedin.com/in/victordelpuertog/',
+    'https://victordelpuerto.com',
+    'https://github.com/VDP89',
+    'https://orcid.org/0009-0001-3573-1490',
+    'https://doi.org/10.5281/zenodo.19555971',
+    'https://x.com/vdelpuerto',
+  ],
+};
 ---
 
 <!DOCTYPE html>
@@ -110,6 +136,49 @@ const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0
   <meta name="twitter:title" content={`${title} — DG Ingeniería`}>
   <meta name="twitter:description" content={description}>
   <meta name="twitter:image" content={ogImage}>
+
+  <!-- Google Analytics 4 — Measurement ID G-BWHXWJDQ25 (Property: dgingenieriapy.com) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BWHXWJDQ25"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BWHXWJDQ25', {
+      anonymize_ip: true,
+      send_page_view: true,
+    });
+
+    // Eventos custom — funnel DG
+    document.addEventListener('click', (e) => {
+      const target = e.target.closest('a, button');
+      if (!target) return;
+      const href = target.getAttribute('href') || '';
+      if (href.startsWith('mailto:')) {
+        gtag('event', 'email_click', { email: href.replace('mailto:', '') });
+      } else if (href.startsWith('tel:')) {
+        gtag('event', 'tel_click', { tel: href.replace('tel:', '') });
+      } else if (href === '/contacto' || href.endsWith('/contacto') || href.endsWith('/contacto/')) {
+        gtag('event', 'contact_click', { source: window.location.pathname });
+      } else if (href.startsWith('/sectores/')) {
+        gtag('event', 'service_view', { sector: href.split('/sectores/')[1].replace(/\/$/, '') });
+      } else if (href.startsWith('/blog/') && href !== '/blog/' && href !== '/blog') {
+        gtag('event', 'insight_open', { slug: href.split('/blog/')[1].replace(/\/$/, '') });
+      }
+    });
+
+    // insight_read: 75% scroll en post de blog
+    if (window.location.pathname.startsWith('/blog/') && window.location.pathname !== '/blog/' && window.location.pathname !== '/blog') {
+      let fired = false;
+      window.addEventListener('scroll', () => {
+        if (fired) return;
+        const scrolled = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+        if (scrolled >= 0.75) {
+          fired = true;
+          gtag('event', 'insight_read', { slug: window.location.pathname });
+        }
+      }, { passive: true });
+    }
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -137,12 +206,16 @@ const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0
 
   <title>{title} — DG Ingeniería</title>
 
-  <!-- JSON-LD: Organization + ProfessionalService (siempre); BreadcrumbList si la pagina lo provee. -->
+  <!-- JSON-LD: Organization + ProfessionalService + Person (siempre); BreadcrumbList si la pagina lo provee. -->
   <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   {breadcrumbSchema && (
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   )}
+
+  <!-- Slot para schemas adicionales por pagina (Article, FAQ, HowTo, etc) -->
+  <slot name="head" />
 
   <!-- Smooth page transitions -->
   <ClientRouter />

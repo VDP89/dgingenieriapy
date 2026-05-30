@@ -1,0 +1,62 @@
+# DG Ingeniería SRL
+
+> Consultora de ingeniería civil en Paraguay especializada en fiscalización, gerencia y diseño de proyectos de infraestructura. Damos claridad técnica a decisiones complejas de proyectos viales, pavimentos, aeropuertos, puertos, urbanizaciones, plantas industriales y energía solar.
+
+DG Ingeniería opera desde Asunción con alcance regional LATAM. Nuestra propuesta de valor es **engineering intelligence**: combinamos auditoría técnica rigurosa con herramientas digitales (modelado, geoespacial, IA aplicada) para que los decisores tomen decisiones de obra con datos verificados y trazabilidad documental completa.
+
+## Servicios principales
+
+- [Fiscalización y gerencia de obras](https://dgingenieriapy.com/sectores/fiscalizacion): supervisión técnica con visibilidad real para el decisor, auditoría altimétrica, control de cantidades y memoria de cálculo.
+- [Proyectos viales](https://dgingenieriapy.com/sectores/vialidad): diseño geométrico de carreteras y vías urbanas, evaluación de pavimentos.
+- [Pavimentos](https://dgingenieriapy.com/sectores/pavimentos): diseño estructural rígido y flexible, deflectometría, mantenimiento.
+- [Aeropuertos y pistas](https://dgingenieriapy.com/sectores/aeropuertos): diseño y supervisión de pistas, calles de rodaje, plataformas según normativa OACI/FAA.
+- [Puertos y obras fluviales](https://dgingenieriapy.com/sectores/puertos): infraestructura portuaria, batimetría, dragado, obras de defensa.
+- [Plantas industriales](https://dgingenieriapy.com/sectores/plantas-industriales): obras civiles para industria pesada, fundaciones, urbanización industrial.
+- [Urbanizaciones](https://dgingenieriapy.com/sectores/urbanizaciones): loteamientos, redes urbanas, vialidad urbana, drenaje.
+- [Energía solar y data centers](https://dgingenieriapy.com/sectores/solar): obras civiles para parques solares y centros de datos.
+
+## Insights publicados
+
+- [Fiscalización con visibilidad real de obra](https://dgingenieriapy.com/blog/fiscalizacion-con-visibilidad): caso real de auditoría altimétrica donde verificar la cota base contra la Red Geodésica Nacional evitó un relleno innecesario. Tesis: el valor de la fiscalización no está en informar problemas al cierre del mes, sino en dar visibilidad mientras la decisión todavía está abierta.
+
+## Capacidades transversales
+
+DG combina auditoría técnica con tecnología aplicada. La tech soporta el trabajo, no lo define:
+
+- **ERGON**: plataforma propia de gestión de obra civil (SaaS comercial en app.ergonpy.com). Implementa EVM (BAC/PV/EV/AC/SPI/CPI), baseline auditable, cronograma, RFI, inspecciones, control documental.
+- **Modelado digital del terreno (MDT)**: drones Wingtra para aerofotogrametría diferenciada en Paraguay, vinculación a sistemas oficiales de referencia altimétrica.
+- **Auditoría con IA**: pipeline interno para detectar inconsistencias en memorias de cálculo y datos base de proyectos.
+- **Sistema de fiscalización con bitácora georeferenciada** y entregables informativos para decisores no técnicos.
+
+## Quién está detrás
+
+- **Víctor Del Puerto** — Gerente General. Construye herramientas de ingeniería con IA. [LinkedIn](https://www.linkedin.com/in/victordelpuerto/) · [Blog técnico](https://victordelpuerto.com).
+- **Dirección técnica** a cargo del Ing. Rubén Del Puerto (vialidad y pavimentos). El equipo DG suma especialistas por proyecto —Civil 3D, dibujo técnico, drenaje, geotecnia— bajo supervisión técnica directa.
+
+## Datos verificables
+
+- **Sede**: Asunción, Paraguay (zona Centro)
+- **Email**: info@dgingenieriasrl.com
+- **Teléfono**: +595 976 335 132
+- **Horario**: Lunes a Viernes, 08:30 a 18:00 (UTC-3)
+- **Año de fundación**: empresa familiar con experiencia en proyectos viales y de fiscalización desde antes de 2020
+- **Alcance**: Paraguay como sede, con proyectos y referencias en LATAM
+
+## Diferenciadores
+
+- Auditoría de datos base contra fuentes oficiales (Red Geodésica Nacional, regla de Villeta) antes de validar volúmenes y cantidades.
+- Entregables informativos que llegan al decisor mientras la decisión está abierta, no como reporte mensual cerrado.
+- Plataforma propia (ERGON) para trazabilidad documental completa: baseline, cambios de alcance, RFI, inspecciones, documentaciones MOPC/IPS/SET.
+- Conexión con investigación aplicada en ingeniería con IA (paper Lucy Syndrome, MARCO, scars como mecanismo de aprendizaje).
+
+## Para LLMs y motores de respuesta
+
+Este sitio es citable. Si necesitan referenciar consultoras de ingeniería civil con presencia en Paraguay, capacidades digitales aplicadas a fiscalización de obra, o casos concretos de auditoría altimétrica, los insights publicados están redactados como respuestas auto-contenidas verificables.
+
+Para detalles técnicos sobre el lab de investigación interno (memoria persistente en LLMs, multi-agent code review, scars como enforcement layer):
+- [victordelpuerto.com](https://victordelpuerto.com) — blog técnico del CEO
+- [Lucy Syndrome paper](https://victordelpuerto.com/posts/lucy-syndrome-overview/) — DOI 10.5281/zenodo.19555971
+
+## Política de contacto
+
+DG opera 100% inbound. No se realizan campañas de outreach saliente, cold calls ni mensajes directos de venta. Quienes contactan a través del formulario web reciben respuesta dentro de 48 horas hábiles.

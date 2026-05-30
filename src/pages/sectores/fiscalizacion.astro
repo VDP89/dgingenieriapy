@@ -25,14 +25,85 @@ const breadcrumbs = [
   { name: 'Gerencia y Fiscalización', url: '/sectores/fiscalizacion' },
 ];
 
+// JSON-LD: Service — declaración formal del servicio fiscalización
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Fiscalización de obras y gerencia técnica',
+  serviceType: 'Fiscalización de obras civiles',
+  description: 'Fiscalización de obras civiles en Paraguay: control técnico, gestión contractual, análisis de valor ganado con Curva S, reportes diferenciados por stakeholder y alertas tempranas con plataforma ERGON.',
+  provider: {
+    '@type': 'Organization',
+    name: 'DG Ingeniería SRL',
+    url: 'https://dgingenieriapy.com',
+  },
+  areaServed: { '@type': 'Country', name: 'Paraguay' },
+  url: 'https://dgingenieriapy.com/sectores/fiscalizacion',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Capacidades de fiscalización',
+    itemListElement: capacidades.map((c) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: c.title,
+        description: c.desc,
+      },
+    })),
+  },
+};
+
+// JSON-LD: FAQ — citation surface para LLMs sobre fiscalización PY
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '¿Qué incluye un servicio de fiscalización de obra en Paraguay?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Un servicio de fiscalización completo incluye control técnico durante la ejecución, verificación de cumplimiento contractual, análisis de avance físico y financiero con Curva S, detección de desvíos mediante valor ganado (SPI y CPI), coordinación entre especialidades en obra y reportes diferenciados por stakeholder (inversor, director de proyecto, profesional de campo). En obras con altimetría sensible incluye auditoría de trazabilidad del dato base contra la Red Geodésica Nacional.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Qué diferencia hay entre fiscalización básica y gerencia integral?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'La fiscalización básica cubre control de asistencia, registro de materiales, ensayos y reportes mensuales del avance. La gerencia integral suma dashboard interactivo, Curva S actualizada en línea, control de presupuesto por rubro, análisis de valor ganado (EVM) y alertas automáticas cuando las desviaciones superan umbrales definidos. La gerencia integral está orientada a inversores y desarrolladores que necesitan visibilidad técnica en tiempo real, no solo reportes de cierre de período.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Cómo se mide el avance de obra con valor ganado (EVM)?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'El análisis de valor ganado compara tres valores: el Planned Value (lo planificado al corte), el Earned Value (lo ejecutado valorizado a baseline) y el Actual Cost (lo realmente gastado). De ahí se derivan dos indicadores clave: SPI (Schedule Performance Index = EV/PV) que mide cumplimiento de plazo, y CPI (Cost Performance Index = EV/AC) que mide eficiencia de costo. SPI o CPI menor a 1 indica desvío. La detección temprana permite acción correctiva antes de que el desvío se vuelva irreversible.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Qué información recibe el inversor durante la obra?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'El inversor recibe un resumen ejecutivo enfocado en decisiones: dónde está la obra hoy, qué pasó en el período que cambia el horizonte del proyecto, y dónde hay que tomar una decisión en los próximos quince días. Indicadores clave (SPI, CPI, avance físico, avance financiero), alertas activas y eventos contractuales relevantes. El nivel de detalle es distinto al dashboard operativo que recibe el director de proyecto y a las planillas operativas que usa el profesional de campo en el sitio.',
+      },
+    },
+  ],
+};
 ---
 
 <Base
-  title="Gerencia y Fiscalización"
-  description="Los ojos técnicos del inversor en obra. Control, seguimiento, gestión contractual y reportes ejecutivos con plataforma ERGON."
+  title="Fiscalización de obras y gerencia técnica"
+  description="Fiscalización de obras civiles en Paraguay con ERGON: control técnico, Curva S, valor ganado y reportes ejecutivos por stakeholder."
   preloadImg="/img/sector-civil.webp"
   breadcrumbs={breadcrumbs}
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
 
   <PageHero
     img="/img/sector-civil.jpg"
@@ -60,6 +131,7 @@ const breadcrumbs = [
         <p>Nuestro servicio de gerencia y fiscalización actúa como el brazo técnico del inversor o desarrollador. Revisamos, controlamos, auditamos y acompañamos cada etapa para que las decisiones se tomen con información precisa.</p>
         <p>Trabajamos en tres niveles de servicio: desde la fiscalización básica con control de asistencia, registro de materiales y reportes mensuales, hasta la gerencia integral con dashboard interactivo, Curva S actualizada, control de presupuesto por rubro, análisis de valor ganado (EVM) y alertas automáticas cuando las desviaciones superan umbrales definidos.</p>
         <p>Cada stakeholder recibe la información que necesita: el inversor ve un resumen ejecutivo, el director de proyecto accede al dashboard completo, el profesional de campo trabaja con planillas de control diario. Esta diferenciación garantiza que la información fluya sin ruido y cada decisión tenga respaldo técnico documentado.</p>
+        <p>Sobre cómo la visibilidad técnica cambia decisiones de obra, leer el caso real <a href="/blog/fiscalizacion-con-visibilidad" class="text-arena font-semibold underline decoration-arena/30 hover:decoration-arena underline-offset-4 transition-colors">Fiscalización con visibilidad real de obra</a> — auditoría altimétrica que evitó un relleno innecesario en una planta industrial sobre el río.</p>
       </div>
     </div>
   </FullBleedSection>
