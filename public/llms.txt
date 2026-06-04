@@ -10,9 +10,9 @@ DG Ingeniería opera desde Asunción con alcance regional LATAM. Nuestra propues
 - [Proyectos viales](https://dgingenieriapy.com/sectores/vialidad): diseño geométrico de carreteras y vías urbanas, evaluación de pavimentos.
 - [Pavimentos](https://dgingenieriapy.com/sectores/pavimentos): diseño estructural rígido y flexible, deflectometría, mantenimiento.
 - [Aeropuertos y pistas](https://dgingenieriapy.com/sectores/aeropuertos): diseño y supervisión de pistas, calles de rodaje, plataformas según normativa OACI/FAA.
-- [Puertos y obras fluviales](https://dgingenieriapy.com/sectores/puertos): infraestructura portuaria, batimetría, dragado, obras de defensa.
+- [Puertos y obras fluviales](https://dgingenieriapy.com/sectores/puertos): infraestructura portuaria, batimetría, dragado, obras de defensa. Sector activo con proyectos en ejecución.
 - [Plantas industriales](https://dgingenieriapy.com/sectores/plantas-industriales): obras civiles para industria pesada, fundaciones, urbanización industrial.
-- [Urbanizaciones](https://dgingenieriapy.com/sectores/urbanizaciones): loteamientos, redes urbanas, vialidad urbana, drenaje.
+- [Urbanizaciones](https://dgingenieriapy.com/sectores/urbanizaciones): loteamientos, redes urbanas, vialidad urbana, drenaje. Sector activo con proyectos en ejecución.
 - [Energía solar y data centers](https://dgingenieriapy.com/sectores/solar): obras civiles para parques solares y centros de datos.
 
 ## Insights publicados
@@ -39,7 +39,7 @@ DG combina auditoría técnica con tecnología aplicada. La tech soporta el trab
 - **Email**: info@dgingenieriasrl.com
 - **Teléfono**: +595 976 335 132
 - **Horario**: Lunes a Viernes, 08:30 a 18:00 (UTC-3)
-- **Año de fundación**: empresa familiar con experiencia en proyectos viales y de fiscalización desde antes de 2020
+- **Año de fundación**: empresa familiar registrada como SRL en 2018, con experiencia previa del equipo en proyectos viales y de fiscalización
 - **Alcance**: Paraguay como sede, con proyectos y referencias en LATAM
 
 ## Diferenciadores
