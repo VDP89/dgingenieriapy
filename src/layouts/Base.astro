@@ -26,6 +26,7 @@ const isHome = Astro.url.pathname === '/';
 const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': 'https://dgingenieriapy.com/#organization',
   name: 'DG Ingeniería SRL',
   url: 'https://dgingenieriapy.com',
   logo: 'https://dgingenieriapy.com/img/dg-isotipo.png',
@@ -35,6 +36,20 @@ const orgSchema = {
     '@type': 'PostalAddress',
     addressLocality: 'Asunción',
     addressCountry: 'PY',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
+    telephone: '+595976335132',
+    email: 'info@dgingenieriasrl.com',
+    areaServed: 'PY',
+    availableLanguage: ['Spanish'],
+  },
+  // Cross-link entity: la Person de Víctor (mismo @id que en victordelpuerto.com).
+  founder: {
+    '@type': 'Person',
+    '@id': 'https://victordelpuerto.com/#person',
+    name: 'Víctor Del Puerto',
   },
   sameAs: [
     'https://www.linkedin.com/company/dg-ingenieria-srl',
@@ -102,18 +117,30 @@ const personSchema = {
   jobTitle: 'Gerente General',
   worksFor: {
     '@type': 'Organization',
+    '@id': 'https://dgingenieriapy.com/#organization',
     name: 'DG Ingeniería SRL',
     url: 'https://dgingenieriapy.com',
   },
   url: 'https://victordelpuerto.com',
   sameAs: [
-    'https://www.linkedin.com/in/victordelpuertog/',
-    'https://victordelpuerto.com',
-    'https://github.com/VDP89',
     'https://orcid.org/0009-0001-3573-1490',
+    'https://github.com/VDP89',
+    'https://www.linkedin.com/in/victordelpuertog',
     'https://doi.org/10.5281/zenodo.19555971',
-    'https://x.com/vdelpuerto',
+    'https://dgingenieriapy.com',
+    'https://x.com/vdp2007',
   ],
+};
+
+// WebSite (solo home). publisher referencia la Organization por @id.
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://dgingenieriapy.com/#website',
+  url: 'https://dgingenieriapy.com',
+  name: 'DG Ingeniería SRL',
+  inLanguage: 'es',
+  publisher: { '@id': 'https://dgingenieriapy.com/#organization' },
 };
 ---
 
@@ -210,6 +237,9 @@ const personSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+  {isHome && (
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+  )}
   {breadcrumbSchema && (
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   )}
