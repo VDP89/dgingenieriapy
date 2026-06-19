@@ -6,34 +6,107 @@ import SectionHeader from '../../components/SectionHeader.astro';
 import Button from '../../components/Button.astro';
 
 const capacidades = [
-  { title: 'Estudios de ingeniería base', desc: 'Topografía, capacidad portante del suelo y factibilidad técnica del sitio para plantas solares y data centers.', icon: 'topo' },
-  { title: 'Obras civiles de soporte', desc: 'Diseño de la ingeniería civil que hace posible la operación: plataformas, cimentaciones y elementos estructurales.', icon: 'platform' },
-  { title: 'Accesos, plataformas y movimiento de suelos', desc: 'Nivelación del sitio, accesos de construcción y mantenimiento, plataformas con requerimientos especiales de carga.', icon: 'earth' },
-  { title: 'Coordinación de especialidades', desc: 'Integración con especialidades propias: climatización, energía, comunicaciones. Traducción técnica entre disciplinas.', icon: 'network' },
-  { title: 'Factibilidad técnica de sitio', desc: 'Evaluación de restricciones, propuestas constructivas y documentación para decisiones tempranas de inversión.', icon: 'docs' },
+  { title: 'Prefactibilidad y due diligence de sitio', desc: 'Topografía con drones, capacidad portante del suelo, restricciones del terreno y factibilidad técnica para decisiones tempranas de inversión en parques solares y data centers.', icon: 'site' },
+  { title: 'Obras civiles e ingeniería de soporte', desc: 'Plataformas, cimentaciones, movimiento de suelos, accesos de construcción y mantenimiento, y elementos estructurales que hacen posible la operación.', icon: 'platform' },
+  { title: 'Hidrología y manejo de agua', desc: 'Drenaje, cota de inundación y protección de la infraestructura. En data centers, evaluación de la disponibilidad de agua para sistemas de refrigeración.', icon: 'water' },
+  { title: 'Marco ERNC y permisos', desc: 'Encuadre en la Ley 7599/2025 y el Decreto 6034/2026, y en los procesos de ANDE, VMME y MADES, para que el proyecto avance sobre reglas claras desde el inicio.', icon: 'permit' },
+  { title: 'Coordinación de especialidades', desc: 'Integramos a los especialistas eléctricos, de generación, climatización y comunicaciones, y traducimos entre disciplinas para que el proyecto avance sin ruido técnico.', icon: 'network' },
+  { title: 'Fiscalización y control de obra', desc: 'Owner’s Engineer con la plataforma ERGON: control de avance físico y financiero, valor ganado y visibilidad técnica para el inversor durante la construcción.', icon: 'eye' },
 ];
+
 const breadcrumbs = [
   { name: 'Inicio', url: '/' },
   { name: 'Sectores', url: '/sectores' },
   { name: 'Energía Solar y Data Centers', url: '/sectores/solar' },
 ];
 
+// JSON-LD: Service — ingeniería local para infraestructura energética y digital
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Ingeniería local para parques solares y data centers',
+  serviceType: 'Ingeniería civil de base y socio local para proyectos de energía',
+  description: 'Socio local de ingeniería en Paraguay para developers y operadores de parques solares y data centers: prefactibilidad de sitio, obras civiles, hidrología, encuadre ERNC (Ley 7599/2025, Decreto 6034/2026), coordinación de especialidades y fiscalización de obra con la plataforma ERGON.',
+  provider: {
+    '@type': 'Organization',
+    name: 'DG Ingeniería SRL',
+    url: 'https://dgingenieriapy.com',
+  },
+  areaServed: { '@type': 'Country', name: 'Paraguay' },
+  url: 'https://dgingenieriapy.com/sectores/solar',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Capacidades para energía solar y data centers',
+    itemListElement: capacidades.map((c) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: c.title,
+        description: c.desc,
+      },
+    })),
+  },
+};
+
+// JSON-LD: FAQ — superficie de citación para "socio local de ingeniería en Paraguay"
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '¿Qué empresa puede ser socio local de ingeniería para un parque solar o data center en Paraguay?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'DG Ingeniería SRL actúa como brazo local de ingeniería en Paraguay para developers, fondos y operadores internacionales que no tienen estructura propia en el país. Aporta la ingeniería civil de base (topografía con drones, capacidad portante, plataformas, accesos, movimiento de suelos y drenaje), el conocimiento del marco ERNC (Ley 7599/2025 y Decreto 6034/2026) y de los procesos de ANDE, VMME y MADES, la prefactibilidad técnica de sitio y la fiscalización de obra con la plataforma propia ERGON. El developer aporta el equity, la experiencia en MW y la tecnología; DG resuelve la capa local de ingeniería, sitio y permisos.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Qué necesita un developer internacional para desarrollar un parque solar en Paraguay?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'El marco vigente es la Ley 7599/2025 de energías renovables (ERNC) y su Decreto reglamentario 6034/2026. Un proyecto requiere encuadre regulatorio (registro hasta 1 MW, licencia del MOPC/VMME por encima de 1 MW), licencia ambiental ante el MADES, estudio de conexión e interconexión con ANDE, prefactibilidad y due diligence del sitio, ingeniería civil de base, e ingeniería de detalle eléctrica y de generación. La primera licitación solar a gran escala del país (Loma Plata, 140 MW) abrió este pipeline; el Plan Maestro de ANDE proyecta una cadena de proyectos renovables en los próximos años.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Qué es el powered land y qué se evalúa en la prefactibilidad de un data center en Paraguay?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Powered land es un predio cuyo valor está en la potencia eléctrica firme que puede asegurar para un data center, más que en su superficie. La prefactibilidad de escritorio evalúa tres cuellos de botella reales: la potencia firme disponible y el punto de conexión con ANDE (220 kV en nodos como Villa Hayes), la solución de agua y refrigeración para el clima local, y la interconexión y fibra redundante. DG realiza la capa de ingeniería civil y de sitio de esa prefactibilidad —topografía, hidrología, agua, plataformas y layouts— y coordina a los especialistas eléctricos. La negociación comercial de la tarifa y la potencia con ANDE es del desarrollador.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Qué obras civiles requiere un parque solar o un data center?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Estudios de factibilidad técnica del sitio y capacidad portante del suelo; accesos viales para construcción y mantenimiento; nivelación y movimiento de suelos; plataformas con requerimientos especiales de carga; cimentaciones para estructuras de soporte o salas técnicas; y sistemas de drenaje que protejan la infraestructura. En data centers se suma la coordinación con climatización, energía y comunicaciones. DG diseña esta ingeniería civil de base y, durante la construcción, la fiscaliza con visibilidad técnica para el inversor.',
+      },
+    },
+  ],
+};
 ---
 
 <Base
-  title="Obras civiles para parques solares y data centers"
-  description="Ingeniería civil base para parques solares y data centers en Paraguay. Topografía, plataformas, accesos y coordinación de especialidades."
+  title="Socio local de ingeniería: parques solares y data centers"
+  description="Brazo local de ingeniería en Paraguay para developers y operadores de parques solares y data centers: prefactibilidad de sitio, obras civiles, permisos ERNC/MADES y fiscalización de obra."
   preloadImg="/img/sector-solar.webp"
   breadcrumbs={breadcrumbs}
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
 
   <PageHero
     img="/img/sector-solar.jpg"
-    imgAlt="Infraestructura solar y data centers"
+    imgAlt="Infraestructura solar y data centers en Paraguay"
     kicker="Sectores · Energía e infraestructura digital"
-    title="Ingeniería base"
-    titleAccent="para infraestructura energética"
-    subtitle="Obras civiles e ingeniería de base para plantas solares y data centers. Accesos, plataformas y coordinación con las especialidades propias de cada tipo de instalación."
+    title="El socio local de ingeniería"
+    titleAccent="para energía solar y data centers"
+    subtitle="Brazo local en Paraguay para developers y operadores internacionales: prefactibilidad de sitio, obras civiles de base, encuadre regulatorio ERNC y fiscalización de obra."
     height="md"
   >
     <Button href="/contacto" variant="primary" magnetic>Consultar proyecto</Button>
@@ -45,14 +118,14 @@ const breadcrumbs = [
       <div class="lg:col-span-5">
         <SectionHeader
           kicker="Enfoque"
-          title="Obras civiles"
-          titleAccent="que hacen posible la operación"
+          title="La capa local"
+          titleAccent="que el proyecto necesita en Paraguay"
         />
       </div>
       <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
-        <p>Los proyectos de energía solar y data centers requieren obras civiles e ingeniería de base que hagan viable su construcción y operación. Nuestro aporte se centra en los estudios y diseños de ingeniería que soportan estas infraestructuras: accesos viales, plataformas, movimiento de suelos, drenaje y coordinación de especialidades técnicas.</p>
-        <p>No diseñamos los sistemas eléctricos o de generación en sí. Diseñamos la ingeniería civil que los hace posibles. Para plantas solares, realizamos estudios de factibilidad técnica del sitio, capacidad portante del suelo, accesos para construcción y mantenimiento, y sistemas de drenaje que protejan la infraestructura.</p>
-        <p>En data centers, el abordaje es similar: preparación del sitio, diseño de plataformas con requerimientos especiales de carga, accesos logísticos y coordinación con especialidades propias de este tipo de instalaciones (climatización, energía, comunicaciones). Nuestro valor está en integrar las distintas disciplinas de ingeniería civil necesarias para que el proyecto avance con certeza técnica desde etapas tempranas.</p>
+        <p>Paraguay abrió su mercado de energía renovable: la Ley 7599/2025 y el Decreto 6034/2026 dieron el marco, y la primera licitación solar a gran escala —Loma Plata, 140 MW— inició una cadena de proyectos prevista en el Plan Maestro de ANDE. Para un developer, fondo u operador internacional, avanzar acá exige una capa local de ingeniería, sitio y permisos.</p>
+        <p>Ahí entra DG. Aportamos la ingeniería civil de base que hace viable un parque solar o un data center: prefactibilidad y due diligence del sitio, topografía con drones, capacidad portante del suelo, plataformas, accesos, movimiento de suelos y drenaje. Coordinamos a los especialistas eléctricos, de generación y de refrigeración, y traducimos entre disciplinas para que el proyecto avance con certeza técnica desde las etapas tempranas.</p>
+        <p>Trabajamos sobre el marco real del país —ANDE, VMME y MADES, la figura de la SOE, el régimen ERNC— y durante la construcción fiscalizamos la obra con la plataforma propia ERGON, dándole al inversor visibilidad técnica en tiempo real. El developer pone el capital, la experiencia en MW y la tecnología; nosotros resolvemos la ingeniería local, el sitio y los permisos.</p>
       </div>
     </div>
   </FullBleedSection>
@@ -61,7 +134,7 @@ const breadcrumbs = [
     <SectionHeader
       kicker="Capacidades"
       title="Lo que hacemos"
-      lead="Ingeniería civil especializada que prepara el sitio y coordina las especialidades propias de cada tipo de infraestructura energética o digital."
+      lead="Ingeniería civil de base, prefactibilidad de sitio, encuadre regulatorio y fiscalización para parques solares y data centers en Paraguay."
       align="center"
       class="mb-14"
     />
@@ -69,11 +142,12 @@ const breadcrumbs = [
       {capacidades.map((c) => (
         <div class="bg-white rounded-xl p-7 border border-slate-dg/[0.08] shadow-sm hover:shadow-md transition-shadow" data-animate>
           <div class="w-11 h-11 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
-            {c.icon === 'topo' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 20h18M5 16c3-4 5-4 7-1s5 3 7-1m-14 0V8m14 8V8M5 8c3-4 5-4 7-1s5 3 7-1"/></svg>}
+            {c.icon === 'site' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 20h18M5 16c3-4 5-4 7-1s5 3 7-1m-14 0V8m14 8V8M5 8c3-4 5-4 7-1s5 3 7-1"/></svg>}
             {c.icon === 'platform' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 12h18M3 12v8h18v-8M6 12V6h12v6"/></svg>}
-            {c.icon === 'earth' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 18h18M3 14c3-3 5-3 7 0s5 3 7 0M3 14V9c3-3 5-3 7 0s5 3 7 0v5"/></svg>}
+            {c.icon === 'water' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2.5S5 10 5 14.5a7 7 0 0 0 14 0C19 10 12 2.5 12 2.5Z"/><path d="M9 15a3 3 0 0 0 3 3"/></svg>}
+            {c.icon === 'permit' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>}
             {c.icon === 'network' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 7l3 3m7-3-3 3m-7 7 3-3m7 3-3-3"/></svg>}
-            {c.icon === 'docs' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>}
+            {c.icon === 'eye' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M2 12s3-8 10-8 10 8 10 8-3 8-10 8-10-8-10-8Z"/><circle cx="12" cy="12" r="3"/></svg>}
           </div>
           <h3 class="text-[17px] font-extrabold tracking-tight mb-2 text-slate-dg">{c.title}</h3>
           <p class="text-[13.5px] text-slate-dg/65 leading-relaxed">{c.desc}</p>
@@ -82,12 +156,34 @@ const breadcrumbs = [
     </div>
   </FullBleedSection>
 
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="Para developers y operadores"
+          title="Su presencia local,"
+          titleAccent="sin abrir oficina en Paraguay"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>Un proyecto de energía o un data center en Paraguay se gana y se ejecuta con conocimiento local del terreno, del marco regulatorio y de los procesos de ANDE y MADES. DG cubre esa capa para quienes llegan desde afuera:</p>
+        <ul class="space-y-3 list-none pl-0">
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Inteligencia territorial:</strong> evaluación del sitio, recurso, restricciones e inundabilidad con topografía propia con drones.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Prefactibilidad y factibilidad técnica:</strong> ingeniería de base y de sitio para sostener la decisión de inversión y la oferta.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Encuadre regulatorio:</strong> régimen ERNC, licencias, conexión con ANDE y licencia ambiental ante el MADES.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Owner’s Engineer y fiscalización:</strong> control de obra independiente con la plataforma ERGON, del lado del propietario.</span></li>
+        </ul>
+        <p>Es la misma forma de trabajar que aplicamos en más de mil kilómetros de proyectos viales y en obras civiles e industriales del país, ahora orientada a la infraestructura energética y digital.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
   <section class="relative py-20 md:py-28 overflow-hidden">
     <div class="absolute inset-0 bg-slate-dg"></div>
     <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
     <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
-      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Tiene un proyecto solar o data center?</h2>
-      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[520px] mx-auto">Ingeniería civil de base, accesos, plataformas o coordinación de especialidades. Hablemos sobre cómo preparar el sitio del proyecto.</p>
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Desarrolla un proyecto solar o data center en Paraguay?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[560px] mx-auto">Busque un socio local de ingeniería para la prefactibilidad de sitio, las obras civiles de base, el encuadre regulatorio o la fiscalización de obra. Hablemos.</p>
       <div class="flex flex-wrap justify-center gap-4">
         <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
         <Button href="/sectores" variant="ghost-dark" size="lg">Otros sectores</Button>

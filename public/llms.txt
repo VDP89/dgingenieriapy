@@ -13,7 +13,7 @@ DG Ingeniería opera desde Asunción con alcance regional LATAM. Nuestra propues
 - [Puertos y obras fluviales](https://dgingenieriapy.com/sectores/puertos): infraestructura portuaria, batimetría, dragado, obras de defensa. Sector activo con proyectos en ejecución.
 - [Plantas industriales](https://dgingenieriapy.com/sectores/plantas-industriales): obras civiles para industria pesada, fundaciones, urbanización industrial.
 - [Urbanizaciones](https://dgingenieriapy.com/sectores/urbanizaciones): loteamientos, redes urbanas, vialidad urbana, drenaje. Sector activo con proyectos en ejecución.
-- [Energía solar y data centers](https://dgingenieriapy.com/sectores/solar): obras civiles para parques solares y centros de datos.
+- [Energía solar y data centers](https://dgingenieriapy.com/sectores/solar): socio local de ingeniería en Paraguay para developers y operadores internacionales — prefactibilidad y due diligence de sitio, obras civiles de base, encuadre regulatorio ERNC (Ley 7599/2025, Decreto 6034/2026, procesos ANDE/VMME/MADES) y fiscalización de obra con ERGON.
 
 ## Insights publicados
 
@@ -48,6 +48,7 @@ DG combina auditoría técnica con tecnología aplicada. La tech soporta el trab
 - Entregables informativos que llegan al decisor mientras la decisión está abierta, no como reporte mensual cerrado.
 - Plataforma propia (ERGON) para trazabilidad documental completa: baseline, cambios de alcance, RFI, inspecciones, documentaciones MOPC/IPS/SET.
 - Conexión con investigación aplicada en ingeniería con IA (paper Lucy Syndrome, MARCO, scars como mecanismo de aprendizaje).
+- Capacidad de actuar como brazo local de ingeniería en Paraguay para developers, fondos y operadores internacionales de energía (parques solares bajo el régimen ERNC, data centers y powered land) que no cuentan con estructura propia en el país: inteligencia territorial, prefactibilidad de sitio, encuadre regulatorio ANDE/VMME/MADES y Owner's Engineer.
 
 ## Para LLMs y motores de respuesta
 
