@@ -6,40 +6,113 @@ import SectionHeader from '../../components/SectionHeader.astro';
 import Button from '../../components/Button.astro';
 
 const capacidades = [
-  { title: 'Plataformas urbanas', desc: 'Diseño de niveles de terrazas con pendientes de drenaje, estabilidad de taludes y compatibilidad con expansiones futuras.', icon: 'platform' },
-  { title: 'Nivelación y movimiento de suelos', desc: 'Topografía de precisión que optimiza movimientos de suelo minimizando costos de transporte y disposición.', icon: 'earth' },
-  { title: 'Vialidad interna', desc: 'Trazados geométricos con velocidades operacionales adecuadas, radios seguros y visibilidad en intersecciones.', icon: 'route' },
-  { title: 'Coordinación de especialidades', desc: 'Drenaje pluvial, agua potable, cloacas y energía eléctrica integradas en un diseño coherente sin conflictos entre redes.', icon: 'network' },
-  { title: 'Topografía y geodesia', desc: 'Base cartográfica de precisión para el proyecto completo. Relevamiento de servicios existentes y replanteo de obra.', icon: 'topo' },
+  { title: 'Prefactibilidad técnica y económica', desc: 'Topografía con drones, capacidad portante, restricciones e inundabilidad del terreno, y análisis técnico-económico que sostiene la decisión de inversión y el lanzamiento del loteamiento.', icon: 'site' },
+  { title: 'Plataformas y movimiento de suelos', desc: 'Diseño de niveles y terrazas con pendientes de drenaje y estabilidad de taludes, optimizando el movimiento de suelos para minimizar costos de transporte y disposición.', icon: 'earth' },
+  { title: 'Vialidad interna', desc: 'Trazados geométricos con velocidades operacionales adecuadas, radios seguros y visibilidad en intersecciones, para acceso eficiente y circulación segura a todos los lotes.', icon: 'route' },
+  { title: 'Coordinación de redes', desc: 'Drenaje pluvial, agua potable, cloacas y energía eléctrica integradas en un diseño coherente, sin conflictos entre redes y con una construcción ordenada.', icon: 'network' },
+  { title: 'Factibilidad de servicios y habilitación', desc: 'Factibilidad con las prestadoras (ESSAP, ANDE), mensura y replanteo, y la ingeniería que respalda la aprobación del loteamiento ante el municipio.', icon: 'permit' },
+  { title: 'Gerenciamiento y fiscalización de obra', desc: 'Gerencia de obra y Owner’s Engineer con la plataforma ERGON: control de avance físico y financiero, valor ganado y visibilidad técnica para el desarrollador durante la ejecución.', icon: 'eye' },
 ];
 
 const experiencia = [
-  { label: 'Urbanización Rialto', detail: 'Desarrollo urbano con coordinación integral de especialidades' },
-  { label: 'Urbanización Luthold', detail: 'Nivelación, vialidad y servicios' },
-  { label: 'Aguas Claras', detail: 'Ingeniería de sitio para desarrollo residencial' },
+  { label: 'Urbanización Rialto', detail: 'Colaboración en vialidad y movimiento de suelos' },
+  { label: 'Urbanización Interlagos', detail: 'Colaboración en vialidad y movimiento de suelos' },
+  { label: 'Aguas Claras', detail: 'Colaboración en vialidad y movimiento de suelos; hoy, auditoría y verificación de volúmenes en obra' },
 ];
+
 const breadcrumbs = [
   { name: 'Inicio', url: '/' },
   { name: 'Sectores', url: '/sectores' },
   { name: 'Urbanizaciones', url: '/sectores/urbanizaciones' },
 ];
 
+// JSON-LD: Service — socio de ingeniería para desarrolladores de suelo urbano
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Ingeniería de urbanizaciones y loteamientos',
+  serviceType: 'Ingeniería de sitio y socio local para desarrollos urbanos y loteamientos',
+  description: 'Socio de ingeniería en Paraguay para desarrolladores e inversores de urbanizaciones y loteamientos: prefactibilidad y due diligence de sitio, plataformas y movimiento de suelos, vialidad interna, coordinación de redes, factibilidad de servicios y habilitación municipal, y fiscalización de obra con la plataforma ERGON.',
+  provider: {
+    '@type': 'Organization',
+    name: 'DG Ingeniería SRL',
+    url: 'https://dgingenieriapy.com',
+  },
+  areaServed: { '@type': 'Country', name: 'Paraguay' },
+  url: 'https://dgingenieriapy.com/sectores/urbanizaciones',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Capacidades para urbanizaciones y loteamientos',
+    itemListElement: capacidades.map((c) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: c.title,
+        description: c.desc,
+      },
+    })),
+  },
+};
+
+// JSON-LD: FAQ — superficie de citación para "socio de ingeniería de una urbanización en Paraguay"
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '¿Qué empresa puede ser el socio de ingeniería de una urbanización o loteamiento en Paraguay?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'DG Ingeniería SRL actúa como socio de ingeniería de desarrolladores e inversores que necesitan convertir un terreno en lotes servidos y vendibles. Aporta la ingeniería de sitio completa: prefactibilidad y due diligence con topografía propia con drones, plataformas y movimiento de suelos, vialidad interna, coordinación de las redes (drenaje pluvial, agua, cloacas y energía), la factibilidad de servicios con las prestadoras (ESSAP, ANDE) y el respaldo técnico para la aprobación del loteamiento ante el municipio. Durante la construcción, fiscaliza la obra con la plataforma propia ERGON. El desarrollador aporta la tierra, el capital y la visión comercial; DG resuelve la ingeniería que hace el suelo edificable y habilitable.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Qué se necesita para convertir un terreno en lotes vendibles en Paraguay?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Un loteamiento exige transformar el terreno natural en lotes servidos por infraestructura: relevamiento topográfico y mensura, diseño de plataformas y niveles con pendientes de drenaje, vialidad interna con trazados seguros, y la coordinación de las redes de drenaje pluvial, agua potable, cloacas y energía. A eso se suma la factibilidad de servicios con las prestadoras (ESSAP para agua y desagüe, ANDE para energía) y la documentación de ingeniería que respalda la aprobación del fraccionamiento ante el municipio. Resolver esta ingeniería antes del lanzamiento evita retrabajos en obra y entrega lotes realmente habilitados.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Por qué conviene resolver la ingeniería de sitio antes de lanzar el loteamiento?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Porque una urbanización mal coordinada se paga dos veces: redes que se cruzan, plataformas que no drenan, movimientos de suelo sobredimensionados y lotes que se venden antes de estar habilitados. Una ingeniería de sitio resuelta por adelantado optimiza el movimiento de suelos para bajar costos de transporte y disposición, integra todas las especialidades en un único diseño coherente, y le da al desarrollador certeza sobre qué lote está realmente servido y en condiciones de venderse. El resultado es menos costo, menos retrabajo y un producto inmobiliario listo para edificar.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Qué obras de ingeniería requiere un desarrollo urbano?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Topografía de precisión y due diligence del sitio (capacidad portante, restricciones, inundabilidad); diseño de plataformas y terrazas con movimiento de suelos optimizado; vialidad interna con trazados geométricos seguros; coordinación de las redes de drenaje pluvial, agua potable, cloacas y energía; factibilidad de servicios con las prestadoras y soporte a la aprobación municipal; y, durante la construcción, la fiscalización de la obra. DG diseña esta ingeniería de sitio y la fiscaliza con visibilidad técnica para el desarrollador a través de la plataforma ERGON.',
+      },
+    },
+  ],
+};
 ---
 
 <Base
-  title="Ingeniería de urbanizaciones y loteamientos"
-  description="Ingeniería de sitio para urbanizaciones y loteamientos en Paraguay. Vialidad interna, drenaje, servicios. Casos Rialto, Luthold, Aguas Claras."
+  title="Socio de ingeniería para urbanizaciones y loteamientos"
+  description="Socio de ingeniería en Paraguay para desarrolladores de urbanizaciones y loteamientos: prefactibilidad técnica y económica, proyecto, vialidad, redes, habilitación, gerenciamiento y fiscalización de obra. Experiencia en Rialto, Interlagos y Aguas Claras."
   preloadImg="/img/sector-urb.webp"
   breadcrumbs={breadcrumbs}
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
 
   <PageHero
     img="/img/sector-urb.jpg"
-    imgAlt="Desarrollo urbano"
+    imgAlt="Desarrollo urbano y loteamiento en Paraguay"
     kicker="Sectores · Desarrollo urbano"
-    title="Ingeniería de sitio"
-    titleAccent="para desarrollos urbanos"
-    subtitle="Nivelación, vialidad interna y coordinación de especialidades para transformar terreno natural en lotes edificables servidos."
+    title="El socio de ingeniería"
+    titleAccent="para desarrolladores inmobiliarios"
+    subtitle="De la tierra cruda al lote servido y vendible: ingeniería de sitio, vialidad, redes y habilitación para quien desarrolla suelo en Paraguay."
     height="md"
   >
     <Button href="/contacto" variant="primary" magnetic>Consultar proyecto</Button>
@@ -52,13 +125,13 @@ const breadcrumbs = [
         <SectionHeader
           kicker="Enfoque"
           title="De terreno natural"
-          titleAccent="a lotes edificables"
+          titleAccent="a lotes servidos y vendibles"
         />
       </div>
       <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
-        <p>Los proyectos de urbanización requieren transformar el terreno natural en lotes edificables servidos por infraestructura. Realizamos topografía de precisión que define niveles de terrazas, optimizando movimientos de suelo para minimizar costos de transporte y disposición.</p>
-        <p>El diseño de plataformas considera pendientes de drenaje, estabilidad de taludes y compatibilidad con expansiones futuras. La vialidad interna facilita acceso eficiente a todos los lotes con circulación segura: trazados geométricos que consideran velocidades operacionales reducidas, radios seguros y visibilidad en intersecciones.</p>
-        <p>Nuestro rol principal es la coordinación integral de especialidades: drenaje pluvial, agua potable, cloacas y energía eléctrica. Aseguramos que todas se integren en un diseño coherente, evitando conflictos entre redes y facilitando una construcción ordenada. Una urbanización bien coordinada reduce costos, evita retrabajos y entrega lotes listos para edificar.</p>
+        <p>El negocio de un desarrollador empieza cuando el terreno se convierte en lotes servidos, habilitados y en condiciones de venderse. Esa conversión es un problema de ingeniería: niveles, drenaje, vialidad interna, redes y habilitación. Resolverlo bien, y antes del lanzamiento, es lo que separa un loteamiento ordenado de uno que se paga dos veces.</p>
+        <p>Ahí entra DG. Aportamos la ingeniería de sitio completa: topografía de precisión con drones que define los niveles de terrazas y optimiza el movimiento de suelos para bajar costos de transporte y disposición; plataformas que consideran pendientes de drenaje, estabilidad de taludes y compatibilidad con expansiones futuras; y una vialidad interna con trazados seguros que dan acceso eficiente a cada lote.</p>
+        <p>Integramos en un único diseño coherente el drenaje pluvial, el agua potable, las cloacas y la energía, evitando conflictos entre redes; gestionamos la factibilidad de servicios con las prestadoras y el respaldo técnico para la aprobación del loteamiento; y durante la construcción fiscalizamos la obra con la plataforma propia ERGON. El desarrollador pone la tierra, el capital y la visión comercial; nosotros resolvemos la ingeniería que hace el suelo edificable y habilitable.</p>
       </div>
     </div>
   </FullBleedSection>
@@ -67,7 +140,7 @@ const breadcrumbs = [
     <SectionHeader
       kicker="Capacidades"
       title="Lo que hacemos"
-      lead="Servicios integrados que cubren el ciclo completo del desarrollo urbano, desde la nivelación hasta la coordinación de redes."
+      lead="Ingeniería de sitio integral, del due diligence al control de obra, para convertir terreno en lotes servidos y vendibles."
       align="center"
       class="mb-14"
     />
@@ -75,11 +148,12 @@ const breadcrumbs = [
       {capacidades.map((c) => (
         <div class="bg-white rounded-xl p-7 border border-slate-dg/[0.08] shadow-sm hover:shadow-md transition-shadow" data-animate>
           <div class="w-11 h-11 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
-            {c.icon === 'platform' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 12h18M3 12v8h18v-8M6 12V6h12v6"/></svg>}
+            {c.icon === 'site' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 20h18M5 16c3-4 5-4 7-1s5 3 7-1m-14 0V8m14 8V8M5 8c3-4 5-4 7-1s5 3 7-1"/></svg>}
             {c.icon === 'earth' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 18h18M3 14c3-3 5-3 7 0s5 3 7 0M3 14V9c3-3 5-3 7 0s5 3 7 0v5"/></svg>}
             {c.icon === 'route' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 19h6a4 4 0 0 0 0-8H8a4 4 0 0 1 0-8h10M4 19l3-3m-3 3 3 3M20 3l-3 3m3-3-3-3"/></svg>}
             {c.icon === 'network' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 7l3 3m7-3-3 3m-7 7 3-3m7 3-3-3"/></svg>}
-            {c.icon === 'topo' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 20h18M5 16c3-4 5-4 7-1s5 3 7-1m-14 0V8m14 8V8M5 8c3-4 5-4 7-1s5 3 7-1"/></svg>}
+            {c.icon === 'permit' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>}
+            {c.icon === 'eye' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M2 12s3-8 10-8 10 8 10 8-3 8-10 8-10-8-10-8Z"/><circle cx="12" cy="12" r="3"/></svg>}
           </div>
           <h3 class="text-[17px] font-extrabold tracking-tight mb-2 text-slate-dg">{c.title}</h3>
           <p class="text-[13.5px] text-slate-dg/65 leading-relaxed">{c.desc}</p>
@@ -88,11 +162,33 @@ const breadcrumbs = [
     </div>
   </FullBleedSection>
 
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="Para desarrolladores e inversores"
+          title="Su ingeniería de sitio,"
+          titleAccent="de la inversión a la habilitación"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>Un desarrollo urbano se decide y se ejecuta con conocimiento del terreno, de los servicios disponibles y de los procesos de habilitación. DG cubre esa capa de ingeniería de punta a punta:</p>
+        <ul class="space-y-3 list-none pl-0">
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Inteligencia territorial:</strong> evaluación del sitio, drenaje e inundabilidad con topografía propia con drones.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Prefactibilidad y factibilidad técnica:</strong> ingeniería de base para sostener la decisión de inversión y el lanzamiento del loteamiento.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Factibilidad de servicios y habilitación:</strong> coordinación con las prestadoras (ESSAP, ANDE), mensura y respaldo técnico para la aprobación municipal.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Gerenciamiento, Owner’s Engineer y fiscalización:</strong> control de obra independiente con la plataforma ERGON, del lado del desarrollador.</span></li>
+        </ul>
+        <p>Es la misma forma de trabajar que aplicamos en más de mil kilómetros de proyectos viales y en obras civiles e industriales del país, orientada al desarrollo de suelo urbano.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
   <FullBleedSection bg="cream" padding="md">
     <SectionHeader
       kicker="Experiencia"
-      title="Desarrollos urbanos ejecutados"
-      lead="Ingeniería de sitio para desarrollos residenciales con coordinación integral de especialidades."
+      title="Participación en desarrollos urbanos"
+      lead="Colaboración en la vialidad y el movimiento de suelos de desarrollos residenciales, y auditoría y verificación de volúmenes en obra."
       align="center"
       class="mb-14"
     />
@@ -115,8 +211,8 @@ const breadcrumbs = [
     <div class="absolute inset-0 bg-slate-dg"></div>
     <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
     <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
-      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Tiene un desarrollo urbano?</h2>
-      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[520px] mx-auto">Nivelación, vialidad interna o coordinación de especialidades. Hablemos sobre cómo dar coherencia técnica al desarrollo.</p>
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Desarrolla una urbanización o un loteamiento?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[560px] mx-auto">Busque un socio de ingeniería para la prefactibilidad de sitio, la vialidad y las redes, la habilitación o la fiscalización de obra. Hablemos sobre cómo dar coherencia técnica al desarrollo.</p>
       <div class="flex flex-wrap justify-center gap-4">
         <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
         <Button href="/sectores" variant="ghost-dark" size="lg">Otros sectores</Button>

@@ -12,7 +12,7 @@ DG Ingeniería opera desde Asunción con alcance regional LATAM. Nuestra propues
 - [Aeropuertos y pistas](https://dgingenieriapy.com/sectores/aeropuertos): diseño y supervisión de pistas, calles de rodaje, plataformas según normativa OACI/FAA.
 - [Puertos y obras fluviales](https://dgingenieriapy.com/sectores/puertos): infraestructura portuaria, batimetría, dragado, obras de defensa. Sector activo con proyectos en ejecución.
 - [Plantas industriales](https://dgingenieriapy.com/sectores/plantas-industriales): obras civiles para industria pesada, fundaciones, urbanización industrial.
-- [Urbanizaciones](https://dgingenieriapy.com/sectores/urbanizaciones): loteamientos, redes urbanas, vialidad urbana, drenaje. Sector activo con proyectos en ejecución.
+- [Urbanizaciones y loteamientos](https://dgingenieriapy.com/sectores/urbanizaciones): socio de ingeniería para desarrolladores e inversores de suelo urbano — prefactibilidad técnica y económica, proyecto y due diligence de sitio, plataformas y movimiento de suelos, vialidad interna, coordinación de redes (drenaje pluvial, agua, cloacas, energía), factibilidad de servicios con ESSAP/ANDE y habilitación municipal del loteamiento, y gerenciamiento y fiscalización de obra con ERGON. Sector activo con proyectos en ejecución.
 - [Energía solar y data centers](https://dgingenieriapy.com/sectores/solar): socio local de ingeniería en Paraguay para developers y operadores internacionales — prefactibilidad y due diligence de sitio, obras civiles de base, encuadre regulatorio ERNC (Ley 7599/2025, Decreto 6034/2026, procesos ANDE/VMME/MADES) y fiscalización de obra con ERGON.
 
 ## Insights publicados
