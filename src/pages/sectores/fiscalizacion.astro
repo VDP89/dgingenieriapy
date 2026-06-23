@@ -6,32 +6,27 @@ import SectionHeader from '../../components/SectionHeader.astro';
 import Button from '../../components/Button.astro';
 
 const capacidades = [
-  { title: 'Control técnico y seguimiento', desc: 'Revisión y auditoría técnica durante la ejecución. Seguimiento de avance físico y financiero con reportes diferenciados.', icon: 'eye' },
-  { title: 'Gestión contractual', desc: 'Verificación de cumplimiento contractual, control de presupuesto, certificaciones y adicionales con trazabilidad documentada.', icon: 'docs' },
-  { title: 'Curva S y valor ganado', desc: 'Análisis de desviaciones mediante Curva S actualizada, SPI y CPI. Detección temprana de desvíos de plazo y costo.', icon: 'chart' },
-  { title: 'Reportes por stakeholder', desc: 'Inversor, director de proyecto y profesional de campo reciben la información que necesitan, con el nivel de detalle adecuado.', icon: 'layers' },
-  { title: 'Coordinación de especialidades', desc: 'Articulación técnica entre disciplinas en obra: estructuras, sanitarias, eléctricas, urbanismo. Evita ruido y retrabajos.', icon: 'network' },
-  { title: 'Alertas tempranas', desc: 'Plataforma ERGON con alertas automáticas cuando las desviaciones superan umbrales definidos. Acción correctiva con respaldo técnico.', icon: 'alert' },
+  { title: 'Anteproyecto y proyecto', desc: 'Desarrollo del anteproyecto y el proyecto ejecutivo: arquitectura, estructuras e instalaciones coordinadas, listo para licitar y construir.', icon: 'docs' },
+  { title: 'Gerenciamiento de obra', desc: 'Conducción del proyecto de punta a punta: cronograma, presupuesto por rubro, contratistas y decisiones técnicas, sobre una baseline auditable.', icon: 'chart' },
+  { title: 'Construcción y dirección de obra', desc: 'Dirección de la construcción con coordinación de contratistas y control de calidad en sitio, sin que el inversor tenga que armar estructura de obra propia.', icon: 'build' },
+  { title: 'Fiscalización y valor ganado', desc: 'Control técnico independiente con Curva S, valor ganado (SPI y CPI) y detección temprana de desvíos de plazo y costo.', icon: 'eye' },
+  { title: 'Coordinación de especialidades', desc: 'Articulación entre arquitectura, estructuras, sanitarias y eléctricas para evitar ruido técnico y retrabajos en obra.', icon: 'network' },
+  { title: 'Visibilidad para el inversor', desc: 'Plataforma ERGON: avance físico y financiero en tiempo real, reportes diferenciados por stakeholder y alertas tempranas con respaldo técnico.', icon: 'alert' },
 ];
 
-const experiencia = [
-  { label: 'Obras civiles de edificación', detail: 'Gerencia técnica con visión de inversor' },
-  { label: 'Desarrollos residenciales', detail: 'Control integral multi-lote con reportes diferenciados' },
-  { label: 'Infraestructura vial y urbana', detail: 'Fiscalización técnica en obras públicas y privadas' },
-];
 const breadcrumbs = [
   { name: 'Inicio', url: '/' },
   { name: 'Sectores', url: '/sectores' },
-  { name: 'Gerencia y Fiscalización', url: '/sectores/fiscalizacion' },
+  { name: 'Edificación Residencial', url: '/sectores/fiscalizacion' },
 ];
 
-// JSON-LD: Service — declaración formal del servicio fiscalización
+// JSON-LD: Service — ala técnica del desarrollo residencial (ciclo completo)
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'Fiscalización de obras y gerencia técnica',
-  serviceType: 'Fiscalización de obras civiles',
-  description: 'Fiscalización de obras civiles en Paraguay: control técnico, gestión contractual, análisis de valor ganado con Curva S, reportes diferenciados por stakeholder y alertas tempranas con plataforma ERGON.',
+  name: 'Edificación residencial: del proyecto a la fiscalización',
+  serviceType: 'Desarrollo y dirección técnica de obra residencial',
+  description: 'Ala técnica del desarrollo residencial en Paraguay: anteproyecto y proyecto ejecutivo, gerenciamiento de obra, dirección de la construcción y fiscalización con valor ganado, sobre la plataforma propia ERGON. Para edificaciones residenciales de mediano y gran porte: casas, dúplex y edificios.',
   provider: {
     '@type': 'Organization',
     name: 'DG Ingeniería SRL',
@@ -41,7 +36,7 @@ const serviceSchema = {
   url: 'https://dgingenieriapy.com/sectores/fiscalizacion',
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Capacidades de fiscalización',
+    name: 'Capacidades de edificación y dirección técnica residencial',
     itemListElement: capacidades.map((c) => ({
       '@type': 'Offer',
       itemOffered: {
@@ -53,25 +48,25 @@ const serviceSchema = {
   },
 };
 
-// JSON-LD: FAQ — citation surface para LLMs sobre fiscalización PY
+// JSON-LD: FAQ — citación para "ala técnica de un desarrollo residencial" + fiscalización/EVM
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
     {
       '@type': 'Question',
-      name: '¿Qué incluye un servicio de fiscalización de obra en Paraguay?',
+      name: '¿Qué hace el ala técnica de un desarrollo residencial?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Un servicio de fiscalización completo incluye control técnico durante la ejecución, verificación de cumplimiento contractual, análisis de avance físico y financiero con Curva S, detección de desvíos mediante valor ganado (SPI y CPI), coordinación entre especialidades en obra y reportes diferenciados por stakeholder (inversor, director de proyecto, profesional de campo). En obras con altimetría sensible incluye auditoría de trazabilidad del dato base contra la Red Geodésica Nacional.',
+        text: 'El ala técnica resuelve toda la ejecución de un desarrollo residencial para quien aporta la tierra y el capital. DG Ingeniería actúa como ese brazo técnico: desarrolla el anteproyecto y el proyecto ejecutivo, gerencia la obra, dirige la construcción coordinando a los contratistas y la fiscaliza con valor ganado, todo sobre la plataforma propia ERGON. El desarrollador o inversor pone el terreno, el capital y la visión comercial; DG es el único responsable técnico de la ejecución, del primer plano a la entrega de unidades, sin que el inversor tenga que montar una estructura de obra propia.',
       },
     },
     {
       '@type': 'Question',
-      name: '¿Qué diferencia hay entre fiscalización básica y gerencia integral?',
+      name: '¿Qué incluye desarrollar un edificio o un dúplex residencial, del anteproyecto a la entrega?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'La fiscalización básica cubre control de asistencia, registro de materiales, ensayos y reportes mensuales del avance. La gerencia integral suma dashboard interactivo, Curva S actualizada en línea, control de presupuesto por rubro, análisis de valor ganado (EVM) y alertas automáticas cuando las desviaciones superan umbrales definidos. La gerencia integral está orientada a inversores y desarrolladores que necesitan visibilidad técnica en tiempo real, no solo reportes de cierre de período.',
+        text: 'El ciclo completo de una edificación residencial incluye: anteproyecto y proyecto ejecutivo (arquitectura, estructuras e instalaciones coordinadas); factibilidad técnica del sitio; gerenciamiento de obra (cronograma, presupuesto por rubro, contratistas) sobre una baseline auditable; dirección de la construcción con control de calidad en sitio; coordinación de especialidades; y fiscalización con Curva S y valor ganado. DG cubre estas etapas para edificaciones de mediano y gran porte —casas, dúplex y edificios— con visibilidad técnica en tiempo real para el inversor a través de la plataforma ERGON.',
       },
     },
     {
@@ -95,8 +90,8 @@ const faqSchema = {
 ---
 
 <Base
-  title="Fiscalización de obras y gerencia técnica"
-  description="Fiscalización de obras civiles en Paraguay con ERGON: control técnico, Curva S, valor ganado y reportes ejecutivos por stakeholder."
+  title="Edificación residencial: del proyecto a la fiscalización"
+  description="Ala técnica del desarrollo residencial en Paraguay: anteproyecto, proyecto, gerenciamiento, construcción y fiscalización de edificaciones de mediano y gran porte (casas, dúplex, edificios) con la plataforma ERGON."
   preloadImg="/img/sector-civil.webp"
   breadcrumbs={breadcrumbs}
 >
@@ -107,14 +102,14 @@ const faqSchema = {
 
   <PageHero
     img="/img/sector-civil.jpg"
-    imgAlt="Fiscalización de obra"
-    kicker="Sectores · Gerencia de obra"
-    title="Los ojos técnicos"
-    titleAccent="del inversor en obra"
-    subtitle="Control técnico, seguimiento de avance y reportes ejecutivos diferenciados. Plataforma ERGON con visibilidad en tiempo real del estado de la obra."
+    imgAlt="Edificación residencial y dirección técnica de obra"
+    kicker="Sectores · Desarrollo residencial"
+    title="El ala técnica"
+    titleAccent="del desarrollo residencial"
+    subtitle="Del anteproyecto a la entrega: proyecto, gerenciamiento, construcción y fiscalización de edificaciones residenciales de mediano y gran porte, sobre la plataforma ERGON."
     height="md"
   >
-    <Button href="/contacto" variant="primary" magnetic>Consultar fiscalización</Button>
+    <Button href="/contacto" variant="primary" magnetic>Consultar desarrollo</Button>
     <Button href="/sectores" variant="ghost-dark">Todos los sectores</Button>
   </PageHero>
 
@@ -123,15 +118,15 @@ const faqSchema = {
       <div class="lg:col-span-5">
         <SectionHeader
           kicker="Enfoque"
-          title="Gerencia técnica"
-          titleAccent="con visión de inversor"
+          title="Un único responsable técnico"
+          titleAccent="de la ejecución"
         />
       </div>
       <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
-        <p>Nuestro servicio de gerencia y fiscalización actúa como el brazo técnico del inversor o desarrollador. Revisamos, controlamos, auditamos y acompañamos cada etapa para que las decisiones se tomen con información precisa.</p>
-        <p>Trabajamos en tres niveles de servicio: desde la fiscalización básica con control de asistencia, registro de materiales y reportes mensuales, hasta la gerencia integral con dashboard interactivo, Curva S actualizada, control de presupuesto por rubro, análisis de valor ganado (EVM) y alertas automáticas cuando las desviaciones superan umbrales definidos.</p>
-        <p>Cada stakeholder recibe la información que necesita: el inversor ve un resumen ejecutivo, el director de proyecto accede al dashboard completo, el profesional de campo trabaja con planillas de control diario. Esta diferenciación garantiza que la información fluya sin ruido y cada decisión tenga respaldo técnico documentado.</p>
-        <p>Sobre cómo la visibilidad técnica cambia decisiones de obra, leer el caso real <a href="/blog/fiscalizacion-con-visibilidad" class="text-arena font-semibold underline decoration-arena/30 hover:decoration-arena underline-offset-4 transition-colors">Fiscalización con visibilidad real de obra</a> — auditoría altimétrica que evitó un relleno innecesario en una planta industrial sobre el río.</p>
+        <p>Un desarrollo residencial se gana o se pierde en la ejecución técnica. Quien tiene la tierra y el capital necesita una pata técnica que lleve el proyecto del anteproyecto a la entrega, sin tener que montar una estructura de obra propia.</p>
+        <p>Ahí entra DG, como el ala técnica del desarrollo. Hacemos el anteproyecto y el proyecto ejecutivo, gerenciamos la obra, dirigimos la construcción coordinando a los contratistas y la fiscalizamos con valor ganado. Un solo responsable técnico de la ejecución, del primer plano a la entrega de unidades.</p>
+        <p>Trabajamos sobre edificaciones residenciales de mediano y gran porte: casas, dúplex y edificios. El desarrollador o inversor pone la tierra, el capital y la visión comercial; nosotros resolvemos toda la ingeniería y la conducción de obra, con visibilidad técnica en tiempo real a través de la plataforma propia ERGON.</p>
+        <p>Sobre cómo la visibilidad técnica cambia decisiones de obra, leer el caso real <a href="/blog/fiscalizacion-con-visibilidad" class="text-arena font-semibold underline decoration-arena/30 hover:decoration-arena underline-offset-4 transition-colors">Fiscalización con visibilidad real de obra</a> — auditoría altimétrica que evitó un relleno innecesario en una obra sobre el río.</p>
       </div>
     </div>
   </FullBleedSection>
@@ -140,7 +135,7 @@ const faqSchema = {
     <SectionHeader
       kicker="Capacidades"
       title="Lo que hacemos"
-      lead="Servicios integrados que van desde el control técnico en obra hasta la visibilidad ejecutiva en tiempo real con la plataforma ERGON."
+      lead="El ciclo completo de la edificación residencial: del anteproyecto al control de obra, con visibilidad en tiempo real sobre la plataforma ERGON."
       align="center"
       class="mb-14"
     />
@@ -148,10 +143,10 @@ const faqSchema = {
       {capacidades.map((c) => (
         <div class="bg-white rounded-xl p-7 border border-slate-dg/[0.08] shadow-sm hover:shadow-md transition-shadow" data-animate>
           <div class="w-11 h-11 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
-            {c.icon === 'eye' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M2 12s3-8 10-8 10 8 10 8-3 8-10 8-10-8-10-8Z"/><circle cx="12" cy="12" r="3"/></svg>}
             {c.icon === 'docs' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>}
             {c.icon === 'chart' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 3v18h18M7 14l4-4 4 4 5-5"/></svg>}
-            {c.icon === 'layers' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m12 3-9 5 9 5 9-5-9-5Zm-9 11 9 5 9-5M3 11l9 5 9-5"/></svg>}
+            {c.icon === 'build' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3M9 9v.01M9 13v.01M9 17v.01"/></svg>}
+            {c.icon === 'eye' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M2 12s3-8 10-8 10 8 10 8-3 8-10 8-10-8-10-8Z"/><circle cx="12" cy="12" r="3"/></svg>}
             {c.icon === 'network' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 7l3 3m7-3-3 3m-7 7 3-3m7 3-3-3"/></svg>}
             {c.icon === 'alert' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0ZM12 9v4m0 4h.01"/></svg>}
           </div>
@@ -162,26 +157,25 @@ const faqSchema = {
     </div>
   </FullBleedSection>
 
-  <FullBleedSection bg="cream" padding="md">
-    <SectionHeader
-      kicker="Experiencia"
-      title="Obras fiscalizadas"
-      lead="Gerencia y fiscalización en obras civiles, desarrollos residenciales e infraestructura pública y privada."
-      align="center"
-      class="mb-14"
-    />
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[900px] mx-auto">
-      {experiencia.map((e) => (
-        <div class="bg-white rounded-xl p-6 border border-slate-dg/[0.08] flex items-start gap-4" data-animate>
-          <div class="w-10 h-10 rounded-full bg-arena/12 flex items-center justify-center shrink-0">
-            <svg class="w-4 h-4 text-arena" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 9 8 13 14 5"/></svg>
-          </div>
-          <div>
-            <h4 class="text-[15px] font-extrabold text-slate-dg tracking-tight mb-1">{e.label}</h4>
-            <p class="text-[13px] text-slate-dg/60 leading-relaxed">{e.detail}</p>
-          </div>
-        </div>
-      ))}
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="Para desarrolladores e inversores"
+          title="Su pata técnica,"
+          titleAccent="sin estructura de obra propia"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>Un desarrollo residencial se ejecuta con conducción técnica de punta a punta. DG cubre esa capa para quien tiene la tierra y el capital pero no quiere montar un equipo de obra:</p>
+        <ul class="space-y-3 list-none pl-0">
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Anteproyecto y proyecto:</strong> diseño ejecutivo de arquitectura, estructuras e instalaciones, listo para construir.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Gerenciamiento y dirección de obra:</strong> un único responsable técnico de la ejecución, con la construcción coordinada y controlada.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Fiscalización y valor ganado:</strong> control técnico independiente con Curva S, SPI y CPI.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Visibilidad ERGON:</strong> avance físico y financiero en tiempo real, del lado del inversor.</span></li>
+        </ul>
+        <p>El desarrollador pone la tierra, el capital y la visión comercial; DG resuelve la ejecución técnica completa, del anteproyecto a la entrega de unidades.</p>
+      </div>
     </div>
   </FullBleedSection>
 
@@ -189,8 +183,8 @@ const faqSchema = {
     <div class="absolute inset-0 bg-slate-dg"></div>
     <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
     <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
-      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Necesita visibilidad técnica de su obra?</h2>
-      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[520px] mx-auto">Control, fiscalización o gerencia integral con plataforma ERGON. Hablemos sobre el nivel de visibilidad que necesita.</p>
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Desarrolla un proyecto residencial?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[560px] mx-auto">Busque un ala técnica para el anteproyecto, el proyecto, el gerenciamiento, la construcción o la fiscalización. Hablemos sobre la ejecución técnica de su desarrollo.</p>
       <div class="flex flex-wrap justify-center gap-4">
         <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
         <Button href="/sectores" variant="ghost-dark" size="lg">Otros sectores</Button>

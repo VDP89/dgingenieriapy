@@ -6,7 +6,7 @@ DG Ingeniería opera desde Asunción con alcance regional LATAM. Nuestra propues
 
 ## Servicios principales
 
-- [Fiscalización y gerencia de obras](https://dgingenieriapy.com/sectores/fiscalizacion): supervisión técnica con visibilidad real para el decisor, auditoría altimétrica, control de cantidades y memoria de cálculo.
+- [Edificación residencial y fiscalización de obra](https://dgingenieriapy.com/sectores/fiscalizacion): ala técnica del desarrollo residencial — anteproyecto y proyecto ejecutivo, gerenciamiento de obra, dirección de la construcción y fiscalización con valor ganado (Curva S, EVM/SPI/CPI), sobre la plataforma ERGON. Para edificaciones de mediano y gran porte: casas, dúplex y edificios.
 - [Proyectos viales](https://dgingenieriapy.com/sectores/vialidad): diseño geométrico de carreteras y vías urbanas, evaluación de pavimentos.
 - [Pavimentos](https://dgingenieriapy.com/sectores/pavimentos): diseño estructural rígido y flexible, deflectometría, mantenimiento.
 - [Aeropuertos y pistas](https://dgingenieriapy.com/sectores/aeropuertos): diseño y supervisión de pistas, calles de rodaje, plataformas según normativa OACI/FAA.
