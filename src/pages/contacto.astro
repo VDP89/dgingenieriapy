@@ -6,15 +6,13 @@ const breadcrumbs = [
   { name: 'Contacto', url: '/contacto' },
 ];
 
-// Endpoint del formulario (Formspree). El sitio es estatico (Astro + Vercel sin
+// Endpoint del formulario (Web3Forms). El sitio es estatico (Astro + Vercel sin
 // adaptador SSR), por lo que el envio se delega a un servicio de forms.
-// PENDIENTE VICTOR: crear el formulario en https://formspree.io con la cuenta
-// info@dgingenieriasrl.com, configurar el destino a info@dgingenieriasrl.com y
-// reemplazar 'TU_FORM_ID' por el ID real (queda como https://formspree.io/f/XXXXXXX).
-// Mientras el ID no este configurado, el form cae al mailto de respaldo.
-const FORMSPREE_ID = 'TU_FORM_ID';
-const formspreeAction = `https://formspree.io/f/${FORMSPREE_ID}`;
-const formConfigured = FORMSPREE_ID !== 'TU_FORM_ID';
+// La access key es PUBLICA por diseno (se usa en client-side); el form entrega
+// a info@dgingenieriasrl.com (cuenta Web3Forms de DG). Si se vacia, cae al mailto.
+const WEB3FORMS_KEY = 'db199a81-4dd1-495e-93fa-9128890dc745';
+const formAction = 'https://api.web3forms.com/submit';
+const formConfigured = WEB3FORMS_KEY !== '' && !WEB3FORMS_KEY.startsWith('TU_');
 ---
 
 <Base
@@ -43,18 +41,17 @@ const formConfigured = FORMSPREE_ID !== 'TU_FORM_ID';
             class="space-y-6"
             name="contacto"
             method="POST"
-            action={formspreeAction}
+            action={formAction}
             data-configured={String(formConfigured)}
           >
-            <!-- Honeypot anti-spam (oculto a humanos). Formspree lo respeta vía _gotcha. -->
-            <p class="hidden" aria-hidden="true">
-              <label>No completar: <input name="_gotcha" tabindex="-1" autocomplete="off" /></label>
-            </p>
-
+            <!-- Access key pública de Web3Forms (entrega a info@dgingenieriasrl.com) -->
+            <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
             <!-- Asunto del email que recibe DG -->
-            <input type="hidden" name="_subject" value="Nuevo mensaje desde dgingenieriapy.com/contacto" />
-            <!-- Idioma de la respuesta automática de Formspree -->
-            <input type="hidden" name="_language" value="es" />
+            <input type="hidden" name="subject" value="Nuevo mensaje desde dgingenieriapy.com/contacto" />
+            <input type="hidden" name="from_name" value="Web dgingenieriapy.com" />
+
+            <!-- Honeypot anti-spam de Web3Forms (oculto a humanos). -->
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
             <!-- Nombre -->
             <div>
@@ -144,7 +141,7 @@ const formConfigured = FORMSPREE_ID !== 'TU_FORM_ID';
           </form>
 
           <script>
-            // Envío del formulario de contacto vía Formspree (AJAX, sin recargar).
+            // Envío del formulario de contacto vía Web3Forms (AJAX, sin recargar).
             // Si el endpoint todavía no está configurado (data-configured="false"),
             // se hace fallback a un mailto: pre-rellenado para no perder el contacto.
             const form = document.getElementById('contacto-form') as HTMLFormElement | null;
