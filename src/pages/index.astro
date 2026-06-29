@@ -64,6 +64,13 @@ const sectores = [
     img: '/img/sector-solar.jpg',
     tag: 'Socio local'
   },
+  {
+    slug: 'relevamiento-aereo', title: 'Relevamiento Aéreo y MDT',
+    desc: 'Aerofotogrametría con drones, modelo digital del terreno y control de movimiento de suelos con datos georreferenciados y trazables.',
+    gradientClass: 'from-sector-relevamiento/90 to-sector-relevamiento/40',
+    img: '/img/sector-relevamiento.jpg',
+    tag: 'Geoespacial'
+  },
 ];
 
 const capacidades = [
@@ -86,7 +93,7 @@ const capacidades = [
 
 const stats = [
   { value: '10+', label: 'Años de trayectoria' },
-  { value: '8', label: 'Áreas de especialización' },
+  { value: '9', label: 'Áreas de especialización' },
   { value: 'BID · MOPC · CAF', label: 'Organismos contratantes' },
 ];
 
@@ -342,7 +349,7 @@ const heroSlides = [
       class="mb-12"
     />
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {sectores.map((s) => (
         <SectorCard
           slug={s.slug}
