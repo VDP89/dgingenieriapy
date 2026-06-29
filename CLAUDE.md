@@ -100,7 +100,7 @@ Heredan de `05_IMAGEN_COMUNICACION/CLAUDE.md`:
 3. **Tildes completas en entregables publicos.** Usar `á é í ó ú ñ ¿ ¡`.
 4. **Logo:** `/public/img/dg-isotipo.png` (nav), `/public/img/dg-blanco.png` (footer sobre slate). Nunca logo viejo color.
 5. **Telefono oficina:** `+595 976 335 132`. Email: `info@dgingenieriasrl.com`.
-6. **Alianzas validas:** BID, MOPC, CAF, Tecnoedil, COMYCSA, FLUODER, Jopla, A2, Incovial, Prointec, AII, EPC EAS, JBL SA, Noroda SA. Sin otras sin validar.
+6. **Alianzas/clientes validados (nombres publicables como cliente):** BID, MOPC, CAF, Tecnoedil, COMYCSA, FLUODER, Jopla, A2, Incovial, Prointec, AII, EPC EAS, JBL SA, Noroda SA, BAUEN, Consorcio Hospital del Norte, Antonio Ramos. Sin otras sin validar. (BAUEN, Consorcio Hospital del Norte y Antonio Ramos validados por Victor 2026-06-29 para las fichas de proyecto.)
 
 ---
 
