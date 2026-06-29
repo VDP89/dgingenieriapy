@@ -5,6 +5,16 @@ const breadcrumbs = [
   { name: 'Inicio', url: '/' },
   { name: 'Contacto', url: '/contacto' },
 ];
+
+// Endpoint del formulario (Formspree). El sitio es estatico (Astro + Vercel sin
+// adaptador SSR), por lo que el envio se delega a un servicio de forms.
+// PENDIENTE VICTOR: crear el formulario en https://formspree.io con la cuenta
+// info@dgingenieriasrl.com, configurar el destino a info@dgingenieriasrl.com y
+// reemplazar 'TU_FORM_ID' por el ID real (queda como https://formspree.io/f/XXXXXXX).
+// Mientras el ID no este configurado, el form cae al mailto de respaldo.
+const FORMSPREE_ID = 'TU_FORM_ID';
+const formspreeAction = `https://formspree.io/f/${FORMSPREE_ID}`;
+const formConfigured = FORMSPREE_ID !== 'TU_FORM_ID';
 ---
 
 <Base
@@ -28,11 +38,23 @@ const breadcrumbs = [
         <!-- FORMULARIO -->
         <div>
           <h2 class="text-2xl font-bold tracking-tight mb-8">Déjanos un mensaje</h2>
-          <form class="space-y-6" name="contacto" method="POST" action="#">
-            <!-- Honeypot anti-spam (oculto a humanos) — listo para cualquier backend -->
+          <form
+            id="contacto-form"
+            class="space-y-6"
+            name="contacto"
+            method="POST"
+            action={formspreeAction}
+            data-configured={String(formConfigured)}
+          >
+            <!-- Honeypot anti-spam (oculto a humanos). Formspree lo respeta vía _gotcha. -->
             <p class="hidden" aria-hidden="true">
-              <label>No completar: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+              <label>No completar: <input name="_gotcha" tabindex="-1" autocomplete="off" /></label>
             </p>
+
+            <!-- Asunto del email que recibe DG -->
+            <input type="hidden" name="_subject" value="Nuevo mensaje desde dgingenieriapy.com/contacto" />
+            <!-- Idioma de la respuesta automática de Formspree -->
+            <input type="hidden" name="_language" value="es" />
 
             <!-- Nombre -->
             <div>
@@ -100,16 +122,91 @@ const breadcrumbs = [
             <!-- Botón -->
             <button
               type="submit"
-              class="w-full bg-slate-dg text-cream px-6 py-3 rounded font-semibold text-sm hover:bg-slate-light transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
+              class="w-full bg-slate-dg text-cream px-6 py-3 rounded font-semibold text-sm hover:bg-slate-light transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena focus-visible:ring-offset-2 focus-visible:ring-offset-cream disabled:opacity-60 disabled:cursor-not-allowed"
             >
               Enviar mensaje
             </button>
 
-            <p class="text-xs text-gray-neutral">
-              Pendiente de configurar el backend de envío. Por ahora podés escribirnos directo a
-              <a href="mailto:info@dgingenieriasrl.com" class="text-arena hover:text-arena-light underline">info@dgingenieriasrl.com</a>.
-            </p>
+            <!-- Mensaje de estado (éxito / error). Se actualiza vía JS. -->
+            <p
+              id="form-status"
+              role="status"
+              aria-live="polite"
+              class="text-sm text-slate-dg/80 hidden"
+            ></p>
+
+            {!formConfigured && (
+              <p class="text-xs text-gray-neutral">
+                También podés escribirnos directo a
+                <a href="mailto:info@dgingenieriasrl.com" class="text-arena hover:text-arena-light underline">info@dgingenieriasrl.com</a>.
+              </p>
+            )}
           </form>
+
+          <script>
+            // Envío del formulario de contacto vía Formspree (AJAX, sin recargar).
+            // Si el endpoint todavía no está configurado (data-configured="false"),
+            // se hace fallback a un mailto: pre-rellenado para no perder el contacto.
+            const form = document.getElementById('contacto-form') as HTMLFormElement | null;
+            const status = document.getElementById('form-status');
+
+            function showStatus(msg: string, ok: boolean) {
+              if (!status) return;
+              status.textContent = msg;
+              status.classList.remove('hidden');
+              status.classList.toggle('text-arena', !ok);
+              status.classList.toggle('text-slate-dg/80', ok);
+            }
+
+            if (form) {
+              const configured = form.dataset.configured === 'true';
+
+              form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const data = new FormData(form);
+
+                // Fallback sin backend: abrir el cliente de correo con el mensaje cargado.
+                if (!configured) {
+                  const nombre = String(data.get('nombre') || '');
+                  const empresa = String(data.get('empresa') || '');
+                  const email = String(data.get('email') || '');
+                  const mensaje = String(data.get('mensaje') || '');
+                  const cuerpo =
+                    `Nombre: ${nombre}\n` +
+                    (empresa ? `Empresa: ${empresa}\n` : '') +
+                    `Email: ${email}\n\n${mensaje}`;
+                  const href =
+                    'mailto:info@dgingenieriasrl.com' +
+                    '?subject=' + encodeURIComponent('Consulta desde dgingenieriapy.com') +
+                    '&body=' + encodeURIComponent(cuerpo);
+                  window.location.href = href;
+                  showStatus('Abrimos tu cliente de correo para enviar el mensaje a info@dgingenieriasrl.com.', true);
+                  return;
+                }
+
+                const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+                if (btn) { btn.disabled = true; btn.textContent = 'Enviando…'; }
+
+                try {
+                  const res = await fetch(form.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: { Accept: 'application/json' },
+                  });
+                  if (res.ok) {
+                    form.reset();
+                    showStatus('Mensaje enviado. Te respondemos dentro de 48 horas hábiles.', true);
+                  } else {
+                    showStatus('No pudimos enviar el mensaje. Escribinos a info@dgingenieriasrl.com.', false);
+                  }
+                } catch {
+                  showStatus('No pudimos enviar el mensaje. Escribinos a info@dgingenieriasrl.com.', false);
+                } finally {
+                  if (btn) { btn.disabled = false; btn.textContent = 'Enviar mensaje'; }
+                }
+              });
+            }
+          </script>
         </div>
 
         <!-- INFORMACIÓN DE CONTACTO -->

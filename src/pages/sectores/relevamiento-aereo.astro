@@ -1,0 +1,186 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FullBleedSection from '../../components/FullBleedSection.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Button from '../../components/Button.astro';
+
+const capacidades = [
+  { title: 'Relevamiento aéreo de alta resolución', desc: 'Vuelos fotogramétricos con drones para cubrir grandes superficies en poco tiempo, con densidad de puntos y detalle que un relevamiento terrestre no alcanza en el mismo plazo.', icon: 'drone' },
+  { title: 'Modelo digital del terreno (MDT)', desc: 'Generación de MDT y MDS, ortomosaicos georreferenciados y nube de puntos, base precisa para diseño, cómputo y control de cada etapa del proyecto.', icon: 'mdt' },
+  { title: 'Control de movimiento de suelos', desc: 'Cálculo de volúmenes de corte y terraplén por comparación de superficies entre vuelos sucesivos, para verificar el avance real de la obra contra el proyecto.', icon: 'volume' },
+  { title: 'Vinculación a referencia oficial', desc: 'Apoyo topográfico con puntos de control y enlace a la Red Geodésica Nacional, para que las cotas y coordenadas sean trazables contra el sistema oficial de referencia.', icon: 'geodesic' },
+  { title: 'Curvas de nivel y cartografía base', desc: 'Curvas de nivel, perfiles y planimetría derivadas del modelo, entregadas en los formatos que usan los equipos de diseño (DWG/DXF) y de gestión.', icon: 'contour' },
+  { title: 'Seguimiento periódico de obra', desc: 'Vuelos en distintas fechas para documentar el progreso, comparar superficies y dar al decisor una visión territorial actualizada del estado de la obra.', icon: 'timeline' },
+];
+
+const breadcrumbs = [
+  { name: 'Inicio', url: '/' },
+  { name: 'Sectores', url: '/sectores' },
+  { name: 'Relevamiento aéreo y MDT', url: '/sectores/relevamiento-aereo' },
+];
+
+// JSON-LD: Service — relevamiento geoespacial con drones y MDT
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Relevamiento aéreo con drones, MDT y control de movimiento de suelos',
+  serviceType: 'Relevamiento geoespacial de alta resolución e ingeniería de movimiento de suelos',
+  description: 'Relevamiento aéreo con drones para infraestructura en Paraguay: aerofotogrametría de alta resolución, modelo digital del terreno (MDT), ortomosaicos, control de movimiento de suelos por comparación de superficies y vinculación a la Red Geodésica Nacional.',
+  provider: {
+    '@type': 'Organization',
+    name: 'DG Ingeniería SRL',
+    url: 'https://dgingenieriapy.com',
+  },
+  areaServed: { '@type': 'Country', name: 'Paraguay' },
+  url: 'https://dgingenieriapy.com/sectores/relevamiento-aereo',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Capacidades de relevamiento aéreo y MDT',
+    itemListElement: capacidades.map((c) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: c.title,
+        description: c.desc,
+      },
+    })),
+  },
+};
+
+// JSON-LD: FAQ — superficie de citación para "relevamiento con drones en Paraguay"
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '¿Qué es un relevamiento aéreo con drones y para qué sirve en un proyecto de infraestructura?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Es un vuelo fotogramétrico que captura el terreno con alta resolución y lo convierte en un modelo digital del terreno (MDT), un ortomosaico georreferenciado y una nube de puntos. Sobre esa base se diseña, se computan volúmenes y se controla el avance de la obra. Permite cubrir grandes superficies en poco tiempo y con un nivel de detalle que el relevamiento terrestre no alcanza en el mismo plazo. En DG, el modelo se vincula a la Red Geodésica Nacional para que las cotas y coordenadas sean trazables contra el sistema oficial de referencia.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Cómo se controla el movimiento de suelos con drones?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Se vuela el terreno en distintas fechas y se comparan las superficies resultantes. La diferencia entre dos modelos da los volúmenes de corte y terraplén ejecutados entre vuelo y vuelo, lo que permite verificar el avance real de la obra contra el proyecto y detectar desvíos a tiempo. Es una forma de medir movimiento de suelos sobre toda la superficie de la obra, no solo en secciones aisladas.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Qué entregables produce un relevamiento aéreo de DG?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Modelo digital del terreno (MDT) y de superficie (MDS), ortomosaico georreferenciado, nube de puntos, curvas de nivel, perfiles y planimetría base, y los cómputos de volúmenes cuando el proyecto lo requiere. Los entregables de diseño se preparan en los formatos que usan los equipos técnicos (DWG/DXF) y se acompañan de la documentación del apoyo topográfico y la referencia altimétrica utilizada.',
+      },
+    },
+  ],
+};
+---
+
+<Base
+  title="Relevamiento aéreo con drones, MDT y control de movimiento de suelos"
+  description="Relevamiento geoespacial de alta resolución con drones en Paraguay: aerofotogrametría, modelo digital del terreno (MDT), control de movimiento de suelos y vinculación a la Red Geodésica Nacional."
+  preloadImg="/img/sector-aero.webp"
+  breadcrumbs={breadcrumbs}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <PageHero
+    img="/img/sector-aero.jpg"
+    imgAlt="Relevamiento aéreo con drones para infraestructura en Paraguay"
+    kicker="Sectores · Relevamiento geoespacial"
+    title="Relevamiento aéreo de alta resolución"
+    titleAccent="y control de movimiento de suelos"
+    subtitle="Aerofotogrametría con drones, modelo digital del terreno y comparación de superficies para diseñar y controlar la obra con datos georreferenciados y trazables."
+    height="md"
+  >
+    <Button href="/contacto" variant="primary" magnetic>Consultar proyecto</Button>
+    <Button href="/sectores" variant="ghost-dark">Todos los sectores</Button>
+  </PageHero>
+
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="Enfoque"
+          title="El dato territorial"
+          titleAccent="que sostiene cada decisión de obra"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>Un proyecto de infraestructura se diseña y se controla sobre el terreno real. El relevamiento aéreo con drones captura ese terreno con alta resolución y lo convierte en un modelo digital preciso: la base sobre la que se calculan volúmenes, se trazan curvas de nivel y se verifica el avance de la obra.</p>
+        <p>En DG integramos la aerofotogrametría al trabajo de ingeniería. Generamos el modelo digital del terreno (MDT), el ortomosaico y la nube de puntos, y los vinculamos a la Red Geodésica Nacional para que las cotas y coordenadas sean trazables contra el sistema oficial de referencia. Ese apoyo altimétrico es el que da confianza al cómputo y al control de obra.</p>
+        <p>Volando el terreno en distintas fechas y comparando las superficies, medimos el movimiento de suelos ejecutado sobre toda la obra y lo cruzamos con el proyecto. Así el decisor tiene una visión territorial actualizada del avance, con datos verificados y documentados, en lugar de mediciones aisladas.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream-deep" padding="md">
+    <SectionHeader
+      kicker="Capacidades"
+      title="Lo que hacemos"
+      lead="Relevamiento geoespacial de alta resolución, modelo digital del terreno, control de movimiento de suelos y cartografía base para proyectos de infraestructura en Paraguay."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {capacidades.map((c) => (
+        <div class="bg-white rounded-xl p-7 border border-slate-dg/[0.08] shadow-sm hover:shadow-md transition-shadow" data-animate>
+          <div class="w-11 h-11 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
+            {c.icon === 'drone' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 9v6m0-6 4-4m-4 4L8 5m4 10 4 4m-4-4-4 4M5 5h.01M19 5h.01M5 19h.01M19 19h.01"/><circle cx="12" cy="12" r="2"/></svg>}
+            {c.icon === 'mdt' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8M3 17v4h18"/><path d="M3 11l6-6 4 4"/></svg>}
+            {c.icon === 'volume' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m12 3 9 5v8l-9 5-9-5V8l9-5Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg>}
+            {c.icon === 'geodesic' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>}
+            {c.icon === 'contour' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 14c2-3 5-3 8 0s6 3 8 0M4 18c2-3 5-3 8 0s6 3 8 0M7 9c1.5-2 3.5-2 5 0s3.5 2 5 0"/></svg>}
+            {c.icon === 'timeline' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 12h18"/><circle cx="6" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="18" cy="12" r="2"/></svg>}
+          </div>
+          <h3 class="text-[17px] font-extrabold tracking-tight mb-2 text-slate-dg">{c.title}</h3>
+          <p class="text-[13.5px] text-slate-dg/65 leading-relaxed">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="Cómo se aplica"
+          title="Del vuelo al dato"
+          titleAccent="que usa el proyecto"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>El relevamiento aéreo es transversal a los sectores en los que trabaja DG: alimenta el diseño vial, la prefactibilidad de sitio en urbanizaciones y energía, las plataformas industriales y el control de obra en cada uno.</p>
+        <ul class="space-y-3 list-none pl-0">
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Planificación del vuelo:</strong> definición del área, resolución objetivo y apoyo topográfico con puntos de control vinculados a la referencia oficial.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Procesamiento:</strong> generación del MDT, MDS, ortomosaico y nube de puntos, con control de calidad del modelo.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Cómputo y diseño:</strong> curvas de nivel, perfiles y volúmenes de corte y terraplén en los formatos que usan los equipos técnicos.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Control de avance:</strong> vuelos sucesivos y comparación de superficies para verificar el movimiento de suelos contra el proyecto.</span></li>
+        </ul>
+        <p>Es la misma forma de trabajar que aplicamos en más de mil kilómetros de proyectos viales y en obras civiles del país: el dato verificado primero, la decisión después.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Necesita relevar un terreno o controlar el movimiento de suelos?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[560px] mx-auto">Relevamiento aéreo de alta resolución, modelo digital del terreno y control de avance de obra con datos trazables. Hablemos.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
+        <Button href="/sectores" variant="ghost-dark" size="lg">Otros sectores</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>
