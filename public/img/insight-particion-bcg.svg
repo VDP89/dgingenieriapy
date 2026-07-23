@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 348" width="800" height="348"
+     role="img" aria-labelledby="t d" font-family="Inter, Segoe UI, system-ui, sans-serif">
+  <title id="t">Partición de madurez en IA según BCG: 5%, 35% y 60%</title>
+  <desc id="d">Barra apilada de tres tramos. 5% de las empresas obtiene valor sustancial, 35% ya escala y empieza a generarlo, y 60% registra retorno todavía marginal. Fuente: BCG, Build for the Future 2025, sobre 1.250 ejecutivos.</desc>
+
+  <rect width="800" height="348" fill="#F5F4F0"/>
+
+  <text x="48" y="52" font-size="19" font-weight="600" fill="#1E2A3A">Madurez en IA: la partición completa</text>
+  <text x="48" y="76" font-size="14" fill="#5B6675">Tres tramos, no dos. El del medio es el que suele quedar fuera del gráfico.</text>
+
+  <!-- guia del 5%: la etiqueta va arriba porque el segmento es angosto -->
+  <line x1="66" y1="112" x2="66" y2="142" stroke="#1E2A3A" stroke-width="1.5"/>
+  <text x="66" y="104" font-size="15" font-weight="700" fill="#1E2A3A" text-anchor="middle">5%</text>
+
+  <!-- barra apilada: 720 px = 100%  ->  36 / 252 / 432 -->
+  <rect x="48"  y="142" width="36"  height="66" fill="#1E2A3A"/>
+  <rect x="84"  y="142" width="252" height="66" fill="#C4956A"/>
+  <rect x="336" y="142" width="432" height="66" fill="#E8E6DF" stroke="#D1D5DB" stroke-width="1"/>
+
+  <!-- Slate sobre Arena = 5,3:1 (pasa AA). Slate sobre Crema2 = 11,6:1 -->
+  <text x="210" y="182" font-size="17" font-weight="700" fill="#1E2A3A" text-anchor="middle">35%</text>
+  <text x="552" y="182" font-size="17" font-weight="700" fill="#1E2A3A" text-anchor="middle">60%</text>
+
+  <!-- Leyenda en tres columnas de 240 px. La señal va por color Y por rótulo,
+       para que sobreviva al blanco y negro (dos canales). -->
+  <g font-size="13" fill="#1E2A3A">
+    <rect x="48"  y="243" width="13" height="13" fill="#1E2A3A"/>
+    <text x="69"  y="254" font-weight="600">Valor sustancial</text>
+
+    <rect x="288" y="243" width="13" height="13" fill="#C4956A"/>
+    <text x="309" y="254" font-weight="600">Escala y ya genera valor</text>
+    <text x="309" y="272" font-size="12.5" font-weight="400" fill="#5B6675">el tramo alcanzable</text>
+
+    <rect x="528" y="243" width="13" height="13" fill="#E8E6DF" stroke="#D1D5DB" stroke-width="1"/>
+    <text x="549" y="254" font-weight="600">Retorno todavía marginal</text>
+  </g>
+
+  <line x1="48" y1="294" x2="768" y2="294" stroke="#D1D5DB" stroke-width="1"/>
+  <text x="48" y="315" font-size="12" fill="#5B6675">Fuente: BCG, <tspan font-style="italic">The Widening AI Value Gap · Build for the Future</tspan>, septiembre 2025.</text>
+  <text x="48" y="332" font-size="12" fill="#5B6675">Encuesta a 1.250 ejecutivos en nueve industrias.</text>
+</svg>

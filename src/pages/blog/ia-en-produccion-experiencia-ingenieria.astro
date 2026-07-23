@@ -1,0 +1,345 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FullBleedSection from '../../components/FullBleedSection.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Button from '../../components/Button.astro';
+
+const pubDate = '23 de julio de 2026';
+const readTime = '5 min de lectura';
+
+const desc = 'Qué encontramos al implementar inteligencia artificial en el trabajo real de ingeniería, y qué nos salió mal al medirlo. Caso de documentación técnica para licitación.';
+
+// JSON-LD: Article — pieza editorial citable + entity SEO
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Implementación de IA en producción: nuestra experiencia como empresa de ingeniería',
+  description: desc,
+  image: 'https://dgingenieriapy.com/img/insight-ia-produccion.jpg',
+  author: { '@id': 'https://victordelpuerto.com/#person' },
+  datePublished: '2026-07-23',
+  dateModified: '2026-07-23',
+  publisher: {
+    '@type': 'Organization',
+    name: 'DG Ingeniería SRL',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://dgingenieriapy.com/img/dg-isotipo.png',
+    },
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://dgingenieriapy.com/blog/ia-en-produccion-experiencia-ingenieria/',
+  },
+  inLanguage: 'es-PY',
+  articleSection: 'Implementación de IA',
+  keywords: 'implementación de IA, inteligencia artificial en empresas, IA en producción, adopción de IA, productividad IA, ingeniería de proyecto, licitaciones públicas, documentación técnica, Paraguay',
+};
+
+// JSON-LD: FAQ — citation surface para LLMs y rich results Google
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '¿Por qué la mayoría de las empresas obtiene poco valor de la inteligencia artificial?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Los estudios muestran una brecha entre condiciones diseñadas y uso libre: los ensayos controlados documentan mejoras superiores al 15% en las mismas ocupaciones donde la adopción espontánea rinde 2,8%. La diferencia aparece con el mismo modelo de los dos lados, así que lo que cambia es el diseño de cómo se usa. Según BCG, además del 5% que obtiene valor sustancial hay un 35% que ya escala y empieza a generarlo.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Cómo se implementa IA en una empresa de ingeniería sin perder control técnico?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Separando los papeles. Unos especialistas fijan el criterio técnico (período de retorno, factor de seguridad), otros lo materializan en el software de diseño o en el documento, un tercer grupo solo audita, y la decisión de entrar a una licitación, con qué precio y qué se firma, es siempre de una persona. Esa separación sostiene el control frente a un sistema que responde con seguridad sobre algo que no verificó.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Qué tipo de valor aporta la IA en la preparación de una licitación?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Cobertura. En un caso real detectó equipamiento exigido en la sección de informaciones adicionales, lejos de los términos de referencia, que representaba cerca del 16% del monto de la oferta; un cambio de base de cálculo introducido por adendas que dio vuelta la estrategia de precio; trece observaciones sobre una sección hidrológica ya redactada; y suelos dispersivos en el emplazamiento que el pliego no pedía evaluar.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Cómo se mide si la implementación de IA está funcionando?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Conviene verificar primero que la medición funcione. En nuestro caso el contador de entregables marcaba cero todos los meses porque buscaba los archivos en el lugar equivocado, alrededor del 30% de las sesiones no se registraba, y el indicador de fricción contaba texto automático como intervención humana. El criterio que quedó es que un control recién queda verificado cuando lo vimos detectar algo.',
+      },
+    },
+  ],
+};
+
+const breadcrumbs = [
+  { name: 'Inicio', url: '/' },
+  { name: 'Insights', url: '/blog' },
+  { name: 'Implementación de IA en producción', url: '/blog/ia-en-produccion-experiencia-ingenieria' },
+];
+---
+
+<Base
+  title="Implementación de IA en producción: nuestra experiencia como empresa de ingeniería"
+  description={desc}
+  ogImage="/img/insight-ia-produccion.jpg"
+  breadcrumbs={breadcrumbs}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <PageHero
+    img="/img/insight-ia-produccion.jpg"
+    imgAlt="Camino sobre terraplén en el bajo Chaco paraguayo, con palmares a ambos lados"
+    kicker="Insights · Implementación de IA"
+    title="Implementación de IA"
+    titleAccent="en producción real"
+    subtitle="Qué encontró en el trabajo de un pliego de licitación, y qué nos salió mal cuando quisimos medirlo."
+    height="md"
+  >
+    <Button href="/contacto" variant="primary" magnetic>Realizar consulta</Button>
+    <Button href="/blog" variant="ghost-dark">Ver más Insights</Button>
+  </PageHero>
+
+  <!-- Meta info -->
+  <section class="border-b border-slate-dg/10 bg-cream">
+    <div class="max-w-[820px] mx-auto px-5 md:px-8 py-5 flex items-center gap-5 text-[12.5px] text-slate-dg/55 tracking-wide">
+      <span class="font-semibold uppercase tracking-[2px] text-arena/85 text-[11px]">Insight #2</span>
+      <span aria-hidden="true">·</span>
+      <span>{pubDate}</span>
+      <span aria-hidden="true">·</span>
+      <span>{readTime}</span>
+    </div>
+  </section>
+
+  <!-- Apertura -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <p class="text-[19px] text-slate-dg leading-[1.7] font-medium">
+        En una clase de posgrado circularon este año dos gráficos. El primero, del estudio <em>Build for the Future</em> de BCG: el 5% de las empresas obtiene valor sustancial de la inteligencia artificial y el 60% apenas registra retorno. El segundo, de un working paper de Humlum y Vestergaard publicado por el NBER: el ahorro de tiempo entre trabajadores que ya adoptaron IA generativa fue de 2,8%.
+      </p>
+
+      <p>
+        Son datos sólidos: el del NBER cubre 25.000 trabajadores en 7.000 lugares de trabajo. Los dos gráficos dejan afuera el dato que más nos sirvió.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- El tramo que falta -->
+  <FullBleedSection bg="cream" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="El dato"
+        title="El tramo que falta"
+        titleAccent="en el gráfico"
+      />
+
+      <figure class="my-8">
+        <img
+          src="/img/insight-particion-bcg.svg"
+          alt="Barra apilada con la partición de madurez en IA según BCG: 5% obtiene valor sustancial, 35% escala y ya genera valor, 60% con retorno todavía marginal."
+          class="w-full rounded-lg border border-slate-dg/10"
+          loading="lazy"
+          width="800"
+          height="348"
+        />
+        <figcaption class="mt-3 text-[13px] text-slate-dg/55 leading-relaxed">
+          La partición completa del estudio de BCG. El tramo del medio es el que suele quedar fuera del gráfico.
+        </figcaption>
+      </figure>
+
+      <p>
+        La partición de BCG tiene tres tramos. Entre el 5% que ya obtiene valor sustancial y el 60% rezagado hay un <strong class="text-slate-dg">35% que está escalando y empieza a generarlo</strong>. Ese tercio del medio es el tramo alcanzable para una empresa que decide ponerse a trabajar en serio.
+      </p>
+
+      <p>
+        El dato del NBER tiene una vuelta parecida. En esas mismas once ocupaciones, los ensayos controlados documentan mejoras superiores al 15%. En el campo, con adopción espontánea, dan 2,8%. La brecha aparece con el mismo modelo de los dos lados. Lo que cambia entre un caso y el otro es el diseño de cómo se usa.
+      </p>
+
+      <p>
+        Esa parte nos tocaba a nosotros.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- Cómo lo montamos -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="La arquitectura"
+        title="Cómo"
+        titleAccent="lo montamos"
+      />
+
+      <p>
+        DG hace ingeniería de proyecto: diseño vial, hidrología, geotecnia, pavimentos, documentación para contrataciones públicas. Sobre ese trabajo montamos una capa de especialistas asistidos por IA, cada uno con su base de conocimiento propia, construida a partir de normativa, manuales y los criterios que ya usábamos.
+      </p>
+
+      <p>
+        La decisión de fondo es que <strong class="text-slate-dg">cada especialista cubre una porción acotada del trabajo, y solo esa.</strong> Unos fijan el criterio técnico: qué período de retorno se adopta, qué factor de seguridad exige el talud. Otros lo materializan en el software de diseño o en el documento. Un tercer grupo solo audita. Y la decisión de entrar a una licitación, con qué precio y qué se firma, es siempre de una persona.
+      </p>
+
+      <p>
+        Esa separación es la que sostiene el control frente al modo de falla más común: un sistema que responde con seguridad sobre algo que no verificó.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- Lo que encontró -->
+  <FullBleedSection bg="cream" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="El caso"
+        title="Lo que"
+        titleAccent="encontró"
+      />
+
+      <p>
+        El caso más claro fue armar la documentación técnica de una licitación pública internacional de consultoría, con evaluación 90% técnica y 10% económica.
+      </p>
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">Equipamiento exigido fuera del lugar donde se lo busca</h3>
+      <p>
+        El pliego pedía proveer una camioneta cero kilómetro con seguro y combustible por doce meses, dos estaciones de trabajo y equipos topográficos. Estaba en la sección de informaciones adicionales, lejos de los términos de referencia y del cuadro de precios. Costearlo representó cerca del <strong class="text-slate-dg">16% del monto de la oferta</strong>.
+      </p>
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">Un cambio de regla en las adendas que dio vuelta la estrategia</h3>
+      <p>
+        Dos adendas modificaron la base de cálculo de todos los umbrales de calificación, que pasaron de porcentaje sobre el monto ofertado a porcentaje sobre el monto estimado del llamado. Eso desacopla el precio de la calificación: ofertar bajo dejó de aflojar los requisitos de capacidad. La oferta se presentó al 100% del referencial, cuando en un llamado anterior el mismo análisis había recomendado una rebaja del 11%.
+      </p>
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">Trece observaciones sobre una sección ya redactada</h3>
+      <p>
+        El especialista en hidrología auditó en frío la parte hidrológica e hidráulica, con verificación numérica independiente. Encontró un error bloqueante: la duración de lluvia adoptada era válida para dimensionar conducción, y quedaba corta para laminación y bombeo.
+      </p>
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">Un problema que el pliego no pedía</h3>
+      <p>
+        El emplazamiento estaba en el bajo Chaco, con un dique costero de por medio. El barrido de riesgos del sitio detectó suelos dispersivos, que fallan por tubificación y exigen un paquete de ensayos específico.
+      </p>
+
+      <p>
+        Sumó además siete inconsistencias del propio pliego, presentadas como consultas formales. El paquete se auditó en frío tres veces antes de entregarse, con dieciséis controles cruzados vivos en el modelo de cálculo. Todos esos hallazgos salieron de barrer más superficie del pliego con las mismas horas disponibles.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- Lo que nos salió mal -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="La medición"
+        title="Lo que"
+        titleAccent="nos salió mal"
+      />
+
+      <p>
+        Cuando quisimos medir todo esto para escribir este artículo, <strong class="text-slate-dg">nuestro propio tablero decía cero.</strong>
+      </p>
+
+      <p>
+        Teníamos instrumentación desde hacía meses: registro de cada sesión de trabajo, agregación mensual, indicadores. El contador de entregables producidos marcaba cero todos los meses. En uno de esos meses habíamos producido las tres plantillas documentales que hoy usamos para todo.
+      </p>
+
+      <p>
+        La causa era simple: el contador buscaba los archivos en el lugar equivocado. Miraba una operación que nunca produce esos documentos, porque los genera un programa. Estaba midiendo una población donde el fenómeno no podía aparecer.
+      </p>
+
+      <p>
+        Al revisar apareció un segundo problema, alrededor del <strong class="text-slate-dg">30% de las sesiones nunca llegó a registrarse</strong>, y un tercero peor: el indicador de fricción contaba como intervención humana el texto que la propia herramienta insertaba sola. Ese texto contiene las palabras que el detector busca, así que la fricción parecía triplicarse mes a mes. Corregida, la tasa real quedó estable con una leve mejora. Lo que había crecido era el trabajo delegado a los especialistas, multiplicado por nueve entre mayo y julio.
+      </p>
+
+      <p>
+        Tres defectos de la misma familia: mecanismos que informaban con seguridad sobre algo que no estaban mirando bien. El mismo modo de falla que la arquitectura busca evitar, instalado en el sistema que debía vigilarla.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- Lo que quedó -->
+  <FullBleedSection bg="cream-deep" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="Las reglas"
+        title="Lo que"
+        titleAccent="quedó"
+      />
+
+      <p>
+        Cada falla concreta quedó escrita como una regla que el sistema aplica solo. Hoy hay dieciséis.
+      </p>
+
+      <p>
+        Un control de formato rechazó un documento cuatro veces seguidas sobre la misma familia de problema. Recién en la tercera pasada quedó claro por qué: de cinco casos, cuatro pasaban por casualidad del contenido. De ahí salió un método que aplicamos a todo: <strong class="text-slate-dg">verificar cobertura en vez de ausencia de defecto.</strong> Se cuenta cuántas veces aparece el patrón en la fuente y se contrasta contra cuántas veces se resolvió en el resultado. Si el conteo no cierra, es hallazgo, aunque nada se vea roto.
+      </p>
+
+      <p>
+        El criterio detrás es el que nos llevamos: <strong class="text-slate-dg">un control recién queda verificado cuando lo vimos detectar algo.</strong> Aplica igual a un checklist de formato, a un modelo de cálculo y al indicador que informa que todo va bien.
+      </p>
+
+      <p>
+        En lo medible, dos clases de defecto bajaron de forma sostenida entre mayo y julio: los errores de ortografía en entregables cayeron 94% por sesión de trabajo, y la ausencia de revisión sobre código nuevo, 81%.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- Dónde estamos -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="Cierre"
+        title="Dónde"
+        titleAccent="estamos"
+      />
+
+      <p>
+        Sobre productividad medida en tiempo, el registro por entregable arranca ahora. Reconstruirlo hacia atrás sería inventarlo.
+      </p>
+
+      <p>
+        Si algo explica la distancia entre el 15% de los ensayos y el 2,8% del campo, para nosotros fue esto: incorporar la herramienta llevó una tarde. El trabajo estuvo en escribir el criterio que la herramienta necesitaba, y después en descubrir que la medición estaba mal y arreglarla antes de sacar conclusiones.
+      </p>
+
+      <p>
+        <strong class="text-slate-dg">Resultado:</strong> ofertas que entran completas, secciones técnicas revisadas con una segunda mirada antes de salir, y problemas de emplazamiento detectados en la etapa donde todavía son baratos.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <style>
+    /* Justify de prosa solo en el cuerpo del Insight, no en hero/CTA */
+    article p {
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+  </style>
+
+  <!-- CTA final -->
+  <section class="relative py-20 md:py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[40px] mb-4">¿Tiene un pliego o un proyecto por delante?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[520px] mx-auto">Hablemos sobre el tipo de revisión técnica que necesita.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
+        <Button href="/blog" variant="ghost-dark" size="lg">Ver más Insights</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>
