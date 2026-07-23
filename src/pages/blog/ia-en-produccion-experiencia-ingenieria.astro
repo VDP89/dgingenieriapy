@@ -6,15 +6,16 @@ import SectionHeader from '../../components/SectionHeader.astro';
 import Button from '../../components/Button.astro';
 
 const pubDate = '23 de julio de 2026';
-const readTime = '4 min de lectura';
+const readTime = '5 min de lectura';
 
-const desc = 'Preparar la documentación de una licitación internacional consume equipo y calendario. Cómo lo resolvemos con especialistas asistidos por IA, y qué gana el cliente: documentación completa y planillas trazables.';
+const titulo = 'Preparación de licitaciones: revisar el pliego completo, no una muestra';
+const desc = 'Una exigencia escondida en la sección de informaciones adicionales representaba el 16% del monto de la oferta. Apareció porque el pliego se leyó entero. Cómo lo hacemos y qué recibe el cliente.';
 
 // JSON-LD: Article — pieza editorial citable + entity SEO
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'Implementación de IA en producción: nuestra experiencia como empresa de ingeniería',
+  headline: titulo,
   description: desc,
   image: 'https://dgingenieriapy.com/img/insight-ia-produccion.jpg',
   author: { '@id': 'https://victordelpuerto.com/#person' },
@@ -33,8 +34,8 @@ const articleSchema = {
     '@id': 'https://dgingenieriapy.com/blog/ia-en-produccion-experiencia-ingenieria/',
   },
   inLanguage: 'es-PY',
-  articleSection: 'Implementación de IA',
-  keywords: 'implementación de IA, inteligencia artificial en empresas, IA en producción, preparación de licitaciones, documentación técnica, pliego de bases y condiciones, ingeniería de proyecto, Paraguay',
+  articleSection: 'Preparación de licitaciones',
+  keywords: 'preparación de licitaciones, pliego de bases y condiciones, documentación técnica, licitación pública internacional, implementación de IA, inteligencia artificial en empresas, ingeniería de proyecto, Paraguay',
 };
 
 // JSON-LD: FAQ — citation surface para LLMs y rich results Google
@@ -44,34 +45,34 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: '¿Por qué la mayoría de las empresas obtiene poco valor de la inteligencia artificial?',
+      name: '¿Dónde suelen esconderse las exigencias que definen una licitación?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Los estudios muestran una brecha entre condiciones diseñadas y uso libre: los ensayos controlados documentan mejoras superiores al 15% en las mismas ocupaciones donde la adopción espontánea rinde 2,8%. La diferencia aparece con el mismo modelo de los dos lados, así que lo que cambia es el diseño de cómo se usa. Según BCG, además del 5% que obtiene valor sustancial hay un 35% que ya escala y empieza a generarlo.',
+        text: 'Fuera de los términos de referencia y del cuadro de precios. En un caso real, el pliego exigía proveer una camioneta cero kilómetro con seguro y combustible por doce meses, dos estaciones de trabajo y equipos topográficos, y la exigencia estaba en la sección de informaciones adicionales. Costear ese renglón representó el 16% del monto de la oferta. Una propuesta presentada sin esa partida compite con un número al que le falta la sexta parte.',
       },
     },
     {
       '@type': 'Question',
-      name: '¿Por qué es tan costoso preparar la documentación de una licitación internacional?',
+      name: '¿Por qué es difícil revisar un pliego de licitación completo?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Porque exige leer el pliego completo y sus adendas, cruzar cada requisito de calificación contra los antecedentes de la empresa, armar los formularios técnicos y financieros en el formato oficial, costear con la estructura de personal exigida, y sostener la coherencia entre decenas de piezas que se tocan entre sí. El riesgo mayor es que una exigencia que define la calificación esté escrita en una sección que nadie asocia con ella.',
+        text: 'Porque exige leer el pliego y sus adendas, cruzar cada requisito de calificación contra los antecedentes de la empresa, armar los formularios técnicos y financieros en el formato oficial, costear con la estructura de personal exigida, y sostener la coherencia entre piezas que se cuentan por decenas y se tocan entre sí. Contra ese volumen el calendario empuja a priorizar y muestrear, y lo que queda sin leer es lo que nadie sabe que se perdió.',
       },
     },
     {
       '@type': 'Question',
-      name: '¿Cómo se implementa IA en una empresa de ingeniería sin perder control técnico?',
+      name: '¿Cómo se usa IA en la preparación de licitaciones sin perder criterio técnico?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Separando los papeles. Unos especialistas fijan el criterio técnico (período de retorno, factor de seguridad), otros lo materializan en el documento o en el modelo de cálculo, un tercer grupo solo audita, y la decisión de entrar a una licitación, con qué precio y qué se firma, es siempre de una persona. Esa separación permite barrer el pliego completo en vez de muestrearlo, sosteniendo el criterio de ingeniería.',
+        text: 'Cada disciplina tiene su base de conocimiento escrita: la normativa que aplica, los umbrales que se adoptan y las reglas que salieron de errores previos. Sobre esa base opera un especialista asistido por IA que cubre una porción acotada del trabajo. Unos fijan el criterio técnico, otros lo materializan en el documento o en el modelo de cálculo, un tercer grupo solo audita, y la decisión de entrar a una licitación, con qué precio y qué se firma, es siempre de una persona.',
       },
     },
     {
       '@type': 'Question',
-      name: '¿Qué recibe el cliente además del ahorro de tiempo?',
+      name: '¿Qué recibe el cliente al final del trabajo?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Documentación completa, con los formularios armados sobre el archivo oficial del pliego y el barrido de exigencias hecho sobre el documento entero. Y planillas trazables y modificables: el costeo vive en un modelo de cálculo único, con hojas espejo de cada formulario oficial tirando del mismo motor y controles cruzados que se verifican solos. Al mover una tarifa, un plazo o una dedicación, el modelo recalcula la cadena entera y muestra dónde impactó.',
+        text: 'Documentación completa, con los formularios armados sobre el archivo oficial del pliego. Y planillas trazables y modificables: el costeo vive en un modelo de cálculo único, con hojas espejo de cada formulario oficial tirando del mismo motor y controles cruzados que se verifican solos. Al mover una tarifa, un plazo o una dedicación, el modelo recalcula la cadena entera y muestra dónde impactó.',
       },
     },
   ],
@@ -80,12 +81,12 @@ const faqSchema = {
 const breadcrumbs = [
   { name: 'Inicio', url: '/' },
   { name: 'Insights', url: '/blog' },
-  { name: 'Implementación de IA en producción', url: '/blog/ia-en-produccion-experiencia-ingenieria' },
+  { name: 'Preparación de licitaciones', url: '/blog/ia-en-produccion-experiencia-ingenieria' },
 ];
 ---
 
 <Base
-  title="Implementación de IA en producción: nuestra experiencia como empresa de ingeniería"
+  title={titulo}
   description={desc}
   ogImage="/img/insight-ia-produccion.jpg"
   breadcrumbs={breadcrumbs}
@@ -98,10 +99,10 @@ const breadcrumbs = [
   <PageHero
     img="/img/insight-ia-produccion.jpg"
     imgAlt="Camino sobre terraplén en el bajo Chaco paraguayo, con palmares a ambos lados"
-    kicker="Insights · Implementación de IA"
-    title="Implementación de IA"
-    titleAccent="en producción real"
-    subtitle="Qué cambia en la preparación de una licitación, y qué recibe el cliente al final."
+    kicker="Insights · Preparación de licitaciones"
+    title="Revisar el pliego completo,"
+    titleAccent="no una muestra"
+    subtitle="Una exigencia escondida en la sección de informaciones adicionales valía el 16% de la oferta."
     height="md"
   >
     <Button href="/contacto" variant="primary" magnetic>Realizar consulta</Button>
@@ -119,28 +120,157 @@ const breadcrumbs = [
     </div>
   </section>
 
-  <!-- Apertura -->
+  <!-- HOOK: el caso primero -->
   <FullBleedSection bg="white" padding="md">
     <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
 
       <p class="text-[19px] text-slate-dg leading-[1.7] font-medium">
-        En una clase de posgrado circularon este año dos gráficos. El primero, del estudio <em>Build for the Future</em> de BCG: el 5% de las empresas obtiene valor sustancial de la inteligencia artificial y el 60% apenas registra retorno. El segundo, de un working paper de Humlum y Vestergaard publicado por el NBER: el ahorro de tiempo entre trabajadores que ya adoptaron IA generativa fue de 2,8%.
+        El pliego de una licitación internacional exigía proveer una camioneta cero kilómetro con seguro y combustible por doce meses, dos estaciones de trabajo y equipos topográficos. La exigencia estaba en la sección de informaciones adicionales. Fuera de los términos de referencia, fuera del cuadro de precios: en una sección que casi nadie cruza con el presupuesto.
+      </p>
+
+      <p class="text-[19px] text-slate-dg leading-[1.7] font-semibold">
+        Costear ese renglón representó el 16% del monto de la oferta.
       </p>
 
       <p>
-        Son datos sólidos: el del NBER cubre 25.000 trabajadores en 7.000 lugares de trabajo. Los dos gráficos dejan afuera el dato que más nos sirvió.
+        Una propuesta que llega a la mesa de evaluación sin esa partida compite con un número al que le falta la sexta parte. Y el pliego estaba en regla: la exigencia estaba escrita, con todas las letras, en el lugar donde nadie la busca.
+      </p>
+
+      <p>
+        Apareció porque el pliego se leyó entero.
       </p>
     </article>
   </FullBleedSection>
 
-  <!-- El dato -->
+  <!-- El problema -->
   <FullBleedSection bg="cream" padding="md">
     <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
 
       <SectionHeader
-        kicker="El dato"
-        title="El tramo que falta"
-        titleAccent="en el gráfico"
+        kicker="El problema"
+        title="Por qué eso"
+        titleAccent="es difícil"
+      />
+
+      <p>
+        Preparar la documentación de una licitación pública internacional es de los trabajos más caros que enfrenta una consultora, y el costo es de personal y de calendario.
+      </p>
+
+      <p>
+        Hay que leer el pliego completo y sus adendas, que suelen modificar reglas de fondo. Cruzar cada requisito de calificación contra los antecedentes de la empresa. Armar los formularios técnicos y financieros en el formato oficial. Costear el servicio con la estructura de personal que el pliego exige. Y sostener la coherencia entre piezas que se cuentan por decenas y se tocan entre sí: mover una tarifa cambia el precio, la dedicación por profesional y tres formularios.
+      </p>
+
+      <p>
+        Contra ese volumen, el calendario de presentación empuja siempre en la misma dirección. Se prioriza. Se muestrea. Y lo que queda sin leer es, por definición, lo que nadie sabe que se perdió.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- La solución: la metodología es el héroe -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="El método"
+        title="Cómo"
+        titleAccent="lo resolvemos"
+      />
+
+      <p>
+        DG hace ingeniería de proyecto: diseño vial, hidrología, geotecnia, pavimentos, documentación para contrataciones públicas. Lo que cambió en el último año es que ese criterio dejó de trabajar de a una pieza por vez.
+      </p>
+
+      <p>
+        Cada disciplina tiene hoy su base de conocimiento escrita: la normativa que aplica, los umbrales que se adoptan, los errores que ya cometimos y las reglas que salieron de ellos. Sobre esa base opera un especialista asistido por IA, y la arquitectura tiene una decisión de fondo.
+      </p>
+
+      <p class="text-[19px] text-slate-dg leading-[1.7] font-semibold">
+        Cada especialista cubre una porción acotada del trabajo, y solo esa.
+      </p>
+
+      <p>
+        Unos fijan el criterio técnico: qué período de retorno se adopta, qué factor de seguridad exige el talud. Otros lo materializan en el documento o en el modelo de cálculo. Un tercer grupo solo audita, y no produce nada. La decisión de entrar a una licitación, con qué precio y qué se firma, es siempre de una persona.
+      </p>
+
+      <p>
+        Esa separación es la que permite barrer el pliego entero en vez de muestrearlo, sin que el criterio de ingeniería se diluya al cubrir más superficie. La herramienta acelera la lectura. Lo que decide qué mirar, y qué significa lo que aparece, es el criterio.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- El caso -->
+  <FullBleedSection bg="cream" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="El caso"
+        title="Lo que aparece"
+        titleAccent="cuando se lee todo"
+      />
+
+      <p>
+        En esa misma licitación, además del renglón de la sección de informaciones adicionales:
+      </p>
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">Las adendas habían dado vuelta la estrategia de precio</h3>
+      <p>
+        Dos adendas cambiaron la base de cálculo de todos los umbrales de calificación: pasaron de porcentaje sobre el monto ofertado a porcentaje sobre el monto estimado del llamado. Eso desacopla el precio de la calificación, y ofertar bajo deja de aflojar los requisitos de capacidad. Quien costeó sobre el pliego original costeó sobre reglas vencidas.
+      </p>
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">El emplazamiento tenía un problema que el pliego no mencionaba</h3>
+      <p>
+        El sitio estaba en el bajo Chaco, con un dique costero de por medio. Los suelos dispersivos fallan por tubificación, y los ensayos mecánicos convencionales no los detectan: hace falta un paquete específico. Los términos de referencia no lo pedían. El barrido de riesgos del sitio sí.
+      </p>
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">El pliego se contradecía a sí mismo en siete puntos</h3>
+      <p>
+        Presentados como consultas formales ante el convocante. Una frase truncada dejaba en cero puntos a seis especialistas del plantel propuesto.
+      </p>
+
+      <p>
+        Ninguno de los cuatro hallazgos salió de leer más rápido. Salieron de leer todo.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- La ventaja -->
+  <FullBleedSection bg="cream-deep" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="La ventaja"
+        title="Qué recibe"
+        titleAccent="el cliente"
+      />
+
+      <p>
+        Sobre nuestra propia experiencia, el análisis y el armado documental pasaron a ocupar una fracción de las horas de equipo que llevaban antes. La lectura completa del pliego dejó de competir contra la fecha de presentación.
+      </p>
+
+      <p>
+        Y quedan dos cosas que se llevan puestas después de la entrega.
+      </p>
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">Documentación completa</h3>
+      <p>
+        Los formularios se arman sobre el archivo oficial del pliego, con el barrido de exigencias hecho sobre el documento entero.
+      </p>
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">Planillas trazables y modificables</h3>
+      <p>
+        El costeo vive en un modelo de cálculo único, con las hojas espejo de cada formulario oficial tirando del mismo motor y controles cruzados que se verifican solos. Cuando hay que mover una tarifa, un plazo o una dedicación, el modelo recalcula la cadena entera y muestra dónde impactó. El entregable sigue siendo un instrumento de trabajo después de presentado.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- El contexto (la investigación, ahora como respaldo) -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="El contexto"
+        title="Lo que separa"
+        titleAccent="a los que lo logran"
       />
 
       <figure class="my-8">
@@ -158,131 +288,21 @@ const breadcrumbs = [
       </figure>
 
       <p>
-        La partición de BCG tiene tres tramos. Entre el 5% que ya obtiene valor sustancial y el 60% rezagado hay un <strong class="text-slate-dg">35% que está escalando y empieza a generarlo</strong>. Ese tercio del medio es el tramo alcanzable para una empresa que decide ponerse a trabajar en serio.
+        El estudio <em>Build for the Future</em> de BCG, sobre 1.250 ejecutivos, encontró que solo el 5% de las empresas obtiene valor sustancial de la inteligencia artificial. El dato que suele quedar fuera del gráfico es el tramo del medio: un <strong class="text-slate-dg">35% que ya está escalando y empieza a generarlo</strong>.
       </p>
 
       <p>
-        El dato del NBER tiene una vuelta parecida. En esas mismas once ocupaciones, los ensayos controlados documentan mejoras superiores al 15%. En el campo, con adopción espontánea, dan 2,8%. La brecha aparece con el mismo modelo de los dos lados. Lo que cambia entre un caso y el otro es el diseño de cómo se usa.
-      </p>
-    </article>
-  </FullBleedSection>
-
-  <!-- El problema -->
-  <FullBleedSection bg="white" padding="md">
-    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
-
-      <SectionHeader
-        kicker="El problema"
-        title="Lo que cuesta"
-        titleAccent="preparar una licitación"
-      />
-
-      <p>
-        Preparar la documentación de una licitación pública internacional es de los trabajos más caros que enfrenta una consultora, y el costo es de personal y de calendario.
+        Un working paper de Humlum y Vestergaard, publicado por el NBER sobre 25.000 trabajadores, explica por qué el resto se queda afuera. En las mismas ocupaciones, los ensayos controlados documentan mejoras superiores al 15%, mientras la adopción espontánea rinde 2,8%. El modelo es el mismo de los dos lados. Lo que cambia es que alguien haya diseñado cómo se usa.
       </p>
 
       <p>
-        Hay que leer el pliego completo y sus adendas, que suelen modificar reglas de fondo. Cruzar cada requisito de calificación contra los antecedentes de la empresa. Armar los formularios técnicos y financieros en el formato oficial. Costear el servicio con la estructura de personal que el pliego exige. Y sostener la coherencia entre todas esas piezas, que se cuentan por decenas y se tocan entre sí: cambiar una tarifa mueve el precio, la dedicación por profesional y tres formularios.
-      </p>
-
-      <p>
-        El riesgo mayor está en otro lado. Una exigencia que define la calificación puede estar escrita en una sección que nadie asocia con ella. Cuando eso pasa, la oferta se presenta incompleta y compite con un número que le falta cubrir.
-      </p>
-    </article>
-  </FullBleedSection>
-
-  <!-- Cómo lo resolvemos -->
-  <FullBleedSection bg="cream" padding="md">
-    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
-
-      <SectionHeader
-        kicker="La solución"
-        title="Cómo"
-        titleAccent="lo resolvemos"
-      />
-
-      <p>
-        DG hace ingeniería de proyecto: diseño vial, hidrología, geotecnia, pavimentos, documentación para contrataciones públicas. Sobre ese trabajo montamos una capa de especialistas asistidos por IA, cada uno con su base de conocimiento propia, construida a partir de normativa, manuales y los criterios que ya usábamos.
-      </p>
-
-      <p>
-        La decisión de fondo es que <strong class="text-slate-dg">cada especialista cubre una porción acotada del trabajo, y solo esa.</strong> Unos fijan el criterio técnico: qué período de retorno se adopta, qué factor de seguridad exige el talud. Otros lo materializan en el documento o en el modelo de cálculo. Un tercer grupo solo audita. Y la decisión de entrar a una licitación, con qué precio y qué se firma, es siempre de una persona.
-      </p>
-
-      <p>
-        Esa separación es la que permite barrer el pliego completo en vez de muestrearlo, y sostener el criterio de ingeniería mientras se cubre más superficie.
-      </p>
-    </article>
-  </FullBleedSection>
-
-  <!-- El caso -->
-  <FullBleedSection bg="white" padding="md">
-    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
-
-      <SectionHeader
-        kicker="El caso"
-        title="Lo que cambia"
-        titleAccent="en un trabajo real"
-      />
-
-      <p>
-        En la preparación de la documentación técnica para una licitación pública internacional, con evaluación 90% técnica y 10% económica, el barrido completo devolvió esto:
-      </p>
-
-      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">Equipamiento exigido fuera del lugar donde se lo busca</h3>
-      <p>
-        El pliego pedía proveer una camioneta cero kilómetro con seguro y combustible por doce meses, dos estaciones de trabajo y equipos topográficos. Estaba en la sección de informaciones adicionales, lejos de los términos de referencia y del cuadro de precios. Costearlo representó cerca del <strong class="text-slate-dg">16% del monto de la oferta</strong>.
-      </p>
-
-      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">Un cambio de regla en las adendas que dio vuelta la estrategia de precio</h3>
-      <p>
-        Dos adendas modificaron la base de cálculo de todos los umbrales de calificación, que pasaron de porcentaje sobre el monto ofertado a porcentaje sobre el monto estimado del llamado. Eso desacopla el precio de la calificación: ofertar bajo dejó de aflojar los requisitos de capacidad. La oferta se presentó al 100% del referencial, cuando con la regla anterior el mismo análisis habría recomendado una rebaja.
-      </p>
-
-      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">Suelos dispersivos en el emplazamiento</h3>
-      <p>
-        El sitio estaba en el bajo Chaco, con un dique costero de por medio. Los suelos dispersivos fallan por tubificación y exigen un paquete de ensayos específico. Los términos de referencia no los mencionaban.
-      </p>
-
-      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">Siete inconsistencias del propio pliego</h3>
-      <p>
-        Presentadas como consultas formales ante el convocante. Una frase truncada dejaba en cero puntos a seis especialistas del plantel propuesto.
-      </p>
-    </article>
-  </FullBleedSection>
-
-  <!-- La ventaja -->
-  <FullBleedSection bg="cream-deep" padding="md">
-    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
-
-      <SectionHeader
-        kicker="La ventaja"
-        title="Qué recibe"
-        titleAccent="el cliente"
-      />
-
-      <p>
-        Sobre nuestra propia experiencia en este tipo de trabajo, el análisis y el armado documental se reducen a una fracción del tiempo que llevaban antes, del orden del 20% de las horas de equipo. La lectura completa del pliego y sus adendas deja de competir contra el calendario de presentación.
-      </p>
-
-      <p>
-        Lo que se gana además del tiempo son dos cosas concretas.
-      </p>
-
-      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">Documentación completa</h3>
-      <p>
-        Los formularios se arman sobre el archivo oficial del pliego, con el barrido de exigencias hecho sobre el documento entero, no sobre el resumen.
-      </p>
-
-      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">Planillas trazables y modificables</h3>
-      <p>
-        El costeo vive en un modelo de cálculo único, con las hojas espejo de cada formulario oficial tirando del mismo motor y controles cruzados que se verifican solos. Cuando el cliente necesita mover una tarifa, un plazo o una dedicación, el modelo recalcula la cadena entera y muestra dónde impactó. El entregable es un instrumento de trabajo que sigue sirviendo después de la presentación.
+        Ese diseño es trabajo de ingeniería, y es la parte que se saltea con más frecuencia.
       </p>
     </article>
   </FullBleedSection>
 
   <!-- Conclusión -->
-  <FullBleedSection bg="white" padding="md">
+  <FullBleedSection bg="cream" padding="md">
     <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
 
       <SectionHeader
@@ -292,11 +312,11 @@ const breadcrumbs = [
       />
 
       <p>
-        La distancia entre el 15% que muestran los ensayos y el 2,8% del campo se explica por el diseño. Incorporar la herramienta lleva una tarde. Lo que toma trabajo es escribir el criterio de ingeniería que la herramienta necesita para servir de algo, y ese criterio es el activo que queda.
+        Incorporar la herramienta lleva una tarde. Escribir el criterio que la herramienta necesita para servir de algo lleva meses, y es lo que no se compra hecho.
       </p>
 
       <p>
-        <strong class="text-slate-dg">Resultado:</strong> ofertas que entran completas, secciones técnicas revisadas con una segunda mirada antes de salir, problemas de emplazamiento detectados cuando todavía son baratos, y un modelo de cálculo que el cliente puede seguir usando.
+        <strong class="text-slate-dg">Resultado:</strong> ofertas que entran completas, secciones técnicas revisadas con una segunda mirada antes de salir, problemas de emplazamiento detectados cuando todavía son baratos, y un modelo de cálculo que el cliente sigue usando.
       </p>
     </article>
   </FullBleedSection>
