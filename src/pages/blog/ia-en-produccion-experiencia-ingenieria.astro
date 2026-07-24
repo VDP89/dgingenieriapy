@@ -8,8 +8,8 @@ import Button from '../../components/Button.astro';
 const pubDate = '23 de julio de 2026';
 const readTime = '5 min de lectura';
 
-const titulo = 'Preparación de licitaciones: revisar el pliego completo, no una muestra';
-const desc = 'Una exigencia escondida en la sección de informaciones adicionales representaba el 16% del monto de la oferta. Apareció porque el pliego se leyó entero. Cómo lo hacemos y qué recibe el cliente.';
+const titulo = 'Cómo reducir el riesgo al preparar una licitación';
+const desc = 'Una exigencia escondida en la sección de informaciones adicionales representaba el 16% del monto de la oferta. Apareció porque el pliego se leyó entero. Cómo lo hacemos con especialistas asistidos por IA y qué recibe el cliente.';
 
 // JSON-LD: Article — pieza editorial citable + entity SEO
 const articleSchema = {
@@ -35,7 +35,7 @@ const articleSchema = {
   },
   inLanguage: 'es-PY',
   articleSection: 'Preparación de licitaciones',
-  keywords: 'preparación de licitaciones, pliego de bases y condiciones, documentación técnica, licitación pública internacional, implementación de IA, inteligencia artificial en empresas, ingeniería de proyecto, Paraguay',
+  keywords: 'reducir el riesgo en licitaciones, preparación de licitaciones, pliego de bases y condiciones, documentación técnica, licitación pública internacional, especialistas asistidos por IA, implementación de IA, ingeniería de proyecto, Paraguay',
 };
 
 // JSON-LD: FAQ — citation surface para LLMs y rich results Google
@@ -45,10 +45,10 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: '¿Dónde suelen esconderse las exigencias que definen una licitación?',
+      name: '¿Cómo se reduce el riesgo al preparar una licitación?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Fuera de los términos de referencia y del cuadro de precios. En un caso real, el pliego exigía proveer una camioneta cero kilómetro con seguro y combustible por doce meses, dos estaciones de trabajo y equipos topográficos, y la exigencia estaba en la sección de informaciones adicionales. Costear ese renglón representó el 16% del monto de la oferta. Una propuesta presentada sin esa partida compite con un número al que le falta la sexta parte.',
+        text: 'Leyendo el pliego completo y sus adendas en vez de muestrearlo, con criterios consistentes. En un caso real eso permitió detectar una exigencia de equipamiento ubicada fuera de los términos de referencia y del cuadro de precios, cuyo costo representaba el 16% del monto de la oferta; cambios de adendas que alteraban la estrategia económica; riesgos geotécnicos no explicitados; e inconsistencias del propio pliego. Una propuesta presentada sin esa partida compite con un número al que le falta la sexta parte.',
       },
     },
     {
@@ -64,7 +64,7 @@ const faqSchema = {
       name: '¿Cómo se usa IA en la preparación de licitaciones sin perder criterio técnico?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Cada disciplina tiene su base de conocimiento escrita: la normativa que aplica, los umbrales que se adoptan y las reglas que salieron de errores previos. Sobre esa base opera un especialista asistido por IA que cubre una porción acotada del trabajo. Unos fijan el criterio técnico, otros lo materializan en el documento o en el modelo de cálculo, un tercer grupo solo audita, y la decisión de entrar a una licitación, con qué precio y qué se firma, es siempre de una persona.',
+        text: 'Con un equipo de especialistas asistidos por IA, no un único asistente que intenta resolver todo. Cada especialista cubre una función acotada: unos analizan pliegos y adendas, otros verifican requisitos de calificación, otros revisan la consistencia entre formularios o apoyan los modelos de cálculo. Ninguno decide: entrar a una licitación, con qué precio y qué se firma, es siempre resolución de una persona. Convierte la herramienta en una capacidad operativa.',
       },
     },
     {
@@ -72,7 +72,7 @@ const faqSchema = {
       name: '¿Qué recibe el cliente al final del trabajo?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Documentación completa, con los formularios armados sobre el archivo oficial del pliego. Y planillas trazables y modificables: el costeo vive en un modelo de cálculo único, con hojas espejo de cada formulario oficial tirando del mismo motor y controles cruzados que se verifican solos. Al mover una tarifa, un plazo o una dedicación, el modelo recalcula la cadena entera y muestra dónde impactó.',
+        text: 'Una propuesta más completa y con menor riesgo. Documentación armada sobre el archivo oficial del pliego, con el barrido de exigencias hecho sobre el documento entero. Y planillas trazables y modificables: el costeo vive en un modelo de cálculo único, con hojas espejo de cada formulario oficial tirando del mismo motor y controles cruzados que se verifican solos. Al mover una tarifa, un plazo o una dedicación, el modelo recalcula la cadena entera y muestra dónde impactó.',
       },
     },
   ],
@@ -81,7 +81,7 @@ const faqSchema = {
 const breadcrumbs = [
   { name: 'Inicio', url: '/' },
   { name: 'Insights', url: '/blog' },
-  { name: 'Preparación de licitaciones', url: '/blog/ia-en-produccion-experiencia-ingenieria' },
+  { name: 'Reducir el riesgo al preparar una licitación', url: '/blog/ia-en-produccion-experiencia-ingenieria' },
 ];
 ---
 
@@ -100,8 +100,8 @@ const breadcrumbs = [
     img="/img/insight-ia-produccion.jpg"
     imgAlt="Camino sobre terraplén en el bajo Chaco paraguayo, con palmares a ambos lados"
     kicker="Insights · Preparación de licitaciones"
-    title="Revisar el pliego completo,"
-    titleAccent="no una muestra"
+    title="Cómo reducir el riesgo"
+    titleAccent="al preparar una licitación"
     subtitle="Una exigencia escondida en la sección de informaciones adicionales valía el 16% de la oferta."
     height="md"
   >
@@ -177,11 +177,11 @@ const breadcrumbs = [
       />
 
       <p>
-        DG hace ingeniería de proyecto: diseño vial, hidrología, geotecnia, pavimentos, documentación para contrataciones públicas. Lo que cambió en el último año es que ese criterio dejó de trabajar de a una pieza por vez.
+        La mayoría de las organizaciones que ya usan inteligencia artificial empezaron por un asistente genérico: redactar un documento, resumir una reunión, responder una consulta puntual. Son herramientas útiles, pero rara vez cambian la forma en que la empresa trabaja. El salto está en convertir una herramienta en una capacidad operativa: procesos definidos, criterios de decisión escritos, responsabilidades claras y mecanismos de validación.
       </p>
 
       <p>
-        Cada disciplina tiene hoy su base de conocimiento escrita: la normativa que aplica, los umbrales que se adoptan, los errores que ya cometimos y las reglas que salieron de ellos. Sobre esa base opera un especialista asistido por IA, y la arquitectura tiene una decisión de fondo.
+        En DG Ingeniería lo aplicamos a la preparación de licitaciones. No usamos un único asistente que intenta resolver todo. Desarrollamos un equipo de especialistas asistidos por IA, y la arquitectura tiene una decisión de fondo.
       </p>
 
       <p class="text-[19px] text-slate-dg leading-[1.7] font-semibold">
@@ -189,11 +189,11 @@ const breadcrumbs = [
       </p>
 
       <p>
-        Unos fijan el criterio técnico: qué período de retorno se adopta, qué factor de seguridad exige el talud. Otros lo materializan en el documento o en el modelo de cálculo. Un tercer grupo solo audita, y no produce nada. La decisión de entrar a una licitación, con qué precio y qué se firma, es siempre de una persona.
+        Unos analizan pliegos y adendas. Otros verifican requisitos de calificación. Otros revisan la consistencia entre formularios, identifican riesgos técnicos o apoyan la elaboración de los modelos de cálculo. Y ninguno decide: la resolución de entrar a una licitación, con qué precio y qué se firma, es siempre de una persona.
       </p>
 
       <p>
-        Esa separación es la que permite barrer el pliego entero en vez de muestrearlo, sin que el criterio de ingeniería se diluya al cubrir más superficie. La herramienta acelera la lectura. Lo que decide qué mirar, y qué significa lo que aparece, es el criterio.
+        Esa separación es la que permite barrer el pliego entero en vez de muestrearlo, con criterios consistentes, sin que el criterio de ingeniería se diluya al cubrir más superficie. La herramienta acelera la lectura. Lo que decide qué mirar, y qué significa lo que aparece, es el criterio.
       </p>
     </article>
   </FullBleedSection>
@@ -224,7 +224,7 @@ const breadcrumbs = [
 
       <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">El pliego se contradecía a sí mismo en siete puntos</h3>
       <p>
-        Presentados como consultas formales ante el convocante. Una frase truncada dejaba en cero puntos a seis especialistas del plantel propuesto.
+        Presentados como consultas formales ante el convocante antes de la presentación. Una frase truncada dejaba en cero puntos a seis especialistas del plantel propuesto.
       </p>
 
       <p>
@@ -244,11 +244,7 @@ const breadcrumbs = [
       />
 
       <p>
-        Sobre nuestra propia experiencia, el análisis y el armado documental pasaron a ocupar una fracción de las horas de equipo que llevaban antes. La lectura completa del pliego dejó de competir contra la fecha de presentación.
-      </p>
-
-      <p>
-        Y quedan dos cosas que se llevan puestas después de la entrega.
+        Más que ahorrar tiempo, este enfoque permite entregar una propuesta más completa y con menor riesgo. Y quedan dos cosas que se llevan puestas después de la entrega.
       </p>
 
       <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">Documentación completa</h3>
@@ -263,7 +259,7 @@ const breadcrumbs = [
     </article>
   </FullBleedSection>
 
-  <!-- El contexto (la investigación, ahora como respaldo) -->
+  <!-- El contexto (la investigación, como respaldo) -->
   <FullBleedSection bg="white" padding="md">
     <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
 
@@ -288,7 +284,7 @@ const breadcrumbs = [
       </figure>
 
       <p>
-        El estudio <em>Build for the Future</em> de BCG, sobre 1.250 ejecutivos, encontró que solo el 5% de las empresas obtiene valor sustancial de la inteligencia artificial. El dato que suele quedar fuera del gráfico es el tramo del medio: un <strong class="text-slate-dg">35% que ya está escalando y empieza a generarlo</strong>.
+        La mayoría de las empresas ya experimentaron con inteligencia artificial; muy pocas la convirtieron en ventaja. El estudio <em>Build for the Future</em> de BCG, sobre 1.250 ejecutivos, encontró que solo el 5% obtiene valor sustancial. El dato que suele quedar fuera del gráfico es el tramo del medio: un <strong class="text-slate-dg">35% que ya está escalando y empieza a generarlo</strong>.
       </p>
 
       <p>
@@ -330,13 +326,13 @@ const breadcrumbs = [
     }
   </style>
 
-  <!-- CTA final -->
+  <!-- CTA final — conversión comercial -->
   <section class="relative py-20 md:py-24 overflow-hidden">
     <div class="absolute inset-0 bg-slate-dg"></div>
     <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
     <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
-      <h2 class="text-display text-cream text-3xl md:text-[40px] mb-4">¿Tiene un pliego por delante?</h2>
-      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[520px] mx-auto">Hablemos sobre la preparación de su documentación técnica.</p>
+      <h2 class="text-display text-cream text-3xl md:text-[40px] mb-4">¿Su organización participa regularmente en licitaciones?</h2>
+      <p class="text-cream/55 text-base md:text-lg mb-10 max-w-[620px] mx-auto">Ponemos nuestros especialistas asistidos por IA al servicio de sus propuestas: mayor cobertura del pliego, menor riesgo de omisiones y un proceso de revisión más robusto, para que su equipo se concentre en las decisiones estratégicas.</p>
       <div class="flex flex-wrap justify-center gap-4">
         <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
         <Button href="/blog" variant="ghost-dark" size="lg">Ver más Insights</Button>
