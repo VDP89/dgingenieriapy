@@ -1,0 +1,97 @@
+---
+import Base from '../layouts/Base.astro';
+import FullBleedSection from '../components/FullBleedSection.astro';
+import Button from '../components/Button.astro';
+
+const enDesarrollo = [
+  { name: 'SOLÓN', disc: 'Licitaciones y pliegos' },
+  { name: 'CALÍMACO', disc: 'Especificaciones técnicas' },
+  { name: 'AMÍLCAR', disc: 'Pavimentos' },
+  { name: 'POSEIDÓN', disc: 'Hidrología e hidráulica' },
+  { name: 'ANTEO', disc: 'Geotecnia y taludes' },
+  { name: 'EUCLIDES', disc: 'Diseño geométrico vial' },
+];
+
+const breadcrumbs = [
+  { name: 'Inicio', url: '/' },
+  { name: 'Soluciones IA', url: '/soluciones-ia' },
+];
+---
+
+<Base
+  title="Soluciones IA para ingeniería civil"
+  description="Herramientas de inteligencia artificial de DG Ingeniería para el trabajo técnico de la ingeniería civil. ERGON, para presupuestos y control de obra, ya está disponible."
+  breadcrumbs={breadcrumbs}
+>
+
+  <!-- HERO (slate, sin foto — patrón de puntos del sistema) -->
+  <section class="relative bg-slate-dg overflow-hidden min-h-[54vh] flex items-center" data-hero>
+    <div class="absolute inset-0 opacity-[0.04]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="absolute top-[-12%] right-[-6%] w-[440px] h-[440px] border border-cream/[0.04] rounded-full"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 py-24 w-full">
+      <div class="max-w-[680px]">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="h-px w-10 bg-arena"></div>
+          <span class="text-[11px] font-semibold tracking-[3px] uppercase text-arena">Soluciones IA</span>
+        </div>
+        <h1 class="text-display text-cream text-4xl md:text-[54px] lg:text-[60px] mb-6 leading-[1.05]">
+          Herramientas para<br /><span class="text-arena">ingeniería civil</span>
+        </h1>
+        <p class="text-[17px] leading-relaxed text-cream/70 max-w-[540px]">
+          ERGON está disponible para presupuestos y control de obra. Las demás herramientas están en desarrollo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISPONIBLE -->
+  <FullBleedSection bg="white" padding="md">
+    <span class="text-[11px] font-bold tracking-[3px] uppercase text-arena mb-6 block">Disponible</span>
+    <a
+      href="https://ergonpy.com/"
+      target="_blank"
+      rel="noopener"
+      class="group block border-l-2 border-arena bg-cream-deep/40 hover:bg-cream-deep/70 transition-colors rounded-r-lg pl-6 pr-6 md:pl-8 md:pr-8 py-6 md:py-7 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+      aria-label="Abrir ERGON en ergonpy.com"
+    >
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+        <div>
+          <h2 class="text-2xl md:text-[26px] font-extrabold tracking-tight text-slate-dg">ERGON</h2>
+          <p class="text-gray-neutral text-[15px] mt-1">Presupuestos y control de obra</p>
+        </div>
+        <span class="inline-flex items-center gap-1.5 text-slate-dg font-semibold text-[14px] whitespace-nowrap">
+          Abrir ERGON
+          <span class="text-arena inline-block group-hover:translate-x-0.5 transition-transform">&#8599;</span>
+        </span>
+      </div>
+    </a>
+  </FullBleedSection>
+
+  <!-- EN DESARROLLO -->
+  <FullBleedSection bg="cream" padding="md" border="top">
+    <span class="text-[11px] font-bold tracking-[3px] uppercase text-gray-neutral mb-6 block">En desarrollo</span>
+    <ul>
+      {enDesarrollo.map((t) => (
+        <li class="py-5 border-b border-slate-dg/[0.08]">
+          <h3 class="text-lg font-bold tracking-tight text-slate-dg">{t.name}</h3>
+          <p class="text-gray-neutral text-[14px] mt-1">{t.disc}</p>
+        </li>
+      ))}
+    </ul>
+  </FullBleedSection>
+
+  <!-- CTA FINAL -->
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Un proyecto donde estas herramientas puedan ayudar?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[560px] mx-auto">Contáctenos y vemos cómo pueden acompañar su obra.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
+        <Button href="https://ergonpy.com/" variant="ghost-dark" size="lg">Abrir ERGON</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>
