@@ -30,7 +30,18 @@ const COPY = {
     heading: 'Déjanos un mensaje',
     subject: 'Nuevo mensaje desde dgingenieriapy.com/contacto',
     fromName: 'Web dgingenieriapy.com',
-    fields: { name: 'nombre', company: 'empresa', email: 'email', message: 'mensaje' },
+    fields: { name: 'nombre', company: 'empresa', email: 'email', message: 'mensaje', source: 'como_nos_encontro' },
+    sourceLabel: '¿Cómo nos encontró?',
+    sourceHint: 'Opcional. Nos ayuda a saber qué está funcionando.',
+    sourceOptions: [
+      ['', 'Prefiero no decirlo'],
+      ['buscador', 'Buscando en Google u otro buscador'],
+      ['ia', 'Me lo sugirió un asistente de IA (ChatGPT, Claude, Gemini…)'],
+      ['referencia', 'Por recomendación de alguien'],
+      ['linkedin', 'LinkedIn u otra red'],
+      ['ya_conocia', 'Ya conocía a DG'],
+      ['otro', 'Otro'],
+    ],
     labels: { name: 'Nombre', company: 'Empresa', email: 'Email', message: 'Mensaje' },
     ph: {
       name: 'Tu nombre',
@@ -50,7 +61,18 @@ const COPY = {
     heading: 'Send us a message',
     subject: '[EN] New enquiry from dgingenieriapy.com/en/contact',
     fromName: 'dgingenieriapy.com (English site)',
-    fields: { name: 'name', company: 'company', email: 'email', message: 'message' },
+    fields: { name: 'name', company: 'company', email: 'email', message: 'message', source: 'how_found_us' },
+    sourceLabel: 'How did you find us?',
+    sourceHint: 'Optional. It tells us what is actually working.',
+    sourceOptions: [
+      ['', 'Prefer not to say'],
+      ['search', 'Searching on Google or another search engine'],
+      ['ai', 'An AI assistant suggested you (ChatGPT, Claude, Gemini…)'],
+      ['referral', 'Someone recommended you'],
+      ['linkedin', 'LinkedIn or another network'],
+      ['already_knew', 'I already knew DG'],
+      ['other', 'Other'],
+    ],
     labels: { name: 'Name', company: 'Company', email: 'Email', message: 'Message' },
     ph: {
       name: 'Your name',
@@ -123,6 +145,14 @@ const inputCls =
       {c.labels.message} <span class="text-arena" aria-hidden="true">*</span>
     </label>
     <textarea id="cf-message" name={c.fields.message} required aria-required="true" placeholder={c.ph.message} rows="6" class={`${inputCls} resize-none`}></textarea>
+  </div>
+
+  <div>
+    <label for="cf-source" class="block text-sm font-semibold text-slate-dg mb-2">{c.sourceLabel}</label>
+    <select id="cf-source" name={c.fields.source} class={inputCls}>
+      {c.sourceOptions.map(([v, t]) => <option value={v}>{t}</option>)}
+    </select>
+    <p class="text-xs text-gray-neutral mt-1.5">{c.sourceHint}</p>
   </div>
 
   <button
