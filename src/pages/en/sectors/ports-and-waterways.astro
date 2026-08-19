@@ -1,0 +1,158 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import FullBleedSection from '../../../components/FullBleedSection.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import Button from '../../../components/Button.astro';
+import { nav } from '../../../i18n/ui';
+
+const N = nav('en');
+
+const capabilities = [
+  { title: 'Assessment of port conditions', desc: 'Site conditions, operational constraints, logistics requirements and compatibility with existing infrastructure.', icon: 'anchor' },
+  { title: 'Loading engineering studies', desc: 'Technical evaluation of loading options, preliminary sizing and analysis of alternatives on technical and economic criteria.', icon: 'ship' },
+  { title: 'Coordination across disciplines', desc: 'Geotechnics, hydrology, survey, access roads and operational logistics brought into one coherent analysis.', icon: 'link' },
+  { title: 'Integrated technical solutions', desc: 'Each component set within the overall project analysis, so the whole holds together technically.', icon: 'puzzle' },
+  { title: 'Translation between specialists', desc: 'The bridge between disciplines: technical translation and consolidation of project criteria.', icon: 'network' },
+];
+
+const experience = [
+  { label: 'Puerto Torocuá', detail: 'Grupo Favero · Paraná river' },
+  { label: 'Port studies', detail: 'Assessment of conditions and coordination across disciplines' },
+  { label: 'Paraná river', detail: 'Experience in Paraguayan inland waterway infrastructure' },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: '/en/' },
+  { name: 'Sectors', url: '/en/sectors' },
+  { name: 'Ports & Waterways', url: '/en/sectors/ports-and-waterways' },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Port and inland waterway engineering studies',
+  serviceType: 'Port engineering studies and multidisciplinary coordination',
+  description: 'Port and inland waterway engineering studies in Paraguay: assessment of site and operational conditions, evaluation of loading options, coordination across geotechnics, hydrology, survey, access roads and operational logistics.',
+  provider: {
+    '@type': 'Organization',
+    '@id': 'https://dgingenieriapy.com/#organization',
+    name: 'DG Ingeniería SRL',
+    url: 'https://dgingenieriapy.com',
+  },
+  areaServed: { '@type': 'Country', name: 'Paraguay' },
+  url: 'https://dgingenieriapy.com/en/sectors/ports-and-waterways',
+  inLanguage: 'en',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Capabilities',
+    itemListElement: capabilities.map((c) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: c.title, description: c.desc },
+    })),
+  },
+};
+---
+
+<Base
+  title="Port and inland waterway engineering in Paraguay"
+  description="Port engineering studies on the Paraná river: assessment of port conditions, coordination across disciplines and technical solutions for loading infrastructure."
+  preloadImg="/img/sector-puertos.webp"
+  breadcrumbs={breadcrumbs}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)} />
+  </Fragment>
+
+  <PageHero
+    img="/img/sector-puertos.jpg"
+    imgAlt="Port infrastructure"
+    kicker="Sectors · Ports and waterways"
+    title="Port and waterway"
+    titleAccent="engineering studies"
+    subtitle="Assessment of port conditions, coordination across disciplines and technical solutions for loading infrastructure."
+    height="md"
+  >
+    <Button href={N.contact} variant="primary" magnetic>Discuss a project</Button>
+    <Button href={N.sectors} variant="ghost-dark">All sectors</Button>
+  </PageHero>
+
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="Approach"
+          title="Port and waterway"
+          titleAccent="engineering studies"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>Port and inland waterway infrastructure needs a multidisciplinary approach that pulls several technical analyses into one. We carry out engineering studies aimed at understanding the situation of a loading port: site conditions, operational constraints, logistics requirements and compatibility with existing infrastructure.</p>
+        <p>We work at the interfaces between disciplines: geotechnics, hydrology, survey, access roads and operational logistics. We coordinate how each component fits into the overall project analysis, so the result is technically consistent rather than a stack of separate reports.</p>
+        <p>Our work at Puerto Torocuá on the Paraná river gave us the basis for approaching this kind of project with practical judgement: understand the real site conditions, identify which specialists are actually needed, and articulate engineering solutions matched to the scale and complexity of the case.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream-deep" padding="md">
+    <SectionHeader
+      kicker="Capabilities"
+      title="What we do"
+      lead="Port engineering studies on the Paraná river: assessment of port conditions, coordination across disciplines and technical solutions for loading infrastructure."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {capabilities.map((c) => (
+        <div class="bg-white rounded-xl p-7 border border-slate-dg/[0.08] shadow-sm hover:shadow-md transition-shadow" data-animate>
+          <div class="w-11 h-11 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
+            {c.icon === 'anchor' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><path d="M12 8v13M5 12H2a10 10 0 0 0 20 0h-3"/></svg>}
+            {c.icon === 'ship' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M2 20a6 6 0 0 0 12 0M14 20a6 6 0 0 0 8 0M12 4v16M4 13l8-8 8 8"/></svg>}
+            {c.icon === 'link' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>}
+            {c.icon === 'puzzle' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M19 11h2v4a2 2 0 0 1-2 2h-4v2a3 3 0 0 1-6 0v-2H5a2 2 0 0 1-2-2v-4h2a3 3 0 0 0 0-6H3V5a2 2 0 0 1 2-2h4V1a3 3 0 0 1 6 0v2h4a2 2 0 0 1 2 2v4h-2a3 3 0 0 0 0 6z"/></svg>}
+            {c.icon === 'network' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 7l3 3m7-3-3 3m-7 7 3-3m7 3-3-3"/></svg>}
+          </div>
+          <h3 class="text-[17px] font-extrabold tracking-tight mb-2 text-slate-dg">{c.title}</h3>
+          <p class="text-[13.5px] text-slate-dg/65 leading-relaxed">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream" padding="md">
+    <SectionHeader
+      kicker="Experience"
+      title="Experience"
+      lead="Port studies on the Paraná river."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[900px] mx-auto">
+      {experience.map((e) => (
+        <div class="bg-white rounded-xl p-6 border border-slate-dg/[0.08] flex items-start gap-4" data-animate>
+          <div class="w-10 h-10 rounded-full bg-arena/12 flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-arena" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 18 18"><polyline points="4 9 8 13 14 5"/></svg>
+          </div>
+          <div>
+            <h4 class="text-[15px] font-extrabold text-slate-dg tracking-tight mb-1">{e.label}</h4>
+            <p class="text-[13px] text-slate-dg/60 leading-relaxed">{e.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">Working on a port project?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[560px] mx-auto">Tell us the site and the operation, and we will tell you which studies the decision actually depends on.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href={N.contact} variant="primary" size="lg">Start a conversation</Button>
+        <Button href={N.sectors} variant="ghost-dark" size="lg">Other sectors</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>

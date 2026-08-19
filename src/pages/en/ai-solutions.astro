@@ -1,25 +1,25 @@
 ---
-import Base from '../layouts/Base.astro';
-import FullBleedSection from '../components/FullBleedSection.astro';
-import Button from '../components/Button.astro';
+import Base from '../../layouts/Base.astro';
+import FullBleedSection from '../../components/FullBleedSection.astro';
+import Button from '../../components/Button.astro';
+import { nav } from '../../i18n/ui';
 
-const enDesarrollo = [
-  { name: 'SOLÓN', disc: 'Licitaciones y pliegos' },
-  { name: 'CALÍMACO', disc: 'Especificaciones técnicas' },
-  { name: 'AMÍLCAR', disc: 'Pavimentos' },
-  { name: 'POSEIDÓN', disc: 'Hidrología e hidráulica' },
-  { name: 'ANTEO', disc: 'Geotecnia y taludes' },
-  { name: 'EUCLIDES', disc: 'Diseño geométrico vial' },
+const N = nav('en');
+
+const inDevelopment = [
+  { name: 'SOLÓN', disc: 'Tenders and bidding documents' },
+  { name: 'CALÍMACO', disc: 'Technical specifications' },
+  { name: 'AMÍLCAR', disc: 'Pavements' },
+  { name: 'POSEIDÓN', disc: 'Hydrology and hydraulics' },
+  { name: 'ANTEO', disc: 'Geotechnics and slopes' },
+  { name: 'EUCLIDES', disc: 'Highway geometric design' },
 ];
 
 const breadcrumbs = [
-  { name: 'Inicio', url: '/' },
-  { name: 'Soluciones IA', url: '/soluciones-ia' },
+  { name: 'Home', url: '/en/' },
+  { name: 'AI Solutions', url: '/en/ai-solutions' },
 ];
 
-// Entidad ERGON. Sin esto, "ERGON" es una palabra suelta para un buscador o un LLM:
-// no hay nada que diga QUE hace, y no puede aparecer como respuesta a "software de
-// presupuesto de obra". La ficha de abajo y este schema son la misma afirmacion.
 const ergonSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -30,29 +30,29 @@ const ergonSchema = {
   operatingSystem: 'Web',
   url: 'https://ergonpy.com/',
   description:
-    'Plataforma de presupuesto y control de obra: cómputo métrico, análisis de precios unitarios (APU), cronograma, curva S y valor ganado (EVM), pedidos de información (RFI), inspecciones y control documental. Desarrollada por DG Ingeniería a partir de obras ejecutadas en Paraguay.',
+    'Construction budgeting and control platform: quantity take-off, unit price analysis, programme, S-curve and earned value (EVM), requests for information, inspections and document control. Built by DG Ingeniería out of projects delivered in Paraguay.',
   inLanguage: 'es',
   author: { '@id': 'https://dgingenieriapy.com/#organization' },
   publisher: { '@id': 'https://dgingenieriapy.com/#organization' },
   featureList: [
-    'Cómputo métrico y planilla de presupuesto',
-    'Análisis de precios unitarios (APU) con banco de ítems',
-    'Cronograma de obra y curva S',
-    'Valor ganado (EVM): BAC, PV, EV, AC, SPI, CPI',
-    'Pedidos de información (RFI) e inspecciones',
-    'Control documental con línea base auditable',
+    'Quantity take-off and budget schedule',
+    'Unit price analysis with a reusable item bank',
+    'Construction programme and S-curve',
+    'Earned value: BAC, PV, EV, AC, SPI, CPI',
+    'Requests for information (RFI) and inspections',
+    'Document control on an auditable baseline',
   ],
 };
 ---
 
 <Base
-  title="Soluciones IA para ingeniería civil"
-  description="Herramientas de inteligencia artificial de DG Ingeniería para el trabajo técnico de la ingeniería civil. ERGON, para presupuestos y control de obra, ya está disponible."
+  title="AI tools for civil engineering"
+  description="Software and AI tools built by DG Ingeniería for civil engineering work. ERGON, for construction budgeting and control, is available now."
   breadcrumbs={breadcrumbs}
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(ergonSchema)} />
 
-  <!-- HERO (slate, sin foto — patrón de puntos del sistema) -->
+  <!-- HERO -->
   <section class="relative bg-slate-dg overflow-hidden min-h-[54vh] flex items-center" data-hero>
     <div class="absolute inset-0 opacity-[0.04]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
     <div class="absolute top-[-12%] right-[-6%] w-[440px] h-[440px] border border-cream/[0.04] rounded-full"></div>
@@ -60,57 +60,60 @@ const ergonSchema = {
       <div class="max-w-[680px]">
         <div class="flex items-center gap-3 mb-8">
           <div class="h-px w-10 bg-arena"></div>
-          <span class="text-[11px] font-semibold tracking-[3px] uppercase text-arena">Soluciones IA</span>
+          <span class="text-[11px] font-semibold tracking-[3px] uppercase text-arena">AI Solutions</span>
         </div>
         <h1 class="text-display text-cream text-4xl md:text-[54px] lg:text-[60px] mb-6 leading-[1.05]">
-          Herramientas para<br /><span class="text-arena">ingeniería civil</span>
+          Tools for<br /><span class="text-arena">civil engineering</span>
         </h1>
         <p class="text-[17px] leading-relaxed text-cream/70 max-w-[540px]">
-          ERGON está disponible para presupuestos y control de obra. Las demás herramientas están en desarrollo.
+          ERGON is available now for construction budgeting and control. The rest are in development. We build these because we use them: the tools come out of the engineering work, not the other way round.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- DISPONIBLE -->
+  <!-- AVAILABLE -->
   <FullBleedSection bg="white" padding="md">
-    <span class="text-[11px] font-bold tracking-[3px] uppercase text-arena mb-6 block">Disponible</span>
+    <span class="text-[11px] font-bold tracking-[3px] uppercase text-arena mb-6 block">Available</span>
     <a
       href="https://ergonpy.com/"
       target="_blank"
       rel="noopener"
       class="group block border-l-2 border-arena bg-cream-deep/40 hover:bg-cream-deep/70 transition-colors rounded-r-lg pl-6 pr-6 md:pl-8 md:pr-8 py-6 md:py-7 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-      aria-label="Abrir ERGON en ergonpy.com"
+      aria-label="Open ERGON at ergonpy.com"
     >
       <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
         <div class="max-w-[640px]">
           <h2 class="text-2xl md:text-[26px] font-extrabold tracking-tight text-slate-dg">ERGON</h2>
-          <p class="text-gray-neutral text-[15px] mt-1 font-medium">Presupuesto y control de obra</p>
+          <p class="text-gray-neutral text-[15px] mt-1 font-medium">Construction budgeting and control</p>
           <p class="text-slate-dg/70 text-[14.5px] leading-relaxed mt-3">
-            Plataforma web para presupuestar una obra y después controlarla contra ese presupuesto.
-            Cubre el cómputo métrico, el análisis de precios unitarios (APU) con banco de ítems, el
-            cronograma con curva S y el seguimiento por valor ganado (EVM), además de pedidos de
-            información, inspecciones y control documental sobre una línea base auditable.
+            A web platform to budget a project and then control it against that budget. It covers
+            quantity take-off, unit price analysis against a reusable item bank, the construction
+            programme with its S-curve, and earned value tracking — plus requests for information,
+            inspections and document control on an auditable baseline.
+          </p>
+          <p class="text-slate-dg/55 text-[13px] leading-relaxed mt-3">
+            The interface is in Spanish. Written for the Paraguayan and regional construction market.
           </p>
           <ul class="flex flex-wrap gap-2 mt-4">
-            {['Cómputo métrico', 'APU', 'Curva S', 'Valor ganado (EVM)', 'RFI e inspecciones'].map((f) => (
+            {['Quantity take-off', 'Unit price analysis', 'S-curve', 'Earned value (EVM)', 'RFI and inspections'].map((f) => (
               <li class="text-[12px] font-semibold text-gray-neutral bg-white px-2.5 py-1 rounded border border-slate-dg/[0.10]">{f}</li>
             ))}
           </ul>
         </div>
         <span class="inline-flex items-center gap-1.5 text-slate-dg font-semibold text-[14px] whitespace-nowrap md:mt-1">
-          Abrir ERGON
+          Open ERGON
           <span class="text-arena inline-block group-hover:translate-x-0.5 transition-transform">&#8599;</span>
         </span>
       </div>
     </a>
   </FullBleedSection>
 
-  <!-- EN DESARROLLO -->
+  <!-- IN DEVELOPMENT -->
   <FullBleedSection bg="cream" padding="md" border="top">
-    <span class="text-[11px] font-bold tracking-[3px] uppercase text-gray-neutral mb-6 block">En desarrollo</span>
+    <span class="text-[11px] font-bold tracking-[3px] uppercase text-gray-neutral mb-6 block">In development</span>
     <ul>
-      {enDesarrollo.map((t) => (
+      {inDevelopment.map((t) => (
         <li class="py-5 border-b border-slate-dg/[0.08]">
           <h3 class="text-lg font-bold tracking-tight text-slate-dg">{t.name}</h3>
           <p class="text-gray-neutral text-[14px] mt-1">{t.disc}</p>
@@ -119,16 +122,16 @@ const ergonSchema = {
     </ul>
   </FullBleedSection>
 
-  <!-- CTA FINAL -->
+  <!-- CTA -->
   <section class="relative py-20 md:py-28 overflow-hidden">
     <div class="absolute inset-0 bg-slate-dg"></div>
     <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
     <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
-      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Un proyecto donde estas herramientas puedan ayudar?</h2>
-      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[560px] mx-auto">Contáctenos y vemos cómo pueden acompañar su obra.</p>
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">A project where these tools would help?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[560px] mx-auto">Tell us what you are trying to control and we will tell you whether the tooling fits.</p>
       <div class="flex flex-wrap justify-center gap-4">
-        <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
-        <Button href="https://ergonpy.com/" variant="ghost-dark" size="lg">Abrir ERGON</Button>
+        <Button href={N.contact} variant="primary" size="lg">Start a conversation</Button>
+        <Button href="https://ergonpy.com/" variant="ghost-dark" size="lg">Open ERGON</Button>
       </div>
     </div>
   </section>

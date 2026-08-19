@@ -1,0 +1,226 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import FullBleedSection from '../../../components/FullBleedSection.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import Button from '../../../components/Button.astro';
+import { nav } from '../../../i18n/ui';
+
+const N = nav('en');
+
+const capabilities = [
+  { title: 'Site feasibility and due diligence', desc: 'Drone survey, bearing capacity, site constraints and technical feasibility — the evidence an investment committee needs before committing to a site for a solar park or a data center.', icon: 'site' },
+  { title: 'Civil works and supporting engineering', desc: 'Platforms, foundations, earthworks, construction and maintenance access, and the structural elements that make operation possible.', icon: 'platform' },
+  { title: 'Hydrology and water', desc: 'Drainage, flood level and protection of the asset. For data centers, assessment of water availability for cooling — and what it costs when there is none.', icon: 'water' },
+  { title: 'ERNC framework and permitting', desc: 'Positioning under Law 7599/2025 and Decree 6034/2026, and within the ANDE, VMME and MADES processes, so the project advances on rules that are actually current.', icon: 'permit' },
+  { title: 'Coordination across disciplines', desc: 'We bring in the electrical, generation, cooling and communications specialists, and translate between them so the project moves without technical noise.', icon: 'network' },
+  { title: 'Owner’s engineer and construction control', desc: 'Independent supervision on the ERGON platform: physical and financial progress, earned value, and technical visibility for an owner who is not in the country.', icon: 'eye' },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: '/en/' },
+  { name: 'Sectors', url: '/en/sectors' },
+  { name: 'Solar & Data Centers', url: '/en/sectors/solar-and-data-centers' },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Local engineering partner for solar parks and data centers in Paraguay',
+  serviceType: 'Owner-side civil engineering for energy and digital infrastructure',
+  description: 'Local engineering partner in Paraguay for international developers and operators of solar parks and data centers: site feasibility, civil works, hydrology, ERNC regulatory framing (Law 7599/2025, Decree 6034/2026), coordination across disciplines and construction supervision on the ERGON platform.',
+  provider: {
+    '@type': 'Organization',
+    '@id': 'https://dgingenieriapy.com/#organization',
+    name: 'DG Ingeniería SRL',
+    url: 'https://dgingenieriapy.com',
+  },
+  areaServed: { '@type': 'Country', name: 'Paraguay' },
+  url: 'https://dgingenieriapy.com/en/sectors/solar-and-data-centers',
+  inLanguage: 'en',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Capabilities for solar and data center projects',
+    itemListElement: capabilities.map((c) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: c.title, description: c.desc },
+    })),
+  },
+};
+
+// FAQ en ingles — superficie de cita para motores de respuesta. Las preguntas son las
+// que un inversor extranjero hace de verdad, no la traduccion de las preguntas locales.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: 'en',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Who can act as local engineering partner for a data center or solar project in Paraguay?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'DG Ingeniería SRL is a Paraguayan civil engineering firm that acts as the local engineering arm for international developers, funds and operators without their own structure in the country. It provides the base civil engineering (drone survey, bearing capacity, platforms, access, earthworks and drainage), working knowledge of the ERNC framework (Law 7599/2025 and Decree 6034/2026) and of the ANDE, VMME and MADES processes, desk-level site feasibility, and construction supervision on its own ERGON platform. The developer brings equity, MW experience and technology; DG resolves the local engineering, site and permitting layer.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What actually decides whether a data center site in Paraguay is viable?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Three filters decide it, and none of them is the size of the plot. First, firm power: installed capacity at a substation is not the same as firm capacity assignable to a private offtaker, and the number that governs the schedule is time-to-power, not the nameplate rating. Second, water and cooling: whether there is a usable source, and if not, whether the design absorbs dry or liquid cooling. Third, redundant fibre with physically diverse routes. Flood risk and geotechnical bearing capacity narrow the usable area further. A desk-level assessment can screen all of these before any field campaign is committed.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is powered land and why does it matter in Paraguay?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Powered land is a site whose value lies in the firm electrical capacity it can secure, rather than in its area. Land near a substation is a necessary condition, not a sufficient one: powered land means contracted supply, a defined connection point, verified redundancy and a committed energisation date. In Paraguay the route to large-load supply runs through ANDE, and the applicable regime has been under active reform during 2026 — which is why any statement about tariff or regime has to carry a date. The commercial negotiation of power and tariff belongs to the developer, not to the engineer.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What does an international developer need to build a solar park in Paraguay?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The governing framework is Law 7599/2025 on non-conventional renewable energy (ERNC) and its implementing Decree 6034/2026. A project needs regulatory positioning (registration up to 1 MW, MOPC/VMME licensing above 1 MW), an environmental licence from MADES, a connection and interconnection study with ANDE, site feasibility and due diligence, base civil engineering, and detailed electrical and generation design. Paraguay’s first large-scale solar tender — Loma Plata, 140 MW — opened this pipeline, and ANDE’s master plan projects a chain of renewable projects in the years ahead.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What civil works does a solar park or data center require?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Site feasibility studies and soil bearing capacity; road access able to carry construction and heavy transport such as transformers and gensets; grading and earthworks; platforms with specific load requirements; foundations for support structures or technical buildings; and drainage that protects the asset. Data centers add coordination with cooling, power and communications. DG designs this base civil engineering and, during construction, supervises it with technical visibility for the investor.',
+      },
+    },
+  ],
+};
+---
+
+<Base
+  title="Solar and data center engineering in Paraguay"
+  description="Local engineering partner in Paraguay for solar parks and data centers: site feasibility, power and water screening, civil works, ERNC permitting and construction supervision."
+  preloadImg="/img/sector-solar.webp"
+  breadcrumbs={breadcrumbs}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <PageHero
+    img="/img/sector-solar.jpg"
+    imgAlt="Solar and data center infrastructure in Paraguay"
+    kicker="Sectors · Energy and digital infrastructure"
+    title="The local engineering partner"
+    titleAccent="for solar and data centers"
+    subtitle="Owner-side engineering in Paraguay for international developers and operators: site feasibility, base civil works, ERNC regulatory framing and construction supervision."
+    height="md"
+  >
+    <Button href={N.contact} variant="primary" magnetic>Discuss a project</Button>
+    <Button href={N.sectors} variant="ghost-dark">All sectors</Button>
+  </PageHero>
+
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="Approach"
+          title="The local layer"
+          titleAccent="a project in Paraguay cannot skip"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>Paraguay opened its renewable energy market: Law 7599/2025 and Decree 6034/2026 set the framework, and the country’s first large-scale solar tender — Loma Plata, 140 MW — started a pipeline of projects set out in ANDE’s master plan. For a developer, fund or operator arriving from abroad, moving here requires a local layer of engineering, site knowledge and permitting.</p>
+        <p>That is where DG comes in. We provide the base civil engineering that makes a solar park or a data center buildable: site feasibility and due diligence, drone survey, soil bearing capacity, platforms, access, earthworks and drainage. We bring in the electrical, generation and cooling specialists and translate between disciplines, so the project advances with technical certainty from the earliest stages.</p>
+        <p>We work against the country’s actual institutions — ANDE, VMME and MADES, the ERNC regime — and during construction we supervise the works on our own ERGON platform, giving an owner abroad real-time technical visibility. The developer brings the capital, the MW experience and the technology; we resolve the local engineering, the site and the permitting.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream-deep" padding="md">
+    <SectionHeader
+      kicker="Capabilities"
+      title="What we do"
+      lead="Base civil engineering, site feasibility, regulatory framing and construction supervision for solar parks and data centers in Paraguay."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {capabilities.map((c) => (
+        <div class="bg-white rounded-xl p-7 border border-slate-dg/[0.08] shadow-sm hover:shadow-md transition-shadow" data-animate>
+          <div class="w-11 h-11 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
+            {c.icon === 'site' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 20h18M5 16c3-4 5-4 7-1s5 3 7-1m-14 0V8m14 8V8M5 8c3-4 5-4 7-1s5 3 7-1"/></svg>}
+            {c.icon === 'platform' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 12h18M3 12v8h18v-8M6 12V6h12v6"/></svg>}
+            {c.icon === 'water' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2.5S5 10 5 14.5a7 7 0 0 0 14 0C19 10 12 2.5 12 2.5Z"/><path d="M9 15a3 3 0 0 0 3 3"/></svg>}
+            {c.icon === 'permit' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>}
+            {c.icon === 'network' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 7l3 3m7-3-3 3m-7 7 3-3m7 3-3-3"/></svg>}
+            {c.icon === 'eye' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M2 12s3-8 10-8 10 8 10 8-3 8-10 8-10-8-10-8Z"/><circle cx="12" cy="12" r="3"/></svg>}
+          </div>
+          <h3 class="text-[17px] font-extrabold tracking-tight mb-2 text-slate-dg">{c.title}</h3>
+          <p class="text-[13.5px] text-slate-dg/65 leading-relaxed">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="The three filters"
+          title="What decides an energy-intensive site"
+          titleAccent="— and it is not the hectares"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>Most sites fail on the same three things, and all three can be screened from a desk before any field money is committed:</p>
+        <ul class="space-y-3 list-none pl-0">
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Firm power.</strong> Installed capacity at a substation is not firm capacity assignable to a private offtaker. The number that governs your schedule is <em>time-to-power</em>, not the nameplate rating — and confirming it means a formal enquiry, not a map.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Water and cooling.</strong> Whether a usable source exists at a workable distance and quality — and if it does not, what dry or liquid cooling does to the footprint and the capital cost.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Redundant fibre.</strong> At least two carriers on physically diverse routes, with capacity that scales and pre-feasibility letters you can hold.</span></li>
+        </ul>
+        <p>Flood risk and bearing capacity then narrow the usable area. We deliver that screening as a desk-level assessment with a traffic-light on each filter, an indicative masterplan and a risk matrix — so the decision to spend on a field campaign is made with evidence rather than optimism.</p>
+        <p class="text-[13.5px] text-slate-dg/55 border-l-2 border-arena/30 pl-4">One boundary we state up front: the commercial negotiation of power and tariff belongs to the developer, and the formal submission to ANDE is signed by whoever holds title to the site. We prepare the technical case and the roadmap behind it.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="For developers and operators"
+          title="Your presence on the ground,"
+          titleAccent="without opening an office here"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>An energy or data center project in Paraguay is won and delivered with local knowledge of the ground, the regulatory framework and the ANDE and MADES processes. DG covers that layer for those arriving from outside:</p>
+        <ul class="space-y-3 list-none pl-0">
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Territorial intelligence:</strong> site assessment, resource, constraints and flood exposure, using our own drone survey.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Feasibility, desk-level and technical:</strong> base and site engineering solid enough to carry an investment decision or a bid.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Regulatory framing:</strong> ERNC regime, licensing, connection with ANDE and environmental licence with MADES.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Owner’s engineer:</strong> independent construction control on the ERGON platform, on the owner’s side of the table.</span></li>
+        </ul>
+        <p>It is the same way we work across more than a thousand kilometres of highway projects and on civil and industrial works around the country, now pointed at energy and digital infrastructure.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">Assessing a solar or data center project in Paraguay?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[560px] mx-auto">Tell us what you are evaluating — site, power, water or permitting — and we will tell you what it actually takes here, and how long.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href={N.contact} variant="primary" size="lg">Start a conversation</Button>
+        <Button href={N.sectors} variant="ghost-dark" size="lg">Other sectors</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>

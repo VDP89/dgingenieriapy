@@ -1,0 +1,131 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import FullBleedSection from '../../../components/FullBleedSection.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import Button from '../../../components/Button.astro';
+import { nav } from '../../../i18n/ui';
+
+const N = nav('en');
+
+const capabilities = [
+  { title: 'Concept and detailed design', desc: 'Concept design and detailed design with architecture, structure and services coordinated — ready to tender and to build.', icon: 'docs' },
+  { title: 'Project management', desc: 'The project run end to end: programme, budget by trade, contractors and technical decisions, against an auditable baseline.', icon: 'chart' },
+  { title: 'Construction and site direction', desc: 'Construction direction with contractor coordination and on-site quality control, without the investor having to build a site organisation of their own.', icon: 'build' },
+  { title: 'Supervision and earned value', desc: 'Independent technical control with S-curve, earned value (SPI and CPI) and early detection of schedule and cost deviations.', icon: 'eye' },
+  { title: 'Coordination across disciplines', desc: 'Architecture, structure, plumbing and electrical brought together, to avoid technical noise and rework on site.', icon: 'network' },
+  { title: 'Visibility for the investor', desc: 'The ERGON platform: physical and financial progress in real time, reporting differentiated by stakeholder, and early warnings with technical backing.', icon: 'alert' },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: '/en/' },
+  { name: 'Sectors', url: '/en/sectors' },
+  { name: 'Residential Development', url: '/en/sectors/residential-development' },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Residential development engineering and construction supervision',
+  serviceType: 'Design, project management and owner-side construction supervision',
+  description: 'The technical arm of residential development in Paraguay: concept and detailed design, project management, construction direction, and independent supervision with earned value (S-curve, SPI, CPI) on the ERGON platform.',
+  provider: {
+    '@type': 'Organization',
+    '@id': 'https://dgingenieriapy.com/#organization',
+    name: 'DG Ingeniería SRL',
+    url: 'https://dgingenieriapy.com',
+  },
+  areaServed: { '@type': 'Country', name: 'Paraguay' },
+  url: 'https://dgingenieriapy.com/en/sectors/residential-development',
+  inLanguage: 'en',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Capabilities',
+    itemListElement: capabilities.map((c) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: c.title, description: c.desc },
+    })),
+  },
+};
+---
+
+<Base
+  title="Residential development and construction supervision in Paraguay"
+  description="The technical arm of residential development in Paraguay: concept and detailed design, project management, construction and independent supervision with earned value on the ERGON platform."
+  preloadImg="/img/sector-civil.webp"
+  breadcrumbs={breadcrumbs}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)} />
+  </Fragment>
+
+  <PageHero
+    img="/img/sector-civil.jpg"
+    imgAlt="Residential development in Paraguay"
+    kicker="Sectors · Residential development"
+    title="The technical arm"
+    titleAccent="of residential development"
+    subtitle="Concept design through to construction control for mid- and large-scale buildings — houses, duplexes and apartment buildings."
+    height="md"
+  >
+    <Button href={N.contact} variant="primary" magnetic>Discuss a project</Button>
+    <Button href={N.sectors} variant="ghost-dark">All sectors</Button>
+  </PageHero>
+
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="Approach"
+          title="The technical arm"
+          titleAccent="of residential development"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>A residential development succeeds or fails on whether someone technical is accountable for it end to end. DG acts as that technical arm: we develop the concept and the detailed design, run the project, direct the construction and supervise it — or take on only the part the developer needs.</p>
+        <p>The supervision is independent and sits on the owner’s side. We track physical and financial progress against an auditable baseline, with an S-curve and earned value (SPI and CPI), so a schedule or cost deviation surfaces while there is still time to act on it rather than at month end.</p>
+        <p>Everything runs on ERGON, our own construction management platform. An investor sees the real state of the project in real time, with reporting written for the person who has to decide, not only for the engineer who produced it.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream-deep" padding="md">
+    <SectionHeader
+      kicker="Capabilities"
+      title="What we do"
+      lead="The technical arm of residential development in Paraguay: concept and detailed design, project management, construction and independent supervision with earned value on the ERGON platform."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {capabilities.map((c) => (
+        <div class="bg-white rounded-xl p-7 border border-slate-dg/[0.08] shadow-sm hover:shadow-md transition-shadow" data-animate>
+          <div class="w-11 h-11 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
+            {c.icon === 'docs' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>}
+            {c.icon === 'chart' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 3v18h18M7 14l4-4 4 4 5-5"/></svg>}
+            {c.icon === 'build' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3M9 9v.01M9 13v.01M9 17v.01"/></svg>}
+            {c.icon === 'eye' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M2 12s3-8 10-8 10 8 10 8-3 8-10 8-10-8-10-8Z"/><circle cx="12" cy="12" r="3"/></svg>}
+            {c.icon === 'network' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 7l3 3m7-3-3 3m-7 7 3-3m7 3-3-3"/></svg>}
+            {c.icon === 'alert' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0ZM12 9v4m0 4h.01"/></svg>}
+          </div>
+          <h3 class="text-[17px] font-extrabold tracking-tight mb-2 text-slate-dg">{c.title}</h3>
+          <p class="text-[13.5px] text-slate-dg/65 leading-relaxed">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">Developing a residential building?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[560px] mx-auto">Design, project management or independent supervision — tell us which part you need covered.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href={N.contact} variant="primary" size="lg">Start a conversation</Button>
+        <Button href={N.sectors} variant="ghost-dark" size="lg">Other sectors</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>

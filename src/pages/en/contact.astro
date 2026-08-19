@@ -1,0 +1,264 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/en/' },
+  { name: 'Contact', url: '/en/contact' },
+];
+
+// Mismo endpoint Web3Forms que la version ES. El `subject` SI cambia: que el correo
+// entrante diga que vino de la pagina en ingles le ahorra a DG adivinar en que idioma
+// contestar y de que huso horario viene.
+const WEB3FORMS_KEY = 'db199a81-4dd1-495e-93fa-9128890dc745';
+const formAction = 'https://api.web3forms.com/submit';
+const formConfigured = WEB3FORMS_KEY !== '' && !WEB3FORMS_KEY.startsWith('TU_');
+---
+
+<Base
+  title="Contact"
+  description="Contact DG Ingeniería SRL — civil engineering in Paraguay. Site feasibility, project development and construction supervision. Asunción, Paraguay."
+  breadcrumbs={breadcrumbs}
+>
+
+  <!-- HERO -->
+  <section class="bg-slate-dg text-cream py-16 md:py-28">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight mb-4">Contact</h1>
+      <p class="text-lg text-cream/65 max-w-2xl leading-relaxed">Write to us about a technical question, a project you are assessing, or a possible collaboration.</p>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <!-- FORM -->
+        <div>
+          <h2 class="text-2xl font-bold tracking-tight mb-8">Send us a message</h2>
+          <form
+            id="contact-form"
+            class="space-y-6"
+            name="contact"
+            method="POST"
+            action={formAction}
+            data-configured={String(formConfigured)}
+          >
+            <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+            <input type="hidden" name="subject" value="[EN] New enquiry from dgingenieriapy.com/en/contact" />
+            <input type="hidden" name="from_name" value="dgingenieriapy.com (English site)" />
+
+            <!-- Web3Forms anti-spam honeypot (hidden from humans). -->
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+            <div>
+              <label for="name" class="block text-sm font-semibold text-slate-dg mb-2">
+                Name <span class="text-arena" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                aria-required="true"
+                autocomplete="name"
+                placeholder="Your name"
+                class="w-full px-4 py-3 rounded border border-slate-dg/20 focus:border-arena focus:outline-none focus-visible:ring-2 focus-visible:ring-arena/30 transition-colors"
+              />
+            </div>
+
+            <div>
+              <label for="company" class="block text-sm font-semibold text-slate-dg mb-2">Company</label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                autocomplete="organization"
+                placeholder="Your company"
+                class="w-full px-4 py-3 rounded border border-slate-dg/20 focus:border-arena focus:outline-none focus-visible:ring-2 focus-visible:ring-arena/30 transition-colors"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-semibold text-slate-dg mb-2">
+                Email <span class="text-arena" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                aria-required="true"
+                autocomplete="email"
+                placeholder="you@company.com"
+                class="w-full px-4 py-3 rounded border border-slate-dg/20 focus:border-arena focus:outline-none focus-visible:ring-2 focus-visible:ring-arena/30 transition-colors"
+              />
+            </div>
+
+            <div>
+              <label for="message" class="block text-sm font-semibold text-slate-dg mb-2">
+                Message <span class="text-arena" aria-hidden="true">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                aria-required="true"
+                placeholder="Tell us about the project or the question you are working on"
+                rows="6"
+                class="w-full px-4 py-3 rounded border border-slate-dg/20 focus:border-arena focus:outline-none focus-visible:ring-2 focus-visible:ring-arena/30 transition-colors resize-none"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-slate-dg text-cream px-6 py-3 rounded font-semibold text-sm hover:bg-slate-light transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena focus-visible:ring-offset-2 focus-visible:ring-offset-cream disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+              Send message
+            </button>
+
+            <p
+              id="form-status"
+              role="status"
+              aria-live="polite"
+              class="text-sm text-slate-dg/80 hidden"
+            ></p>
+
+            {!formConfigured && (
+              <p class="text-xs text-gray-neutral">
+                You can also write to us directly at
+                <a href="mailto:info@dgingenieriasrl.com" class="text-arena hover:text-arena-light underline">info@dgingenieriasrl.com</a>.
+              </p>
+            )}
+          </form>
+
+          <script>
+            // Contact form submission via Web3Forms (AJAX, no page reload).
+            // If the endpoint is not configured (data-configured="false"), fall back to a
+            // pre-filled mailto: so the enquiry is not lost.
+            const form = document.getElementById('contact-form') as HTMLFormElement | null;
+            const status = document.getElementById('form-status');
+
+            function showStatus(msg: string, ok: boolean) {
+              if (!status) return;
+              status.textContent = msg;
+              status.classList.remove('hidden');
+              status.classList.toggle('text-arena', !ok);
+              status.classList.toggle('text-slate-dg/80', ok);
+            }
+
+            if (form) {
+              const configured = form.dataset.configured === 'true';
+
+              form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const data = new FormData(form);
+
+                if (!configured) {
+                  const name = String(data.get('name') || '');
+                  const company = String(data.get('company') || '');
+                  const email = String(data.get('email') || '');
+                  const message = String(data.get('message') || '');
+                  const body =
+                    `Name: ${name}\n` +
+                    (company ? `Company: ${company}\n` : '') +
+                    `Email: ${email}\n\n${message}`;
+                  const href =
+                    'mailto:info@dgingenieriasrl.com' +
+                    '?subject=' + encodeURIComponent('Enquiry from dgingenieriapy.com') +
+                    '&body=' + encodeURIComponent(body);
+                  window.location.href = href;
+                  showStatus('We opened your email client to send the message to info@dgingenieriasrl.com.', true);
+                  return;
+                }
+
+                const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+                if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+                try {
+                  const res = await fetch(form.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: { Accept: 'application/json' },
+                  });
+                  if (res.ok) {
+                    form.reset();
+                    showStatus('Message sent. We reply within 48 business hours.', true);
+                  } else {
+                    showStatus('We could not send the message. Please write to info@dgingenieriasrl.com.', false);
+                  }
+                } catch {
+                  showStatus('We could not send the message. Please write to info@dgingenieriasrl.com.', false);
+                } finally {
+                  if (btn) { btn.disabled = false; btn.textContent = 'Send message'; }
+                }
+              });
+            }
+          </script>
+        </div>
+
+        <!-- CONTACT INFO -->
+        <div>
+          <h2 class="text-2xl font-bold tracking-tight mb-8">Contact details</h2>
+
+          <div class="mb-10 pb-10 border-b border-slate-dg/10">
+            <h3 class="text-sm font-semibold uppercase tracking-[2px] text-gray-neutral mb-3">Email</h3>
+            <a
+              href="mailto:info@dgingenieriasrl.com"
+              class="text-lg text-slate-dg hover:text-arena transition-colors font-medium"
+            >
+              info@dgingenieriasrl.com
+            </a>
+            <p class="text-sm text-gray-neutral mt-2">We reply within 48 business hours, in English or Spanish.</p>
+          </div>
+
+          <div class="mb-10 pb-10 border-b border-slate-dg/10">
+            <h3 class="text-sm font-semibold uppercase tracking-[2px] text-gray-neutral mb-3">Phone</h3>
+            <a
+              href="tel:+595976335132"
+              class="text-lg text-slate-dg hover:text-arena transition-colors font-medium"
+            >
+              +595 976 335 132
+            </a>
+            <p class="text-sm text-gray-neutral mt-2">Monday to Friday, 08:30 to 18:00 Paraguay time (UTC-3).</p>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold uppercase tracking-[2px] text-gray-neutral mb-3">Location</h3>
+            <p class="text-lg font-medium text-slate-dg mb-1">Asunción</p>
+            <p class="text-sm text-gray-neutral">Paraguay</p>
+          </div>
+
+          <div class="mt-12 p-6 rounded-lg bg-cream-deep border border-slate-dg/10">
+            <h3 class="font-semibold text-slate-dg mb-3">What we are usually asked</h3>
+            <ul class="space-y-2 text-sm text-slate-dg/80">
+              <li class="flex items-start gap-2">
+                <span class="text-arena mt-1">▪</span>
+                <span>Whether a site works for a specific use — power, water, flooding, access</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-arena mt-1">▪</span>
+                <span>What the local regulatory path looks like, and how long it takes</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-arena mt-1">▪</span>
+                <span>Engineering studies and design for a project already under way</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-arena mt-1">▪</span>
+                <span>Independent construction supervision on the owner’s behalf</span>
+              </li>
+            </ul>
+            <p class="text-xs text-gray-neutral mt-4">If a confidentiality agreement needs to be in place before scope is discussed, say so in your message and we will sign one first.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-dg text-cream text-center py-16 md:py-20">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <h2 class="text-2xl md:text-3xl font-bold mb-3">Working to a deadline?</h2>
+      <p class="text-base text-cream/50 mb-8 max-w-[440px] mx-auto">Call the number above during Paraguay business hours, or say so in your message and we will prioritise it.</p>
+    </div>
+  </section>
+
+</Base>

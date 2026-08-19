@@ -1,0 +1,293 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FullBleedSection from '../../components/FullBleedSection.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Button from '../../components/Button.astro';
+import { nav } from '../../i18n/ui';
+
+const N = nav('en');
+
+/**
+ * Mismos proyectos que la version ES, con los datos verificados sin cambios.
+ * Solo se traduce lo descriptivo: nombres de cliente, años y ubicaciones son dato.
+ */
+const projects = [
+  {
+    title: 'Route PY05 — Full feasibility study',
+    client: 'MOPC · IDB',
+    sector: 'vialidad',
+    sectorLabel: 'Roads & Highways',
+    location: 'Chaco, Paraguay',
+    year: '2023–2024',
+    metric: '179 km',
+    metricLabel: 'Section assessed',
+    desc: 'Highway geometry, traffic study, pavement design and economic appraisal under SNIP, Paraguay’s public-investment methodology.',
+    img: '/img/destacado-bid.jpg',
+    featured: true,
+  },
+  {
+    title: 'Puerto Torocuá — Engineering studies',
+    client: 'Grupo Favero',
+    sector: 'puertos',
+    sectorLabel: 'Ports & Waterways',
+    location: 'Paraná river, Paraguay',
+    year: '2022–2023',
+    metric: 'Paraná river',
+    metricLabel: 'Waterway',
+    desc: 'Assessment of port conditions, coordination across disciplines and technical interface management.',
+    img: '/img/proyecto-puertos.jpg',
+    featured: true,
+  },
+  {
+    title: 'RIALTO subdivision — Detailed design',
+    client: 'A2 · Incovial SA',
+    sector: 'urbanizaciones',
+    sectorLabel: 'Land Development',
+    location: 'Paraguay',
+    year: '2026',
+    metric: 'Detailed design',
+    metricLabel: 'Scope',
+    desc: 'Detailed design of an urban subdivision: internal roads, platforms, earthworks and utility coordination.',
+    img: '/img/sector-urb.jpg',
+    featured: false,
+  },
+  {
+    title: 'Internal road design — Concepción Hospital',
+    client: 'Consorcio Hospital del Norte',
+    sector: 'vialidad',
+    sectorLabel: 'Roads & Highways',
+    location: 'Concepción, Paraguay',
+    year: '2026',
+    metric: 'Full road package',
+    metricLabel: 'Scope',
+    desc: 'Internal road design for the hospital site: circulation and parking, rigid and cobblestone paving, surface drainage and road markings and signage, with calculation reports and drawings.',
+    img: '/img/proyecto-hcg.jpg',
+    featured: false,
+  },
+  {
+    title: 'FLUODER SAECA — Internal site access roads',
+    client: 'EPC EAS · Antonio Ramos',
+    sector: 'vialidad',
+    sectorLabel: 'Roads & Highways',
+    location: 'Villeta, Paraguay',
+    year: '2026',
+    metric: 'Industrial plant',
+    metricLabel: 'Setting',
+    desc: 'Road design for the internal access of the FLUODER SAECA industrial plant in Villeta: connecting road, internal distribution roundabout and manoeuvring yard, set out on a drone survey, with pavement structure, drainage, quantities and technical specifications.',
+    img: '/img/proyecto-fluoder.jpg',
+    featured: false,
+  },
+  {
+    title: 'Asunción Bus Terminal — Concept design',
+    client: 'BAUEN · Incovial SA',
+    sector: 'vialidad',
+    sectorLabel: 'Roads & Highways',
+    location: 'Asunción, Paraguay',
+    year: '2026',
+    metric: 'Concept design',
+    metricLabel: 'Stage',
+    desc: 'Concept design for the terminal: site layout, manoeuvring roads, platforms, quantities and budget.',
+    img: '/img/proyecto-tba.jpg',
+    featured: false,
+  },
+  {
+    title: 'Gulfstream G650 hangar — Airside engineering',
+    client: 'JOPLA',
+    sector: 'aeropuertos',
+    sectorLabel: 'Airports',
+    location: 'Paraguay',
+    year: '2026',
+    metric: 'G650',
+    metricLabel: 'Design aircraft',
+    desc: 'Airside engineering for a business aviation hangar (G650): taxiway and manoeuvring apron geometry, geotechnical study and rigid pavement design for apron and taxiway, with obstacle limitation surfaces under DINAC R14 and ICAO.',
+    img: '/img/sector-aero.jpg',
+    featured: false,
+  },
+  {
+    title: 'Earthworks control by drone survey',
+    client: 'Noroda SA',
+    sector: 'relevamiento-aereo',
+    sectorLabel: 'Aerial Survey',
+    location: 'Paraguay',
+    year: '2026',
+    metric: 'DTM',
+    metricLabel: 'Method',
+    desc: 'Aerial survey and surface comparison between flights to verify cut and fill quantities on site.',
+    img: '/img/proyecto-dron.jpg',
+    featured: false,
+  },
+];
+
+const filters = [
+  { slug: 'all', label: 'All' },
+  { slug: 'vialidad', label: 'Roads' },
+  { slug: 'pavimentos', label: 'Pavements' },
+  { slug: 'aeropuertos', label: 'Airports' },
+  { slug: 'puertos', label: 'Ports' },
+  { slug: 'fiscalizacion', label: 'Residential' },
+  { slug: 'plantas-industriales', label: 'Industrial' },
+  { slug: 'urbanizaciones', label: 'Land development' },
+  { slug: 'solar', label: 'Solar / Data Centers' },
+  { slug: 'relevamiento-aereo', label: 'Aerial survey' },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: '/en/' },
+  { name: 'Projects', url: '/en/projects' },
+];
+---
+
+<Base
+  title="Projects"
+  description="Selected infrastructure projects delivered by DG Ingeniería in Paraguay: highways, ports, land development, airside works, industrial plants and drone survey."
+  preloadImg="/img/destacado-bid.webp"
+  breadcrumbs={breadcrumbs}
+>
+
+  <PageHero
+    img="/img/destacado-bid.jpg"
+    imgAlt="DG Ingeniería project portfolio"
+    kicker="Documented track record"
+    title="Projects"
+    titleAccent="delivered"
+    subtitle="A growing portfolio. Each project is published once its scope, data and images have been validated with the client."
+    height="md"
+  >
+    <Button href={N.contact} variant="primary" magnetic>Request references</Button>
+    <Button href={N.sectors} variant="ghost-dark">See sectors</Button>
+  </PageHero>
+
+  <FullBleedSection bg="white" padding="md">
+    <SectionHeader
+      kicker="Portfolio"
+      title="Selected"
+      titleAccent="projects"
+      lead="A representative selection by sector. The full portfolio is provided on request for prequalification and tender processes."
+      align="center"
+      class="mb-10"
+    />
+
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-12" role="tablist" aria-label="Filter projects by sector">
+      {filters.map((f, i) => (
+        <button
+          type="button"
+          data-filter={f.slug}
+          class={`filter-chip text-[12px] font-semibold tracking-[1px] uppercase px-4 py-2 rounded-full border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena focus-visible:ring-offset-2 focus-visible:ring-offset-cream ${i === 0 ? 'bg-slate-dg text-cream border-slate-dg is-active' : 'bg-transparent text-slate-dg/70 border-slate-dg/15 hover:border-slate-dg/40 hover:text-slate-dg'}`}
+          aria-pressed={i === 0 ? 'true' : 'false'}
+        >
+          {f.label}
+        </button>
+      ))}
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-projects-grid>
+      {projects.map((p) => {
+        const webp = p.img.replace(/\.(jpe?g|png)$/i, '.webp');
+        return (
+          <article
+            data-sector={p.sector}
+            class="project-card group relative rounded-xl overflow-hidden bg-slate-dg shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
+            data-animate
+          >
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <picture>
+                <source srcset={webp} type="image/webp" />
+                <img
+                  src={p.img}
+                  alt={p.title}
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                  decoding="async"
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
+                />
+              </picture>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-dg via-slate-dg/40 to-transparent"></div>
+              {p.featured && (
+                <span class="absolute top-4 left-4 text-[10px] font-bold tracking-[2px] uppercase text-arena bg-slate-dg/80 backdrop-blur-sm px-3 py-1 rounded">
+                  Featured
+                </span>
+              )}
+              <span class="absolute top-4 right-4 text-[10px] font-semibold tracking-[1.5px] uppercase text-cream/80 bg-cream/10 backdrop-blur-sm px-3 py-1 rounded">
+                {p.sectorLabel}
+              </span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-cream text-lg font-extrabold tracking-tight leading-tight mb-2">{p.title}</h3>
+              <p class="text-cream/55 text-[13.5px] leading-relaxed mb-5">{p.desc}</p>
+              <dl class="grid grid-cols-2 gap-x-4 gap-y-3 pt-5 border-t border-cream/10">
+                <div>
+                  <dt class="text-[10px] font-semibold tracking-[1.5px] uppercase text-cream/40">Client</dt>
+                  <dd class="text-cream/85 text-[13px] font-medium mt-0.5">{p.client}</dd>
+                </div>
+                <div>
+                  <dt class="text-[10px] font-semibold tracking-[1.5px] uppercase text-cream/40">Year</dt>
+                  <dd class="text-cream/85 text-[13px] font-medium mt-0.5">{p.year}</dd>
+                </div>
+                <div>
+                  <dt class="text-[10px] font-semibold tracking-[1.5px] uppercase text-cream/40">Location</dt>
+                  <dd class="text-cream/85 text-[13px] font-medium mt-0.5">{p.location}</dd>
+                </div>
+                <div>
+                  <dt class="text-[10px] font-semibold tracking-[1.5px] uppercase text-cream/40">{p.metricLabel}</dt>
+                  <dd class="text-arena text-[13px] font-bold mt-0.5">{p.metric}</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <p data-empty class="hidden text-center text-gray-neutral text-sm mt-12">
+      No projects published in this sector yet. <a href={N.contact} class="text-arena hover:text-arena-light underline">Ask us for references</a>.
+    </p>
+  </FullBleedSection>
+
+  <FullBleedSection bg="slate" padding="md">
+    <div class="text-center max-w-[640px] mx-auto">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">Need references for a tender?</h2>
+      <p class="text-cream/55 text-base md:text-lg mb-10">We provide the full portfolio with scopes, contracting parties, durations and verified metrics, formatted to the requirements of your process.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href={N.contact} variant="primary" size="lg">Request the full portfolio</Button>
+        <Button href={N.sectors} variant="ghost-dark" size="lg">See sectors</Button>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <script>
+    // Client-side filtering: click a chip -> hide the cards that do not match.
+    const chips = document.querySelectorAll<HTMLButtonElement>('.filter-chip');
+    const cards = document.querySelectorAll<HTMLElement>('[data-sector]');
+    const empty = document.querySelector<HTMLElement>('[data-empty]');
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const target = chip.dataset.filter || 'all';
+
+        chips.forEach((c) => {
+          const active = c === chip;
+          c.classList.toggle('is-active', active);
+          c.classList.toggle('bg-slate-dg', active);
+          c.classList.toggle('text-cream', active);
+          c.classList.toggle('border-slate-dg', active);
+          c.classList.toggle('bg-transparent', !active);
+          c.classList.toggle('text-slate-dg/70', !active);
+          c.classList.toggle('border-slate-dg/15', !active);
+          c.setAttribute('aria-pressed', String(active));
+        });
+
+        let visible = 0;
+        cards.forEach((card) => {
+          const match = target === 'all' || card.dataset.sector === target;
+          card.style.display = match ? '' : 'none';
+          if (match) visible++;
+        });
+
+        if (empty) empty.classList.toggle('hidden', visible > 0);
+      });
+    });
+  </script>
+
+</Base>
