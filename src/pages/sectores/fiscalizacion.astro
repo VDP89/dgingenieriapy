@@ -12,7 +12,7 @@ const capacidades = [
   { title: 'Construcción y dirección de obra', desc: 'Dirección de la construcción con coordinación de contratistas y control de calidad en sitio, sin que el inversor tenga que armar estructura de obra propia.', icon: 'build' },
   { title: 'Fiscalización y valor ganado', desc: 'Control técnico independiente con Curva S, valor ganado (SPI y CPI) y detección temprana de desvíos de plazo y costo.', icon: 'eye' },
   { title: 'Coordinación de especialidades', desc: 'Articulación entre arquitectura, estructuras, sanitarias y eléctricas para evitar ruido técnico y retrabajos en obra.', icon: 'network' },
-  { title: 'Visibilidad para el inversor', desc: 'Plataforma ERGON: avance físico y financiero en tiempo real, reportes diferenciados por stakeholder y alertas tempranas con respaldo técnico.', icon: 'alert' },
+  { title: 'Visibilidad para el inversor', desc: 'Avance físico y financiero en tiempo real, reportes diferenciados por stakeholder y alertas tempranas con respaldo técnico.', icon: 'alert' },
 ];
 
 const breadcrumbs = [
@@ -27,7 +27,7 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Edificación residencial: del proyecto a la fiscalización',
   serviceType: 'Desarrollo y dirección técnica de obra residencial',
-  description: 'Ala técnica del desarrollo residencial en Paraguay: anteproyecto y proyecto ejecutivo, gerenciamiento de obra, dirección de la construcción y fiscalización con valor ganado, sobre la plataforma propia ERGON. Para edificaciones residenciales de mediano y gran porte: casas, dúplex y edificios.',
+  description: 'Ala técnica del desarrollo residencial en Paraguay: anteproyecto y proyecto ejecutivo, gerenciamiento de obra, dirección de la construcción y fiscalización con valor ganado. Para edificaciones residenciales de mediano y gran porte: casas, dúplex y edificios.',
   provider: {
     '@type': 'Organization',
     name: 'DG Ingeniería SRL',
@@ -53,11 +53,11 @@ const serviceSchema = {
 const faqs = [
   {
     q: '¿Qué hace el ala técnica de un desarrollo residencial?',
-    a: 'El ala técnica resuelve toda la ejecución de un desarrollo residencial para quien aporta la tierra y el capital. DG Ingeniería actúa como ese brazo técnico: desarrolla el anteproyecto y el proyecto ejecutivo, gerencia la obra, dirige la construcción coordinando a los contratistas y la fiscaliza con valor ganado, todo sobre la plataforma propia ERGON. El desarrollador o inversor pone el terreno, el capital y la visión comercial; DG es el único responsable técnico de la ejecución, del primer plano a la entrega de unidades, sin que el inversor tenga que montar una estructura de obra propia.',
+    a: 'El ala técnica resuelve toda la ejecución de un desarrollo residencial para quien aporta la tierra y el capital. DG Ingeniería actúa como ese brazo técnico: desarrolla el anteproyecto y el proyecto ejecutivo, gerencia la obra, dirige la construcción coordinando a los contratistas y la fiscaliza con valor ganado. El desarrollador o inversor pone el terreno, el capital y la visión comercial; DG es el único responsable técnico de la ejecución, del primer plano a la entrega de unidades, sin que el inversor tenga que montar una estructura de obra propia.',
   },
   {
     q: '¿Qué incluye desarrollar un edificio o un dúplex residencial, del anteproyecto a la entrega?',
-    a: 'El ciclo completo de una edificación residencial incluye: anteproyecto y proyecto ejecutivo (arquitectura, estructuras e instalaciones coordinadas); factibilidad técnica del sitio; gerenciamiento de obra (cronograma, presupuesto por rubro, contratistas) sobre una baseline auditable; dirección de la construcción con control de calidad en sitio; coordinación de especialidades; y fiscalización con Curva S y valor ganado. DG cubre estas etapas para edificaciones de mediano y gran porte —casas, dúplex y edificios— con visibilidad técnica en tiempo real para el inversor a través de la plataforma ERGON.',
+    a: 'El ciclo completo de una edificación residencial incluye: anteproyecto y proyecto ejecutivo (arquitectura, estructuras e instalaciones coordinadas); factibilidad técnica del sitio; gerenciamiento de obra (cronograma, presupuesto por rubro, contratistas) sobre una baseline auditable; dirección de la construcción con control de calidad en sitio; coordinación de especialidades; y fiscalización con Curva S y valor ganado. DG cubre estas etapas para edificaciones de mediano y gran porte —casas, dúplex y edificios— con visibilidad técnica en tiempo real para el inversor.',
   },
   {
     q: '¿Cómo se mide el avance de obra con valor ganado (EVM)?',
@@ -72,7 +72,7 @@ const faqs = [
 
 <Base
   title="Edificación residencial: del proyecto a la fiscalización"
-  description="Ala técnica del desarrollo residencial en Paraguay: anteproyecto, proyecto, gerenciamiento, construcción y fiscalización de edificaciones de mediano y gran porte (casas, dúplex, edificios) con la plataforma ERGON."
+  description="Ala técnica del desarrollo residencial en Paraguay: anteproyecto, proyecto, gerenciamiento, construcción y fiscalización de edificaciones de mediano y gran porte (casas, dúplex, edificios)."
   preloadImg="/img/sector-civil.webp"
   breadcrumbs={breadcrumbs}
 >
@@ -86,7 +86,7 @@ const faqs = [
     kicker="Sectores · Desarrollo residencial"
     title="El ala técnica"
     titleAccent="del desarrollo residencial"
-    subtitle="Del anteproyecto a la entrega: proyecto, gerenciamiento, construcción y fiscalización de edificaciones residenciales de mediano y gran porte, sobre la plataforma ERGON."
+    subtitle="Del anteproyecto a la entrega: proyecto, gerenciamiento, construcción y fiscalización de edificaciones residenciales de mediano y gran porte."
     height="md"
   >
     <Button href="/contacto" variant="primary" magnetic>Consultar desarrollo</Button>
@@ -105,7 +105,7 @@ const faqs = [
       <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
         <p>Un desarrollo residencial se gana o se pierde en la ejecución técnica. Quien tiene la tierra y el capital necesita una pata técnica que lleve el proyecto del anteproyecto a la entrega, sin tener que montar una estructura de obra propia.</p>
         <p>Ahí entra DG, como el ala técnica del desarrollo. Hacemos el anteproyecto y el proyecto ejecutivo, gerenciamos la obra, dirigimos la construcción coordinando a los contratistas y la fiscalizamos con valor ganado. Un solo responsable técnico de la ejecución, del primer plano a la entrega de unidades.</p>
-        <p>Trabajamos sobre edificaciones residenciales de mediano y gran porte: casas, dúplex y edificios. El desarrollador o inversor pone la tierra, el capital y la visión comercial; nosotros resolvemos toda la ingeniería y la conducción de obra, con visibilidad técnica en tiempo real a través de la plataforma propia ERGON.</p>
+        <p>Trabajamos sobre edificaciones residenciales de mediano y gran porte: casas, dúplex y edificios. El desarrollador o inversor pone la tierra, el capital y la visión comercial; nosotros resolvemos toda la ingeniería y la conducción de obra, con visibilidad técnica en tiempo real.</p>
         <p>Sobre cómo la visibilidad técnica cambia decisiones de obra, leer el caso real <a href="/blog/fiscalizacion-con-visibilidad" class="text-arena font-semibold underline decoration-arena/30 hover:decoration-arena underline-offset-4 transition-colors">Fiscalización con visibilidad real de obra</a> — auditoría altimétrica que evitó un relleno innecesario en una obra sobre el río.</p>
       </div>
     </div>
@@ -115,7 +115,7 @@ const faqs = [
     <SectionHeader
       kicker="Capacidades"
       title="Lo que hacemos"
-      lead="El ciclo completo de la edificación residencial: del anteproyecto al control de obra, con visibilidad en tiempo real sobre la plataforma ERGON."
+      lead="El ciclo completo de la edificación residencial: del anteproyecto al control de obra, con visibilidad en tiempo real."
       align="center"
       class="mb-14"
     />
@@ -152,7 +152,7 @@ const faqs = [
           <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Anteproyecto y proyecto:</strong> diseño ejecutivo de arquitectura, estructuras e instalaciones, listo para construir.</span></li>
           <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Gerenciamiento y dirección de obra:</strong> un único responsable técnico de la ejecución, con la construcción coordinada y controlada.</span></li>
           <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Fiscalización y valor ganado:</strong> control técnico independiente con Curva S, SPI y CPI.</span></li>
-          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Visibilidad ERGON:</strong> avance físico y financiero en tiempo real, del lado del inversor.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Visibilidad para el inversor:</strong> avance físico y financiero en tiempo real, del lado del inversor.</span></li>
         </ul>
         <p>El desarrollador pone la tierra, el capital y la visión comercial; DG resuelve la ejecución técnica completa, del anteproyecto a la entrega de unidades.</p>
       </div>

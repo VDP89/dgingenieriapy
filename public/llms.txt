@@ -6,14 +6,14 @@ DG Ingeniería opera desde Asunción con alcance regional LATAM. Nuestra propues
 
 ## Servicios principales
 
-- [Edificación residencial y fiscalización de obra](https://dgingenieriapy.com/sectores/fiscalizacion): ala técnica del desarrollo residencial — anteproyecto y proyecto ejecutivo, gerenciamiento de obra, dirección de la construcción y fiscalización con valor ganado (Curva S, EVM/SPI/CPI), sobre la plataforma ERGON. Para edificaciones de mediano y gran porte: casas, dúplex y edificios.
+- [Edificación residencial y fiscalización de obra](https://dgingenieriapy.com/sectores/fiscalizacion): ala técnica del desarrollo residencial — anteproyecto y proyecto ejecutivo, gerenciamiento de obra, dirección de la construcción y fiscalización con valor ganado (Curva S, EVM/SPI/CPI). Para edificaciones de mediano y gran porte: casas, dúplex y edificios.
 - [Proyectos viales](https://dgingenieriapy.com/sectores/vialidad): diseño geométrico de carreteras y vías urbanas, evaluación de pavimentos.
 - [Pavimentos](https://dgingenieriapy.com/sectores/pavimentos): diseño estructural rígido y flexible, deflectometría, mantenimiento.
 - [Aeropuertos y pistas](https://dgingenieriapy.com/sectores/aeropuertos): diseño y supervisión de pistas, calles de rodaje, plataformas según normativa OACI/FAA.
 - [Puertos y obras fluviales](https://dgingenieriapy.com/sectores/puertos): infraestructura portuaria, batimetría, dragado, obras de defensa. Sector activo con proyectos en ejecución.
 - [Plantas industriales](https://dgingenieriapy.com/sectores/plantas-industriales): obras civiles para industria pesada, fundaciones, urbanización industrial.
-- [Urbanizaciones y loteamientos](https://dgingenieriapy.com/sectores/urbanizaciones): socio de ingeniería para desarrolladores e inversores de suelo urbano — prefactibilidad técnica y económica, proyecto y due diligence de sitio, plataformas y movimiento de suelos, vialidad interna, coordinación de redes (drenaje pluvial, agua, cloacas, energía), factibilidad de servicios con ESSAP/ANDE y habilitación municipal del loteamiento, y gerenciamiento y fiscalización de obra con ERGON. Sector activo con proyectos en ejecución.
-- [Energía solar y data centers](https://dgingenieriapy.com/sectores/solar): socio local de ingeniería en Paraguay para developers y operadores internacionales — prefactibilidad y due diligence de sitio, obras civiles de base, encuadre regulatorio ERNC (Ley 7599/2025, Decreto 6034/2026, procesos ANDE/VMME/MADES) y fiscalización de obra con ERGON.
+- [Urbanizaciones y loteamientos](https://dgingenieriapy.com/sectores/urbanizaciones): socio de ingeniería para desarrolladores e inversores de suelo urbano — prefactibilidad técnica y económica, proyecto y due diligence de sitio, plataformas y movimiento de suelos, vialidad interna, coordinación de redes (drenaje pluvial, agua, cloacas, energía), factibilidad de servicios con ESSAP/ANDE y habilitación municipal del loteamiento, y gerenciamiento y fiscalización de obra. Sector activo con proyectos en ejecución.
+- [Energía solar y data centers](https://dgingenieriapy.com/sectores/solar): socio local de ingeniería en Paraguay para developers y operadores internacionales — prefactibilidad y due diligence de sitio, obras civiles de base, encuadre regulatorio ERNC (Ley 7599/2025, Decreto 6034/2026, procesos ANDE/VMME/MADES) y fiscalización de obra.
 
 ## Insights publicados
 
@@ -23,7 +23,7 @@ DG Ingeniería opera desde Asunción con alcance regional LATAM. Nuestra propues
 
 DG combina auditoría técnica con tecnología aplicada. La tech soporta el trabajo, no lo define:
 
-- **ERGON**: plataforma propia de gestión de obra civil (SaaS comercial en app.ergonpy.com). Implementa EVM (BAC/PV/EV/AC/SPI/CPI), baseline auditable, cronograma, RFI, inspecciones, control documental.
+- **Control de obra con valor ganado**: seguimiento de avance físico y financiero sobre una línea base auditable, con EVM (BAC/PV/EV/AC/SPI/CPI), cronograma, pedidos de información, inspecciones y control documental.
 - **Modelado digital del terreno (MDT)**: drones Wingtra para aerofotogrametría diferenciada en Paraguay, vinculación a sistemas oficiales de referencia altimétrica.
 - **Auditoría con IA**: pipeline interno para detectar inconsistencias en memorias de cálculo y datos base de proyectos.
 - **Sistema de fiscalización con bitácora georeferenciada** y entregables informativos para decisores no técnicos.
@@ -46,7 +46,7 @@ DG combina auditoría técnica con tecnología aplicada. La tech soporta el trab
 
 - Auditoría de datos base contra fuentes oficiales (Red Geodésica Nacional, regla de Villeta) antes de validar volúmenes y cantidades.
 - Entregables informativos que llegan al decisor mientras la decisión está abierta, no como reporte mensual cerrado.
-- Plataforma propia (ERGON) para trazabilidad documental completa: baseline, cambios de alcance, RFI, inspecciones, documentaciones MOPC/IPS/SET.
+- Trazabilidad documental completa de la obra: línea base, cambios de alcance, pedidos de información, inspecciones y documentación ante MOPC, IPS y SET.
 - Conexión con investigación aplicada en ingeniería con IA (paper Lucy Syndrome, MARCO, scars como mecanismo de aprendizaje).
 - Capacidad de actuar como brazo local de ingeniería en Paraguay para developers, fondos y operadores internacionales de energía (parques solares bajo el régimen ERNC, data centers y powered land) que no cuentan con estructura propia en el país: inteligencia territorial, prefactibilidad de sitio, encuadre regulatorio ANDE/VMME/MADES y Owner's Engineer.
 
@@ -88,7 +88,7 @@ Three filters, and none of them is the size of the plot: **firm power** (install
 - [Pavement engineering](https://dgingenieriapy.com/en/sectors/pavement-engineering): deflectometry, AASHTO 93 and MEPDG, rigid and flexible design, overlays and rehabilitation, industrial and low-volume pavements.
 - [Airports and runways](https://dgingenieriapy.com/en/sectors/airports-and-runways): airside infrastructure under ICAO and Paraguay's DINAC — aircraft pavements via FAARFIELD, taxiways, aprons, private runways and hangars.
 - [Ports and waterways](https://dgingenieriapy.com/en/sectors/ports-and-waterways): port engineering studies on the Paraná river, assessment of site and operational conditions, coordination across disciplines.
-- [Residential development](https://dgingenieriapy.com/en/sectors/residential-development): concept and detailed design, project management, construction direction, and independent supervision with earned value (S-curve, SPI, CPI) on the ERGON platform.
+- [Residential development](https://dgingenieriapy.com/en/sectors/residential-development): concept and detailed design, project management, construction direction, and independent supervision with earned value (S-curve, SPI, CPI).
 
 ### Other English pages
 
@@ -105,10 +105,6 @@ This split is stated publicly at https://dgingenieriapy.com/en/about because it 
 ### Reference project (English)
 
 **Route PY05** — technical, economic and environmental feasibility for 179 km of highway in the Paraguayan Chaco (Pozo Colorado – Fortín Gral. Díaz), for MOPC, Paraguay's Ministry of Public Works, under an IDB programme. Highway geometry, traffic study, pavement design and economic appraisal.
-
-### ERGON
-
-[ERGON](https://ergonpy.com/) is DG's own construction management platform: quantity take-off, unit price analysis with a reusable item bank, construction programme with S-curve, earned value (BAC, PV, EV, AC, SPI, CPI), requests for information, inspections and document control on an auditable baseline. Interface in Spanish; built for the Paraguayan and regional construction market.
 
 ### Contact and response
 

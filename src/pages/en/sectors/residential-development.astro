@@ -4,6 +4,7 @@ import PageHero from '../../../components/PageHero.astro';
 import FullBleedSection from '../../../components/FullBleedSection.astro';
 import SectionHeader from '../../../components/SectionHeader.astro';
 import Button from '../../../components/Button.astro';
+import FaqSection from '../../../components/FaqSection.astro';
 import { nav } from '../../../i18n/ui';
 
 const N = nav('en');
@@ -14,7 +15,26 @@ const capabilities = [
   { title: 'Construction and site direction', desc: 'Construction direction with contractor coordination and on-site quality control, without the investor having to build a site organisation of their own.', icon: 'build' },
   { title: 'Supervision and earned value', desc: 'Independent technical control with S-curve, earned value (SPI and CPI) and early detection of schedule and cost deviations.', icon: 'eye' },
   { title: 'Coordination across disciplines', desc: 'Architecture, structure, plumbing and electrical brought together, to avoid technical noise and rework on site.', icon: 'network' },
-  { title: 'Visibility for the investor', desc: 'The ERGON platform: physical and financial progress in real time, reporting differentiated by stakeholder, and early warnings with technical backing.', icon: 'alert' },
+  { title: 'Visibility for the investor', desc: 'Physical and financial progress in real time, reporting differentiated by stakeholder, and early warnings with technical backing.', icon: 'alert' },
+];
+
+const faqs = [
+  {
+    q: 'What does the technical arm of a residential development do?',
+    a: 'It resolves the entire delivery of a residential development for whoever puts up the land and the capital. DG Ingeniería acts as that technical arm: it develops the concept and the detailed design, manages the project, directs construction by coordinating the contractors, and supervises it against earned value. The developer or investor brings the land, the capital and the commercial vision; the engineering, the decisions on site and the control of what gets built are ours.',
+  },
+  {
+    q: 'What does developing a residential building or duplex involve, from concept to handover?',
+    a: 'The full cycle includes concept and detailed design with architecture, structure and services coordinated; technical feasibility of the site; project management covering programme, budget by trade and contractors against an auditable baseline; construction direction with on-site quality control; and independent supervision measuring physical and financial progress. Resolving the coordination between disciplines before breaking ground is what avoids the rework that shows up as cost overruns later.',
+  },
+  {
+    q: 'How is construction progress measured with earned value (EVM)?',
+    a: 'Earned value compares three quantities at every cut-off: what was planned to be spent by that date, what has actually been earned in physical work, and what has actually been paid. From those come the schedule performance index (SPI) and the cost performance index (CPI), which show whether the project is ahead or behind and whether it is spending above or below what it earned. The point of measuring it this way is that a deviation surfaces while there is still time to act on it, rather than at the end of the month when the money is already committed.',
+  },
+  {
+    q: 'What information does an investor receive during construction?',
+    a: 'Physical and financial progress against the baseline, the S-curve with its earned value indicators, the state of each trade and its contractor, requests for information and their resolution, inspections carried out, and early warning when a deviation appears. The reporting is written for the person who has to decide, not only for the engineer who produced it — which for an investor who is not on site every week is the difference between being informed and having visibility.',
+  },
 ];
 
 const breadcrumbs = [
@@ -28,7 +48,7 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Residential development engineering and construction supervision',
   serviceType: 'Design, project management and owner-side construction supervision',
-  description: 'The technical arm of residential development in Paraguay: concept and detailed design, project management, construction direction, and independent supervision with earned value (S-curve, SPI, CPI) on the ERGON platform.',
+  description: 'The technical arm of residential development in Paraguay: concept and detailed design, project management, construction direction, and independent supervision with earned value (S-curve, SPI, CPI).',
   provider: {
     '@type': 'Organization',
     '@id': 'https://dgingenieriapy.com/#organization',
@@ -51,7 +71,7 @@ const serviceSchema = {
 
 <Base
   title="Residential development and construction supervision in Paraguay"
-  description="The technical arm of residential development in Paraguay: concept and detailed design, project management, construction and independent supervision with earned value on the ERGON platform."
+  description="The technical arm of residential development in Paraguay: concept and detailed design, project management, construction and independent supervision with earned value."
   preloadImg="/img/sector-civil.webp"
   breadcrumbs={breadcrumbs}
 >
@@ -84,7 +104,7 @@ const serviceSchema = {
       <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
         <p>A residential development succeeds or fails on whether someone technical is accountable for it end to end. DG acts as that technical arm: we develop the concept and the detailed design, run the project, direct the construction and supervise it — or take on only the part the developer needs.</p>
         <p>The supervision is independent and sits on the owner’s side. We track physical and financial progress against an auditable baseline, with an S-curve and earned value (SPI and CPI), so a schedule or cost deviation surfaces while there is still time to act on it rather than at month end.</p>
-        <p>Everything runs on ERGON, our own construction management platform. An investor sees the real state of the project in real time, with reporting written for the person who has to decide, not only for the engineer who produced it.</p>
+        <p>The investor sees the real state of the project in real time, with reporting written for the person who has to decide, not only for the engineer who produced it.</p>
       </div>
     </div>
   </FullBleedSection>
@@ -93,7 +113,7 @@ const serviceSchema = {
     <SectionHeader
       kicker="Capabilities"
       title="What we do"
-      lead="The technical arm of residential development in Paraguay: concept and detailed design, project management, construction and independent supervision with earned value on the ERGON platform."
+      lead="The technical arm of residential development in Paraguay: concept and detailed design, project management, construction and independent supervision with earned value."
       align="center"
       class="mb-14"
     />
@@ -114,6 +134,8 @@ const serviceSchema = {
       ))}
     </div>
   </FullBleedSection>
+
+  <FaqSection faqs={faqs} lang="en" bg="cream" />
 
   <section class="relative py-20 md:py-28 overflow-hidden">
     <div class="absolute inset-0 bg-slate-dg"></div>

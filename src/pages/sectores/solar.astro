@@ -12,7 +12,7 @@ const capacidades = [
   { title: 'Hidrología y manejo de agua', desc: 'Drenaje, cota de inundación y protección de la infraestructura. En data centers, evaluación de la disponibilidad de agua para sistemas de refrigeración.', icon: 'water' },
   { title: 'Marco ERNC y permisos', desc: 'Encuadre en la Ley 7599/2025 y el Decreto 6034/2026, y en los procesos de ANDE, VMME y MADES, para que el proyecto avance sobre reglas claras desde el inicio.', icon: 'permit' },
   { title: 'Coordinación de especialidades', desc: 'Integramos a los especialistas eléctricos, de generación, climatización y comunicaciones, y traducimos entre disciplinas para que el proyecto avance sin ruido técnico.', icon: 'network' },
-  { title: 'Fiscalización y control de obra', desc: 'Owner’s Engineer con la plataforma ERGON: control de avance físico y financiero, valor ganado y visibilidad técnica para el inversor durante la construcción.', icon: 'eye' },
+  { title: 'Fiscalización y control de obra', desc: 'Owner’s Engineer: control de avance físico y financiero, valor ganado y visibilidad técnica para el inversor durante la construcción.', icon: 'eye' },
 ];
 
 const breadcrumbs = [
@@ -27,7 +27,7 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Ingeniería local para parques solares y data centers',
   serviceType: 'Ingeniería civil de base y socio local para proyectos de energía',
-  description: 'Socio local de ingeniería en Paraguay para developers y operadores de parques solares y data centers: prefactibilidad de sitio, obras civiles, hidrología, encuadre ERNC (Ley 7599/2025, Decreto 6034/2026), coordinación de especialidades y fiscalización de obra con la plataforma ERGON.',
+  description: 'Socio local de ingeniería en Paraguay para developers y operadores de parques solares y data centers: prefactibilidad de sitio, obras civiles, hidrología, encuadre ERNC (Ley 7599/2025, Decreto 6034/2026), coordinación de especialidades y fiscalización de obra.',
   provider: {
     '@type': 'Organization',
     name: 'DG Ingeniería SRL',
@@ -53,7 +53,11 @@ const serviceSchema = {
 const faqs = [
   {
     q: '¿Qué empresa puede ser socio local de ingeniería para un parque solar o data center en Paraguay?',
-    a: 'DG Ingeniería SRL actúa como brazo local de ingeniería en Paraguay para developers, fondos y operadores internacionales que no tienen estructura propia en el país. Aporta la ingeniería civil de base (topografía con drones, capacidad portante, plataformas, accesos, movimiento de suelos y drenaje), el conocimiento del marco ERNC (Ley 7599/2025 y Decreto 6034/2026) y de los procesos de ANDE, VMME y MADES, la prefactibilidad técnica de sitio y la fiscalización de obra con la plataforma propia ERGON. El developer aporta el equity, la experiencia en MW y la tecnología; DG resuelve la capa local de ingeniería, sitio y permisos.',
+    a: 'DG Ingeniería SRL actúa como brazo local de ingeniería en Paraguay para developers, fondos y operadores internacionales que no tienen estructura propia en el país. Aporta la ingeniería civil de base (topografía con drones, capacidad portante, plataformas, accesos, movimiento de suelos y drenaje), el conocimiento del marco ERNC (Ley 7599/2025 y Decreto 6034/2026) y de los procesos de ANDE, VMME y MADES, la prefactibilidad técnica de sitio y la fiscalización de obra. El developer aporta el equity, la experiencia en MW y la tecnología; DG resuelve la capa local de ingeniería, sitio y permisos.',
+  },
+  {
+    q: '¿Qué decide realmente si un predio para data center en Paraguay es viable?',
+    a: 'Lo deciden tres filtros, y ninguno es el tamaño del predio. Primero la potencia firme: la capacidad instalada en una subestación no es lo mismo que potencia firme asignable a un privado, y el número que gobierna el cronograma es el time-to-power, no la placa. Segundo el agua y la refrigeración: si hay fuente utilizable a distancia y calidad razonables, y si no la hay, qué le hace al terreno y al capital una solución seca o de refrigeración líquida. Tercero la fibra redundante: al menos dos carriers por rutas físicamente diversas. Después la inundabilidad y la capacidad portante recortan la superficie útil. Los tres se pueden evaluar de escritorio antes de comprometer un peso en campo.',
   },
   {
     q: '¿Qué necesita un developer internacional para desarrollar un parque solar en Paraguay?',
@@ -105,7 +109,7 @@ const faqs = [
       <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
         <p>Paraguay abrió su mercado de energía renovable: la Ley 7599/2025 y el Decreto 6034/2026 dieron el marco, y la primera licitación solar a gran escala —Loma Plata, 140 MW— inició una cadena de proyectos prevista en el Plan Maestro de ANDE. Para un developer, fondo u operador internacional, avanzar acá exige una capa local de ingeniería, sitio y permisos.</p>
         <p>Ahí entra DG. Aportamos la ingeniería civil de base que hace viable un parque solar o un data center: prefactibilidad y due diligence del sitio, topografía con drones, capacidad portante del suelo, plataformas, accesos, movimiento de suelos y drenaje. Coordinamos a los especialistas eléctricos, de generación y de refrigeración, y traducimos entre disciplinas para que el proyecto avance con certeza técnica desde las etapas tempranas.</p>
-        <p>Trabajamos sobre el marco real del país —ANDE, VMME y MADES, la figura de la SOE, el régimen ERNC— y durante la construcción fiscalizamos la obra con la plataforma propia ERGON, dándole al inversor visibilidad técnica en tiempo real. El developer pone el capital, la experiencia en MW y la tecnología; nosotros resolvemos la ingeniería local, el sitio y los permisos.</p>
+        <p>Trabajamos sobre el marco real del país —ANDE, VMME y MADES, la figura de la SOE, el régimen ERNC— y durante la construcción fiscalizamos la obra, dándole al inversor visibilidad técnica en tiempo real. El developer pone el capital, la experiencia en MW y la tecnología; nosotros resolvemos la ingeniería local, el sitio y los permisos.</p>
       </div>
     </div>
   </FullBleedSection>
@@ -151,7 +155,7 @@ const faqs = [
           <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Inteligencia territorial:</strong> evaluación del sitio, recurso, restricciones e inundabilidad con topografía propia con drones.</span></li>
           <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Prefactibilidad y factibilidad técnica:</strong> ingeniería de base y de sitio para sostener la decisión de inversión y la oferta.</span></li>
           <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Encuadre regulatorio:</strong> régimen ERNC, licencias, conexión con ANDE y licencia ambiental ante el MADES.</span></li>
-          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Owner’s Engineer y fiscalización:</strong> control de obra independiente con la plataforma ERGON, del lado del propietario.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Owner’s Engineer y fiscalización:</strong> control de obra independiente, del lado del propietario.</span></li>
         </ul>
         <p>Es la misma forma de trabajar que aplicamos en más de mil kilómetros de proyectos viales y en obras civiles e industriales del país, ahora orientada a la infraestructura energética y digital.</p>
       </div>

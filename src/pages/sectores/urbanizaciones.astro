@@ -12,7 +12,7 @@ const capacidades = [
   { title: 'Vialidad interna', desc: 'Trazados geométricos con velocidades operacionales adecuadas, radios seguros y visibilidad en intersecciones, para acceso eficiente y circulación segura a todos los lotes.', icon: 'route' },
   { title: 'Coordinación de redes', desc: 'Drenaje pluvial, agua potable, cloacas y energía eléctrica integradas en un diseño coherente, sin conflictos entre redes y con una construcción ordenada.', icon: 'network' },
   { title: 'Factibilidad de servicios y habilitación', desc: 'Factibilidad con las prestadoras (ESSAP, ANDE), mensura y replanteo, y la ingeniería que respalda la aprobación del loteamiento ante el municipio.', icon: 'permit' },
-  { title: 'Gerenciamiento y fiscalización de obra', desc: 'Gerencia de obra y Owner’s Engineer con la plataforma ERGON: control de avance físico y financiero, valor ganado y visibilidad técnica para el desarrollador durante la ejecución.', icon: 'eye' },
+  { title: 'Gerenciamiento y fiscalización de obra', desc: 'Gerencia de obra y Owner’s Engineer: control de avance físico y financiero, valor ganado y visibilidad técnica para el desarrollador durante la ejecución.', icon: 'eye' },
 ];
 
 const experiencia = [
@@ -33,7 +33,7 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Ingeniería de urbanizaciones y loteamientos',
   serviceType: 'Ingeniería de sitio y socio local para desarrollos urbanos y loteamientos',
-  description: 'Socio de ingeniería en Paraguay para desarrolladores e inversores de urbanizaciones y loteamientos: prefactibilidad y due diligence de sitio, plataformas y movimiento de suelos, vialidad interna, coordinación de redes, factibilidad de servicios y habilitación municipal, y fiscalización de obra con la plataforma ERGON.',
+  description: 'Socio de ingeniería en Paraguay para desarrolladores e inversores de urbanizaciones y loteamientos: prefactibilidad y due diligence de sitio, plataformas y movimiento de suelos, vialidad interna, coordinación de redes, factibilidad de servicios y habilitación municipal, y fiscalización de obra.',
   provider: {
     '@type': 'Organization',
     name: 'DG Ingeniería SRL',
@@ -59,7 +59,7 @@ const serviceSchema = {
 const faqs = [
   {
     q: '¿Qué empresa puede ser el socio de ingeniería de una urbanización o loteamiento en Paraguay?',
-    a: 'DG Ingeniería SRL actúa como socio de ingeniería de desarrolladores e inversores que necesitan convertir un terreno en lotes servidos y vendibles. Aporta la ingeniería de sitio completa: prefactibilidad y due diligence con topografía propia con drones, plataformas y movimiento de suelos, vialidad interna, coordinación de las redes (drenaje pluvial, agua, cloacas y energía), la factibilidad de servicios con las prestadoras (ESSAP, ANDE) y el respaldo técnico para la aprobación del loteamiento ante el municipio. Durante la construcción, fiscaliza la obra con la plataforma propia ERGON. El desarrollador aporta la tierra, el capital y la visión comercial; DG resuelve la ingeniería que hace el suelo edificable y habilitable.',
+    a: 'DG Ingeniería SRL actúa como socio de ingeniería de desarrolladores e inversores que necesitan convertir un terreno en lotes servidos y vendibles. Aporta la ingeniería de sitio completa: prefactibilidad y due diligence con topografía propia con drones, plataformas y movimiento de suelos, vialidad interna, coordinación de las redes (drenaje pluvial, agua, cloacas y energía), la factibilidad de servicios con las prestadoras (ESSAP, ANDE) y el respaldo técnico para la aprobación del loteamiento ante el municipio. Durante la construcción, fiscaliza la obra. El desarrollador aporta la tierra, el capital y la visión comercial; DG resuelve la ingeniería que hace el suelo edificable y habilitable.',
   },
   {
     q: '¿Qué se necesita para convertir un terreno en lotes vendibles en Paraguay?',
@@ -71,7 +71,7 @@ const faqs = [
   },
   {
     q: '¿Qué obras de ingeniería requiere un desarrollo urbano?',
-    a: 'Topografía de precisión y due diligence del sitio (capacidad portante, restricciones, inundabilidad); diseño de plataformas y terrazas con movimiento de suelos optimizado; vialidad interna con trazados geométricos seguros; coordinación de las redes de drenaje pluvial, agua potable, cloacas y energía; factibilidad de servicios con las prestadoras y soporte a la aprobación municipal; y, durante la construcción, la fiscalización de la obra. DG diseña esta ingeniería de sitio y la fiscaliza con visibilidad técnica para el desarrollador a través de la plataforma ERGON.',
+    a: 'Topografía de precisión y due diligence del sitio (capacidad portante, restricciones, inundabilidad); diseño de plataformas y terrazas con movimiento de suelos optimizado; vialidad interna con trazados geométricos seguros; coordinación de las redes de drenaje pluvial, agua potable, cloacas y energía; factibilidad de servicios con las prestadoras y soporte a la aprobación municipal; y, durante la construcción, la fiscalización de la obra. DG diseña esta ingeniería de sitio y la fiscaliza con visibilidad técnica para el desarrollador.',
   },
 ];
 ---
@@ -111,7 +111,7 @@ const faqs = [
       <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
         <p>El negocio de un desarrollador empieza cuando el terreno se convierte en lotes servidos, habilitados y en condiciones de venderse. Esa conversión es un problema de ingeniería: niveles, drenaje, vialidad interna, redes y habilitación. Resolverlo bien, y antes del lanzamiento, es lo que separa un loteamiento ordenado de uno que se paga dos veces.</p>
         <p>Ahí entra DG. Aportamos la ingeniería de sitio completa: topografía de precisión con drones que define los niveles de terrazas y optimiza el movimiento de suelos para bajar costos de transporte y disposición; plataformas que consideran pendientes de drenaje, estabilidad de taludes y compatibilidad con expansiones futuras; y una vialidad interna con trazados seguros que dan acceso eficiente a cada lote.</p>
-        <p>Integramos en un único diseño coherente el drenaje pluvial, el agua potable, las cloacas y la energía, evitando conflictos entre redes; gestionamos la factibilidad de servicios con las prestadoras y el respaldo técnico para la aprobación del loteamiento; y durante la construcción fiscalizamos la obra con la plataforma propia ERGON. El desarrollador pone la tierra, el capital y la visión comercial; nosotros resolvemos la ingeniería que hace el suelo edificable y habilitable.</p>
+        <p>Integramos en un único diseño coherente el drenaje pluvial, el agua potable, las cloacas y la energía, evitando conflictos entre redes; gestionamos la factibilidad de servicios con las prestadoras y el respaldo técnico para la aprobación del loteamiento; y durante la construcción fiscalizamos la obra. El desarrollador pone la tierra, el capital y la visión comercial; nosotros resolvemos la ingeniería que hace el suelo edificable y habilitable.</p>
       </div>
     </div>
   </FullBleedSection>
@@ -157,7 +157,7 @@ const faqs = [
           <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Inteligencia territorial:</strong> evaluación del sitio, drenaje e inundabilidad con topografía propia con drones.</span></li>
           <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Prefactibilidad y factibilidad técnica:</strong> ingeniería de base para sostener la decisión de inversión y el lanzamiento del loteamiento.</span></li>
           <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Factibilidad de servicios y habilitación:</strong> coordinación con las prestadoras (ESSAP, ANDE), mensura y respaldo técnico para la aprobación municipal.</span></li>
-          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Gerenciamiento, Owner’s Engineer y fiscalización:</strong> control de obra independiente con la plataforma ERGON, del lado del desarrollador.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Gerenciamiento, Owner’s Engineer y fiscalización:</strong> control de obra independiente, del lado del desarrollador.</span></li>
         </ul>
         <p>Es la misma forma de trabajar que aplicamos en más de mil kilómetros de proyectos viales y en obras civiles e industriales del país, orientada al desarrollo de suelo urbano.</p>
       </div>
