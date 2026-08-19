@@ -16,6 +16,33 @@ const breadcrumbs = [
   { name: 'Inicio', url: '/' },
   { name: 'Soluciones IA', url: '/soluciones-ia' },
 ];
+
+// Entidad ERGON. Sin esto, "ERGON" es una palabra suelta para un buscador o un LLM:
+// no hay nada que diga QUE hace, y no puede aparecer como respuesta a "software de
+// presupuesto de obra". La ficha de abajo y este schema son la misma afirmacion.
+const ergonSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  '@id': 'https://ergonpy.com/#software',
+  name: 'ERGON',
+  applicationCategory: 'BusinessApplication',
+  applicationSubCategory: 'Construction management software',
+  operatingSystem: 'Web',
+  url: 'https://ergonpy.com/',
+  description:
+    'Plataforma de presupuesto y control de obra: cómputo métrico, análisis de precios unitarios (APU), cronograma, curva S y valor ganado (EVM), pedidos de información (RFI), inspecciones y control documental. Desarrollada por DG Ingeniería a partir de obras ejecutadas en Paraguay.',
+  inLanguage: 'es',
+  author: { '@id': 'https://dgingenieriapy.com/#organization' },
+  publisher: { '@id': 'https://dgingenieriapy.com/#organization' },
+  featureList: [
+    'Cómputo métrico y planilla de presupuesto',
+    'Análisis de precios unitarios (APU) con banco de ítems',
+    'Cronograma de obra y curva S',
+    'Valor ganado (EVM): BAC, PV, EV, AC, SPI, CPI',
+    'Pedidos de información (RFI) e inspecciones',
+    'Control documental con línea base auditable',
+  ],
+};
 ---
 
 <Base
@@ -23,6 +50,7 @@ const breadcrumbs = [
   description="Herramientas de inteligencia artificial de DG Ingeniería para el trabajo técnico de la ingeniería civil. ERGON, para presupuestos y control de obra, ya está disponible."
   breadcrumbs={breadcrumbs}
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(ergonSchema)} />
 
   <!-- HERO (slate, sin foto — patrón de puntos del sistema) -->
   <section class="relative bg-slate-dg overflow-hidden min-h-[54vh] flex items-center" data-hero>
@@ -54,12 +82,23 @@ const breadcrumbs = [
       class="group block border-l-2 border-arena bg-cream-deep/40 hover:bg-cream-deep/70 transition-colors rounded-r-lg pl-6 pr-6 md:pl-8 md:pr-8 py-6 md:py-7 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena focus-visible:ring-offset-2 focus-visible:ring-offset-white"
       aria-label="Abrir ERGON en ergonpy.com"
     >
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-        <div>
+      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+        <div class="max-w-[640px]">
           <h2 class="text-2xl md:text-[26px] font-extrabold tracking-tight text-slate-dg">ERGON</h2>
-          <p class="text-gray-neutral text-[15px] mt-1">Presupuestos y control de obra</p>
+          <p class="text-gray-neutral text-[15px] mt-1 font-medium">Presupuesto y control de obra</p>
+          <p class="text-slate-dg/70 text-[14.5px] leading-relaxed mt-3">
+            Plataforma web para presupuestar una obra y después controlarla contra ese presupuesto.
+            Cubre el cómputo métrico, el análisis de precios unitarios (APU) con banco de ítems, el
+            cronograma con curva S y el seguimiento por valor ganado (EVM), además de pedidos de
+            información, inspecciones y control documental sobre una línea base auditable.
+          </p>
+          <ul class="flex flex-wrap gap-2 mt-4">
+            {['Cómputo métrico', 'APU', 'Curva S', 'Valor ganado (EVM)', 'RFI e inspecciones'].map((f) => (
+              <li class="text-[12px] font-semibold text-gray-neutral bg-white px-2.5 py-1 rounded border border-slate-dg/[0.10]">{f}</li>
+            ))}
+          </ul>
         </div>
-        <span class="inline-flex items-center gap-1.5 text-slate-dg font-semibold text-[14px] whitespace-nowrap">
+        <span class="inline-flex items-center gap-1.5 text-slate-dg font-semibold text-[14px] whitespace-nowrap md:mt-1">
           Abrir ERGON
           <span class="text-arena inline-block group-hover:translate-x-0.5 transition-transform">&#8599;</span>
         </span>

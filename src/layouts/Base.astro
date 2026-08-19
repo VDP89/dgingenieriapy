@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import { t, nav, counterpart, langFromPath, type Lang } from '../i18n/ui';
 
 interface Props {
   title: string;
@@ -9,18 +10,38 @@ interface Props {
   preloadImg?: string;
   /** Breadcrumb para JSON-LD en paginas internas. */
   breadcrumbs?: Array<{ name: string; url: string }>;
+  /** Idioma. Por defecto se deduce del path (/en/* -> en); se puede forzar. */
+  lang?: Lang;
 }
+
+// El idioma se deduce del path para que ninguna pagina pueda olvidarse de declararlo.
+const lang: Lang = Astro.props.lang ?? langFromPath(Astro.url.pathname);
+
+const DEFAULT_DESC: Record<Lang, string> = {
+  es: 'DG Ingeniería SRL — Claridad técnica para proyectos de infraestructura en Paraguay.',
+  en: 'DG Ingeniería SRL — Paraguay-based civil engineering for infrastructure projects.',
+};
 
 const {
   title,
-  description = 'DG Ingeniería SRL — Claridad técnica para proyectos de infraestructura en Paraguay.',
+  description = DEFAULT_DESC[lang],
   ogImage = '/img/og-dg-default.jpg',
   preloadImg,
   breadcrumbs,
 } = Astro.props;
 
+const L = t(lang);
+const N = nav(lang);
+
 const canonicalURL = new URL(Astro.url.pathname, 'https://dgingenieriapy.com');
 const isHome = Astro.url.pathname === '/';
+
+// hreflang — solo si la pagina tiene contraparte real (ver i18n/ui.ts).
+const altPath = counterpart(Astro.url.pathname);
+const altURL = altPath ? new URL(altPath, 'https://dgingenieriapy.com').toString() : null;
+const altLang: Lang = lang === 'es' ? 'en' : 'es';
+const esURL = lang === 'es' ? canonicalURL.toString() : altURL;
+const enURL = lang === 'en' ? canonicalURL.toString() : altURL;
 
 // JSON-LD: Organization + LocalBusiness siempre. Breadcrumb solo si se provee.
 const orgSchema = {
@@ -43,7 +64,7 @@ const orgSchema = {
     telephone: '+595976335132',
     email: 'info@dgingenieriasrl.com',
     areaServed: 'PY',
-    availableLanguage: ['Spanish'],
+    availableLanguage: ['Spanish', 'English'],
   },
   // Cross-link entity: la Person de Víctor (mismo @id que en victordelpuerto.com).
   founder: {
@@ -139,18 +160,25 @@ const websiteSchema = {
   '@id': 'https://dgingenieriapy.com/#website',
   url: 'https://dgingenieriapy.com',
   name: 'DG Ingeniería SRL',
-  inLanguage: 'es',
+  inLanguage: lang,
   publisher: { '@id': 'https://dgingenieriapy.com/#organization' },
 };
 ---
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang={lang}>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content={description}>
   <link rel="canonical" href={canonicalURL}>
+
+  <!-- hreflang — solo si la pagina tiene contraparte REAL (ver EN_LIVE en i18n/ui.ts).
+       Una pagina sin par no lleva hreflang: anunciarse como unica alternativa de si
+       misma no le dice nada al buscador. -->
+  {altURL && esURL && <link rel="alternate" hreflang="es" href={esURL} />}
+  {altURL && enURL && <link rel="alternate" hreflang="en" href={enURL} />}
+  {altURL && esURL && <link rel="alternate" hreflang="x-default" href={esURL} />}
 
   <!-- OG Tags -->
   <meta property="og:type" content="website">
@@ -159,6 +187,7 @@ const websiteSchema = {
   <meta property="og:image" content={ogImage}>
   <meta property="og:url" content={canonicalURL}>
   <meta property="og:site_name" content="DG Ingeniería SRL">
+  <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'es_PY'}>
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content={`${title} — DG Ingeniería`}>
   <meta name="twitter:description" content={description}>
@@ -253,34 +282,45 @@ const websiteSchema = {
 <body class="bg-cream text-slate-dg">
 
   <!-- Skip to content para teclado / lectores de pantalla -->
-  <a href="#main" class="skip-link">Saltar al contenido</a>
+  <a href="#main" class="skip-link">{L('a11y.skip')}</a>
 
   <!-- NAV -->
   <header class="sticky top-0 z-50 bg-cream/92 backdrop-blur-md border-b border-slate-dg/10 h-[68px]">
     <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 flex items-center justify-between h-full">
-      <a href="/" class="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena focus-visible:ring-offset-2 focus-visible:ring-offset-cream rounded-sm">
+      <a href={N.home} class="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena focus-visible:ring-offset-2 focus-visible:ring-offset-cream rounded-sm">
         <img src="/img/dg-isotipo.png" alt="DG Ingeniería" class="h-[34px] w-auto" width="34" height="34">
         <div class="flex flex-col leading-tight">
           <span class="font-bold text-[16px] tracking-tight text-slate-dg">DG Ingeniería</span>
-          <span class="text-[9.5px] font-medium tracking-[1.8px] uppercase text-gray-neutral">Infraestructura Inteligente</span>
+          <span class="text-[9.5px] font-medium tracking-[1.8px] uppercase text-gray-neutral">{L('tagline')}</span>
         </div>
       </a>
 
       <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-7" aria-label="Principal">
-        <a href="/nosotros" class="nav-link text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">Nosotros</a>
-        <a href="/sectores" class="nav-link text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">Sectores</a>
-        <a href="/proyectos" class="nav-link text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">Proyectos</a>
-        <a href="/soluciones-ia" class="nav-link text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">Soluciones IA</a>
-        <a href="/blog" class="nav-link text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">Insights</a>
-        <a href="/contacto" class="bg-arena text-white px-5 py-2.5 rounded-md font-semibold text-[13.5px] hover:bg-arena-light transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena focus-visible:ring-offset-2 focus-visible:ring-offset-cream">Contacto</a>
+      <nav class="hidden md:flex items-center gap-7" aria-label={L('nav.primary')}>
+        <a href={N.about} class="nav-link text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">{L('nav.about')}</a>
+        <a href={N.sectors} class="nav-link text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">{L('nav.sectors')}</a>
+        <a href={N.projects} class="nav-link text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">{L('nav.projects')}</a>
+        <a href={N.ai} class="nav-link text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">{L('nav.ai')}</a>
+        <a href={N.insights} class="nav-link text-gray-neutral font-medium text-[13.5px] hover:text-slate-dg transition-colors">{L('nav.insights')}</a>
+
+        {altPath && (
+          <a
+            href={altPath}
+            hreflang={altLang}
+            lang={altLang}
+            class="text-gray-neutral font-semibold text-[12.5px] tracking-wide hover:text-slate-dg transition-colors border border-slate-dg/15 rounded px-2 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena"
+            aria-label={L('nav.langLabel')}
+          >{altLang === 'en' ? 'EN' : 'ES'}</a>
+        )}
+
+        <a href={N.contact} class="bg-arena text-white px-5 py-2.5 rounded-md font-semibold text-[13.5px] hover:bg-arena-light transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena focus-visible:ring-offset-2 focus-visible:ring-offset-cream">{L('nav.contact')}</a>
       </nav>
 
       <!-- Mobile Hamburger -->
       <button
         id="mobile-toggle"
         class="md:hidden flex flex-col gap-[5px] p-2 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena"
-        aria-label="Abrir menú"
+        aria-label={L('nav.openMenu')}
         aria-expanded="false"
         aria-controls="mobile-menu"
       >
@@ -293,12 +333,15 @@ const websiteSchema = {
     <!-- Mobile Menu -->
     <nav id="mobile-menu" class="hidden md:hidden absolute top-[68px] left-0 w-full bg-cream/98 backdrop-blur-lg border-b border-slate-dg/10 shadow-lg" aria-label="Mobile">
       <div class="max-w-[1200px] mx-auto px-5 py-6 flex flex-col gap-4">
-        <a href="/nosotros" class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">Nosotros</a>
-        <a href="/sectores" class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">Sectores</a>
-        <a href="/proyectos" class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">Proyectos</a>
-        <a href="/soluciones-ia" class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">Soluciones IA</a>
-        <a href="/blog" class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">Insights</a>
-        <a href="/contacto" class="bg-arena text-white px-5 py-3 rounded-md font-semibold text-center mt-2">Contacto</a>
+        <a href={N.about} class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">{L('nav.about')}</a>
+        <a href={N.sectors} class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">{L('nav.sectors')}</a>
+        <a href={N.projects} class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">{L('nav.projects')}</a>
+        <a href={N.ai} class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">{L('nav.ai')}</a>
+        <a href={N.insights} class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">{L('nav.insights')}</a>
+        {altPath && (
+          <a href={altPath} hreflang={altLang} lang={altLang} class="text-gray-neutral font-medium text-base py-2 border-b border-slate-dg/5">{altLang === 'en' ? 'English' : 'Español'}</a>
+        )}
+        <a href={N.contact} class="bg-arena text-white px-5 py-3 rounded-md font-semibold text-center mt-2">{L('nav.contact')}</a>
       </div>
     </nav>
   </header>
@@ -311,9 +354,9 @@ const websiteSchema = {
   <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 z-40 translate-y-full transition-transform duration-300 ease-out">
     <div class="bg-slate-dg/95 sticky-cta border-t border-cream/10 py-3">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 flex items-center justify-between">
-        <p class="text-cream/70 text-sm font-medium hidden sm:block">¿Tiene un proyecto de infraestructura?</p>
+        <p class="text-cream/70 text-sm font-medium hidden sm:block">{L('sticky.question')}</p>
         <div class="flex items-center gap-4 w-full sm:w-auto justify-center sm:justify-end">
-          <a href="/contacto" class="bg-arena text-white px-5 py-2 rounded-md font-semibold text-sm hover:bg-arena-light transition-colors">Hablemos</a>
+          <a href={N.contact} class="bg-arena text-white px-5 py-2 rounded-md font-semibold text-sm hover:bg-arena-light transition-colors">{L('sticky.cta')}</a>
           <a href="tel:+595976335132" class="text-cream/50 text-sm hover:text-cream transition-colors hidden sm:inline">+595 976 335 132</a>
         </div>
       </div>
@@ -328,7 +371,7 @@ const websiteSchema = {
         <!-- Brand -->
         <div class="lg:col-span-1">
           <img src="/img/dg-blanco.png" alt="DG Ingeniería" class="h-10 w-auto opacity-60 mb-4">
-          <p class="text-sm leading-relaxed text-cream/35 mb-5">Ingeniería aplicada a infraestructura.<br>Asunción, Paraguay.</p>
+          <p class="text-sm leading-relaxed text-cream/35 mb-5" set:html={L('footer.brandLine')} />
           <div class="flex gap-3">
             <a href="https://www.linkedin.com/company/dg-ingenieria-srl" target="_blank" rel="noopener" class="w-9 h-9 rounded-full border border-cream/10 flex items-center justify-center text-cream/30 hover:text-cream hover:border-cream/30 transition-colors" aria-label="LinkedIn">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -344,41 +387,41 @@ const websiteSchema = {
 
         <!-- Sectores -->
         <div>
-          <h5 class="text-[11px] font-semibold uppercase tracking-[2px] text-cream/25 mb-5">Sectores</h5>
-          <a href="/sectores/vialidad" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Proyectos Viales</a>
-          <a href="/sectores/pavimentos" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Pavimentos</a>
-          <a href="/sectores/aeropuertos" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Aeropuertos y Pistas</a>
-          <a href="/sectores/puertos" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Puertos y Fluvial</a>
-          <a href="/sectores/fiscalizacion" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Edificación Residencial</a>
-          <a href="/sectores/plantas-industriales" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Plantas Industriales</a>
-          <a href="/sectores/urbanizaciones" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Urbanizaciones</a>
-          <a href="/sectores/solar" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Solar y Data Centers</a>
-          <a href="/sectores/relevamiento-aereo" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Relevamiento Aéreo y MDT</a>
+          <h5 class="text-[11px] font-semibold uppercase tracking-[2px] text-cream/25 mb-5">{L('footer.sectors')}</h5>
+          <a href={N.vialidad} class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">{L('sector.vialidad')}</a>
+          <a href={N.pavimentos} class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">{L('sector.pavimentos')}</a>
+          <a href={N.aeropuertos} class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">{L('sector.aeropuertos')}</a>
+          <a href={N.puertos} class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">{L('sector.puertos')}</a>
+          <a href={N.fiscalizacion} class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">{L('sector.fiscalizacion')}</a>
+          <a href={N.plantas} class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">{L('sector.plantas')}</a>
+          <a href={N.urbanizaciones} class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">{L('sector.urbanizaciones')}</a>
+          <a href={N.solar} class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">{L('sector.solar')}</a>
+          <a href={N.relevamiento} class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">{L('sector.relevamiento')}</a>
         </div>
 
         <!-- Empresa -->
         <div>
-          <h5 class="text-[11px] font-semibold uppercase tracking-[2px] text-cream/25 mb-5">Empresa</h5>
-          <a href="/nosotros" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Nosotros</a>
-          <a href="/proyectos" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Proyectos</a>
-          <a href="/soluciones-ia" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Soluciones IA</a>
-          <a href="/blog" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Insights</a>
-          <a href="/contacto" class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">Contacto</a>
+          <h5 class="text-[11px] font-semibold uppercase tracking-[2px] text-cream/25 mb-5">{L('footer.company')}</h5>
+          <a href={N.about} class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">{L('nav.about')}</a>
+          <a href={N.projects} class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">{L('nav.projects')}</a>
+          <a href={N.ai} class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">{L('nav.ai')}</a>
+          <a href={N.insights} class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">{L('nav.insights')}</a>
+          <a href={N.contact} class="block text-cream/45 text-[13px] mb-2.5 hover:text-cream transition-colors">{L('nav.contact')}</a>
         </div>
 
         <!-- Contacto -->
         <div>
-          <h5 class="text-[11px] font-semibold uppercase tracking-[2px] text-cream/25 mb-5">Contacto</h5>
+          <h5 class="text-[11px] font-semibold uppercase tracking-[2px] text-cream/25 mb-5">{L('footer.contact')}</h5>
           <a href="mailto:info@dgingenieriasrl.com" class="block text-cream/45 text-[13px] mb-3 hover:text-cream transition-colors">info@dgingenieriasrl.com</a>
           <a href="tel:+595976335132" class="block text-cream/45 text-[13px] mb-3 hover:text-cream transition-colors">+595 976 335 132</a>
-          <p class="text-cream/30 text-[13px] leading-relaxed mt-4">Asunción, Paraguay<br>Atención L-V 08:30 — 18:00</p>
+          <p class="text-cream/30 text-[13px] leading-relaxed mt-4" set:html={L('footer.hours')} />
         </div>
       </div>
 
       <!-- Footer bottom -->
       <div class="pt-6 border-t border-cream/[0.06] flex flex-col md:flex-row items-center justify-between gap-3">
-        <p class="text-xs tracking-wide text-cream/25">&copy; 2026 DG Ingeniería SRL — Todos los derechos reservados</p>
-        <p class="text-[10px] tracking-wide text-cream/15">Claridad técnica en cada decisión de proyecto</p>
+        <p class="text-xs tracking-wide text-cream/25">{L('footer.rights')}</p>
+        <p class="text-[10px] tracking-wide text-cream/15">{L('footer.claim')}</p>
       </div>
     </div>
   </footer>
