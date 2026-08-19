@@ -1,0 +1,326 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import FullBleedSection from '../../../components/FullBleedSection.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import Button from '../../../components/Button.astro';
+import FaqSection from '../../../components/FaqSection.astro';
+import { nav } from '../../../i18n/ui';
+
+const N = nav('en');
+
+const pubDate = 'July 23, 2026';
+const readTime = '5 min read';
+
+const titulo = 'How to reduce risk when preparing a bid';
+const desc = 'A requirement buried in the additional information section was worth 16% of the bid amount. It surfaced because the tender documents were read in full. How we do it, and what the client keeps afterwards.';
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: titulo,
+  description: desc,
+  image: 'https://dgingenieriapy.com/img/insight-ia-produccion.jpg',
+  author: { '@id': 'https://victordelpuerto.com/#person' },
+  datePublished: '2026-07-23',
+  dateModified: '2026-08-19',
+  publisher: {
+    '@type': 'Organization',
+    '@id': 'https://dgingenieriapy.com/#organization',
+    name: 'DG Ingeniería SRL',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://dgingenieriapy.com/img/dg-isotipo.png',
+    },
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://dgingenieriapy.com/en/insights/reducing-risk-when-preparing-a-bid/',
+  },
+  inLanguage: 'en',
+  articleSection: 'Bid preparation',
+  keywords: 'reducing risk in tenders, bid preparation, bidding documents, addenda, international competitive bidding, qualification requirements, terms of reference, AI-assisted specialists, Paraguay',
+};
+
+const faqs = [
+  {
+    q: 'How do you reduce risk when preparing a bid?',
+    a: 'By reading the tender documents and their addenda in full instead of sampling them, applying consistent criteria. On one real tender that surfaced an equipment requirement located outside the terms of reference and outside the price schedule, whose cost came to 16% of the bid amount; addenda that changed the pricing strategy; geotechnical risks the documents never mentioned; and internal contradictions in the tender package itself. A proposal submitted without that line item competes with a number missing one sixth of its value.',
+  },
+  {
+    q: 'Why is it hard to review a complete set of tender documents?',
+    a: 'Because it means reading the documents and every addendum, checking each qualification requirement against the track record of the firm, filling the technical and financial forms in the official format, costing the service with the staffing structure the tender imposes, and holding consistency across dozens of interlocking pieces. Against that volume the submission calendar pushes toward prioritizing and sampling, and whatever goes unread is by definition what nobody knows they missed.',
+  },
+  {
+    q: 'How can AI be used in bid preparation without losing engineering judgment?',
+    a: 'With a team of AI-assisted specialists rather than one general assistant trying to do everything. Each specialist covers a narrow function: some analyze the tender documents and addenda, others check qualification requirements, others review consistency across forms or support the calculation models. None of them decides. Whether to bid, at what price, and what gets signed is always a decision taken by a person. That is what turns a tool into an operating capability.',
+  },
+  {
+    q: 'What does the client get at the end of the work?',
+    a: 'A more complete proposal carrying less risk. Documentation built on the official tender files, with the sweep for requirements run over the whole document. And spreadsheets that are traceable and editable: the costing lives in a single calculation model, with mirror sheets of each official form pulling from the same engine and cross-checks that verify themselves. Change a rate, a duration or a level of dedication and the model recalculates the whole chain and shows where it landed.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: '/en/' },
+  { name: 'Insights', url: '/en/insights' },
+  { name: 'How to reduce risk when preparing a bid', url: '/en/insights/reducing-risk-when-preparing-a-bid' },
+];
+---
+
+<Base
+  title={titulo}
+  description={desc}
+  ogImage="/img/insight-ia-produccion.jpg"
+  breadcrumbs={breadcrumbs}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(articleSchema)} />
+  </Fragment>
+
+  <PageHero
+    img="/img/insight-ia-produccion.jpg"
+    imgAlt="Road on an embankment in the lower Paraguayan Chaco, palm groves on both sides"
+    kicker="Insights · Bid preparation"
+    title="How to reduce risk"
+    titleAccent="when preparing a bid"
+    subtitle="A requirement buried in the additional information section was worth 16% of the bid."
+    height="md"
+  >
+    <Button href={N.contact} variant="primary" magnetic>Start a conversation</Button>
+    <Button href={N.insights} variant="ghost-dark">More Insights</Button>
+  </PageHero>
+
+  <!-- Meta info -->
+  <section class="border-b border-slate-dg/10 bg-cream">
+    <div class="max-w-[820px] mx-auto px-5 md:px-8 py-5 flex items-center gap-5 text-[12.5px] text-slate-dg/55 tracking-wide">
+      <span class="font-semibold uppercase tracking-[2px] text-arena/85 text-[11px]">Insight #2</span>
+      <span aria-hidden="true">·</span>
+      <span>{pubDate}</span>
+      <span aria-hidden="true">·</span>
+      <span>{readTime}</span>
+    </div>
+  </section>
+
+  <!-- HOOK -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <p class="text-[19px] text-slate-dg leading-[1.7] font-medium">
+        The documents for an international tender required the bidder to supply a brand-new pickup truck with insurance and fuel for twelve months, two workstations and survey equipment. The requirement sat in the additional information section. Outside the terms of reference, outside the price schedule: in a section almost nobody cross-checks against the budget.
+      </p>
+
+      <p class="text-[19px] text-slate-dg leading-[1.7] font-semibold">
+        Costing that line item came to 16% of the bid amount.
+      </p>
+
+      <p>
+        A proposal that reaches the evaluation table without it competes with a number missing one sixth of its value. And the tender package was in order: the requirement was written out in full, in the place nobody looks.
+      </p>
+
+      <p>
+        It surfaced because the documents were read from end to end.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- El problema -->
+  <FullBleedSection bg="cream" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="The problem"
+        title="Why that"
+        titleAccent="is hard"
+      />
+
+      <p>
+        Preparing the documentation for an international public tender is among the most expensive work a consulting firm takes on, and the cost is staff time and calendar.
+      </p>
+
+      <p>
+        You have to read the whole package and every addendum, which routinely change substantive rules. Check each qualification requirement against the track record of the firm. Build the technical and financial forms in the official format. Cost the service with the staffing structure the tender imposes. And hold consistency across dozens of interlocking pieces: move one rate and you change the price, the dedication of each professional, and three forms.
+      </p>
+
+      <p>
+        Against that volume, the submission calendar always pushes in the same direction. You prioritize. You sample. And whatever goes unread is, by definition, what nobody knows they missed.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- El metodo -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="The method"
+        title="How"
+        titleAccent="we solve it"
+      />
+
+      <p>
+        Most organizations already using artificial intelligence started with a general assistant: draft a document, summarize a meeting, answer a one-off question. Useful tools, but they rarely change how the firm works. The step change comes from turning a tool into an operating capability: defined processes, written decision criteria, clear ownership and validation mechanisms.
+      </p>
+
+      <p>
+        At DG Ingeniería we apply this to bid preparation. We do not use a single assistant that tries to solve everything. We built a team of AI-assisted specialists, and the architecture rests on one decision.
+      </p>
+
+      <p class="text-[19px] text-slate-dg leading-[1.7] font-semibold">
+        Each specialist covers a narrow slice of the work, and only that slice.
+      </p>
+
+      <p>
+        Some analyze tender documents and addenda. Others check qualification requirements. Others review consistency across forms, flag technical risks, or support the calculation models. And none of them decides: whether to bid, at what price, and what gets signed is always a decision taken by a person.
+      </p>
+
+      <p>
+        That separation is what makes it possible to sweep the entire package instead of sampling it, with consistent criteria, without engineering judgment thinning out as the surface grows. The tool speeds up the reading. What decides where to look, and what a finding means, is judgment.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- El caso -->
+  <FullBleedSection bg="cream" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="The case"
+        title="What surfaces"
+        titleAccent="when you read all of it"
+      />
+
+      <p>
+        On that same tender, beyond the line item in the additional information section:
+      </p>
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">The addenda had inverted the pricing strategy</h3>
+      <p>
+        Two addenda changed the basis of calculation for every qualification threshold: they moved from a percentage of the bid amount to a percentage of the estimated value of the tender. That decouples price from qualification, and bidding low stops loosening the capacity requirements. Anyone who costed against the original documents costed against expired rules.
+      </p>
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">The site had a problem the documents never mentioned</h3>
+      <p>
+        The site was in the lower Chaco, with a river levee in between. Dispersive soils fail by piping, and conventional mechanical testing does not detect them: they require a specific test package. The terms of reference did not ask for it. The site risk sweep did.
+      </p>
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">The package contradicted itself in seven places</h3>
+      <p>
+        Raised as formal queries with the contracting authority before submission. One truncated sentence left six specialists of the proposed team scoring zero points.
+      </p>
+
+      <p>
+        None of the four findings came from reading faster. They came from reading everything.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- La ventaja -->
+  <FullBleedSection bg="cream-deep" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="The advantage"
+        title="What the client"
+        titleAccent="receives"
+      />
+
+      <p>
+        More than saving time, this approach delivers a more complete proposal carrying less risk. And two things stay with the client after submission.
+      </p>
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">Complete documentation</h3>
+      <p>
+        The forms are built on the official tender files, with the sweep for requirements run over the whole document.
+      </p>
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">Traceable, editable spreadsheets</h3>
+      <p>
+        The costing lives in a single calculation model, with mirror sheets of each official form pulling from the same engine and cross-checks that verify themselves. When a rate, a duration or a level of dedication has to move, the model recalculates the whole chain and shows where it landed. The deliverable stays a working instrument after it has been submitted.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- El contexto -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="The context"
+        title="What separates"
+        titleAccent="the ones who get there"
+      />
+
+      <figure class="my-8">
+        <img
+          src="/img/insight-bcg-split-en.svg"
+          alt="Stacked bar showing the BCG split of AI maturity: 5% capture substantial value, 35% are scaling and already capturing value, 60% still see marginal returns."
+          class="w-full rounded-lg border border-slate-dg/10"
+          loading="lazy"
+          width="800"
+          height="348"
+        />
+        <figcaption class="mt-3 text-[13px] text-slate-dg/55 leading-relaxed">
+          The full split from the BCG study. The middle band is the one usually left off the chart.
+        </figcaption>
+      </figure>
+
+      <p>
+        Most companies have already experimented with artificial intelligence; very few turned it into an advantage. The <em>Build for the Future</em> study by BCG, covering 1,250 executives, found that only 5% capture substantial value. The figure usually left off the chart is the middle band: a <strong class="text-slate-dg">35% that is already scaling and starting to capture it</strong>.
+      </p>
+
+      <p>
+        A working paper by Humlum and Vestergaard, published by the NBER and covering 25,000 workers, explains why the rest stay out. Within the same occupations, controlled trials document gains above 15%, while spontaneous adoption returns 2.8%. The model is the same on both sides. What changes is whether someone designed how it gets used.
+      </p>
+
+      <p>
+        That design is engineering work, and it is the part most often skipped.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- Conclusion -->
+  <FullBleedSection bg="cream" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="Closing"
+        title="Judgment"
+        titleAccent="is the asset"
+      />
+
+      <p>
+        Adopting the tool takes an afternoon. Writing the judgment the tool needs in order to be worth anything takes months, and it is the part you cannot buy ready-made.
+      </p>
+
+      <p>
+        <strong class="text-slate-dg">Outcome:</strong> bids that go in complete, technical sections reviewed by a second pair of eyes before they leave, site problems caught while they are still cheap, and a calculation model the client keeps using.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <style>
+    /* Justify de prosa solo en el cuerpo del Insight, no en hero/CTA */
+    article p {
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+  </style>
+
+  <FaqSection faqs={faqs} lang="en" bg="cream" />
+
+  <section class="relative py-20 md:py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[40px] mb-4">Does your organization bid regularly?</h2>
+      <p class="text-cream/55 text-base md:text-lg mb-10 max-w-[620px] mx-auto">We put our AI-assisted specialists to work on your proposals: broader coverage of the tender documents, less risk of omissions, and a more robust review process, so your team can concentrate on the strategic decisions.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href={N.contact} variant="primary" size="lg">Start a conversation</Button>
+        <Button href={N.insights} variant="ghost-dark" size="lg">More Insights</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>

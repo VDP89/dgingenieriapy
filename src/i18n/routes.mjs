@@ -31,6 +31,10 @@ export const routeMap = {
   '/contacto': '/en/contact',
   '/blog/energia-paraguay-lo-que-la-tarifa-no-dice':
     '/en/insights/paraguay-energy-what-the-tariff-does-not-tell-you',
+  '/blog/fiscalizacion-con-visibilidad':
+    '/en/insights/construction-supervision-with-real-visibility',
+  '/blog/ia-en-produccion-experiencia-ingenieria':
+    '/en/insights/reducing-risk-when-preparing-a-bid',
 };
 
 export const SITE = 'https://dgingenieriapy.com';

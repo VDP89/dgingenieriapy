@@ -1,0 +1,232 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import FullBleedSection from '../../../components/FullBleedSection.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import Button from '../../../components/Button.astro';
+import FaqSection from '../../../components/FaqSection.astro';
+import { nav } from '../../../i18n/ui';
+
+const N = nav('en');
+
+const pubDate = 'May 6, 2026';
+const readTime = '8 min read';
+
+const titulo = 'Construction supervision with real visibility of the works';
+const desc = 'The difference between reporting and giving visibility: getting the number to the decision-maker while the decision is still open. A real case from an elevation audit.';
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: titulo,
+  description: desc,
+  image: 'https://dgingenieriapy.com/img/sector-fiscal.jpg',
+  author: { '@id': 'https://victordelpuerto.com/#person' },
+  datePublished: '2026-05-06',
+  dateModified: '2026-08-19',
+  publisher: {
+    '@type': 'Organization',
+    '@id': 'https://dgingenieriapy.com/#organization',
+    name: 'DG Ingeniería SRL',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://dgingenieriapy.com/img/dg-isotipo.png',
+    },
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://dgingenieriapy.com/en/insights/construction-supervision-with-real-visibility/',
+  },
+  inLanguage: 'en',
+  articleSection: 'Construction supervision',
+  keywords: 'construction supervision, owner’s engineer, earned value, S-curve, elevation audit, benchmark, National Geodetic Network, digital terrain model, Paraguay',
+};
+
+const faqs = [
+  {
+    q: 'What is the difference between reporting and giving visibility on a construction site?',
+    a: 'Reporting delivers the number at the end of the period, in the monthly report. Visibility gets the number to the decision-maker while the decision is still open. Useful visibility is information that meets the decision before the decision closes, not after. A monthly report serves a contractual and archival purpose, but by the time it reaches the investor the previous four weeks of decisions have already been taken.',
+  },
+  {
+    q: 'What are the three layers of supervision with real visibility?',
+    a: 'First, traceability of the base data: reference elevation, terrain model and drawings with a documented chain of validations. Second, physical and financial progress in the same view: an S-curve updated with actual progress, plus the schedule and cost performance indices from earned value analysis. Third, reporting differentiated by role: the investor receives an executive summary, the project director receives the full dashboard, and the site professional receives operational sheets.',
+  },
+  {
+    q: 'When is it worth insisting on a benchmark tied to the national geodetic network?',
+    a: 'When the works are sensitive to elevation and the cost of the error exceeds the cost of the audit. Asking for the documented origin of an inherited terrain model, and running a cross-check against an independent survey, prevents decisions from being taken on data that would not survive a technical review. It is a step taken once at the start of a project.',
+  },
+  {
+    q: 'How is the value of supervision with visibility measured?',
+    a: 'By the decisions it changes. In the benchmark case below, the decision that changed was budgetary: the client did not need the fill they were about to contract. On other projects the decision that changes is whether to open a work front, whether to modify a construction sequence, or whether to intervene on a cost item before the deviation becomes irreversible.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: '/en/' },
+  { name: 'Insights', url: '/en/insights' },
+  { name: 'Construction supervision with real visibility of the works', url: '/en/insights/construction-supervision-with-real-visibility' },
+];
+---
+
+<Base
+  title={titulo}
+  description={desc}
+  ogImage="/img/sector-fiscal.jpg"
+  breadcrumbs={breadcrumbs}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(articleSchema)} />
+  </Fragment>
+
+  <PageHero
+    img="/img/sector-fiscal.jpg"
+    imgAlt="Technical audit of civil works"
+    kicker="Insights · Construction supervision"
+    title="Construction supervision"
+    titleAccent="with real visibility of the works"
+    subtitle="The difference between reporting and giving visibility: getting the number to the decision-maker while the decision is still open."
+    height="md"
+  >
+    <Button href={N.contact} variant="primary" magnetic>Discuss supervision</Button>
+    <Button href={N.fiscalizacion} variant="ghost-dark">See the service</Button>
+  </PageHero>
+
+  <!-- Meta info -->
+  <section class="border-b border-slate-dg/10 bg-cream">
+    <div class="max-w-[820px] mx-auto px-5 md:px-8 py-5 flex items-center gap-5 text-[12.5px] text-slate-dg/55 tracking-wide">
+      <span class="font-semibold uppercase tracking-[2px] text-arena/85 text-[11px]">Insight #1</span>
+      <span aria-hidden="true">·</span>
+      <span>{pubDate}</span>
+      <span aria-hidden="true">·</span>
+      <span>{readTime}</span>
+    </div>
+  </section>
+
+  <!-- Cuerpo -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <p class="text-[19px] text-slate-dg leading-[1.7] font-medium">
+        An industrial plant on the river needed to extend its site. The digital terrain model that arrived as project background showed that at an elevation of 61.80 meters the water surface came dangerously close to the new structures. The client’s question was direct: how much higher do we need to fill?
+      </p>
+
+      <p>
+        Before answering, the technical team asked a different question: where does that model’s elevation come from? The background was an inherited terrain model with no documented traceability to the official vertical reference system. Auditing the base data meant a new aerial photogrammetric survey and a benchmark tied to the Villeta gauge and to Paraguay’s National Geodetic Network. That was extra work, extra budget, and another week of waiting on site.
+      </p>
+
+      <p>
+        When the new model was loaded onto the site, the critical elevation moved. The water surface sat seventeen centimeters below what the inherited model said. The fill the client was about to budget was not merely oversized: the problem it was meant to solve did not exist in that form. The structure was not compromised.
+      </p>
+
+      <p>
+        <strong class="text-slate-dg">Outcome:</strong> the managers had a number they could defend, and the projected works came down in earthwork volume. Above all, the decision rested on base data verified against the official network, not on an inherited model of uncertain origin.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="The idea"
+        title="Information available"
+        titleAccent="at the moment of the decision"
+      />
+
+      <p>
+        On a construction site the problem is rarely a lack of information. There are logs, daily reports, certificates, photographs, minutes. What is usually missing is that the information reaches the right decision-maker while the decision is still open.
+      </p>
+
+      <p>
+        A monthly report describing the state of the works at period close serves a contractual and archival purpose. By the time it reaches the investor, the decisions of the previous four weeks have already been taken, and the corrective actions the report suggests apply to a state that has already changed. Useful visibility is information that meets the decision before the decision closes.
+      </p>
+
+      <p>
+        In practice that visibility rests on three anchors. The base data behind a technical decision must have verifiable traceability before the decision is taken. Physical progress and financial progress must be visible in the same view, at the same cadence. And the investor, the project director and the site professional each receive the information they need, at the level of detail each can act on.
+      </p>
+
+      <p>
+        The benchmark case is a concrete example of the first anchor. The other two are built on the same logic: verified data, integrated views, and reporting differentiated by role.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="Three layers"
+        title="What supervision"
+        titleAccent="with visibility includes"
+      />
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">1. Traceability of the base data</h3>
+      <p>
+        Before supervising execution, you have to be able to defend the data execution is running on. Reference elevation, coordinate system, terrain model, project drawings: each has an origin and a chain of validations behind it. If that chain is broken, everything measured afterwards carries the error forward.
+      </p>
+      <p>
+        In practice this means insisting on benchmarks tied to the National Geodetic Network where the works are sensitive to elevation, asking for the documented origin of inherited terrain models, and running a cross-check against an independent survey when the cost of the error exceeds the cost of the audit. It is a step you go through once, at the start of the project, and it prevents decisions being taken on data that would not survive a review.
+      </p>
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">2. Physical and financial progress in the same view</h3>
+      <p>
+        Physical progress tells you what happened on site. Financial progress tells you what was certified. When they live in separate spreadsheets, the gap between what was executed and what was paid surfaces late — and when it surfaces late, corrective action has less room.
+      </p>
+      <p>
+        An S-curve updated with actual progress, next to the committed budget and the period’s certificate, answers a single question: is the project where it should be, on time and on cost? The schedule and cost performance indices from earned value analysis are the quantitative version of that question. Early detection of deviations depends on having one integrated view that updates at the cadence of the project.
+      </p>
+
+      <h3 class="text-[20px] font-extrabold tracking-tight text-slate-dg pt-4">3. Reporting differentiated by role</h3>
+      <p>
+        An investor needs an executive summary: where the project stands today, what changed this week that moves the horizon, and where a decision is required in the next two weeks. A project director needs the full dashboard: progress by trade, items showing deviation, pending certifications, active alerts. A site professional needs operational sheets: daily control, materials records, reports with photographs.
+      </p>
+      <p>
+        Those three levels describe the same project from three angles. When all three are generated from a single source of data, the information is consistent across roles, meetings get shorter, and each decision is taken with the level of detail appropriate to whoever signs it.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream-deep" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+
+      <SectionHeader
+        kicker="Closing"
+        title="What gets measured"
+        titleAccent="are the decisions that change"
+      />
+
+      <p>
+        The value of supervision with visibility is measured by the decisions it changes. In the benchmark case, the decision that changed was budgetary: the client did not need the fill they were about to contract. On other projects the decision that changes is whether to open a work front, whether to modify a construction sequence, or whether to intervene on a cost item before the deviation becomes irreversible.
+      </p>
+
+      <p>
+        <strong class="text-slate-dg">Outcome:</strong> managers with a verified technical number in front of them, budget decisions with documented backing, and a project that advances without carrying unnecessary earthwork. Supervision delivers value when the information arrives in time to change the next step.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <style>
+    /* Justify de prosa solo en el cuerpo del Insight, no en hero/CTA */
+    article p {
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+  </style>
+
+  <FaqSection faqs={faqs} lang="en" bg="cream" />
+
+  <section class="relative py-20 md:py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[40px] mb-4">Have a project under way, or about to start?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[520px] mx-auto">Tell us what you need to see, and we will tell you what level of technical visibility the project requires.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href={N.contact} variant="primary" size="lg">Start a conversation</Button>
+        <Button href={N.insights} variant="ghost-dark" size="lg">More Insights</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>

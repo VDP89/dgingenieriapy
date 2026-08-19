@@ -5,38 +5,34 @@ import { nav } from '../../i18n/ui';
 const N = nav('en');
 
 /**
- * Los dos Insights publicados estan escritos en español y NO estan traducidos.
- * Se listan con resumen en ingles y marca explicita de idioma, enlazando al
- * original. Presentarlos como si estuvieran en ingles seria mentirle al lector
- * en el clic; omitirlos seria esconder el unico contenido editorial que hay.
+ * Los tres Insights existen en ingles como pieza propia (par completo en routeMap),
+ * no como resumen que enlaza al original en español. No hay marca de idioma porque
+ * ya no hay nada que aclarar: el lector hace clic y lee el articulo entero.
  */
 const published = [
   {
     href: '/en/insights/paraguay-energy-what-the-tariff-does-not-tell-you',
     tag: 'Energy',
     title: "What Paraguay's energy tariff doesn't tell a foreign investor",
-    desc: 'Paraguay really does have abundant, low-cost hydroelectric power. Three things that story leaves out are what decide whether an energy-intensive project gets built, and when.',
+    desc: 'Low-cost power is real. But three factors that story leaves out often determine whether an energy-intensive project gets built — and when.',
     date: '19 August 2026',
     read: '6 min',
-    lang: 'English',
   },
   {
-    href: '/blog/ia-en-produccion-experiencia-ingenieria',
+    href: '/en/insights/reducing-risk-when-preparing-a-bid',
     tag: 'Tenders',
-    title: 'Reducing risk when preparing a bid',
-    desc: 'A requirement buried in the "additional information" section of a tender document accounted for 16% of the bid value. It surfaced because the document was read end to end.',
+    title: 'How to reduce risk when preparing a bid',
+    desc: 'A requirement buried in the additional information section of a tender package was worth 16% of the bid amount. It surfaced because the documents were read end to end.',
     date: '23 July 2026',
     read: '5 min',
-    lang: 'Spanish',
   },
   {
-    href: '/blog/fiscalizacion-con-visibilidad',
+    href: '/en/insights/construction-supervision-with-real-visibility',
     tag: 'Construction supervision',
-    title: 'Supervision that gives real visibility of the works',
-    desc: 'The difference between reporting and giving visibility: getting the number to the decision-maker while the decision is still open. A real case of levelling audit.',
+    title: 'Construction supervision with real visibility of the works',
+    desc: 'The difference between reporting and giving visibility: getting the number to the decision-maker while the decision is still open. A real case from an elevation audit.',
     date: '6 May 2026',
     read: '8 min',
-    lang: 'Spanish',
   },
 ];
 
@@ -68,15 +64,10 @@ const breadcrumbs = [
         <span class="text-[11px] font-bold tracking-[3px] uppercase text-arena">Published</span>
       </div>
 
-      <p class="text-[14px] text-slate-dg/60 leading-relaxed max-w-[680px] mb-10">
-        Pieces written in English are marked as such and can be read in full. Our earlier work was published in Spanish: those entries carry an English summary and a language tag, and the full text is not translated. If one of them is relevant to something you are working on, write to us and we will walk you through it in English.
-      </p>
-
       <div class="grid grid-cols-1 gap-6">
         {published.map((item) => (
           <a
             href={item.href}
-            hreflang={item.lang === 'English' ? 'en' : 'es'}
             class="group rounded-xl border border-slate-dg/12 bg-white p-8 md:p-10 hover:border-arena/40 hover:shadow-md transition-all"
           >
             <div class="flex items-center gap-3 mb-4 text-[11px] tracking-[2px] uppercase flex-wrap">
@@ -85,15 +76,11 @@ const breadcrumbs = [
               <span class="text-slate-dg/55">{item.date}</span>
               <span class="text-slate-dg/30" aria-hidden="true">·</span>
               <span class="text-slate-dg/55">{item.read} read</span>
-              {item.lang !== 'English' && <span class="text-slate-dg/30" aria-hidden="true">·</span>}
-              {item.lang !== 'English' && (
-                <span class="text-slate-dg/55 border border-slate-dg/15 rounded px-1.5 py-0.5 normal-case tracking-normal">in {item.lang}</span>
-              )}
             </div>
             <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-dg mb-4 leading-snug group-hover:text-arena transition-colors">{item.title}</h2>
             <p class="text-[15px] md:text-base text-slate-dg/65 leading-relaxed max-w-[680px]">{item.desc}</p>
             <div class="mt-6 flex items-center gap-2 text-[13px] font-semibold text-arena group-hover:gap-3 transition-all">
-              <span>{item.lang === 'English' ? 'Read the article' : 'Read the article (Spanish)'}</span>
+              <span>Read the article</span>
             </div>
           </a>
         ))}
