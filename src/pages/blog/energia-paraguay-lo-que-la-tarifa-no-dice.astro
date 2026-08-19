@@ -9,7 +9,7 @@ import FaqSection from '../../components/FaqSection.astro';
 const pubDate = '19 de agosto de 2026';
 const readTime = '6 min de lectura';
 
-const titulo = 'Lo que la tarifa eléctrica no le dice a un inversor extranjero';
+const titulo = 'Costos eléctricos en Paraguay: lo que la tarifa no le dice a un inversor extranjero';
 const desc = 'Paraguay tiene energía hidroeléctrica abundante y barata. Eso es cierto. Tres cosas que esa historia deja afuera son las que deciden si un proyecto intensivo en energía se construye, y cuándo.';
 
 const articleSchema = {
@@ -36,32 +36,32 @@ const articleSchema = {
   },
   inLanguage: 'es-PY',
   articleSection: 'Energía y decisiones de sitio',
-  keywords: 'invertir en Paraguay, tarifa eléctrica Paraguay, data center Paraguay, potencia firme, time-to-power, selección de sitio, energía hidroeléctrica Paraguay, inversión extranjera Paraguay, prefactibilidad de sitio',
+  keywords: 'costos eléctricos Paraguay, invertir en Paraguay, tarifa eléctrica Paraguay, data center Paraguay, potencia firme, time-to-power, selección de sitio, energía hidroeléctrica Paraguay, inversión extranjera Paraguay, prefactibilidad de sitio',
 };
 
 const faqs = [
   {
     q: '¿La energía eléctrica es realmente barata en Paraguay?',
-    a: 'Sí, y el excedente es real: el país produce mucha más electricidad de la que consume. Dos precisiones importan para un modelo de inversión. La tarifa está denominada en guaraníes, así que el costo medido en dólares se mueve con el tipo de cambio aunque el pliego tarifario quede intacto. Y para el gran consumo intensivo la cifra aplicable no es pública: se establece mediante un contrato especial con la prestadora. Un valor en dólares por megavatio-hora citado de un informe es una foto del tipo de cambio en una fecha, no una propiedad fija del país.',
+    a: 'Sí, y el excedente es real. Para un modelo de inversión, dos precisiones cambian cómo debe usarse esa cifra. La tarifa está denominada en guaraníes, así que su equivalente en dólares se mueve con el tipo de cambio aunque el pliego quede sin cambios. Y para las grandes cargas intensivas la cifra aplicable no es pública: se establece mediante un contrato especial con la prestadora. Todo valor en dólares por megavatio-hora citado de un informe debe tratarse como una lectura en una fecha, dejando registro de qué serie cambiaria se usó.',
   },
   {
     q: '¿Qué decide si un predio en Paraguay sirve para un proyecto intensivo en energía?',
-    a: 'Tres filtros, y ninguno es el tamaño del predio. La potencia firme que efectivamente puede asignarse a un privado en ese nodo, y el tiempo que toma disponerla. El agua y la refrigeración, o lo que cuesta diseñar sin ellas. Y la fibra redundante por rutas físicamente diversas. Después la inundabilidad y la capacidad portante recortan la superficie útil. Los tres se pueden evaluar de escritorio, antes de comprometer una campaña de campo y antes de firmar una opción de compra.',
+    a: 'Tres filtros, y ninguno es el tamaño del predio. La potencia firme que efectivamente puede asignarse a un privado en ese nodo, y el tiempo que toma disponerla. El agua y la refrigeración, o lo que cuesta diseñar sin ellas. Y la fibra redundante por rutas físicamente diversas. Después la inundabilidad y la capacidad portante recortan la superficie útil. Los tres admiten una evaluación preliminar de gabinete, muchas veces suficiente para descartar candidatos débiles antes de comprometer trabajo de campo.',
   },
   {
-    q: '¿Cuánto tarda conseguir energía para un proyecto grande en Paraguay?',
-    a: 'Existe un procedimiento administrativo publicado para conectar una gran carga, con pasos y plazos de respuesta definidos, y contiene relojes de caducidad que dan de baja el expediente si no se le da curso. Pero ese procedimiento publicado tiene una banda superior, y por encima de ella no hay un calendario equivalente publicado. Para un proyecto de decenas o centenas de megavatios no hay plazo que consultar: el cronograma se construye desde el caso concreto, el punto de conexión y las obras involucradas.',
+    q: '¿Quién paga las obras de conexión y quién queda como propietario?',
+    a: 'Es la pregunta que más veces falta en un modelo temprano, y puede mover un presupuesto de capital tanto como la tarifa. Conectar una gran carga suele exigir obras sobre la red —una bahía, un tramo de línea, la ampliación de una subestación— y por cada una hay que establecer tres cosas: qué obras exige la prestadora, quién las financia y ejecuta, y quién queda como propietario y operador después. La redundancia que entrega realmente la configuración aprobada es una cuarta. Ninguna admite respuesta genérica: dependen del punto de conexión y del perfil de carga.',
   },
   {
-    q: '¿Por qué importa tanto la fecha al leer sobre regulación energética paraguaya?',
-    a: 'Porque el marco que gobierna la inversión intensiva en energía estuvo en revisión activa durante 2026, con regímenes introducidos y derogados dentro del mismo año. Un análisis publicado no se actualiza solo cuando cambia una norma, así que material escrito hace dieciocho meses puede describir con precisión algo que ya no rige. Toda afirmación sobre tarifa, régimen o incentivo debería llevar la fecha en que fue verificada, incluido este artículo, que refleja la situación al 19 de agosto de 2026.',
+    q: '¿Cómo debería un comité de inversión ordenar el trabajo inicial?',
+    a: 'Evaluar antes de comprometer. Los tres filtros que pueden descartar un predio —potencia firme y su plazo, agua y refrigeración, fibra redundante— son las verificaciones más baratas de la secuencia y las únicas que pueden devolver un no mientras un no todavía sale gratis. La compra de tierra y las campañas de campo vienen después, no antes. Y como el marco estuvo en revisión activa durante 2026, con regímenes introducidos y derogados dentro del mismo año, todo insumo que entre al modelo debería dejar registro de la fecha en que fue verificado. Este artículo refleja la situación al 19 de agosto de 2026.',
   },
 ];
 
 const breadcrumbs = [
   { name: 'Inicio', url: '/' },
   { name: 'Insights', url: '/blog' },
-  { name: 'Lo que la tarifa eléctrica no le dice a un inversor extranjero', url: '/blog/energia-paraguay-lo-que-la-tarifa-no-dice' },
+  { name: 'Costos eléctricos en Paraguay: lo que la tarifa no le dice a un inversor extranjero', url: '/blog/energia-paraguay-lo-que-la-tarifa-no-dice' },
 ];
 ---
 
@@ -78,10 +78,10 @@ const breadcrumbs = [
 
   <PageHero
     img="/img/insight-energia-paraguay.jpg"
-    imgAlt="Curva de carga escalonada que sube dentro de un procedimiento publicado y continúa punteada por encima de su banda superior"
+    imgAlt="Curva de carga escalonada que sube dentro de un procedimiento publicado y continúa punteada por encima de su umbral de aplicabilidad"
     kicker="Insights · Energía y decisiones de sitio"
-    title="Lo que la tarifa eléctrica"
-    titleAccent="no le dice a un inversor extranjero"
+    title="Costos eléctricos en Paraguay"
+    titleAccent="— lo que la tarifa no le dice"
     subtitle="La energía barata es real. Tres cosas que esa historia deja afuera son las que deciden si el proyecto se construye, y cuándo."
     height="md"
   >
@@ -104,7 +104,7 @@ const breadcrumbs = [
   <FullBleedSection bg="white" padding="md">
     <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
       <p class="text-[19px] text-slate-dg leading-[1.7] font-medium">
-        Casi toda conversación sobre invertir en Paraguay empieza igual: energía hidroeléctrica abundante, de las tarifas industriales más bajas de la región, un país que exporta mucha más electricidad de la que consume.
+        Casi todas las conversaciones sobre invertir en Paraguay empiezan del mismo modo: energía hidroeléctrica abundante, de las tarifas industriales más bajas de la región, un país que exporta mucha más electricidad de la que consume.
       </p>
 
       <p class="text-[19px] text-slate-dg leading-[1.7] font-semibold">
@@ -112,7 +112,11 @@ const breadcrumbs = [
       </p>
 
       <p>
-        Las tres cosas que vienen después son las que deciden si un proyecto intensivo en capital se construye, y con qué calendario. Escribimos esto desde el lado del comitente, y nada de lo que sigue es una razón para no invertir acá. Es lo que querríamos saber antes de firmar algo.
+        Las tres cosas que vienen después son las que deciden si un proyecto intensivo en capital se construye, y con qué calendario. No son argumentos contra Paraguay. Son variables que un comité de inversión debería incorporar a la debida diligencia, la secuencia de decisiones y la asignación de riesgos antes de firmar.
+      </p>
+
+      <p>
+        La tarifa deja afuera tres preguntas distintas: en qué se convierte el costo en la moneda de reporte, si la potencia requerida puede llegar al predio a tiempo, y cómo se establecen realmente las condiciones comerciales. Lo que sigue explica qué le hace cada uno de esos huecos al cronograma del proyecto y a la decisión de sitio.
       </p>
     </article>
   </FullBleedSection>
@@ -127,19 +131,19 @@ const breadcrumbs = [
       />
 
       <p>
-        La tarifa eléctrica paraguaya se publica en guaraníes por kilovatio-hora. Su comité de inversión piensa en dólares. Esos dos hechos no son un detalle.
+        La tarifa eléctrica paraguaya se publica en guaraníes por kilovatio-hora. Su comité de inversión piensa en dólares. Esa diferencia no es menor.
       </p>
 
       <p>
-        El pliego tarifario puede quedar completamente intacto durante dos años mientras el costo de esa misma energía, medido en dólares, se mueve de forma relevante —en cualquier dirección— solamente porque se movió el guaraní. No hay anuncio cuando eso pasa, porque no se anunció nada. Nadie cambió la tarifa.
+        El pliego tarifario puede permanecer sin cambios durante dos años mientras su equivalente en dólares varía de forma relevante, en cualquier dirección, solo porque cambió el tipo de cambio. No se anuncia ninguna modificación tarifaria porque no la hubo: lo que se movió fue su equivalente en dólares.
       </p>
 
       <p>
-        La consecuencia práctica es que un valor en dólares por megavatio-hora citado de un informe es una foto del tipo de cambio en una fecha determinada, no una propiedad fija del país. Si está modelando un contrato de suministro a veinte años, la moneda de denominación pertenece a su análisis de sensibilidad, al lado de la tarifa misma.
+        La consecuencia práctica es que un valor en dólares por megavatio-hora citado de un informe es una foto del tipo de cambio en una fecha determinada, no una propiedad fija del país. Si está modelando veinte años de compra de energía, la moneda de denominación debe formar parte de su análisis de sensibilidad, junto con la tarifa.
       </p>
 
       <p class="text-[14.5px] text-slate-dg/55 border-l-2 border-arena/30 pl-4">
-        Al 19 de agosto de 2026 la referencia era de 6.020 guaraníes por dólar. Verifique la serie del Banco Central para la fecha que use su modelo.
+        Al 19 de agosto de 2026, la serie <em>Mercado Fluctuante con Clientes No Financieros</em> del Banco Central del Paraguay cerró en 6.018,60 de compra y 6.024,03 de venta. Esa es la serie que corresponde citar en un modelo; verifíquela para la fecha que use el suyo.
       </p>
     </article>
   </FullBleedSection>
@@ -158,11 +162,15 @@ const breadcrumbs = [
       </p>
 
       <p>
-        Generar y entregar son preguntas distintas. La capacidad que le importa a un proyecto es la que puede llegar a <em>su</em> predio, a <em>su</em> nivel de tensión, con la redundancia que su operación exige. Eso es una cuestión de transmisión y de subestación, y es donde el sistema está ajustado: lo suficiente como para que el país haya tenido eventos de suministro pese al excedente.
+        Generar y entregar son preguntas distintas. La capacidad que le importa a un proyecto es la que puede llegar a <em>su</em> predio, a <em>su</em> nivel de tensión, con la redundancia que su operación exige. Eso es una cuestión de transmisión y de subestación, y es allí donde aparecen las restricciones del sistema: lo suficiente como para que el país haya tenido eventos de suministro pese al excedente.
       </p>
 
       <p>
-        Entonces el número que gobierna un cronograma no es la capacidad instalada de una subestación cercana. Es la potencia firme que efectivamente puede asignarse a un privado en ese nodo, y el tiempo que toma disponerla. A esa segunda cifra la llamamos <strong class="text-slate-dg">time-to-power</strong>, y es la que mueve una fecha de inversión.
+        Entonces el dato que define el cronograma no es la capacidad instalada de una subestación cercana. Es la potencia firme que efectivamente puede asignarse a un privado en ese nodo, y el tiempo que toma disponerla. Ese intervalo es el <strong class="text-slate-dg">time to power</strong> del proyecto, y puede correr una fecha de inversión.
+      </p>
+
+      <p>
+        La disponibilidad es apenas la mitad de la pregunta de red. La otra mitad es qué obras de conexión se exigen, quién las financia y quién queda como propietario, y qué redundancia entrega realmente la configuración aprobada. Esas respuestas pueden mover un presupuesto de capital tanto como la tarifa.
       </p>
     </article>
   </FullBleedSection>
@@ -185,7 +193,7 @@ const breadcrumbs = [
       </p>
 
       <p>
-        Esto no es una buena ni una mala noticia. Es una pregunta de otra naturaleza que la que trae la mayoría de los inversores, y cambia quién tiene que estar en la mesa, y cuándo.
+        La implicancia es operativa: la prestadora y el equipo comercial del proyecto tienen que entrar a la debida diligencia antes de lo que entrarían con una tarifa publicada y estándar.
       </p>
     </article>
   </FullBleedSection>
@@ -200,15 +208,15 @@ const breadcrumbs = [
       />
 
       <p>
-        Existe un procedimiento administrativo publicado para conectar una gran carga, con pasos y plazos de respuesta definidos. Lo leímos, y hay dos cosas que conviene saber antes de planificar sobre él.
+        Existe un procedimiento administrativo publicado para conectar una gran carga, con pasos y plazos de respuesta definidos. Hay dos disposiciones que afectan de manera relevante la secuencia del proyecto.
       </p>
 
       <p>
-        La primera es que contiene relojes de caducidad. Un expediente al que no se le da curso dentro de una ventana definida se da de baja, y el proceso vuelve a empezar. Eso hace que la <em>secuencia</em> de sus decisiones importe tanto como las decisiones: presentar temprano, solo para tener el dato, puede significar presentar dos veces.
+        La primera es que contiene plazos de caducidad. Un expediente al que no se le da curso dentro de una ventana definida se da de baja, y el proceso vuelve a empezar. Eso hace que la <em>secuencia</em> de sus decisiones importe tanto como las decisiones: presentar temprano, solo para tener el dato, puede significar presentar dos veces.
       </p>
 
       <p>
-        La segunda es más consecuente. El procedimiento publicado tiene una banda superior. Por encima, el procedimiento tal como está escrito no aplica, y ningún calendario equivalente ocupa su lugar. Para un proyecto de decenas o centenas de megavatios, no hay un plazo que se pueda consultar.
+        La segunda tiene mayores consecuencias. El procedimiento publicado tiene un umbral superior de aplicabilidad. Por encima, el procedimiento tal como está escrito no aplica, y al 19 de agosto de 2026 no encontramos un calendario equivalente publicado para proyectos por encima de ese umbral. Para un proyecto de decenas o centenas de megavatios, no hay un plazo que se pueda consultar.
       </p>
 
       <p class="text-[19px] text-slate-dg leading-[1.7] font-semibold">
@@ -231,12 +239,9 @@ const breadcrumbs = [
       </p>
 
       <p>
-        La consecuencia para un inversor extranjero es concreta y poco glamorosa: <strong class="text-slate-dg">toda afirmación sobre tarifa, régimen o incentivo tiene que llevar la fecha en que fue cierta.</strong> Un análisis bien escrito publicado hace dieciocho meses puede describir algo que ya no existe, y no va a avisar que venció.
+        La consecuencia para un inversor extranjero es concreta: <strong class="text-slate-dg">toda afirmación sobre tarifa, régimen o incentivo tiene que llevar la fecha en que fue cierta.</strong> Un análisis bien escrito publicado hace dieciocho meses puede describir algo que ya no existe, y no advierte que perdió vigencia.
       </p>
 
-      <p>
-        Eso aplica a lo que está leyendo ahora, y por eso lleva fecha.
-      </p>
     </article>
   </FullBleedSection>
 
@@ -250,11 +255,11 @@ const breadcrumbs = [
       />
 
       <p>
-        La mayoría de las decisiones de sitio llegan en el mismo orden: primero se consigue la tierra, después se revisa la energía. En Paraguay, para un uso intensivo en energía, ese orden sale caro.
+        La mayoría de los procesos de selección de sitio siguen el mismo orden: primero se consigue la tierra, después se revisa la energía. En Paraguay, para un uso intensivo en energía, ese orden resulta costoso.
       </p>
 
       <p>
-        Los tres filtros que deciden un predio —potencia firme, agua y refrigeración, fibra redundante— se pueden evaluar de escritorio, antes de comprometer una campaña de campo y antes de firmar una opción de compra. Después la inundabilidad y la capacidad portante recortan todavía más la superficie útil.
+        Los tres filtros que deciden un predio —potencia firme, agua y refrigeración, fibra redundante— pueden someterse a una evaluación preliminar de gabinete, muchas veces suficiente para descartar candidatos débiles antes de comprometer una campaña de campo o firmar una opción de compra. Después la inundabilidad y la capacidad portante recortan todavía más la superficie útil.
       </p>
 
       <p>
@@ -268,18 +273,18 @@ const breadcrumbs = [
     <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
       <SectionHeader
         kicker="Alcance"
-        title="Dónde termina nuestro trabajo"
-        titleAccent="— y de quién es después"
+        title="Dónde termina nuestro alcance"
+        titleAccent="y dónde comienza el del desarrollador"
       />
 
       <p>
-        Nos parece que el límite vale decirlo con todas las letras, porque es lo que hace creíble todo lo anterior.
+        El reparto de responsabilidades debería quedar claro desde el inicio.
       </p>
 
       <ul class="space-y-3 list-none pl-0">
-        <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Resolvemos</strong> el sitio y la ingeniería: relevamiento y modelo del terreno, hidrología e inundabilidad, movimiento de suelos y plataformas, accesos de transporte pesado, área neta aprovechable, y el caso técnico y su hoja de ruta ante las instituciones.</span></li>
+        <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Evaluamos el sitio y desarrollamos la ingeniería civil y de sitio:</strong> relevamiento y modelo del terreno, hidrología e inundabilidad, movimiento de suelos y plataformas, accesos de transporte pesado, área neta aprovechable, y el caso técnico y su hoja de ruta ante las instituciones.</span></li>
         <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Coordinamos</strong> lo que deben firmar especialistas: campañas geotécnicas, ingeniería eléctrica de alta tensión, diseño de refrigeración, evaluación de impacto ambiental.</span></li>
-        <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Y hay una tercera categoría que no es de ningún ingeniero.</strong> La negociación comercial de potencia y tarifa es del desarrollador. Toda presentación formal ante la prestadora la firma quien tiene el título del predio. Nosotros preparamos el caso técnico que la sostiene; no la firmamos, y tampoco la firma quien le diga que puede hacerlo.</span></li>
+        <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Y hay una tercera categoría que no es de ningún ingeniero.</strong> La negociación comercial de potencia y tarifa es del desarrollador. Los requisitos aplicables de la prestadora determinan qué figura del proyecto debe presentar y firmar la solicitud formal. Nosotros preparamos el caso técnico que la sostiene.</span></li>
       </ul>
     </article>
   </FullBleedSection>
@@ -292,10 +297,10 @@ const breadcrumbs = [
     <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
     <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
       <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">¿Está evaluando un predio en Paraguay?</h2>
-      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[560px] mx-auto">Cuéntenos qué está evaluando —sitio, potencia, agua o permisos— y le decimos qué exige de verdad acá, y cuánto tarda.</p>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[560px] mx-auto">Cuéntenos qué está evaluando —sitio, potencia, agua o permisos— y podemos identificar qué hay que verificar, quién debe verificarlo y qué dependencias van a gobernar el cronograma.</p>
       <div class="flex flex-wrap justify-center gap-4">
         <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
-        <Button href="/sectores/solar" variant="ghost-dark" size="lg">Solar y data centers</Button>
+        <Button href="/sectores/solar" variant="ghost-dark" size="lg">Data centers y sitios intensivos en energía</Button>
       </div>
     </div>
   </section>

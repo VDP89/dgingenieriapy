@@ -9,10 +9,10 @@ import { nav } from '../../../i18n/ui';
 
 const N = nav('en');
 
-const pubDate = '19 August 2026';
+const pubDate = 'August 19, 2026';
 const readTime = '6 min read';
 
-const titulo = "What Paraguay's energy tariff doesn't tell a foreign investor";
+const titulo = 'Paraguay electricity costs: what the tariff doesn’t tell a foreign investor';
 const desc = 'Paraguay really does have abundant, low-cost hydroelectric power. Three things that story leaves out are what actually govern whether an energy-intensive project gets built, and when.';
 
 const articleSchema = {
@@ -39,32 +39,32 @@ const articleSchema = {
   },
   inLanguage: 'en',
   articleSection: 'Energy and site decisions in Paraguay',
-  keywords: 'invest in Paraguay, Paraguay electricity tariff, data center Paraguay, time to power, firm power, site selection Paraguay, hydroelectric Paraguay, owner’s engineer Paraguay, energy intensive investment',
+  keywords: 'Paraguay electricity costs, invest in Paraguay, Paraguay electricity tariff, data center Paraguay, time to power, firm power, site selection Paraguay, hydroelectric Paraguay, owner’s engineer Paraguay, energy intensive investment',
 };
 
 const faqs = [
   {
     q: 'Is electricity really cheap in Paraguay?',
-    a: 'Yes, and the surplus is real — the country produces far more electricity than it consumes. Two qualifications matter for an investment model. The tariff is denominated in guaraníes, so the cost measured in dollars moves with the exchange rate even when the tariff schedule itself is untouched. And for large, intensive consumption the applicable figure is not published: it is established through a special contract with the utility. A dollar-per-megawatt-hour figure quoted from a report is a snapshot of an exchange rate on a date, not a fixed property of the country.',
+    a: 'Yes, and the surplus is real. For an investment model, two qualifications change how that figure should be used. The tariff is denominated in guaraníes, so its dollar equivalent moves with the exchange rate even when the schedule is unchanged. And for large energy-intensive loads the applicable figure is not published: it is established through a special contract with the utility. Treat any dollar-per-megawatt-hour figure quoted from a report as a reading on a date, and record which exchange rate series it used.',
   },
   {
     q: 'What decides whether a site in Paraguay works for an energy-intensive project?',
-    a: 'Three filters, and none of them is the size of the plot. Firm power that can actually be assigned to a private offtaker at that node, and the time required to make it available. Water and cooling, or what it costs to design without them. And redundant fibre on physically diverse routes. Flood exposure and bearing capacity then narrow the usable area further. All three can be screened from a desk, before any field campaign is committed and before a purchase option is signed.',
+    a: 'Three filters, and none of them is the size of the plot. Firm power that can actually be assigned to a private offtaker at that node, and the time required to make it available. Water and cooling, or what it costs to design without them. And redundant fiber on physically diverse routes. Flood exposure and bearing capacity then narrow the usable area further. All three can be screened preliminarily, often far enough to eliminate weak candidates before fieldwork is commissioned.',
   },
   {
-    q: 'How long does it take to get power for a large project in Paraguay?',
-    a: 'There is a published administrative procedure for connecting a large load, with defined steps and response times, and it contains expiry clocks that can lapse a submission if it is not followed through. But the published procedure has an upper band, and above it no equivalent published timetable takes its place. For a project in the tens or hundreds of megawatts there is no calendar to look up: the schedule has to be built from the specific case, the point of connection and the works involved.',
+    q: 'Who pays for the interconnection works, and who owns them?',
+    a: 'This is the question most often missing from an early model, and it can move a capital budget as much as the tariff does. Connecting a large load usually requires works on the network — a bay, a line section, a substation upgrade — and three things have to be established for each: which works the utility requires, who funds and executes them, and who owns and operates them afterwards. The redundancy the approved configuration actually delivers is a fourth. None of these can be answered generically; they follow from the point of connection and the load profile.',
   },
   {
-    q: 'Why does the date matter so much when reading about Paraguayan energy regulation?',
-    a: 'Because the framework governing energy-intensive investment has been under active revision through 2026, with regimes introduced and withdrawn inside the same year. Published analysis does not update itself when a rule changes, so material written eighteen months ago can accurately describe something that no longer applies. Any statement about tariff, regime or incentive should carry the date on which it was verified — including this article, which reflects the position as of 19 August 2026.',
+    q: 'How should an investment committee sequence the early work?',
+    a: 'Screen before you commit. The three filters that can eliminate a site — firm power and its timeline, water and cooling, redundant fiber — are the cheapest checks in the sequence and the only ones that can return a no while a no is still free. Land acquisition and field campaigns come after, not before. And because the framework has been under active revision through 2026, with regimes introduced and withdrawn inside the same year, any input carried into the model should record the date on which it was verified. This article reflects the position as of August 19, 2026.',
   },
 ];
 
 const breadcrumbs = [
   { name: 'Home', url: '/en/' },
   { name: 'Insights', url: '/en/insights' },
-  { name: 'What Paraguay’s energy tariff doesn’t tell a foreign investor', url: '/en/insights/paraguay-energy-what-the-tariff-does-not-tell-you' },
+  { name: 'Paraguay electricity costs: what the tariff doesn’t tell a foreign investor', url: '/en/insights/paraguay-energy-what-the-tariff-does-not-tell-you' },
 ];
 ---
 
@@ -81,10 +81,10 @@ const breadcrumbs = [
 
   <PageHero
     img="/img/insight-energia-paraguay.jpg"
-    imgAlt="Stepped load curve rising within a published procedure and continuing as a dotted line above its upper band"
+    imgAlt="Stepped load curve rising within a published procedure and continuing as a dotted line above its applicability threshold"
     kicker="Insights · Energy and site decisions"
-    title="What Paraguay’s energy tariff"
-    titleAccent="doesn’t tell a foreign investor"
+    title="Paraguay electricity costs"
+    titleAccent="— what the tariff doesn’t tell you"
     subtitle="The cheap power is real. Three things that story leaves out are what decide whether a project gets built, and when."
     height="md"
   >
@@ -115,7 +115,11 @@ const breadcrumbs = [
       </p>
 
       <p>
-        The three things that come after are the ones that decide whether a capital-intensive project gets built, and on what timetable. We write this from the owner’s side of the table, and none of it is a reason not to invest here. It is what we would want to know before signing anything.
+        The three things that come after are the ones that decide whether a capital-intensive project gets built, and on what timetable. These are not arguments against Paraguay. They are inputs an investment committee should incorporate into diligence, sequencing and risk allocation before signing.
+      </p>
+
+      <p>
+        The tariff leaves out three separate questions: what the cost becomes in your reporting currency, whether the required power can reach the site on time, and how the commercial terms are actually established. What follows explains what each of those gaps does to the project schedule and to the site decision.
       </p>
     </article>
   </FullBleedSection>
@@ -130,19 +134,19 @@ const breadcrumbs = [
       />
 
       <p>
-        Paraguay’s electricity tariff is published in guaraníes per kilowatt-hour. Your investment committee thinks in dollars. Those two facts are not a detail.
+        Paraguay’s electricity tariff is published in guaraníes per kilowatt-hour. Your investment committee thinks in dollars. That mismatch matters.
       </p>
 
       <p>
-        A tariff schedule can stay completely untouched for two years while the cost of that same energy, measured in dollars, moves materially — in either direction — purely because the guaraní moved. There is no announcement when this happens, because nothing was announced. Nobody changed the tariff.
+        A tariff schedule can remain unchanged for two years while the dollar cost of the same electricity moves materially in either direction, solely because the exchange rate changed. No tariff change is announced, because none occurred: only its dollar equivalent moved.
       </p>
 
       <p>
-        The practical consequence is that a dollar-per-megawatt-hour figure quoted from a report is a snapshot of an exchange rate on a particular date, not a fixed property of the country. If you are modelling a twenty-year offtake, the currency of denomination belongs in your sensitivity analysis alongside the tariff itself.
+        The practical consequence is that a dollar-per-megawatt-hour figure quoted from a report is a snapshot of an exchange rate on a particular date, not a fixed property of the country. If you are modeling twenty years of power purchases, the currency of denomination belongs in the sensitivity analysis alongside the tariff itself.
       </p>
 
       <p class="text-[14.5px] text-slate-dg/55 border-l-2 border-arena/30 pl-4">
-        As of 19 August 2026 the reference rate was 6,020 guaraníes to the dollar. Check the Central Bank series for whatever date your model uses.
+        As of August 19, 2026, the Central Bank of Paraguay’s <em>Mercado Fluctuante con Clientes No Financieros</em> series closed at 6,018.60 buy / 6,024.03 sell guaraníes to the dollar. That is the series to cite in a model; check it for whatever date yours uses.
       </p>
     </article>
   </FullBleedSection>
@@ -165,7 +169,11 @@ const breadcrumbs = [
       </p>
 
       <p>
-        So the number that governs a schedule is not the installed capacity of a nearby substation. It is the firm capacity that can actually be assigned to a private offtaker at that node, and the time it takes to make it available. We call that second figure <strong class="text-slate-dg">time-to-power</strong>, and it is the one that moves an investment date.
+        So the number that governs a schedule is not the installed capacity of a nearby substation. It is the firm capacity that can actually be assigned to a private offtaker at that node, and the time it takes to make it available. That interval is the project’s <strong class="text-slate-dg">time to power</strong>, and it can shift the investment date.
+      </p>
+
+      <p>
+        Availability is only half of the grid question. The other half is which interconnection works are required, who funds and owns them, and what redundancy the approved configuration actually provides. Those three answers can move a capital budget as much as the tariff does.
       </p>
     </article>
   </FullBleedSection>
@@ -184,11 +192,11 @@ const breadcrumbs = [
       </p>
 
       <p>
-        Paraguay’s regime for large, intensive consumption — the category a data center, a large industrial plant or a similar load falls into — works through a special contract with the utility. The published schedule creates the category and then refers to the contract. Which means the answer to “what will power cost me” is not something you can look up. It is something you establish, with terms, conditions and a duration attached.
+        Paraguay’s framework for large energy-intensive loads — the category a data center, a large industrial plant or a similar load falls into — works through a special contract with the utility. The published schedule creates the category and then refers to the contract. Which means the answer to “what will power cost me” is not something you can look up. It is something you establish, with terms, conditions and a duration attached.
       </p>
 
       <p>
-        This is neither good news nor bad news. It is a different kind of question than the one most investors arrive with, and it changes who needs to be at the table, and when.
+        The implication is operational: the utility and the project’s commercial team need to enter diligence earlier than they would for a published, standard tariff.
       </p>
     </article>
   </FullBleedSection>
@@ -203,15 +211,15 @@ const breadcrumbs = [
       />
 
       <p>
-        There is a published administrative procedure for connecting a large load, with defined steps and response times. We have read it, and two things are worth knowing before you plan around it.
+        There is a published administrative procedure for connecting a large load, with defined steps and response times. Two provisions in it materially affect project sequencing.
       </p>
 
       <p>
-        The first is that it contains expiry clocks. A submission that is not followed through within a defined window lapses, and the process restarts. That makes the <em>sequence</em> of your decisions matter as much as the decisions themselves: filing early, just to have the answer, can mean filing twice.
+        The first is that it contains expiration deadlines. A submission that is not followed through within a defined window lapses, and the process restarts. That makes the <em>sequence</em> of your decisions matter as much as the decisions themselves: filing early, just to have the answer, can mean filing twice.
       </p>
 
       <p>
-        The second is more consequential. The published procedure has an upper band. Above it, the procedure as written does not apply — and no equivalent published timetable takes its place. For a project in the tens or hundreds of megawatts, there is no calendar you can look up.
+        The second has larger consequences. The published procedure has an upper applicability threshold. Above it, the procedure as written does not apply — and as of August 19, 2026, we found no equivalent published timetable for projects above that threshold. For a project in the tens or hundreds of megawatts, there is no calendar to look up.
       </p>
 
       <p class="text-[19px] text-slate-dg leading-[1.7] font-semibold">
@@ -225,7 +233,7 @@ const breadcrumbs = [
     <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
       <SectionHeader
         kicker="A note on dates"
-        title="The frame is moving,"
+        title="The regulatory framework is changing,"
         titleAccent="and that matters more than usual"
       />
 
@@ -237,9 +245,6 @@ const breadcrumbs = [
         The consequence for a foreign investor is specific and unglamorous: <strong class="text-slate-dg">any statement about tariff, regime or incentive has to carry the date it was true.</strong> A well-written analysis published eighteen months ago can describe something that no longer exists, and it will not announce that it has expired.
       </p>
 
-      <p>
-        That applies to what you are reading now, which is why it is dated.
-      </p>
     </article>
   </FullBleedSection>
 
@@ -253,11 +258,11 @@ const breadcrumbs = [
       />
 
       <p>
-        Most site decisions arrive in the same order: find the land, then check the power. In Paraguay, for an energy-intensive use, that order is expensive.
+        Most site-selection processes follow the same sequence: find the land, then check the power. In Paraguay, for an energy-intensive use, that order is expensive.
       </p>
 
       <p>
-        The three filters that decide a site — firm power, water and cooling, redundant fibre — can all be screened from a desk, before any field campaign is committed and before a purchase option is signed. Flood exposure and bearing capacity then narrow the usable area further.
+        The three filters that decide a site — firm power, water and cooling, redundant fiber — can all be screened preliminarily, often far enough to eliminate weak candidates before commissioning fieldwork or signing a purchase option. Flood exposure and bearing capacity then narrow the usable area further.
       </p>
 
       <p>
@@ -271,18 +276,18 @@ const breadcrumbs = [
     <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
       <SectionHeader
         kicker="Scope"
-        title="Where our work ends"
-        titleAccent="— and whose it is after that"
+        title="Where our scope ends"
+        titleAccent="— and the developer’s begins"
       />
 
       <p>
-        We think the boundary is worth stating plainly, because it is what makes the rest credible.
+        The division of responsibilities should be clear from the outset.
       </p>
 
       <ul class="space-y-3 list-none pl-0">
-        <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">We resolve</strong> the site and the engineering: survey and terrain modelling, hydrology and flood exposure, earthworks and platforms, access for heavy transport, net usable area, and the technical case and roadmap through the institutions.</span></li>
+        <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">We assess the site and develop the civil and site engineering:</strong> terrain surveys and models, hydrology and flood exposure, earthworks and platforms, access for heavy transport, net usable area, and the technical case and roadmap through the institutions.</span></li>
         <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">We coordinate</strong> what specialists must sign: geotechnical campaigns, high-voltage electrical engineering, cooling design, environmental impact assessment.</span></li>
-        <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">And there is a third category that belongs to no engineer.</strong> The commercial negotiation of power and tariff is the developer’s. Any formal submission to the utility is signed by whoever holds title to the site. We prepare the technical case behind it; we do not sign it, and neither does anyone who tells you they can.</span></li>
+        <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">And there is a third category that belongs to no engineer.</strong> The commercial negotiation of power and tariff is the developer’s. The utility’s applicable requirements determine which project entity must submit and sign the formal application. We prepare the supporting technical case.</span></li>
       </ul>
     </article>
   </FullBleedSection>
@@ -295,10 +300,10 @@ const breadcrumbs = [
     <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
     <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
       <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">Assessing a site in Paraguay?</h2>
-      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[560px] mx-auto">Tell us what you are evaluating — site, power, water or permitting — and we will tell you what it actually takes here, and how long.</p>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[560px] mx-auto">Tell us what you are evaluating — site, power, water or permitting — and we can identify what must be verified, who must verify it, and which dependencies will drive the schedule.</p>
       <div class="flex flex-wrap justify-center gap-4">
         <Button href={N.contact} variant="primary" size="lg">Start a conversation</Button>
-        <Button href={N.solar} variant="ghost-dark" size="lg">Solar &amp; data centers</Button>
+        <Button href={N.solar} variant="ghost-dark" size="lg">Data centers &amp; energy-intensive sites</Button>
       </div>
     </div>
   </section>

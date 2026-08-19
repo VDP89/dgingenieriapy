@@ -146,7 +146,7 @@ export const ui = {
     'sector.plantas': 'Industrial Plants',
     'sector.urbanizaciones': 'Land Development',
     'sector.solar': 'Solar & Data Centers',
-    'sector.relevamiento': 'Aerial Survey & Terrain Modelling',
+    'sector.relevamiento': 'Aerial Survey & Terrain Modeling',
   },
 } as const;
 

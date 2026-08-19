@@ -166,7 +166,7 @@ const en: HomeContent = {
   hero: {
     slides: [
       { img: '/img/sector-solar.jpg', kicker: 'Solar & data centers', title: 'Find out if the site works', accent: 'before you commit', subtitle: 'Power, water and permitting are what decide an energy-intensive site in Paraguay — not the hectares. We assess all three from the desk, and tell you what the timeline really looks like.' },
-      { img: '/img/sector-relevamiento.jpg', kicker: 'Aerial survey & terrain modelling', title: 'Ground truth', accent: 'you can audit', subtitle: 'Our own survey drones produce digital terrain models, orthomosaics and point clouds tied to Paraguay’s National Geodetic Network — so the numbers hold up when someone checks them.' },
+      { img: '/img/sector-relevamiento.jpg', kicker: 'Aerial survey & terrain modeling', title: 'Ground truth', accent: 'you can audit', subtitle: 'Our own survey drones produce digital terrain models, orthomosaics and point clouds tied to Paraguay’s National Geodetic Network — so the numbers hold up when someone checks them.' },
       { img: '/img/sector-urb.jpg', kicker: 'Land development', title: 'From raw land', accent: 'to a buildable site', subtitle: 'Site feasibility, earthworks and platforms, internal roads, utilities and municipal approvals. The engineering that turns land into something you can build on.' },
       { img: '/img/sector-plantas.jpg', kicker: 'Industrial plants', title: 'Site engineering', accent: 'for real operations', subtitle: 'Platforms, earthworks, heavy-transport access and construction supervision for industrial facilities.' },
       { img: '/img/destacado-bid.jpg', kicker: 'Featured project · Paraguay MOPC', title: 'Full feasibility study', accent: 'across 179 km of Chaco', subtitle: 'Highway geometry, traffic study, pavement design and economic appraisal for Route PY05, delivered under Paraguay’s national public-investment methodology.' },
@@ -177,7 +177,7 @@ const en: HomeContent = {
   },
   stats: [
     { value: '10+', label: 'Years in practice' },
-    { value: '9', label: 'Areas of specialisation' },
+    { value: '9', label: 'Areas of specialization' },
     { value: 'IDB · MOPC · CAF', label: 'Contracting institutions' },
   ],
   featured: {
@@ -200,7 +200,7 @@ const en: HomeContent = {
   sectors: [
     { slug: 'solar', title: 'Solar & Data Centers', desc: 'Local engineering partner for solar parks and data centers: site feasibility, power and water screening, civil works, ERNC permitting and construction supervision.', gradientClass: SECTOR_GRADIENTS.solar, img: '/img/sector-solar.jpg', tag: 'Owner’s side' },
     { slug: 'urbanizaciones', title: 'Land Development', desc: 'Engineering partner for developers: site feasibility, internal roads, utilities, municipal approvals and construction supervision.', gradientClass: SECTOR_GRADIENTS.urbanizaciones, img: '/img/sector-urb.jpg', tag: 'Developers' },
-    { slug: 'relevamiento-aereo', title: 'Aerial Survey & Terrain Modelling', desc: 'Drone photogrammetry, digital terrain models and earthworks control, georeferenced and traceable to official datums.', gradientClass: SECTOR_GRADIENTS['relevamiento-aereo'], img: '/img/sector-relevamiento.jpg', tag: 'Geospatial' },
+    { slug: 'relevamiento-aereo', title: 'Aerial Survey & Terrain Modeling', desc: 'Drone photogrammetry, digital terrain models and earthworks control, georeferenced and traceable to official datums.', gradientClass: SECTOR_GRADIENTS['relevamiento-aereo'], img: '/img/sector-relevamiento.jpg', tag: 'Geospatial' },
     { slug: 'plantas-industriales', title: 'Industrial Plants', desc: 'Platform design, earthworks, heavy-transport access and construction supervision for industrial facilities.', gradientClass: SECTOR_GRADIENTS['plantas-industriales'], img: '/img/sector-plantas.jpg', tag: 'Industry' },
     { slug: 'vialidad', title: 'Roads & Highways', desc: 'Highway design, technical review, audits and design control. Feasibility studies under Paraguay’s SNIP public-investment code.', gradientClass: SECTOR_GRADIENTS.vialidad, img: '/img/sector-vial.jpg', tag: 'IDB · MOPC' },
     { slug: 'pavimentos', title: 'Pavement Engineering', desc: 'Structural evaluation, deflectometry and design of rigid and flexible pavement structures.', gradientClass: SECTOR_GRADIENTS.pavimentos, img: '/img/sector-pav.jpg', tag: 'Expertise' },
@@ -237,12 +237,12 @@ const en: HomeContent = {
     bullets: [
       'Direct contractor to multilateral institutions (IDB, CAF)',
       'Specialist bench scaled to the size of the project',
-      'One method throughout: data, judgement and control at every stage',
+      'One method throughout: data, judgment and control at every stage',
       'Projects delivered across multiple regions and contexts',
     ],
     cta: 'About us',
     quote: '"Every project decision deserves technical clarity. That is what we deliver."',
-    steps: ['Data', 'Judgement', 'Decisions', 'Design', 'Control'],
+    steps: ['Data', 'Judgment', 'Decisions', 'Design', 'Control'],
   },
   partnersLabel: 'Clients and institutions',
   partners: PARTNERS_EN,
