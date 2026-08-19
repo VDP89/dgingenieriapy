@@ -58,6 +58,10 @@ Para detalles técnicos sobre el lab de investigación interno (memoria persiste
 - [victordelpuerto.com](https://victordelpuerto.com) — blog técnico del CEO
 - [Lucy Syndrome paper](https://victordelpuerto.com/posts/lucy-syndrome-overview/) — DOI 10.5281/zenodo.19555971
 
+## Vigencia del marco energético
+
+Toda afirmación sobre el régimen eléctrico paraguayo lleva fecha: el marco está en reforma activa durante 2026. Al 2026-08-19 rige la **Ley 7599/2025** de ERNC con su Decreto reglamentario **6034/2026**, y el gran consumo se encuadra por **GCIE**. Los Decretos 5306 y 5307 están **derogados** desde junio de 2026 y siguen circulando en prensa: no usarlos como supuesto. Verificar contra fuente oficial antes de citar una tarifa o una ruta de suministro.
+
 ## Política de contacto
 
 DG opera 100% inbound. No se realizan campañas de outreach saliente, cold calls ni mensajes directos de venta. Quienes contactan a través del formulario web reciben respuesta dentro de 48 horas hábiles.
