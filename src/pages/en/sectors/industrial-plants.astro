@@ -1,0 +1,159 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import FullBleedSection from '../../../components/FullBleedSection.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import Button from '../../../components/Button.astro';
+import { nav } from '../../../i18n/ui';
+
+const N = nav('en');
+
+const capabilities = [
+  { title: 'Industrial platforms', desc: 'Designed for the concentrated loads of plant equipment, with drainage gradients and access for maintenance and future expansion.', icon: 'platform' },
+  { title: 'Earthworks', desc: 'Levelling by fill, cut or stabilisation, with bearing capacity analysis and volume optimisation.', icon: 'earth' },
+  { title: 'Heavy industrial access', desc: 'Roads designed for frequent heavy traffic — trucks, agricultural machinery, service vehicles — with solutions matched to the soil.', icon: 'truck' },
+  { title: 'Industrial pavements', desc: 'Appropriate thickness and sub-surface drainage to prevent saturation failures, with alternatives using locally available materials.', icon: 'layers' },
+  { title: 'Drainage and site services', desc: 'Drainage and runoff systems that keep the operation running through intense rainfall, integrated with site services.', icon: 'water' },
+  { title: 'Construction supervision', desc: 'Quality control, compaction and strength testing, coordination across multiple disciplines and technical documentation.', icon: 'audit' },
+];
+
+const experience = [
+  { label: 'Agro-industrial projects', detail: 'Supporting infrastructure for agricultural operations' },
+  { label: 'Design and supervision combined', detail: 'End-to-end service from design through construction control' },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: '/en/' },
+  { name: 'Sectors', url: '/en/sectors' },
+  { name: 'Industrial Plants', url: '/en/sectors/industrial-plants' },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Civil engineering for industrial and agro-industrial plants',
+  serviceType: 'Site civil works for industrial facilities',
+  description: 'Civil works for industrial and agro-industrial plants in Paraguay: site survey, platform design for concentrated equipment loads, earthworks, heavy-transport access, industrial pavements, drainage and construction supervision.',
+  provider: {
+    '@type': 'Organization',
+    '@id': 'https://dgingenieriapy.com/#organization',
+    name: 'DG Ingeniería SRL',
+    url: 'https://dgingenieriapy.com',
+  },
+  areaServed: { '@type': 'Country', name: 'Paraguay' },
+  url: 'https://dgingenieriapy.com/en/sectors/industrial-plants',
+  inLanguage: 'en',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Capabilities',
+    itemListElement: capabilities.map((c) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: c.title, description: c.desc },
+    })),
+  },
+};
+---
+
+<Base
+  title="Civil works for industrial plants in Paraguay"
+  description="Civil works for industrial and agro-industrial plants in Paraguay: platforms, earthworks, heavy-transport access, industrial pavements and construction supervision."
+  preloadImg="/img/sector-plantas.webp"
+  breadcrumbs={breadcrumbs}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)} />
+  </Fragment>
+
+  <PageHero
+    img="/img/sector-plantas.jpg"
+    imgAlt="Industrial infrastructure in Paraguay"
+    kicker="Sectors · Industry"
+    title="Infrastructure"
+    titleAccent="for industrial operations"
+    subtitle="Platforms, access, earthworks and supervision for industrial and agro-industrial plants — from design through to construction control."
+    height="md"
+  >
+    <Button href={N.contact} variant="primary" magnetic>Discuss a project</Button>
+    <Button href={N.sectors} variant="ghost-dark">All sectors</Button>
+  </PageHero>
+
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="Approach"
+          title="Infrastructure"
+          titleAccent="for industrial operations"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>Industrial and agro-industrial plants depend on supporting civil works: operating platforms, road access, drainage and site services. We carry out site survey work, including a survey of existing services, so the site layout is defined against what is actually there.</p>
+        <p>Platform design accounts for the concentrated loads of plant equipment, the gradients drainage requires, and access for maintenance and future expansion. We analyse soil bearing capacity and design the levelling approach, which may combine fill, cut or stabilisation depending on what the ground gives.</p>
+        <p>Industrial access roads have to carry frequent heavy traffic: freight trucks, agricultural machinery and service vehicles. We design industrial pavements with appropriate thickness and sub-surface drainage, which is what prevents the saturation failures that take an access road out of service in the wet season.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream-deep" padding="md">
+    <SectionHeader
+      kicker="Capabilities"
+      title="What we do"
+      lead="Civil works for industrial and agro-industrial plants in Paraguay: platforms, earthworks, heavy-transport access, industrial pavements and construction supervision."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {capabilities.map((c) => (
+        <div class="bg-white rounded-xl p-7 border border-slate-dg/[0.08] shadow-sm hover:shadow-md transition-shadow" data-animate>
+          <div class="w-11 h-11 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
+            {c.icon === 'platform' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 12h18M3 12v8h18v-8M6 12V6h12v6"/></svg>}
+            {c.icon === 'earth' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 18h18M3 14c3-3 5-3 7 0s5 3 7 0M3 14V9c3-3 5-3 7 0s5 3 7 0v5"/></svg>}
+            {c.icon === 'truck' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M1 17V5h13v12M14 9h5l3 4v4h-8"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>}
+            {c.icon === 'layers' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m12 3-9 5 9 5 9-5-9-5Zm-9 11 9 5 9-5M3 11l9 5 9-5"/></svg>}
+            {c.icon === 'water' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2s6 8 6 13a6 6 0 0 1-12 0c0-5 6-13 6-13Z"/></svg>}
+            {c.icon === 'audit' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.35-4.35M9 11l2 2 4-4"/></svg>}
+          </div>
+          <h3 class="text-[17px] font-extrabold tracking-tight mb-2 text-slate-dg">{c.title}</h3>
+          <p class="text-[13.5px] text-slate-dg/65 leading-relaxed">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream" padding="md">
+    <SectionHeader
+      kicker="Experience"
+      title="Experience"
+      lead="Supporting infrastructure for industrial and agro-industrial operations, with design and supervision delivered together."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[900px] mx-auto">
+      {experience.map((e) => (
+        <div class="bg-white rounded-xl p-6 border border-slate-dg/[0.08] flex items-start gap-4" data-animate>
+          <div class="w-10 h-10 rounded-full bg-arena/12 flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-arena" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 18 18"><polyline points="4 9 8 13 14 5"/></svg>
+          </div>
+          <div>
+            <h4 class="text-[15px] font-extrabold text-slate-dg tracking-tight mb-1">{e.label}</h4>
+            <p class="text-[13px] text-slate-dg/60 leading-relaxed">{e.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">Planning a plant or an industrial access road?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[560px] mx-auto">Tell us what the site has to carry and we will tell you what the ground and the access require.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href={N.contact} variant="primary" size="lg">Start a conversation</Button>
+        <Button href={N.sectors} variant="ghost-dark" size="lg">Other sectors</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>

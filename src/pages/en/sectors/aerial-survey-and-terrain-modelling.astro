@@ -1,0 +1,187 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import FullBleedSection from '../../../components/FullBleedSection.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import Button from '../../../components/Button.astro';
+import { nav } from '../../../i18n/ui';
+
+const N = nav('en');
+
+const capabilities = [
+  { title: 'High-resolution aerial survey', desc: 'Photogrammetric drone flights covering large areas quickly, at a point density and level of detail a ground survey cannot reach in the same time.', icon: 'drone' },
+  { title: 'Digital terrain model (DTM)', desc: 'DTM and DSM generation, georeferenced orthomosaics and point cloud — the accurate basis for design, quantities and control at every stage.', icon: 'mdt' },
+  { title: 'Earthworks control', desc: 'Cut and fill volumes computed by comparing surfaces between successive flights, to verify actual progress against the design.', icon: 'volume' },
+  { title: 'Tied to the official datum', desc: 'Ground control points and connection to the National Geodetic Network, so levels and coordinates are traceable against the official reference system.', icon: 'geodesic' },
+  { title: 'Contours and base mapping', desc: 'Contours, profiles and planimetry derived from the model, delivered in the formats design teams actually use (DWG/DXF).', icon: 'contour' },
+  { title: 'Periodic progress monitoring', desc: 'Flights at different dates to document progress, compare surfaces and give the decision-maker a current territorial picture of the site.', icon: 'timeline' },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: '/en/' },
+  { name: 'Sectors', url: '/en/sectors' },
+  { name: 'Aerial Survey & Terrain Modelling', url: '/en/sectors/aerial-survey-and-terrain-modelling' },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Drone survey, terrain modelling and earthworks control',
+  serviceType: 'Geospatial survey and digital terrain modelling for infrastructure',
+  description: 'High-resolution drone photogrammetry in Paraguay producing digital terrain and surface models, georeferenced orthomosaics and point clouds tied to the National Geodetic Network, with cut-and-fill quantification by surface comparison for construction control.',
+  provider: {
+    '@type': 'Organization',
+    '@id': 'https://dgingenieriapy.com/#organization',
+    name: 'DG Ingeniería SRL',
+    url: 'https://dgingenieriapy.com',
+  },
+  areaServed: { '@type': 'Country', name: 'Paraguay' },
+  url: 'https://dgingenieriapy.com/en/sectors/aerial-survey-and-terrain-modelling',
+  inLanguage: 'en',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Capabilities',
+    itemListElement: capabilities.map((c) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: c.title, description: c.desc },
+    })),
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: 'en',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How accurate is a drone survey, and can the result be audited?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Accuracy depends on flight planning and, above all, on ground control. DG flies with its own drones and ties the model to Paraguay’s National Geodetic Network through surveyed control points, so levels and coordinates are traceable against the official reference system rather than internally consistent only. That traceability is what allows a third party to re-check the quantities: without it, a model can be precise and still be wrong by a fixed offset.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How are earthworks quantities verified on site?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'By comparing surfaces. The site is flown at different dates and the resulting terrain models are differenced, producing cut and fill volumes across the entire area rather than at isolated cross-sections. Those volumes are then reconciled against the design. This measures what was actually executed over the whole site, which is a different question from what a spot measurement or a contractor’s claim reports.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What deliverables come out of an aerial survey?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A digital terrain model (DTM) and surface model (DSM), a georeferenced orthomosaic, a point cloud, contours, profiles and planimetry, and cut-and-fill quantities where earthworks control is in scope. Deliverables are provided in the formats design teams use, including DWG and DXF, so they drop straight into the engineering workflow.',
+      },
+    }
+  ],
+};
+---
+
+<Base
+  title="Drone survey and terrain modelling in Paraguay"
+  description="High-resolution drone survey in Paraguay: photogrammetry, digital terrain models, earthworks control and traceability to the National Geodetic Network."
+  preloadImg="/img/sector-relevamiento.webp"
+  breadcrumbs={breadcrumbs}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <PageHero
+    img="/img/sector-relevamiento.jpg"
+    imgAlt="Drone survey for infrastructure in Paraguay"
+    kicker="Sectors · Geospatial survey"
+    title="High-resolution aerial survey"
+    titleAccent="and earthworks control"
+    subtitle="Drone photogrammetry, digital terrain models and surface comparison, to design and control the works on georeferenced, traceable data."
+    height="md"
+  >
+    <Button href={N.contact} variant="primary" magnetic>Discuss a project</Button>
+    <Button href={N.sectors} variant="ghost-dark">All sectors</Button>
+  </PageHero>
+
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="Approach"
+          title="High-resolution aerial survey"
+          titleAccent="and earthworks control"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>An infrastructure project is designed and controlled against real ground. Aerial drone survey captures that ground at high resolution and turns it into an accurate digital model: the basis on which volumes are computed, contours are drawn and construction progress is verified.</p>
+        <p>At DG we fold photogrammetry into the engineering work itself. We produce the digital terrain model (DTM), the orthomosaic and the point cloud, and we tie them to Paraguay’s National Geodetic Network so that levels and coordinates are traceable against the official reference system. That vertical control is what makes the quantities and the construction control defensible when someone checks them.</p>
+        <p>By flying the site on different dates and comparing surfaces, we measure the earthworks actually executed across the whole site and reconcile them against the design. The decision-maker gets a current territorial picture backed by verified, documented data, rather than isolated spot measurements.</p>
+        <p>Aerial survey runs across every sector DG works in: it feeds highway design, site feasibility for land development and energy projects, industrial platforms, and construction control in each of them.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream-deep" padding="md">
+    <SectionHeader
+      kicker="Capabilities"
+      title="What we do"
+      lead="High-resolution drone survey in Paraguay: photogrammetry, digital terrain models, earthworks control and traceability to the National Geodetic Network."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {capabilities.map((c) => (
+        <div class="bg-white rounded-xl p-7 border border-slate-dg/[0.08] shadow-sm hover:shadow-md transition-shadow" data-animate>
+          <div class="w-11 h-11 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
+            {c.icon === 'drone' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 9v6m0-6 4-4m-4 4L8 5m4 10 4 4m-4-4-4 4M5 5h.01M19 5h.01M5 19h.01M19 19h.01"/><circle cx="12" cy="12" r="2"/></svg>}
+            {c.icon === 'mdt' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8M3 17v4h18"/><path d="M3 11l6-6 4 4"/></svg>}
+            {c.icon === 'volume' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m12 3 9 5v8l-9 5-9-5V8l9-5Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg>}
+            {c.icon === 'geodesic' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>}
+            {c.icon === 'contour' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 14c2-3 5-3 8 0s6 3 8 0M4 18c2-3 5-3 8 0s6 3 8 0M7 9c1.5-2 3.5-2 5 0s3.5 2 5 0"/></svg>}
+            {c.icon === 'timeline' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 12h18"/><circle cx="6" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="18" cy="12" r="2"/></svg>}
+          </div>
+          <h3 class="text-[17px] font-extrabold tracking-tight mb-2 text-slate-dg">{c.title}</h3>
+          <p class="text-[13.5px] text-slate-dg/65 leading-relaxed">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="The process"
+          title="How a survey runs,"
+          titleAccent="from flight plan to quantities"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>Every survey follows the same four steps, and each one produces something the next one depends on:</p>
+        <ul class="space-y-3 list-none pl-0">
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Flight planning:</strong> area definition, target resolution and ground control tied to the official datum.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Processing:</strong> DTM, DSM, orthomosaic and point cloud generation, with quality control on the model.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Quantities and design:</strong> contours, profiles and cut-and-fill volumes in the formats the technical teams use.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Progress control:</strong> successive flights and surface comparison to verify earthworks against the design.</span></li>
+        </ul>
+        <p>It is the same way we work across more than a thousand kilometres of highway projects and on civil works around the country: the verified measurement first, the decision after.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">Need a site surveyed, or earthworks verified?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[560px] mx-auto">Tell us the area and what the data has to support — design, quantities or construction control — and we will tell you what the flight needs to deliver.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href={N.contact} variant="primary" size="lg">Start a conversation</Button>
+        <Button href={N.sectors} variant="ghost-dark" size="lg">Other sectors</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>

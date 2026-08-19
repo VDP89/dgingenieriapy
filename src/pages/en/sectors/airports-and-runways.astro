@@ -1,0 +1,161 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import FullBleedSection from '../../../components/FullBleedSection.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import Button from '../../../components/Button.astro';
+import { nav } from '../../../i18n/ui';
+
+const N = nav('en');
+
+const capabilities = [
+  { title: 'Aircraft pavements', desc: 'The FAA’s FAARFIELD methodology for runways and taxiways, accounting for landing-gear loading and tyre contact pressures.', icon: 'plane' },
+  { title: 'Aprons and taxiways', desc: 'Design combining aeronautical criteria with operational safety: clearances, manoeuvring capability, ICAO marking and signage.', icon: 'grid' },
+  { title: 'Private runways', desc: 'Complete engineering for private airstrips: survey, geometric design, pavement and drainage.', icon: 'runway' },
+  { title: 'Private hangars', desc: 'Load analysis to applicable building standards, with structural sizing and foundations suited to the airside environment.', icon: 'hangar' },
+  { title: 'Airside drainage', desc: 'Sub-drainage systems that hold bearing capacity through operations — the difference between a runway that stays open and one that does not.', icon: 'water' },
+  { title: 'DINAC and ICAO framework', desc: 'Support through approval procedures, technical documentation, validation testing and compliance audits.', icon: 'docs' },
+];
+
+const experience = [
+  { label: 'Silvio Pettirossi International Airport', detail: 'Aircraft pavements' },
+  { label: 'Private runways', detail: 'Complete design and site engineering' },
+  { label: 'Private hangars', detail: 'Structure and specialised foundations' },
+  { label: 'DINAC regulations', detail: 'Approval of works and installations' },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: '/en/' },
+  { name: 'Sectors', url: '/en/sectors' },
+  { name: 'Airports, Hangars & Runways', url: '/en/sectors/airports-and-runways' },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Airport and runway engineering',
+  serviceType: 'Airside infrastructure engineering',
+  description: 'Airside infrastructure engineering in Paraguay: aircraft pavement design under FAARFIELD, taxiways and aprons, private runways and hangars, airside drainage, and support through DINAC and ICAO regulatory approval.',
+  provider: {
+    '@type': 'Organization',
+    '@id': 'https://dgingenieriapy.com/#organization',
+    name: 'DG Ingeniería SRL',
+    url: 'https://dgingenieriapy.com',
+  },
+  areaServed: { '@type': 'Country', name: 'Paraguay' },
+  url: 'https://dgingenieriapy.com/en/sectors/airports-and-runways',
+  inLanguage: 'en',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Capabilities',
+    itemListElement: capabilities.map((c) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: c.title, description: c.desc },
+    })),
+  },
+};
+---
+
+<Base
+  title="Airport, hangar and runway engineering in Paraguay"
+  description="Airside infrastructure engineering in Paraguay: runways, taxiways, aprons and hangars under ICAO and DINAC regulations, with FAARFIELD pavement methodology."
+  preloadImg="/img/sector-aero.webp"
+  breadcrumbs={breadcrumbs}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)} />
+  </Fragment>
+
+  <PageHero
+    img="/img/sector-aero.jpg"
+    imgAlt="Airside infrastructure"
+    kicker="Sectors · Aviation"
+    title="Airside"
+    titleAccent="infrastructure"
+    subtitle="Runways, aprons and hangars under ICAO and DINAC regulations, with the FAA’s FAARFIELD methodology for aircraft pavement loading."
+    height="md"
+  >
+    <Button href={N.contact} variant="primary" magnetic>Discuss a project</Button>
+    <Button href={N.sectors} variant="ghost-dark">All sectors</Button>
+  </PageHero>
+
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="Approach"
+          title="Airside"
+          titleAccent="infrastructure"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>Airside infrastructure operates under strict international standards (ICAO) and the national aviation authority’s regulations (DINAC in Paraguay). The pavements require analysis of loading that has no road equivalent: landing gear configurations, high localised contact pressures and concentrated load cycles.</p>
+        <p>We apply the FAA’s FAARFIELD methodology to size runways and taxiways, working from the design aircraft category, the frequency of operations and the design life. On aprons we combine aeronautical criteria with operational safety: clearances, manoeuvring capability, and marking and signage to ICAO.</p>
+        <p>We support clients through DINAC procedures for the approval of works and installations, including technical documentation, validation testing and compliance audits.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream-deep" padding="md">
+    <SectionHeader
+      kicker="Capabilities"
+      title="What we do"
+      lead="Airside infrastructure engineering in Paraguay: runways, taxiways, aprons and hangars under ICAO and DINAC regulations, with FAARFIELD pavement methodology."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {capabilities.map((c) => (
+        <div class="bg-white rounded-xl p-7 border border-slate-dg/[0.08] shadow-sm hover:shadow-md transition-shadow" data-animate>
+          <div class="w-11 h-11 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
+            {c.icon === 'plane' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>}
+            {c.icon === 'grid' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>}
+            {c.icon === 'runway' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 21 21 3M7 19h4m2-12h4"/></svg>}
+            {c.icon === 'hangar' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 21V11l9-6 9 6v10M3 21h18M7 21v-6h10v6"/></svg>}
+            {c.icon === 'water' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2s6 8 6 13a6 6 0 0 1-12 0c0-5 6-13 6-13Z"/></svg>}
+            {c.icon === 'docs' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>}
+          </div>
+          <h3 class="text-[17px] font-extrabold tracking-tight mb-2 text-slate-dg">{c.title}</h3>
+          <p class="text-[13.5px] text-slate-dg/65 leading-relaxed">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream" padding="md">
+    <SectionHeader
+      kicker="Experience"
+      title="Experience"
+      lead="Airside works and private aviation infrastructure."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[900px] mx-auto">
+      {experience.map((e) => (
+        <div class="bg-white rounded-xl p-6 border border-slate-dg/[0.08] flex items-start gap-4" data-animate>
+          <div class="w-10 h-10 rounded-full bg-arena/12 flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-arena" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 18 18"><polyline points="4 9 8 13 14 5"/></svg>
+          </div>
+          <div>
+            <h4 class="text-[15px] font-extrabold text-slate-dg tracking-tight mb-1">{e.label}</h4>
+            <p class="text-[13px] text-slate-dg/60 leading-relaxed">{e.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">Working on an aviation project?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[560px] mx-auto">Runway, apron or hangar — tell us the aircraft and the operation, and we will tell you what the pavement and the clearances require.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href={N.contact} variant="primary" size="lg">Start a conversation</Button>
+        <Button href={N.sectors} variant="ghost-dark" size="lg">Other sectors</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>

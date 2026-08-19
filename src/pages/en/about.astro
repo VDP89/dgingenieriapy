@@ -1,0 +1,164 @@
+---
+import Base from '../../layouts/Base.astro';
+import { nav } from '../../i18n/ui';
+
+const N = nav('en');
+
+const verbs = [
+  { num: '01', title: 'Survey', desc: 'Measured data, so the decisions rest on something' },
+  { num: '02', title: 'Analyse', desc: 'Territorial, operational and regulatory reading' },
+  { num: '03', title: 'Design', desc: 'Geometric, structural and operational solutions' },
+  { num: '04', title: 'Coordinate', desc: 'Geotechnics, hydrology and specialists, integrated' },
+  { num: '05', title: 'Control', desc: 'Technical and volumetric verification at each stage' },
+];
+
+const steps = ['Data', 'Judgement', 'Decisions', 'Design', 'Control'];
+
+const stepDetail = [
+  { title: 'Data', desc: 'Accurate survey, topography, territorial and regulatory information.' },
+  { title: 'Judgement', desc: 'Technical analysis, reading of site conditions and evaluation of alternatives.' },
+  { title: 'Decisions', desc: 'A defined technical solution, argued from the analysis rather than asserted.' },
+  { title: 'Design', desc: 'Complete documentation: drawings, technical specifications and construction details.' },
+  { title: 'Control', desc: 'Verification during execution, volumetric tracking and technical conformity.' },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: '/en/' },
+  { name: 'About', url: '/en/about' },
+];
+---
+
+<Base
+  title="About DG Ingeniería"
+  description="DG Ingeniería SRL — a Paraguayan civil engineering firm working on the owner's side across roads, ports, airports, industrial and energy infrastructure. Data, judgement, decisions, design and control."
+  breadcrumbs={breadcrumbs}
+>
+
+  <!-- HERO -->
+  <section class="bg-slate-dg text-cream py-16 md:py-28">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight mb-4">About DG Ingeniería</h1>
+      <p class="text-lg text-cream/65 max-w-2xl leading-relaxed">Technical clarity for infrastructure projects — from Asunción, Paraguay.</p>
+    </div>
+  </section>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-24">
+        <div>
+          <div class="mb-8">
+            <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-4">The firm</h2>
+            <p class="text-base text-slate-dg/80 leading-relaxed mb-4">DG Ingeniería is an applied engineering firm founded in Paraguay more than ten years ago. We operate from Asunción with a core team of infrastructure specialists — engineers with rigorous academic training and experience on projects of national and regional scale.</p>
+            <p class="text-base text-slate-dg/80 leading-relaxed mb-4">Around that core we work with a bench of specialists brought in according to the nature and size of each project. That structure lets us hold technical certainty across disciplines that rarely sit in one firm: roads, pavements, airports, port infrastructure, construction supervision, industrial plants, land development, solar energy and data centers.</p>
+            <p class="text-base text-slate-dg/80 leading-relaxed mb-4">As direct contractors to multilateral institutions such as the IDB and CAF, we have delivered projects across multiple regions and contexts, developing our own working methods to hold quality and consistency at every stage.</p>
+            <p class="text-base text-slate-dg/80 leading-relaxed">We work on the owner’s side. Before construction, we establish whether a site works and what it will take. During construction, we verify that what is being built is what was agreed.</p>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="bg-white rounded-lg border border-slate-dg/10 p-8">
+            <div class="text-[36px] font-extrabold text-arena tracking-tight mb-2">10+</div>
+            <h3 class="text-sm font-semibold uppercase tracking-[2px] text-gray-neutral">Years in practice</h3>
+            <p class="text-sm text-slate-dg/70 mt-3">Working in infrastructure since the firm was founded in Paraguay.</p>
+          </div>
+          <div class="bg-white rounded-lg border border-slate-dg/10 p-8">
+            <div class="text-[36px] font-extrabold text-arena tracking-tight mb-2">9</div>
+            <h3 class="text-sm font-semibold uppercase tracking-[2px] text-gray-neutral">Areas of specialisation</h3>
+            <p class="text-sm text-slate-dg/70 mt-3">From roads and pavements through to solar, data centers and aerial survey.</p>
+          </div>
+          <div class="bg-cream-deep rounded-lg p-8">
+            <h3 class="text-sm font-semibold uppercase tracking-[2px] text-gray-neutral mb-3">Contracted by</h3>
+            <p class="text-sm text-slate-dg/70">IDB, MOPC (Paraguay’s Ministry of Public Works), CAF, Tecnoedil, COMYCSA, FLUODER, Incovial and Prointec, among others.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKING WITH CLIENTS ABROAD -->
+  <section class="bg-cream-deep py-16 md:py-24">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+        <div class="lg:col-span-5">
+          <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-4">Working with clients<br /><span class="text-arena">based outside Paraguay</span></h2>
+        </div>
+        <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+          <p>A recurring question from developers, funds and consultancies evaluating Paraguay is a fair one: what does this firm do itself, and what does it coordinate? We answer it the same way every time, because the answer is what makes the rest credible.</p>
+          <ul class="space-y-3 list-none pl-0">
+            <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Delivered directly by DG:</strong> aerial survey with our own drones and terrain modelling, hydrology and flood assessment, earthworks and platforms, internal roads and heavy-transport access, site masterplan and net usable area, technical specifications, quantity take-off and budget, and construction supervision.</span></li>
+            <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Coordinated by DG, executed by specialists:</strong> geotechnical campaigns and laboratory testing, high-voltage electrical engineering, cooling design, environmental impact assessment before MADES. We manage the scope, the interfaces and the quality of what comes back.</span></li>
+            <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Outside any engineer’s scope:</strong> the commercial negotiation of firm power and tariff, and any submission that has to be signed by whoever holds title to the site. We prepare the technical case; the owner signs it.</span></li>
+          </ul>
+          <p>We work in English and Spanish, and correspond across time zones. Where a project needs a confidentiality agreement before scope is discussed, we sign one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 VERBS -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <div class="text-center mb-14">
+        <h2 class="text-2xl md:text-4xl font-bold tracking-tight mb-4">How we work</h2>
+        <p class="text-base text-gray-neutral max-w-[540px] mx-auto leading-relaxed">Five stages that structure every project, so each decision is made with clarity and a technical basis behind it.</p>
+      </div>
+      <div class="flex flex-wrap justify-center">
+        {verbs.map((v, i) => (
+          <div class="text-center px-5 py-8 basis-1/5 min-w-[180px] relative group hover:bg-arena/[0.06] transition-colors">
+            {i < verbs.length - 1 && <div class="absolute right-0 top-[30%] h-[40%] w-px bg-slate-dg/10"></div>}
+            <div class="text-[11px] font-bold text-arena tracking-[2px] mb-2">{v.num}</div>
+            <h3 class="text-lg font-bold mb-2">{v.title}</h3>
+            <p class="text-[13px] text-gray-neutral leading-snug">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- OPERATING MODEL -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <div class="text-center mb-14">
+        <h2 class="text-2xl md:text-4xl font-bold tracking-tight mb-4">Operating model</h2>
+        <p class="text-base text-gray-neutral max-w-[640px] mx-auto leading-relaxed">The method that structures every project, from data collection through to final verification.</p>
+      </div>
+
+      <div class="max-w-[900px] mx-auto">
+        <div class="flex items-center justify-center gap-4 flex-wrap">
+          {steps.map((step, i) => (
+            <>
+              <div class="flex items-center justify-center">
+                <div class="bg-slate-dg text-cream font-bold text-sm px-6 py-4 rounded text-center min-w-[120px]">
+                  {step}
+                </div>
+              </div>
+              {i < steps.length - 1 && (
+                <div class="text-arena text-2xl font-light hidden sm:block">→</div>
+              )}
+            </>
+          ))}
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mt-12">
+          {stepDetail.map((s) => (
+            <div class="bg-cream-deep rounded-lg p-6 text-center">
+              <h4 class="font-semibold text-slate-dg mb-2">{s.title}</h4>
+              <p class="text-xs text-slate-dg/70 leading-snug">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-slate-dg text-cream text-center py-16 md:py-20">
+    <div class="max-w-[1140px] mx-auto px-4 md:px-8 lg:px-20">
+      <h2 class="text-2xl md:text-3xl font-bold mb-3">Evaluating a project in Paraguay?</h2>
+      <p class="text-base text-cream/50 mb-8 max-w-[440px] mx-auto">From site survey through to construction control. Let’s talk.</p>
+      <a href={N.contact} class="bg-arena text-white px-6 py-3 rounded font-semibold text-sm hover:bg-arena-light transition-colors inline-block">Start a conversation</a>
+    </div>
+  </section>
+
+</Base>

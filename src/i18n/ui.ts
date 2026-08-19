@@ -42,11 +42,28 @@ export const routeMap: Record<string, string> = {
  * Por que existen las dos listas: un hreflang que apunta a una pagina que todavia no
  * existe manda al buscador a un 404, y eso es peor que no emitir hreflang. El mapa se
  * escribe entero de una vez (es el diseño de rutas); esta lista crece solo cuando el
- * archivo .astro correspondiente esta en disco. Al completarse las 16, se puede borrar
- * la lista y dejar que el mapa sea la unica verdad.
+ * archivo .astro correspondiente esta en disco.
+ *
+ * Al 2026-08-19 estan las 16. La lista NO se borra: sigue siendo el guard para la
+ * proxima ruta que alguien agregue al mapa antes de escribir la pagina.
  */
 export const EN_LIVE = new Set<string>([
   '/en/',
+  '/en/about',
+  '/en/sectors',
+  '/en/sectors/roads-and-highways',
+  '/en/sectors/pavement-engineering',
+  '/en/sectors/airports-and-runways',
+  '/en/sectors/ports-and-waterways',
+  '/en/sectors/residential-development',
+  '/en/sectors/industrial-plants',
+  '/en/sectors/land-development',
+  '/en/sectors/solar-and-data-centers',
+  '/en/sectors/aerial-survey-and-terrain-modelling',
+  '/en/projects',
+  '/en/ai-solutions',
+  '/en/insights',
+  '/en/contact',
 ]);
 
 /** Inverso derivado — no se escribe a mano para que no pueda desincronizarse. */
@@ -79,6 +96,19 @@ export function counterpart(path: string): string | null {
   }
   const enKey = p === '/en' ? '/en/' : p;
   return routeMapInverse[enKey] ?? null;
+}
+
+/**
+ * Destino del SELECTOR de idioma. Distinto de `counterpart()` a proposito.
+ *
+ * `counterpart()` alimenta el hreflang y debe devolver null cuando no hay pagina
+ * equivalente: declararle al buscador que un articulo tiene traduccion cuando no la
+ * tiene es una señal falsa. El selector, en cambio, es navegacion humana: si no hay
+ * equivalente (caso de los articulos publicados solo en español), lleva al home del
+ * otro idioma en vez de desaparecer y dejar al lector sin salida.
+ */
+export function switchTarget(path: string): string {
+  return counterpart(path) ?? (langFromPath(path) === 'es' ? '/en/' : '/');
 }
 
 /** Strings de chrome. Solo lo compartido por todas las paginas. */

@@ -1,0 +1,215 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import FullBleedSection from '../../../components/FullBleedSection.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import Button from '../../../components/Button.astro';
+import { nav } from '../../../i18n/ui';
+
+const N = nav('en');
+
+const capabilities = [
+  { title: 'Technical and economic feasibility', desc: 'Drone survey, bearing capacity, site constraints and flood exposure, plus the technical and economic analysis that carries the investment decision and the launch of the subdivision.', icon: 'site' },
+  { title: 'Platforms and earthworks', desc: 'Level and terrace design with drainage gradients and slope stability, optimising cut and fill to keep haulage and disposal costs down.', icon: 'earth' },
+  { title: 'Internal road network', desc: 'Geometric layouts with appropriate operating speeds, safe radii and intersection sight distance, for efficient access and safe circulation to every plot.', icon: 'route' },
+  { title: 'Utility coordination', desc: 'Stormwater drainage, potable water, sewerage and power integrated into one coherent design, without clashes between networks and with an orderly construction sequence.', icon: 'network' },
+  { title: 'Service feasibility and approvals', desc: 'Feasibility with the utilities (ESSAP for water and sewerage, ANDE for power), cadastral survey and setting out, and the engineering that supports municipal approval of the subdivision.', icon: 'permit' },
+  { title: 'Project management and owner\'s engineer', desc: 'Construction management and independent supervision on the ERGON platform: physical and financial progress, earned value and technical visibility for the developer throughout execution.', icon: 'eye' },
+];
+
+const experience = [
+  { label: 'Rialto', detail: 'Collaboration on roads and earthworks' },
+  { label: 'Interlagos', detail: 'Collaboration on roads and earthworks' },
+  { label: 'Aguas Claras', detail: 'Collaboration on roads and earthworks; currently auditing and verifying quantities on site' },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: '/en/' },
+  { name: 'Sectors', url: '/en/sectors' },
+  { name: 'Land Development', url: '/en/sectors/land-development' },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Land development and subdivision engineering',
+  serviceType: 'Site engineering and local partner for urban land development',
+  description: 'Engineering partner in Paraguay for developers and investors in land subdivision: site feasibility and due diligence, platforms and earthworks, internal roads, utility coordination, service feasibility with providers and municipal approval, and construction supervision on the ERGON platform.',
+  provider: {
+    '@type': 'Organization',
+    '@id': 'https://dgingenieriapy.com/#organization',
+    name: 'DG Ingeniería SRL',
+    url: 'https://dgingenieriapy.com',
+  },
+  areaServed: { '@type': 'Country', name: 'Paraguay' },
+  url: 'https://dgingenieriapy.com/en/sectors/land-development',
+  inLanguage: 'en',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Capabilities',
+    itemListElement: capabilities.map((c) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: c.title, description: c.desc },
+    })),
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: 'en',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Who can act as engineering partner for a land subdivision in Paraguay?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'DG Ingeniería SRL acts as engineering partner to developers and investors who need to turn land into serviced, sellable plots. It provides the complete site engineering: feasibility and due diligence with its own drone survey, platforms and earthworks, internal roads, coordination of stormwater, water, sewerage and power, service feasibility with the utilities (ESSAP, ANDE), and the technical case supporting municipal approval of the subdivision. During construction it supervises the works on its own ERGON platform. The developer brings the land, the capital and the commercial vision; DG resolves the engineering that makes the ground buildable and approvable.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What does it take to turn land into sellable plots in Paraguay?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A subdivision requires converting natural ground into plots served by infrastructure: topographic and cadastral survey, platform and level design with drainage gradients, internal roads with safe geometry, and coordination of stormwater drainage, potable water, sewerage and power. On top of that sits service feasibility with the utilities (ESSAP for water and sewerage, ANDE for power) and the engineering documentation supporting municipal approval of the subdivision. Resolving this engineering before launch avoids rework on site and delivers plots that are genuinely approved.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Why resolve the site engineering before launching the subdivision?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Because a poorly coordinated development gets paid for twice: networks that clash, platforms that do not drain, oversized earthworks, and plots sold before they are approved. Site engineering resolved up front optimises cut and fill to reduce haulage and disposal costs, integrates every discipline into one coherent design, and gives the developer certainty about which plot is genuinely serviced and ready to sell. The result is lower cost, less rework and a product that is ready to build on.',
+      },
+    }
+  ],
+};
+---
+
+<Base
+  title="Land development engineering in Paraguay"
+  description="Engineering partner in Paraguay for land developers: site feasibility, earthworks and platforms, internal roads, utilities, service approvals and construction supervision."
+  preloadImg="/img/sector-urb.webp"
+  breadcrumbs={breadcrumbs}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <PageHero
+    img="/img/sector-urb.jpg"
+    imgAlt="Land development and subdivision in Paraguay"
+    kicker="Sectors · Land development"
+    title="The engineering partner"
+    titleAccent="for land developers"
+    subtitle="From raw land to serviced, sellable plots: site engineering, roads, utilities and approvals for anyone developing land in Paraguay."
+    height="md"
+  >
+    <Button href={N.contact} variant="primary" magnetic>Discuss a project</Button>
+    <Button href={N.sectors} variant="ghost-dark">All sectors</Button>
+  </PageHero>
+
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="Approach"
+          title="The engineering partner"
+          titleAccent="for land developers"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>A developer’s business starts when land becomes serviced, approved plots that can actually be sold. That conversion is an engineering problem: levels, drainage, internal roads, utilities and approvals. Solving it properly, and before launch, is what separates an orderly subdivision from one that gets paid for twice.</p>
+        <p>That is where DG comes in. We provide the full site engineering: precision drone survey that sets terrace levels and optimises earthworks to bring haulage and disposal costs down; platforms that account for drainage gradients, slope stability and compatibility with future phases; and internal roads with safe geometry giving efficient access to every plot.</p>
+        <p>We integrate stormwater, potable water, sewerage and power into a single coherent design, avoiding clashes between networks; we handle service feasibility with the utilities and the technical case behind municipal approval; and during construction we supervise the works on our own ERGON platform. The developer brings the land, the capital and the commercial vision; we resolve the engineering that makes the ground buildable and approvable.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream-deep" padding="md">
+    <SectionHeader
+      kicker="Capabilities"
+      title="What we do"
+      lead="Engineering partner in Paraguay for land developers: site feasibility, earthworks and platforms, internal roads, utilities, service approvals and construction supervision."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {capabilities.map((c) => (
+        <div class="bg-white rounded-xl p-7 border border-slate-dg/[0.08] shadow-sm hover:shadow-md transition-shadow" data-animate>
+          <div class="w-11 h-11 rounded-lg bg-arena/10 flex items-center justify-center mb-5">
+            {c.icon === 'site' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 20h18M5 16c3-4 5-4 7-1s5 3 7-1m-14 0V8m14 8V8M5 8c3-4 5-4 7-1s5 3 7-1"/></svg>}
+            {c.icon === 'earth' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 18h18M3 14c3-3 5-3 7 0s5 3 7 0M3 14V9c3-3 5-3 7 0s5 3 7 0v5"/></svg>}
+            {c.icon === 'route' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 19h6a4 4 0 0 0 0-8H8a4 4 0 0 1 0-8h10M4 19l3-3m-3 3 3 3M20 3l-3 3m3-3-3-3"/></svg>}
+            {c.icon === 'network' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 7l3 3m7-3-3 3m-7 7 3-3m7 3-3-3"/></svg>}
+            {c.icon === 'permit' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>}
+            {c.icon === 'eye' && <svg class="w-5 h-5 text-arena" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M2 12s3-8 10-8 10 8 10 8-3 8-10 8-10-8-10-8Z"/><circle cx="12" cy="12" r="3"/></svg>}
+          </div>
+          <h3 class="text-[17px] font-extrabold tracking-tight mb-2 text-slate-dg">{c.title}</h3>
+          <p class="text-[13.5px] text-slate-dg/65 leading-relaxed">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="white" padding="md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <SectionHeader
+          kicker="For developers and investors"
+          title="Your site engineering,"
+          titleAccent="from investment to approval"
+        />
+      </div>
+      <div class="lg:col-span-7 space-y-5 text-[15px] text-slate-dg/75 leading-relaxed">
+        <p>An urban development is decided and delivered with knowledge of the ground, the available services and the approval processes. DG covers that engineering layer end to end:</p>
+        <ul class="space-y-3 list-none pl-0">
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Territorial intelligence:</strong> site assessment, drainage and flood exposure using our own drone survey.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Feasibility, technical and economic:</strong> base engineering solid enough to carry the investment decision and the launch.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Service feasibility and approvals:</strong> coordination with the utilities (ESSAP, ANDE), cadastral survey and the technical case for municipal approval.</span></li>
+          <li class="flex gap-3"><span class="text-arena font-bold">&rarr;</span><span><strong class="text-slate-dg">Management, owner's engineer and supervision:</strong> independent construction control on the ERGON platform, on the developer’s side.</span></li>
+        </ul>
+        <p>It is the same way we work across more than a thousand kilometres of highway projects and on civil and industrial works around the country, pointed at urban land development.</p>
+      </div>
+    </div>
+  </FullBleedSection>
+
+  <FullBleedSection bg="cream" padding="md">
+    <SectionHeader
+      kicker="Experience"
+      title="Work on urban developments"
+      lead="Collaboration on the roads and earthworks of residential developments, and audit and verification of quantities on site."
+      align="center"
+      class="mb-14"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[900px] mx-auto">
+      {experience.map((e) => (
+        <div class="bg-white rounded-xl p-6 border border-slate-dg/[0.08] flex items-start gap-4" data-animate>
+          <div class="w-10 h-10 rounded-full bg-arena/12 flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-arena" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 18 18"><polyline points="4 9 8 13 14 5"/></svg>
+          </div>
+          <div>
+            <h4 class="text-[15px] font-extrabold text-slate-dg tracking-tight mb-1">{e.label}</h4>
+            <p class="text-[13px] text-slate-dg/60 leading-relaxed">{e.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </FullBleedSection>
+
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <h2 class="text-display text-cream text-3xl md:text-[44px] mb-4">Developing a subdivision or urban project?</h2>
+      <p class="text-cream/45 text-base md:text-lg mb-10 max-w-[560px] mx-auto">Whether it is site feasibility, roads and utilities, approvals or construction supervision — tell us the stage and we will tell you what it takes.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href={N.contact} variant="primary" size="lg">Start a conversation</Button>
+        <Button href={N.sectors} variant="ghost-dark" size="lg">Other sectors</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>
