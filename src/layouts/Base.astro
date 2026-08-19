@@ -48,6 +48,47 @@ const hasCounterpart = altPath !== null;
 const esURL = lang === 'es' ? canonicalURL.toString() : altURL;
 const enURL = lang === 'en' ? canonicalURL.toString() : altURL;
 
+// Temas de la entidad, EN EL IDIOMA DE LA PAGINA. Antes salian siempre en español,
+// incluso en las 16 paginas inglesas: un motor de respuestas leia una pagina en ingles
+// que declaraba sus temas en otro idioma.
+const KNOWS_ABOUT: Record<Lang, string[]> = {
+  es: [
+    'Factibilidad y due diligence de sitio',
+    'Diseño de proyectos viales',
+    'Pavimentos',
+    'Aeropuertos y pistas',
+    'Puertos y fluvial',
+    'Edificación residencial',
+    'Plantas industriales',
+    'Urbanizaciones y loteamientos',
+    'Energía solar y ERNC',
+    'Data centers y powered land',
+    'Relevamiento aéreo con drones y modelo digital del terreno',
+    'Fiscalización de obra y valor ganado',
+  ],
+  en: [
+    'Site feasibility and due diligence',
+    'Highway and road engineering',
+    'Pavement engineering',
+    'Airports and runways',
+    'Ports and inland waterways',
+    'Residential development',
+    'Industrial plants',
+    'Land development and subdivision',
+    'Solar energy and renewables',
+    'Data centers and powered land',
+    'Drone survey and digital terrain modelling',
+    'Construction supervision and earned value',
+  ],
+};
+
+// La entidad se auto-describe. Sin esto, un motor que arma una ficha de DG no tiene
+// de donde sacar que ES la firma, solo de donde sacar como contactarla.
+const ORG_DESC: Record<Lang, string> = {
+  es: 'DG Ingeniería SRL es una firma paraguaya de ingeniería civil que trabaja del lado del comitente: antes de construir determina si el terreno sirve y qué exige habilitarlo; durante la obra verifica que lo construido sea lo pactado. Contratista directo del BID y la CAF.',
+  en: 'DG Ingeniería SRL is a Paraguayan civil engineering firm working on the owner\'s side: before construction it establishes whether a site works and what it takes to make it buildable; during construction it verifies that what is built is what was agreed. Direct contractor to the IDB and CAF.',
+};
+
 // JSON-LD: Organization + LocalBusiness siempre. Breadcrumb solo si se provee.
 const orgSchema = {
   '@context': 'https://schema.org',
@@ -56,6 +97,7 @@ const orgSchema = {
   name: 'DG Ingeniería SRL',
   url: 'https://dgingenieriapy.com',
   logo: 'https://dgingenieriapy.com/img/dg-isotipo.png',
+  description: ORG_DESC[lang],
   email: 'info@dgingenieriasrl.com',
   telephone: '+595976335132',
   address: {
@@ -100,16 +142,7 @@ const businessSchema = {
     addressCountry: 'PY',
   },
   areaServed: { '@type': 'Country', name: 'Paraguay' },
-  knowsAbout: [
-    'Diseño de proyectos viales',
-    'Pavimentos',
-    'Aeropuertos y pistas',
-    'Puertos y fluvial',
-    'Edificación residencial',
-    'Plantas industriales',
-    'Urbanizaciones',
-    'Energía solar y data centers',
-  ],
+  knowsAbout: KNOWS_ABOUT[lang],
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
