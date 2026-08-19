@@ -12,6 +12,15 @@ const N = nav('en');
  */
 const published = [
   {
+    href: '/en/insights/paraguay-energy-what-the-tariff-does-not-tell-you',
+    tag: 'Energy',
+    title: "What Paraguay's energy tariff doesn't tell a foreign investor",
+    desc: 'Paraguay really does have abundant, low-cost hydroelectric power. Three things that story leaves out are what decide whether an energy-intensive project gets built, and when.',
+    date: '19 August 2026',
+    read: '6 min',
+    lang: 'English',
+  },
+  {
     href: '/blog/ia-en-produccion-experiencia-ingenieria',
     tag: 'Tenders',
     title: 'Reducing risk when preparing a bid',
@@ -60,14 +69,14 @@ const breadcrumbs = [
       </div>
 
       <p class="text-[14px] text-slate-dg/60 leading-relaxed max-w-[680px] mb-10">
-        Our published pieces are written in Spanish. Summaries below are in English; the full articles are not translated yet. If one of them is relevant to something you are working on, write to us and we will walk you through it in English.
+        Pieces written in English are marked as such and can be read in full. Our earlier work was published in Spanish: those entries carry an English summary and a language tag, and the full text is not translated. If one of them is relevant to something you are working on, write to us and we will walk you through it in English.
       </p>
 
       <div class="grid grid-cols-1 gap-6">
         {published.map((item) => (
           <a
             href={item.href}
-            hreflang="es"
+            hreflang={item.lang === 'English' ? 'en' : 'es'}
             class="group rounded-xl border border-slate-dg/12 bg-white p-8 md:p-10 hover:border-arena/40 hover:shadow-md transition-all"
           >
             <div class="flex items-center gap-3 mb-4 text-[11px] tracking-[2px] uppercase flex-wrap">
@@ -76,13 +85,15 @@ const breadcrumbs = [
               <span class="text-slate-dg/55">{item.date}</span>
               <span class="text-slate-dg/30" aria-hidden="true">·</span>
               <span class="text-slate-dg/55">{item.read} read</span>
-              <span class="text-slate-dg/30" aria-hidden="true">·</span>
-              <span class="text-slate-dg/55 border border-slate-dg/15 rounded px-1.5 py-0.5 normal-case tracking-normal">in {item.lang}</span>
+              {item.lang !== 'English' && <span class="text-slate-dg/30" aria-hidden="true">·</span>}
+              {item.lang !== 'English' && (
+                <span class="text-slate-dg/55 border border-slate-dg/15 rounded px-1.5 py-0.5 normal-case tracking-normal">in {item.lang}</span>
+              )}
             </div>
             <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-dg mb-4 leading-snug group-hover:text-arena transition-colors">{item.title}</h2>
             <p class="text-[15px] md:text-base text-slate-dg/65 leading-relaxed max-w-[680px]">{item.desc}</p>
             <div class="mt-6 flex items-center gap-2 text-[13px] font-semibold text-arena group-hover:gap-3 transition-all">
-              <span>Read the article (Spanish)</span>
+              <span>{item.lang === 'English' ? 'Read the article' : 'Read the article (Spanish)'}</span>
             </div>
           </a>
         ))}

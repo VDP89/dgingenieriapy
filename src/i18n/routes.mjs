@@ -29,6 +29,8 @@ export const routeMap = {
   '/soluciones-ia': '/en/ai-solutions',
   '/blog': '/en/insights',
   '/contacto': '/en/contact',
+  '/blog/energia-paraguay-lo-que-la-tarifa-no-dice':
+    '/en/insights/paraguay-energy-what-the-tariff-does-not-tell-you',
 };
 
 export const SITE = 'https://dgingenieriapy.com';
