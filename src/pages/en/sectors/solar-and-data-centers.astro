@@ -4,6 +4,7 @@ import PageHero from '../../../components/PageHero.astro';
 import FullBleedSection from '../../../components/FullBleedSection.astro';
 import SectionHeader from '../../../components/SectionHeader.astro';
 import Button from '../../../components/Button.astro';
+import FaqSection from '../../../components/FaqSection.astro';
 import { nav } from '../../../i18n/ui';
 
 const N = nav('en');
@@ -50,53 +51,28 @@ const serviceSchema = {
 
 // FAQ en ingles — superficie de cita para motores de respuesta. Las preguntas son las
 // que un inversor extranjero hace de verdad, no la traduccion de las preguntas locales.
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  inLanguage: 'en',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'Who can act as local engineering partner for a data center or solar project in Paraguay?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'DG Ingeniería SRL is a Paraguayan civil engineering firm that acts as the local engineering arm for international developers, funds and operators without their own structure in the country. It provides the base civil engineering (drone survey, bearing capacity, platforms, access, earthworks and drainage), working knowledge of the ERNC framework (Law 7599/2025 and Decree 6034/2026) and of the ANDE, VMME and MADES processes, desk-level site feasibility, and construction supervision on its own ERGON platform. The developer brings equity, MW experience and technology; DG resolves the local engineering, site and permitting layer.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What actually decides whether a data center site in Paraguay is viable?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Three filters decide it, and none of them is the size of the plot. First, firm power: installed capacity at a substation is not the same as firm capacity assignable to a private offtaker, and the number that governs the schedule is time-to-power, not the nameplate rating. Second, water and cooling: whether there is a usable source, and if not, whether the design absorbs dry or liquid cooling. Third, redundant fibre with physically diverse routes. Flood risk and geotechnical bearing capacity narrow the usable area further. A desk-level assessment can screen all of these before any field campaign is committed.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What is powered land and why does it matter in Paraguay?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Powered land is a site whose value lies in the firm electrical capacity it can secure, rather than in its area. Land near a substation is a necessary condition, not a sufficient one: powered land means contracted supply, a defined connection point, verified redundancy and a committed energisation date. In Paraguay the route to large-load supply runs through ANDE, and the applicable regime has been under active reform during 2026 — which is why any statement about tariff or regime has to carry a date. The commercial negotiation of power and tariff belongs to the developer, not to the engineer.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What does an international developer need to build a solar park in Paraguay?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'The governing framework is Law 7599/2025 on non-conventional renewable energy (ERNC) and its implementing Decree 6034/2026. A project needs regulatory positioning (registration up to 1 MW, MOPC/VMME licensing above 1 MW), an environmental licence from MADES, a connection and interconnection study with ANDE, site feasibility and due diligence, base civil engineering, and detailed electrical and generation design. Paraguay’s first large-scale solar tender — Loma Plata, 140 MW — opened this pipeline, and ANDE’s master plan projects a chain of renewable projects in the years ahead.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What civil works does a solar park or data center require?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Site feasibility studies and soil bearing capacity; road access able to carry construction and heavy transport such as transformers and gensets; grading and earthworks; platforms with specific load requirements; foundations for support structures or technical buildings; and drainage that protects the asset. Data centers add coordination with cooling, power and communications. DG designs this base civil engineering and, during construction, supervises it with technical visibility for the investor.',
-      },
-    },
-  ],
-};
+const faqs = [
+  {
+    q: 'Who can act as local engineering partner for a data center or solar project in Paraguay?',
+    a: 'DG Ingeniería SRL is a Paraguayan civil engineering firm that acts as the local engineering arm for international developers, funds and operators without their own structure in the country. It provides the base civil engineering (drone survey, bearing capacity, platforms, access, earthworks and drainage), working knowledge of the ERNC framework (Law 7599/2025 and Decree 6034/2026) and of the ANDE, VMME and MADES processes, desk-level site feasibility, and construction supervision on its own ERGON platform. The developer brings equity, MW experience and technology; DG resolves the local engineering, site and permitting layer.',
+  },
+  {
+    q: 'What actually decides whether a data center site in Paraguay is viable?',
+    a: 'Three filters decide it, and none of them is the size of the plot. First, firm power: installed capacity at a substation is not the same as firm capacity assignable to a private offtaker, and the number that governs the schedule is time-to-power, not the nameplate rating. Second, water and cooling: whether there is a usable source, and if not, whether the design absorbs dry or liquid cooling. Third, redundant fibre with physically diverse routes. Flood risk and geotechnical bearing capacity narrow the usable area further. A desk-level assessment can screen all of these before any field campaign is committed.',
+  },
+  {
+    q: 'What is powered land and why does it matter in Paraguay?',
+    a: 'Powered land is a site whose value lies in the firm electrical capacity it can secure, rather than in its area. Land near a substation is a necessary condition, not a sufficient one: powered land means contracted supply, a defined connection point, verified redundancy and a committed energisation date. In Paraguay the route to large-load supply runs through ANDE, and the applicable regime has been under active reform during 2026 — which is why any statement about tariff or regime has to carry a date. The commercial negotiation of power and tariff belongs to the developer, not to the engineer.',
+  },
+  {
+    q: 'What does an international developer need to build a solar park in Paraguay?',
+    a: 'The governing framework is Law 7599/2025 on non-conventional renewable energy (ERNC) and its implementing Decree 6034/2026. A project needs regulatory positioning (registration up to 1 MW, MOPC/VMME licensing above 1 MW), an environmental licence from MADES, a connection and interconnection study with ANDE, site feasibility and due diligence, base civil engineering, and detailed electrical and generation design. Paraguay’s first large-scale solar tender — Loma Plata, 140 MW — opened this pipeline, and ANDE’s master plan projects a chain of renewable projects in the years ahead.',
+  },
+  {
+    q: 'What civil works does a solar park or data center require?',
+    a: 'Site feasibility studies and soil bearing capacity; road access able to carry construction and heavy transport such as transformers and gensets; grading and earthworks; platforms with specific load requirements; foundations for support structures or technical buildings; and drainage that protects the asset. Data centers add coordination with cooling, power and communications. DG designs this base civil engineering and, during construction, supervises it with technical visibility for the investor.',
+  },
+];
 ---
 
 <Base
@@ -107,7 +83,6 @@ const faqSchema = {
 >
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)} />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
   </Fragment>
 
   <PageHero
@@ -209,6 +184,8 @@ const faqSchema = {
       </div>
     </div>
   </FullBleedSection>
+
+  <FaqSection faqs={faqs} lang="en" bg="cream" />
 
   <section class="relative py-20 md:py-28 overflow-hidden">
     <div class="absolute inset-0 bg-slate-dg"></div>

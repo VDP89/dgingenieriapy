@@ -4,6 +4,7 @@ import PageHero from '../../components/PageHero.astro';
 import FullBleedSection from '../../components/FullBleedSection.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import Button from '../../components/Button.astro';
+import FaqSection from '../../components/FaqSection.astro';
 
 const capacidades = [
   { title: 'Prefactibilidad y due diligence de sitio', desc: 'Topografía con drones, capacidad portante del suelo, restricciones del terreno y factibilidad técnica para decisiones tempranas de inversión en parques solares y data centers.', icon: 'site' },
@@ -49,44 +50,24 @@ const serviceSchema = {
 };
 
 // JSON-LD: FAQ — superficie de citación para "socio local de ingeniería en Paraguay"
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: '¿Qué empresa puede ser socio local de ingeniería para un parque solar o data center en Paraguay?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'DG Ingeniería SRL actúa como brazo local de ingeniería en Paraguay para developers, fondos y operadores internacionales que no tienen estructura propia en el país. Aporta la ingeniería civil de base (topografía con drones, capacidad portante, plataformas, accesos, movimiento de suelos y drenaje), el conocimiento del marco ERNC (Ley 7599/2025 y Decreto 6034/2026) y de los procesos de ANDE, VMME y MADES, la prefactibilidad técnica de sitio y la fiscalización de obra con la plataforma propia ERGON. El developer aporta el equity, la experiencia en MW y la tecnología; DG resuelve la capa local de ingeniería, sitio y permisos.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '¿Qué necesita un developer internacional para desarrollar un parque solar en Paraguay?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'El marco vigente es la Ley 7599/2025 de energías renovables (ERNC) y su Decreto reglamentario 6034/2026. Un proyecto requiere encuadre regulatorio (registro hasta 1 MW, licencia del MOPC/VMME por encima de 1 MW), licencia ambiental ante el MADES, estudio de conexión e interconexión con ANDE, prefactibilidad y due diligence del sitio, ingeniería civil de base, e ingeniería de detalle eléctrica y de generación. La primera licitación solar a gran escala del país (Loma Plata, 140 MW) abrió este pipeline; el Plan Maestro de ANDE proyecta una cadena de proyectos renovables en los próximos años.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '¿Qué es el powered land y qué se evalúa en la prefactibilidad de un data center en Paraguay?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Powered land es un predio cuyo valor está en la potencia eléctrica firme que puede asegurar para un data center, más que en su superficie. La prefactibilidad de escritorio evalúa tres cuellos de botella reales: la potencia firme disponible y el punto de conexión con ANDE (220 kV en nodos como Villa Hayes), la solución de agua y refrigeración para el clima local, y la interconexión y fibra redundante. DG realiza la capa de ingeniería civil y de sitio de esa prefactibilidad —topografía, hidrología, agua, plataformas y layouts— y coordina a los especialistas eléctricos. La negociación comercial de la tarifa y la potencia con ANDE es del desarrollador.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '¿Qué obras civiles requiere un parque solar o un data center?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Estudios de factibilidad técnica del sitio y capacidad portante del suelo; accesos viales para construcción y mantenimiento; nivelación y movimiento de suelos; plataformas con requerimientos especiales de carga; cimentaciones para estructuras de soporte o salas técnicas; y sistemas de drenaje que protejan la infraestructura. En data centers se suma la coordinación con climatización, energía y comunicaciones. DG diseña esta ingeniería civil de base y, durante la construcción, la fiscaliza con visibilidad técnica para el inversor.',
-      },
-    },
-  ],
-};
+const faqs = [
+  {
+    q: '¿Qué empresa puede ser socio local de ingeniería para un parque solar o data center en Paraguay?',
+    a: 'DG Ingeniería SRL actúa como brazo local de ingeniería en Paraguay para developers, fondos y operadores internacionales que no tienen estructura propia en el país. Aporta la ingeniería civil de base (topografía con drones, capacidad portante, plataformas, accesos, movimiento de suelos y drenaje), el conocimiento del marco ERNC (Ley 7599/2025 y Decreto 6034/2026) y de los procesos de ANDE, VMME y MADES, la prefactibilidad técnica de sitio y la fiscalización de obra con la plataforma propia ERGON. El developer aporta el equity, la experiencia en MW y la tecnología; DG resuelve la capa local de ingeniería, sitio y permisos.',
+  },
+  {
+    q: '¿Qué necesita un developer internacional para desarrollar un parque solar en Paraguay?',
+    a: 'El marco vigente es la Ley 7599/2025 de energías renovables (ERNC) y su Decreto reglamentario 6034/2026. Un proyecto requiere encuadre regulatorio (registro hasta 1 MW, licencia del MOPC/VMME por encima de 1 MW), licencia ambiental ante el MADES, estudio de conexión e interconexión con ANDE, prefactibilidad y due diligence del sitio, ingeniería civil de base, e ingeniería de detalle eléctrica y de generación. La primera licitación solar a gran escala del país (Loma Plata, 140 MW) abrió este pipeline; el Plan Maestro de ANDE proyecta una cadena de proyectos renovables en los próximos años.',
+  },
+  {
+    q: '¿Qué es el powered land y qué se evalúa en la prefactibilidad de un data center en Paraguay?',
+    a: 'Powered land es un predio cuyo valor está en la potencia eléctrica firme que puede asegurar para un data center, más que en su superficie. La prefactibilidad de escritorio evalúa tres cuellos de botella reales: la potencia firme disponible y el punto de conexión con ANDE (220 kV en nodos como Villa Hayes), la solución de agua y refrigeración para el clima local, y la interconexión y fibra redundante. DG realiza la capa de ingeniería civil y de sitio de esa prefactibilidad —topografía, hidrología, agua, plataformas y layouts— y coordina a los especialistas eléctricos. La negociación comercial de la tarifa y la potencia con ANDE es del desarrollador.',
+  },
+  {
+    q: '¿Qué obras civiles requiere un parque solar o un data center?',
+    a: 'Estudios de factibilidad técnica del sitio y capacidad portante del suelo; accesos viales para construcción y mantenimiento; nivelación y movimiento de suelos; plataformas con requerimientos especiales de carga; cimentaciones para estructuras de soporte o salas técnicas; y sistemas de drenaje que protejan la infraestructura. En data centers se suma la coordinación con climatización, energía y comunicaciones. DG diseña esta ingeniería civil de base y, durante la construcción, la fiscaliza con visibilidad técnica para el inversor.',
+  },
+];
 ---
 
 <Base
@@ -97,7 +78,6 @@ const faqSchema = {
 >
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)} />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
   </Fragment>
 
   <PageHero
@@ -177,6 +157,8 @@ const faqSchema = {
       </div>
     </div>
   </FullBleedSection>
+
+  <FaqSection faqs={faqs} lang="es" bg="cream" />
 
   <section class="relative py-20 md:py-28 overflow-hidden">
     <div class="absolute inset-0 bg-slate-dg"></div>

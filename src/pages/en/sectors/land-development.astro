@@ -4,6 +4,7 @@ import PageHero from '../../../components/PageHero.astro';
 import FullBleedSection from '../../../components/FullBleedSection.astro';
 import SectionHeader from '../../../components/SectionHeader.astro';
 import Button from '../../../components/Button.astro';
+import FaqSection from '../../../components/FaqSection.astro';
 import { nav } from '../../../i18n/ui';
 
 const N = nav('en');
@@ -54,37 +55,20 @@ const serviceSchema = {
   },
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  inLanguage: 'en',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'Who can act as engineering partner for a land subdivision in Paraguay?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'DG Ingeniería SRL acts as engineering partner to developers and investors who need to turn land into serviced, sellable plots. It provides the complete site engineering: feasibility and due diligence with its own drone survey, platforms and earthworks, internal roads, coordination of stormwater, water, sewerage and power, service feasibility with the utilities (ESSAP, ANDE), and the technical case supporting municipal approval of the subdivision. During construction it supervises the works on its own ERGON platform. The developer brings the land, the capital and the commercial vision; DG resolves the engineering that makes the ground buildable and approvable.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What does it take to turn land into sellable plots in Paraguay?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'A subdivision requires converting natural ground into plots served by infrastructure: topographic and cadastral survey, platform and level design with drainage gradients, internal roads with safe geometry, and coordination of stormwater drainage, potable water, sewerage and power. On top of that sits service feasibility with the utilities (ESSAP for water and sewerage, ANDE for power) and the engineering documentation supporting municipal approval of the subdivision. Resolving this engineering before launch avoids rework on site and delivers plots that are genuinely approved.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Why resolve the site engineering before launching the subdivision?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Because a poorly coordinated development gets paid for twice: networks that clash, platforms that do not drain, oversized earthworks, and plots sold before they are approved. Site engineering resolved up front optimises cut and fill to reduce haulage and disposal costs, integrates every discipline into one coherent design, and gives the developer certainty about which plot is genuinely serviced and ready to sell. The result is lower cost, less rework and a product that is ready to build on.',
-      },
-    }
-  ],
-};
+const faqs = [
+  {
+    q: 'Who can act as engineering partner for a land subdivision in Paraguay?',
+    a: 'DG Ingeniería SRL acts as engineering partner to developers and investors who need to turn land into serviced, sellable plots. It provides the complete site engineering: feasibility and due diligence with its own drone survey, platforms and earthworks, internal roads, coordination of stormwater, water, sewerage and power, service feasibility with the utilities (ESSAP, ANDE), and the technical case supporting municipal approval of the subdivision. During construction it supervises the works on its own ERGON platform. The developer brings the land, the capital and the commercial vision; DG resolves the engineering that makes the ground buildable and approvable.',
+  },
+  {
+    q: 'What does it take to turn land into sellable plots in Paraguay?',
+    a: 'A subdivision requires converting natural ground into plots served by infrastructure: topographic and cadastral survey, platform and level design with drainage gradients, internal roads with safe geometry, and coordination of stormwater drainage, potable water, sewerage and power. On top of that sits service feasibility with the utilities (ESSAP for water and sewerage, ANDE for power) and the engineering documentation supporting municipal approval of the subdivision. Resolving this engineering before launch avoids rework on site and delivers plots that are genuinely approved.',
+  },
+  {
+    q: 'Why resolve the site engineering before launching the subdivision?',
+    a: 'Because a poorly coordinated development gets paid for twice: networks that clash, platforms that do not drain, oversized earthworks, and plots sold before they are approved. Site engineering resolved up front optimises cut and fill to reduce haulage and disposal costs, integrates every discipline into one coherent design, and gives the developer certainty about which plot is genuinely serviced and ready to sell. The result is lower cost, less rework and a product that is ready to build on.',
+  },
+];
 ---
 
 <Base
@@ -95,7 +79,6 @@ const faqSchema = {
 >
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)} />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
   </Fragment>
 
   <PageHero
@@ -198,6 +181,8 @@ const faqSchema = {
       ))}
     </div>
   </FullBleedSection>
+
+  <FaqSection faqs={faqs} lang="en" bg="cream" />
 
   <section class="relative py-20 md:py-28 overflow-hidden">
     <div class="absolute inset-0 bg-slate-dg"></div>

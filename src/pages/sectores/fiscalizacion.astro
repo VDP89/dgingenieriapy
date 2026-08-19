@@ -4,6 +4,7 @@ import PageHero from '../../components/PageHero.astro';
 import FullBleedSection from '../../components/FullBleedSection.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import Button from '../../components/Button.astro';
+import FaqSection from '../../components/FaqSection.astro';
 
 const capacidades = [
   { title: 'Anteproyecto y proyecto', desc: 'Desarrollo del anteproyecto y el proyecto ejecutivo: arquitectura, estructuras e instalaciones coordinadas, listo para licitar y construir.', icon: 'docs' },
@@ -49,44 +50,24 @@ const serviceSchema = {
 };
 
 // JSON-LD: FAQ — citación para "ala técnica de un desarrollo residencial" + fiscalización/EVM
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: '¿Qué hace el ala técnica de un desarrollo residencial?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'El ala técnica resuelve toda la ejecución de un desarrollo residencial para quien aporta la tierra y el capital. DG Ingeniería actúa como ese brazo técnico: desarrolla el anteproyecto y el proyecto ejecutivo, gerencia la obra, dirige la construcción coordinando a los contratistas y la fiscaliza con valor ganado, todo sobre la plataforma propia ERGON. El desarrollador o inversor pone el terreno, el capital y la visión comercial; DG es el único responsable técnico de la ejecución, del primer plano a la entrega de unidades, sin que el inversor tenga que montar una estructura de obra propia.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '¿Qué incluye desarrollar un edificio o un dúplex residencial, del anteproyecto a la entrega?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'El ciclo completo de una edificación residencial incluye: anteproyecto y proyecto ejecutivo (arquitectura, estructuras e instalaciones coordinadas); factibilidad técnica del sitio; gerenciamiento de obra (cronograma, presupuesto por rubro, contratistas) sobre una baseline auditable; dirección de la construcción con control de calidad en sitio; coordinación de especialidades; y fiscalización con Curva S y valor ganado. DG cubre estas etapas para edificaciones de mediano y gran porte —casas, dúplex y edificios— con visibilidad técnica en tiempo real para el inversor a través de la plataforma ERGON.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '¿Cómo se mide el avance de obra con valor ganado (EVM)?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'El análisis de valor ganado compara tres valores: el Planned Value (lo planificado al corte), el Earned Value (lo ejecutado valorizado a baseline) y el Actual Cost (lo realmente gastado). De ahí se derivan dos indicadores clave: SPI (Schedule Performance Index = EV/PV) que mide cumplimiento de plazo, y CPI (Cost Performance Index = EV/AC) que mide eficiencia de costo. SPI o CPI menor a 1 indica desvío. La detección temprana permite acción correctiva antes de que el desvío se vuelva irreversible.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '¿Qué información recibe el inversor durante la obra?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'El inversor recibe un resumen ejecutivo enfocado en decisiones: dónde está la obra hoy, qué pasó en el período que cambia el horizonte del proyecto, y dónde hay que tomar una decisión en los próximos quince días. Indicadores clave (SPI, CPI, avance físico, avance financiero), alertas activas y eventos contractuales relevantes. El nivel de detalle es distinto al dashboard operativo que recibe el director de proyecto y a las planillas operativas que usa el profesional de campo en el sitio.',
-      },
-    },
-  ],
-};
+const faqs = [
+  {
+    q: '¿Qué hace el ala técnica de un desarrollo residencial?',
+    a: 'El ala técnica resuelve toda la ejecución de un desarrollo residencial para quien aporta la tierra y el capital. DG Ingeniería actúa como ese brazo técnico: desarrolla el anteproyecto y el proyecto ejecutivo, gerencia la obra, dirige la construcción coordinando a los contratistas y la fiscaliza con valor ganado, todo sobre la plataforma propia ERGON. El desarrollador o inversor pone el terreno, el capital y la visión comercial; DG es el único responsable técnico de la ejecución, del primer plano a la entrega de unidades, sin que el inversor tenga que montar una estructura de obra propia.',
+  },
+  {
+    q: '¿Qué incluye desarrollar un edificio o un dúplex residencial, del anteproyecto a la entrega?',
+    a: 'El ciclo completo de una edificación residencial incluye: anteproyecto y proyecto ejecutivo (arquitectura, estructuras e instalaciones coordinadas); factibilidad técnica del sitio; gerenciamiento de obra (cronograma, presupuesto por rubro, contratistas) sobre una baseline auditable; dirección de la construcción con control de calidad en sitio; coordinación de especialidades; y fiscalización con Curva S y valor ganado. DG cubre estas etapas para edificaciones de mediano y gran porte —casas, dúplex y edificios— con visibilidad técnica en tiempo real para el inversor a través de la plataforma ERGON.',
+  },
+  {
+    q: '¿Cómo se mide el avance de obra con valor ganado (EVM)?',
+    a: 'El análisis de valor ganado compara tres valores: el Planned Value (lo planificado al corte), el Earned Value (lo ejecutado valorizado a baseline) y el Actual Cost (lo realmente gastado). De ahí se derivan dos indicadores clave: SPI (Schedule Performance Index = EV/PV) que mide cumplimiento de plazo, y CPI (Cost Performance Index = EV/AC) que mide eficiencia de costo. SPI o CPI menor a 1 indica desvío. La detección temprana permite acción correctiva antes de que el desvío se vuelva irreversible.',
+  },
+  {
+    q: '¿Qué información recibe el inversor durante la obra?',
+    a: 'El inversor recibe un resumen ejecutivo enfocado en decisiones: dónde está la obra hoy, qué pasó en el período que cambia el horizonte del proyecto, y dónde hay que tomar una decisión en los próximos quince días. Indicadores clave (SPI, CPI, avance físico, avance financiero), alertas activas y eventos contractuales relevantes. El nivel de detalle es distinto al dashboard operativo que recibe el director de proyecto y a las planillas operativas que usa el profesional de campo en el sitio.',
+  },
+];
 ---
 
 <Base
@@ -97,7 +78,6 @@ const faqSchema = {
 >
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)} />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
   </Fragment>
 
   <PageHero
@@ -178,6 +158,8 @@ const faqSchema = {
       </div>
     </div>
   </FullBleedSection>
+
+  <FaqSection faqs={faqs} lang="es" bg="cream" />
 
   <section class="relative py-20 md:py-28 overflow-hidden">
     <div class="absolute inset-0 bg-slate-dg"></div>

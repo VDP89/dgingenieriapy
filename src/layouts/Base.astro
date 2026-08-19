@@ -42,6 +42,9 @@ const altURL = altPath ? new URL(altPath, 'https://dgingenieriapy.com').toString
 const altLang: Lang = lang === 'es' ? 'en' : 'es';
 // El selector SIEMPRE tiene destino; el hreflang solo si hay equivalente real.
 const switchHref = switchTarget(Astro.url.pathname);
+// Si no hay traduccion, el selector lleva al home del otro idioma. Decirlo: un control
+// que solo dice "English" y aterriza en el home promete la traduccion de ESTA pagina.
+const hasCounterpart = altPath !== null;
 const esURL = lang === 'es' ? canonicalURL.toString() : altURL;
 const enURL = lang === 'en' ? canonicalURL.toString() : altURL;
 
@@ -308,7 +311,8 @@ const websiteSchema = {
             hreflang={altLang}
             lang={altLang}
             class="text-gray-neutral font-semibold text-[12.5px] tracking-wide hover:text-slate-dg transition-colors border border-slate-dg/15 rounded px-2 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena"
-            aria-label={L('nav.langLabel')}
+            aria-label={hasCounterpart ? L('nav.langLabel') : L('nav.langFallback')}
+            title={hasCounterpart ? L('nav.langLabel') : L('nav.langFallback')}
           >{altLang === 'en' ? 'EN' : 'ES'}</a>
 
         <a href={N.contact} class="bg-arena text-white px-5 py-2.5 rounded-md font-semibold text-[13.5px] hover:bg-arena-light transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena focus-visible:ring-offset-2 focus-visible:ring-offset-cream">{L('nav.contact')}</a>
@@ -338,7 +342,7 @@ const websiteSchema = {
         <a href={N.projects} class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">{L('nav.projects')}</a>
         <a href={N.ai} class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">{L('nav.ai')}</a>
         <a href={N.insights} class="text-slate-dg font-medium text-base py-2 border-b border-slate-dg/5">{L('nav.insights')}</a>
-        <a href={switchHref} hreflang={altLang} lang={altLang} class="text-gray-neutral font-medium text-base py-2 border-b border-slate-dg/5">{altLang === 'en' ? 'English' : 'Español'}</a>
+        <a href={switchHref} hreflang={altLang} lang={altLang} title={hasCounterpart ? L('nav.langLabel') : L('nav.langFallback')} class="text-gray-neutral font-medium text-base py-2 border-b border-slate-dg/5">{hasCounterpart ? (altLang === 'en' ? 'English' : 'Español') : L('nav.langFallbackShort')}</a>
         <a href={N.contact} class="bg-arena text-white px-5 py-3 rounded-md font-semibold text-center mt-2">{L('nav.contact')}</a>
       </div>
     </nav>

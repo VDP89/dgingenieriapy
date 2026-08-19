@@ -4,6 +4,7 @@ import PageHero from '../../components/PageHero.astro';
 import FullBleedSection from '../../components/FullBleedSection.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import Button from '../../components/Button.astro';
+import FaqSection from '../../components/FaqSection.astro';
 
 const capacidades = [
   { title: 'Prefactibilidad técnica y económica', desc: 'Topografía con drones, capacidad portante, restricciones e inundabilidad del terreno, y análisis técnico-económico que sostiene la decisión de inversión y el lanzamiento del loteamiento.', icon: 'site' },
@@ -55,44 +56,24 @@ const serviceSchema = {
 };
 
 // JSON-LD: FAQ — superficie de citación para "socio de ingeniería de una urbanización en Paraguay"
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: '¿Qué empresa puede ser el socio de ingeniería de una urbanización o loteamiento en Paraguay?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'DG Ingeniería SRL actúa como socio de ingeniería de desarrolladores e inversores que necesitan convertir un terreno en lotes servidos y vendibles. Aporta la ingeniería de sitio completa: prefactibilidad y due diligence con topografía propia con drones, plataformas y movimiento de suelos, vialidad interna, coordinación de las redes (drenaje pluvial, agua, cloacas y energía), la factibilidad de servicios con las prestadoras (ESSAP, ANDE) y el respaldo técnico para la aprobación del loteamiento ante el municipio. Durante la construcción, fiscaliza la obra con la plataforma propia ERGON. El desarrollador aporta la tierra, el capital y la visión comercial; DG resuelve la ingeniería que hace el suelo edificable y habilitable.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '¿Qué se necesita para convertir un terreno en lotes vendibles en Paraguay?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Un loteamiento exige transformar el terreno natural en lotes servidos por infraestructura: relevamiento topográfico y mensura, diseño de plataformas y niveles con pendientes de drenaje, vialidad interna con trazados seguros, y la coordinación de las redes de drenaje pluvial, agua potable, cloacas y energía. A eso se suma la factibilidad de servicios con las prestadoras (ESSAP para agua y desagüe, ANDE para energía) y la documentación de ingeniería que respalda la aprobación del fraccionamiento ante el municipio. Resolver esta ingeniería antes del lanzamiento evita retrabajos en obra y entrega lotes realmente habilitados.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '¿Por qué conviene resolver la ingeniería de sitio antes de lanzar el loteamiento?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Porque una urbanización mal coordinada se paga dos veces: redes que se cruzan, plataformas que no drenan, movimientos de suelo sobredimensionados y lotes que se venden antes de estar habilitados. Una ingeniería de sitio resuelta por adelantado optimiza el movimiento de suelos para bajar costos de transporte y disposición, integra todas las especialidades en un único diseño coherente, y le da al desarrollador certeza sobre qué lote está realmente servido y en condiciones de venderse. El resultado es menos costo, menos retrabajo y un producto inmobiliario listo para edificar.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '¿Qué obras de ingeniería requiere un desarrollo urbano?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Topografía de precisión y due diligence del sitio (capacidad portante, restricciones, inundabilidad); diseño de plataformas y terrazas con movimiento de suelos optimizado; vialidad interna con trazados geométricos seguros; coordinación de las redes de drenaje pluvial, agua potable, cloacas y energía; factibilidad de servicios con las prestadoras y soporte a la aprobación municipal; y, durante la construcción, la fiscalización de la obra. DG diseña esta ingeniería de sitio y la fiscaliza con visibilidad técnica para el desarrollador a través de la plataforma ERGON.',
-      },
-    },
-  ],
-};
+const faqs = [
+  {
+    q: '¿Qué empresa puede ser el socio de ingeniería de una urbanización o loteamiento en Paraguay?',
+    a: 'DG Ingeniería SRL actúa como socio de ingeniería de desarrolladores e inversores que necesitan convertir un terreno en lotes servidos y vendibles. Aporta la ingeniería de sitio completa: prefactibilidad y due diligence con topografía propia con drones, plataformas y movimiento de suelos, vialidad interna, coordinación de las redes (drenaje pluvial, agua, cloacas y energía), la factibilidad de servicios con las prestadoras (ESSAP, ANDE) y el respaldo técnico para la aprobación del loteamiento ante el municipio. Durante la construcción, fiscaliza la obra con la plataforma propia ERGON. El desarrollador aporta la tierra, el capital y la visión comercial; DG resuelve la ingeniería que hace el suelo edificable y habilitable.',
+  },
+  {
+    q: '¿Qué se necesita para convertir un terreno en lotes vendibles en Paraguay?',
+    a: 'Un loteamiento exige transformar el terreno natural en lotes servidos por infraestructura: relevamiento topográfico y mensura, diseño de plataformas y niveles con pendientes de drenaje, vialidad interna con trazados seguros, y la coordinación de las redes de drenaje pluvial, agua potable, cloacas y energía. A eso se suma la factibilidad de servicios con las prestadoras (ESSAP para agua y desagüe, ANDE para energía) y la documentación de ingeniería que respalda la aprobación del fraccionamiento ante el municipio. Resolver esta ingeniería antes del lanzamiento evita retrabajos en obra y entrega lotes realmente habilitados.',
+  },
+  {
+    q: '¿Por qué conviene resolver la ingeniería de sitio antes de lanzar el loteamiento?',
+    a: 'Porque una urbanización mal coordinada se paga dos veces: redes que se cruzan, plataformas que no drenan, movimientos de suelo sobredimensionados y lotes que se venden antes de estar habilitados. Una ingeniería de sitio resuelta por adelantado optimiza el movimiento de suelos para bajar costos de transporte y disposición, integra todas las especialidades en un único diseño coherente, y le da al desarrollador certeza sobre qué lote está realmente servido y en condiciones de venderse. El resultado es menos costo, menos retrabajo y un producto inmobiliario listo para edificar.',
+  },
+  {
+    q: '¿Qué obras de ingeniería requiere un desarrollo urbano?',
+    a: 'Topografía de precisión y due diligence del sitio (capacidad portante, restricciones, inundabilidad); diseño de plataformas y terrazas con movimiento de suelos optimizado; vialidad interna con trazados geométricos seguros; coordinación de las redes de drenaje pluvial, agua potable, cloacas y energía; factibilidad de servicios con las prestadoras y soporte a la aprobación municipal; y, durante la construcción, la fiscalización de la obra. DG diseña esta ingeniería de sitio y la fiscaliza con visibilidad técnica para el desarrollador a través de la plataforma ERGON.',
+  },
+];
 ---
 
 <Base
@@ -103,7 +84,6 @@ const faqSchema = {
 >
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)} />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
   </Fragment>
 
   <PageHero
@@ -206,6 +186,8 @@ const faqSchema = {
       ))}
     </div>
   </FullBleedSection>
+
+  <FaqSection faqs={faqs} lang="es" bg="cream" />
 
   <section class="relative py-20 md:py-28 overflow-hidden">
     <div class="absolute inset-0 bg-slate-dg"></div>

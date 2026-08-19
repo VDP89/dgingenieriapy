@@ -1,0 +1,205 @@
+---
+/**
+ * <ContactForm> — formulario de contacto, uno solo para ES y EN.
+ *
+ * Por que existe: la version ES y la EN tenian el endpoint, la access key y el script de
+ * envio DUPLICADOS. Es el punto de conversion del sitio: si algun dia cambia la key o el
+ * endpoint y se actualiza una sola copia, el idioma olvidado deja de entregar los mensajes
+ * y NO avisa — el formulario sigue pareciendo que envia.
+ *
+ * Los NOMBRES DE CAMPO se mantienen distintos por idioma a proposito: viajan al correo que
+ * recibe DG, asi que cambiarlos cambiaria el formato de los mensajes en español que ya se
+ * vienen recibiendo.
+ *
+ * El `subject` sí difiere: marcar [EN] le ahorra a DG adivinar en que idioma responder.
+ */
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+// Access key PUBLICA por diseño (se usa client-side). Entrega a info@dgingenieriasrl.com.
+const WEB3FORMS_KEY = 'db199a81-4dd1-495e-93fa-9128890dc745';
+const formAction = 'https://api.web3forms.com/submit';
+const formConfigured = WEB3FORMS_KEY !== '' && !WEB3FORMS_KEY.startsWith('TU_');
+
+const COPY = {
+  es: {
+    heading: 'Déjanos un mensaje',
+    subject: 'Nuevo mensaje desde dgingenieriapy.com/contacto',
+    fromName: 'Web dgingenieriapy.com',
+    fields: { name: 'nombre', company: 'empresa', email: 'email', message: 'mensaje' },
+    labels: { name: 'Nombre', company: 'Empresa', email: 'Email', message: 'Mensaje' },
+    ph: {
+      name: 'Tu nombre',
+      company: 'Nombre de tu empresa',
+      email: 'tu@email.com',
+      message: 'Cuéntanos sobre tu proyecto o consulta',
+    },
+    submit: 'Enviar mensaje',
+    sending: 'Enviando…',
+    ok: 'Mensaje enviado. Te respondemos dentro de 48 horas hábiles.',
+    err: 'No pudimos enviar el mensaje. Escribinos a info@dgingenieriasrl.com.',
+    mailtoSubject: 'Consulta desde dgingenieriapy.com',
+    mailtoOpened: 'Abrimos tu cliente de correo para enviar el mensaje a info@dgingenieriasrl.com.',
+    fallbackPre: 'También podés escribirnos directo a',
+  },
+  en: {
+    heading: 'Send us a message',
+    subject: '[EN] New enquiry from dgingenieriapy.com/en/contact',
+    fromName: 'dgingenieriapy.com (English site)',
+    fields: { name: 'name', company: 'company', email: 'email', message: 'message' },
+    labels: { name: 'Name', company: 'Company', email: 'Email', message: 'Message' },
+    ph: {
+      name: 'Your name',
+      company: 'Your company',
+      email: 'you@company.com',
+      message: 'Tell us about the project or the question you are working on',
+    },
+    submit: 'Send message',
+    sending: 'Sending…',
+    ok: 'Message sent. We reply within 48 business hours.',
+    err: 'We could not send the message. Please write to info@dgingenieriasrl.com.',
+    mailtoSubject: 'Enquiry from dgingenieriapy.com',
+    mailtoOpened: 'We opened your email client to send the message to info@dgingenieriasrl.com.',
+    fallbackPre: 'You can also write to us directly at',
+  },
+} as const;
+
+const c = COPY[lang];
+const inputCls =
+  'w-full px-4 py-3 rounded border border-slate-dg/20 focus:border-arena focus:outline-none focus-visible:ring-2 focus-visible:ring-arena/30 transition-colors';
+---
+
+<h2 class="text-2xl font-bold tracking-tight mb-8">{c.heading}</h2>
+
+<form
+  id="contact-form"
+  class="space-y-6"
+  method="POST"
+  action={formAction}
+  data-configured={String(formConfigured)}
+  data-field-name={c.fields.name}
+  data-field-company={c.fields.company}
+  data-field-email={c.fields.email}
+  data-field-message={c.fields.message}
+  data-msg-sending={c.sending}
+  data-msg-submit={c.submit}
+  data-msg-ok={c.ok}
+  data-msg-err={c.err}
+  data-mailto-subject={c.mailtoSubject}
+  data-mailto-opened={c.mailtoOpened}
+>
+  <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+  <input type="hidden" name="subject" value={c.subject} />
+  <input type="hidden" name="from_name" value={c.fromName} />
+
+  <!-- Honeypot anti-spam de Web3Forms (oculto a humanos). -->
+  <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+  <div>
+    <label for="cf-name" class="block text-sm font-semibold text-slate-dg mb-2">
+      {c.labels.name} <span class="text-arena" aria-hidden="true">*</span>
+    </label>
+    <input type="text" id="cf-name" name={c.fields.name} required aria-required="true" autocomplete="name" placeholder={c.ph.name} class={inputCls} />
+  </div>
+
+  <div>
+    <label for="cf-company" class="block text-sm font-semibold text-slate-dg mb-2">{c.labels.company}</label>
+    <input type="text" id="cf-company" name={c.fields.company} autocomplete="organization" placeholder={c.ph.company} class={inputCls} />
+  </div>
+
+  <div>
+    <label for="cf-email" class="block text-sm font-semibold text-slate-dg mb-2">
+      {c.labels.email} <span class="text-arena" aria-hidden="true">*</span>
+    </label>
+    <input type="email" id="cf-email" name={c.fields.email} required aria-required="true" autocomplete="email" placeholder={c.ph.email} class={inputCls} />
+  </div>
+
+  <div>
+    <label for="cf-message" class="block text-sm font-semibold text-slate-dg mb-2">
+      {c.labels.message} <span class="text-arena" aria-hidden="true">*</span>
+    </label>
+    <textarea id="cf-message" name={c.fields.message} required aria-required="true" placeholder={c.ph.message} rows="6" class={`${inputCls} resize-none`}></textarea>
+  </div>
+
+  <button
+    type="submit"
+    class="w-full bg-slate-dg text-cream px-6 py-3 rounded font-semibold text-sm hover:bg-slate-light transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena focus-visible:ring-offset-2 focus-visible:ring-offset-cream disabled:opacity-60 disabled:cursor-not-allowed"
+  >
+    {c.submit}
+  </button>
+
+  <p id="form-status" role="status" aria-live="polite" class="text-sm text-slate-dg/80 hidden"></p>
+
+  {!formConfigured && (
+    <p class="text-xs text-gray-neutral">
+      {c.fallbackPre}
+      <a href="mailto:info@dgingenieriasrl.com" class="text-arena hover:text-arena-light underline">info@dgingenieriasrl.com</a>.
+    </p>
+  )}
+</form>
+
+<script>
+  // Envio via Web3Forms (AJAX, sin recargar). Si el endpoint no esta configurado
+  // (data-configured="false"), cae a un mailto: pre-rellenado para no perder el contacto.
+  // Todos los textos vienen del markup por data-*, para que este script sirva a los dos idiomas.
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const status = document.getElementById('form-status');
+
+  function showStatus(msg: string, ok: boolean) {
+    if (!status) return;
+    status.textContent = msg;
+    status.classList.remove('hidden');
+    status.classList.toggle('text-arena', !ok);
+    status.classList.toggle('text-slate-dg/80', ok);
+  }
+
+  if (form) {
+    const d = form.dataset;
+    const configured = d.configured === 'true';
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+
+      if (!configured) {
+        const name = String(data.get(d.fieldName || 'name') || '');
+        const company = String(data.get(d.fieldCompany || 'company') || '');
+        const email = String(data.get(d.fieldEmail || 'email') || '');
+        const message = String(data.get(d.fieldMessage || 'message') || '');
+        const body =
+          `${name}\n` + (company ? `${company}\n` : '') + `${email}\n\n${message}`;
+        window.location.href =
+          'mailto:info@dgingenieriasrl.com' +
+          '?subject=' + encodeURIComponent(d.mailtoSubject || '') +
+          '&body=' + encodeURIComponent(body);
+        showStatus(d.mailtoOpened || '', true);
+        return;
+      }
+
+      const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+      if (btn) { btn.disabled = true; btn.textContent = d.msgSending || ''; }
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { Accept: 'application/json' },
+        });
+        if (res.ok) {
+          form.reset();
+          showStatus(d.msgOk || '', true);
+        } else {
+          showStatus(d.msgErr || '', false);
+        }
+      } catch {
+        showStatus(d.msgErr || '', false);
+      } finally {
+        if (btn) { btn.disabled = false; btn.textContent = d.msgSubmit || ''; }
+      }
+    });
+  }
+</script>

@@ -4,6 +4,7 @@ import PageHero from '../../components/PageHero.astro';
 import FullBleedSection from '../../components/FullBleedSection.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import Button from '../../components/Button.astro';
+import FaqSection from '../../components/FaqSection.astro';
 
 const capacidades = [
   { title: 'Relevamiento aéreo de alta resolución', desc: 'Vuelos fotogramétricos con drones para cubrir grandes superficies en poco tiempo, con densidad de puntos y detalle que un relevamiento terrestre no alcanza en el mismo plazo.', icon: 'drone' },
@@ -49,36 +50,20 @@ const serviceSchema = {
 };
 
 // JSON-LD: FAQ — superficie de citación para "relevamiento con drones en Paraguay"
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: '¿Qué es un relevamiento aéreo con drones y para qué sirve en un proyecto de infraestructura?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Es un vuelo fotogramétrico que captura el terreno con alta resolución y lo convierte en un modelo digital del terreno (MDT), un ortomosaico georreferenciado y una nube de puntos. Sobre esa base se diseña, se computan volúmenes y se controla el avance de la obra. Permite cubrir grandes superficies en poco tiempo y con un nivel de detalle que el relevamiento terrestre no alcanza en el mismo plazo. En DG, el modelo se vincula a la Red Geodésica Nacional para que las cotas y coordenadas sean trazables contra el sistema oficial de referencia.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '¿Cómo se controla el movimiento de suelos con drones?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Se vuela el terreno en distintas fechas y se comparan las superficies resultantes. La diferencia entre dos modelos da los volúmenes de corte y terraplén ejecutados entre vuelo y vuelo, lo que permite verificar el avance real de la obra contra el proyecto y detectar desvíos a tiempo. Es una forma de medir movimiento de suelos sobre toda la superficie de la obra, no solo en secciones aisladas.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '¿Qué entregables produce un relevamiento aéreo de DG?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Modelo digital del terreno (MDT) y de superficie (MDS), ortomosaico georreferenciado, nube de puntos, curvas de nivel, perfiles y planimetría base, y los cómputos de volúmenes cuando el proyecto lo requiere. Los entregables de diseño se preparan en los formatos que usan los equipos técnicos (DWG/DXF) y se acompañan de la documentación del apoyo topográfico y la referencia altimétrica utilizada.',
-      },
-    },
-  ],
-};
+const faqs = [
+  {
+    q: '¿Qué es un relevamiento aéreo con drones y para qué sirve en un proyecto de infraestructura?',
+    a: 'Es un vuelo fotogramétrico que captura el terreno con alta resolución y lo convierte en un modelo digital del terreno (MDT), un ortomosaico georreferenciado y una nube de puntos. Sobre esa base se diseña, se computan volúmenes y se controla el avance de la obra. Permite cubrir grandes superficies en poco tiempo y con un nivel de detalle que el relevamiento terrestre no alcanza en el mismo plazo. En DG, el modelo se vincula a la Red Geodésica Nacional para que las cotas y coordenadas sean trazables contra el sistema oficial de referencia.',
+  },
+  {
+    q: '¿Cómo se controla el movimiento de suelos con drones?',
+    a: 'Se vuela el terreno en distintas fechas y se comparan las superficies resultantes. La diferencia entre dos modelos da los volúmenes de corte y terraplén ejecutados entre vuelo y vuelo, lo que permite verificar el avance real de la obra contra el proyecto y detectar desvíos a tiempo. Es una forma de medir movimiento de suelos sobre toda la superficie de la obra, no solo en secciones aisladas.',
+  },
+  {
+    q: '¿Qué entregables produce un relevamiento aéreo de DG?',
+    a: 'Modelo digital del terreno (MDT) y de superficie (MDS), ortomosaico georreferenciado, nube de puntos, curvas de nivel, perfiles y planimetría base, y los cómputos de volúmenes cuando el proyecto lo requiere. Los entregables de diseño se preparan en los formatos que usan los equipos técnicos (DWG/DXF) y se acompañan de la documentación del apoyo topográfico y la referencia altimétrica utilizada.',
+  },
+];
 ---
 
 <Base
@@ -89,7 +74,6 @@ const faqSchema = {
 >
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)} />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
   </Fragment>
 
   <PageHero
@@ -169,6 +153,8 @@ const faqSchema = {
       </div>
     </div>
   </FullBleedSection>
+
+  <FaqSection faqs={faqs} lang="es" bg="cream" />
 
   <section class="relative py-20 md:py-28 overflow-hidden">
     <div class="absolute inset-0 bg-slate-dg"></div>

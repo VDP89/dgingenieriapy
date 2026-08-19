@@ -9,66 +9,33 @@
  *   de rutas que alimenta hreflang y el selector de idioma.
  */
 
+import { routeMap as routeMapRaw } from './routes.mjs';
+
+const routeMapLocal: Record<string, string> = routeMapRaw;
+
 export const defaultLang = 'es' as const;
 export const languages = { es: 'Español', en: 'English' } as const;
 export type Lang = keyof typeof languages;
 
-/**
- * Mapa canonico ES -> EN. Toda ruta traducida vive aca y en ningun otro lado.
- * Si una pagina no figura, no tiene contraparte: no se emite hreflang para ella.
- */
-export const routeMap: Record<string, string> = {
-  '/': '/en/',
-  '/nosotros': '/en/about',
-  '/sectores': '/en/sectors',
-  '/sectores/vialidad': '/en/sectors/roads-and-highways',
-  '/sectores/pavimentos': '/en/sectors/pavement-engineering',
-  '/sectores/aeropuertos': '/en/sectors/airports-and-runways',
-  '/sectores/puertos': '/en/sectors/ports-and-waterways',
-  '/sectores/fiscalizacion': '/en/sectors/residential-development',
-  '/sectores/plantas-industriales': '/en/sectors/industrial-plants',
-  '/sectores/urbanizaciones': '/en/sectors/land-development',
-  '/sectores/solar': '/en/sectors/solar-and-data-centers',
-  '/sectores/relevamiento-aereo': '/en/sectors/aerial-survey-and-terrain-modelling',
-  '/proyectos': '/en/projects',
-  '/soluciones-ia': '/en/ai-solutions',
-  '/blog': '/en/insights',
-  '/contacto': '/en/contact',
-};
+// El mapa vive en routes.mjs para que tambien lo pueda importar astro.config.mjs
+// (Node, pre-build, sin TypeScript). Una sola fuente para render, sitemap y gate.
+export { routeMap } from './routes.mjs';
 
 /**
- * Paginas EN REALMENTE construidas. `routeMap` es el PLAN; esto es el HECHO.
+ * Paginas EN con contraparte. DERIVADO del mapa, no escrito a mano.
  *
- * Por que existen las dos listas: un hreflang que apunta a una pagina que todavia no
- * existe manda al buscador a un 404, y eso es peor que no emitir hreflang. El mapa se
- * escribe entero de una vez (es el diseño de rutas); esta lista crece solo cuando el
- * archivo .astro correspondiente esta en disco.
- *
- * Al 2026-08-19 estan las 16. La lista NO se borra: sigue siendo el guard para la
- * proxima ruta que alguien agregue al mapa antes de escribir la pagina.
+ * Antes eran dos registros manuales (`routeMap` = el plan, `EN_LIVE` = el hecho) y
+ * mantenerlos sincronizados dependia de que nadie se olvidara. Ahora el mapa es la
+ * unica fuente, y quien verifica que sea cierto es `scripts/check-i18n-routes.mjs`:
+ * corre en `prebuild` y ROMPE el build si una ruta del mapa no tiene pagina en disco
+ * (o al reves). El guard se movio de runtime a build — falla ruidosa antes de
+ * publicar, en vez de hreflang a 404 sirviendose en produccion.
  */
-export const EN_LIVE = new Set<string>([
-  '/en/',
-  '/en/about',
-  '/en/sectors',
-  '/en/sectors/roads-and-highways',
-  '/en/sectors/pavement-engineering',
-  '/en/sectors/airports-and-runways',
-  '/en/sectors/ports-and-waterways',
-  '/en/sectors/residential-development',
-  '/en/sectors/industrial-plants',
-  '/en/sectors/land-development',
-  '/en/sectors/solar-and-data-centers',
-  '/en/sectors/aerial-survey-and-terrain-modelling',
-  '/en/projects',
-  '/en/ai-solutions',
-  '/en/insights',
-  '/en/contact',
-]);
+export const EN_LIVE = new Set<string>(Object.values(routeMapLocal));
 
 /** Inverso derivado — no se escribe a mano para que no pueda desincronizarse. */
 export const routeMapInverse: Record<string, string> = Object.fromEntries(
-  Object.entries(routeMap).map(([es, en]) => [en, es]),
+  Object.entries(routeMapLocal).map(([es, en]) => [en, es]),
 );
 
 /** Normaliza para que '/sectores/' y '/sectores' sean la misma clave. */
@@ -90,7 +57,7 @@ export function langFromPath(path: string): Lang {
 export function counterpart(path: string): string | null {
   const p = normalize(path);
   if (langFromPath(p) === 'es') {
-    const en = routeMap[p];
+    const en = routeMapLocal[p];
     // El gate: si la pagina EN todavia no existe, no hay contraparte que ofrecer.
     return en && EN_LIVE.has(en) ? en : null;
   }
@@ -124,6 +91,8 @@ export const ui = {
     'nav.closeMenu': 'Cerrar menú',
     'nav.primary': 'Principal',
     'nav.langLabel': 'Cambiar idioma',
+    'nav.langFallback': 'English \u2014 ir al inicio; esta p\u00e1gina no est\u00e1 traducida',
+    'nav.langFallbackShort': 'English \u00b7 inicio',
     'a11y.skip': 'Saltar al contenido',
     'tagline': 'Infraestructura Inteligente',
     'sticky.question': '¿Tiene un proyecto de infraestructura?',
@@ -156,6 +125,8 @@ export const ui = {
     'nav.closeMenu': 'Close menu',
     'nav.primary': 'Primary',
     'nav.langLabel': 'Change language',
+    'nav.langFallback': 'Espa\u00f1ol \u2014 go to the home page; this page is not translated',
+    'nav.langFallbackShort': 'Espa\u00f1ol \u00b7 home',
     'a11y.skip': 'Skip to content',
     'tagline': 'Engineering Intelligence',
     'sticky.question': 'Planning infrastructure in Paraguay?',
@@ -196,7 +167,7 @@ export function t(lang: Lang) {
 export function nav(lang: Lang) {
   const p = (esPath: string) => {
     if (lang === 'es') return esPath;
-    const en = routeMap[esPath];
+    const en = routeMapLocal[esPath];
     return en && EN_LIVE.has(en) ? en : esPath;
   };
   return {

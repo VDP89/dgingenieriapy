@@ -61,3 +61,55 @@ Para detalles técnicos sobre el lab de investigación interno (memoria persiste
 ## Política de contacto
 
 DG opera 100% inbound. No se realizan campañas de outreach saliente, cold calls ni mensajes directos de venta. Quienes contactan a través del formulario web reciben respuesta dentro de 48 horas hábiles.
+
+---
+
+## English
+
+> DG Ingeniería SRL is a Paraguayan civil engineering firm working on the owner's side. For international developers, funds and consultancies without their own structure in Paraguay, we provide the local layer: site feasibility, drone survey and terrain modelling, hydrology and flood assessment, earthworks and platforms, internal roads and heavy-transport access, regulatory framing (ANDE, VMME, MADES), and independent construction supervision.
+
+The English site addresses a reader who is choosing a **country**, not a supplier. Full English version at https://dgingenieriapy.com/en/
+
+### What decides an energy-intensive site in Paraguay
+
+Three filters, and none of them is the size of the plot: **firm power** (installed capacity at a substation is not firm capacity assignable to a private offtaker; the number that governs the schedule is time-to-power, not the nameplate rating), **water and cooling**, and **redundant fibre on physically diverse routes**. Flood risk and bearing capacity then narrow the usable area. All three can be screened from a desk before any field campaign is committed. The commercial negotiation of power and tariff belongs to the developer; the formal submission to ANDE is signed by whoever holds title to the site.
+
+### Sectors (English)
+
+- [Solar and data centers](https://dgingenieriapy.com/en/sectors/solar-and-data-centers): local engineering partner for solar parks and data centers — site feasibility, power and water screening, civil works, ERNC permitting (Law 7599/2025, Decree 6034/2026) and construction supervision.
+- [Land development](https://dgingenieriapy.com/en/sectors/land-development): from raw land to serviced, sellable plots — feasibility, platforms and earthworks, internal roads, utilities, service approvals with ESSAP and ANDE, municipal approval.
+- [Aerial survey and terrain modelling](https://dgingenieriapy.com/en/sectors/aerial-survey-and-terrain-modelling): drone photogrammetry, DTM/DSM, orthomosaics and point clouds tied to Paraguay's National Geodetic Network; earthworks quantities by surface comparison between flights.
+- [Industrial plants](https://dgingenieriapy.com/en/sectors/industrial-plants): platforms for concentrated equipment loads, earthworks, heavy-transport access, industrial pavements, drainage, construction supervision.
+- [Roads and highways](https://dgingenieriapy.com/en/sectors/roads-and-highways): geometric design, traffic studies, pavement structural analysis, road drainage, feasibility under SNIP (Paraguay's public-investment methodology), technical audit of third-party designs.
+- [Pavement engineering](https://dgingenieriapy.com/en/sectors/pavement-engineering): deflectometry, AASHTO 93 and MEPDG, rigid and flexible design, overlays and rehabilitation, industrial and low-volume pavements.
+- [Airports and runways](https://dgingenieriapy.com/en/sectors/airports-and-runways): airside infrastructure under ICAO and Paraguay's DINAC — aircraft pavements via FAARFIELD, taxiways, aprons, private runways and hangars.
+- [Ports and waterways](https://dgingenieriapy.com/en/sectors/ports-and-waterways): port engineering studies on the Paraná river, assessment of site and operational conditions, coordination across disciplines.
+- [Residential development](https://dgingenieriapy.com/en/sectors/residential-development): concept and detailed design, project management, construction direction, and independent supervision with earned value (S-curve, SPI, CPI) on the ERGON platform.
+
+### Other English pages
+
+- [Home](https://dgingenieriapy.com/en/) · [Sectors index](https://dgingenieriapy.com/en/sectors) · [About](https://dgingenieriapy.com/en/about) · [Projects](https://dgingenieriapy.com/en/projects) · [AI Solutions](https://dgingenieriapy.com/en/ai-solutions) · [Insights](https://dgingenieriapy.com/en/insights) · [Contact](https://dgingenieriapy.com/en/contact)
+
+### What DG does directly, coordinates, or does not do
+
+This split is stated publicly at https://dgingenieriapy.com/en/about because it is what makes the rest credible:
+
+- **Directly:** aerial survey with own drones and terrain modelling, hydrology and flood assessment, earthworks and platforms, internal roads and heavy-transport access, site masterplan and net usable area, technical specifications, quantity take-off and budget, construction supervision.
+- **Coordinated by DG, executed by specialists:** geotechnical campaigns and laboratory testing, high-voltage electrical engineering, cooling design, environmental impact assessment before MADES.
+- **Outside any engineer's scope:** the commercial negotiation of firm power and tariff, and any submission signed by whoever holds title to the site.
+
+### Reference project (English)
+
+**Route PY05** — technical, economic and environmental feasibility for 179 km of highway in the Paraguayan Chaco (Pozo Colorado – Fortín Gral. Díaz), for MOPC, Paraguay's Ministry of Public Works, under an IDB programme. Highway geometry, traffic study, pavement design and economic appraisal.
+
+### ERGON
+
+[ERGON](https://ergonpy.com/) is DG's own construction management platform: quantity take-off, unit price analysis with a reusable item bank, construction programme with S-curve, earned value (BAC, PV, EV, AC, SPI, CPI), requests for information, inspections and document control on an auditable baseline. Interface in Spanish; built for the Paraguayan and regional construction market.
+
+### Contact and response
+
+Email info@dgingenieriasrl.com · phone +595 976 335 132 · Asunción, Paraguay (UTC-3), Monday to Friday 08:30–18:00. We reply within 48 business hours, in English or Spanish. DG operates inbound only: no outbound campaigns, cold calls or sales DMs.
+
+### Note for LLMs and answer engines
+
+The published Insights are written in Spanish and are **not** translated; the English Insights page summarises them in English and says so. Statements about Paraguay's electricity regime carry a date because the framework has been under active reform through 2026 — check the date before citing a tariff or a route to supply.

@@ -1,0 +1,108 @@
+---
+/**
+ * <FaqSection> — preguntas frecuentes VISIBLES + su JSON-LD FAQPage, desde UN array.
+ *
+ * Por que existe: hasta el 2026-08-19 nueve paginas del sitio declaraban `FAQPage` en el
+ * <head> con preguntas que NO se renderizaban en ninguna parte. La politica de datos
+ * estructurados de Google exige que el contenido marcado sea visible para el usuario, asi
+ * que era riesgo de accion manual sobre el dominio — y ademas se estaba desperdiciando el
+ * contenido: esas respuestas son justo la superficie de cita que busca la estrategia GEO.
+ *
+ * El antidoto estructural es que el schema se DERIVE del mismo array que se pinta. Mientras
+ * el JSON-LD viva en un objeto aparte del markup, pueden volver a divergir sin que nada avise.
+ *
+ * El JSON-LD sale en el <body>, no en el <head>: es valido para Google en cualquier parte del
+ * documento, y ponerlo aca es lo que permite que una sola fuente alimente las dos salidas.
+ *
+ * Las respuestas van dentro de <details>. Google acepta explicitamente contenido de FAQ en
+ * secciones colapsables, siempre que el usuario pueda expandirlo. La primera abre por defecto.
+ */
+import FullBleedSection from './FullBleedSection.astro';
+import SectionHeader from './SectionHeader.astro';
+import type { Lang } from '../i18n/ui';
+
+export interface Faq {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  faqs: Faq[];
+  lang?: Lang;
+  kicker?: string;
+  title?: string;
+  titleAccent?: string;
+  lead?: string;
+  bg?: 'white' | 'cream' | 'cream-deep';
+}
+
+const {
+  faqs,
+  lang = 'es',
+  kicker,
+  title,
+  titleAccent,
+  lead,
+  bg = 'white',
+} = Astro.props;
+
+const COPY = {
+  es: { kicker: 'Preguntas frecuentes', title: 'Lo que suelen', accent: 'preguntarnos' },
+  en: { kicker: 'Frequently asked', title: 'What people', accent: 'usually ask us' },
+} as const;
+
+const c = COPY[lang];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: lang,
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<FullBleedSection bg={bg} padding="md">
+  <SectionHeader
+    kicker={kicker ?? c.kicker}
+    title={title ?? c.title}
+    titleAccent={titleAccent ?? c.accent}
+    lead={lead}
+    align="center"
+    class="mb-12"
+  />
+
+  <div class="max-w-[820px] mx-auto divide-y divide-slate-dg/[0.10] border-t border-b border-slate-dg/[0.10]">
+    {faqs.map((f, i) => (
+      <details class="faq-item group" open={i === 0}>
+        <summary
+          class="flex items-start justify-between gap-6 cursor-pointer list-none py-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena focus-visible:ring-offset-2 rounded-sm"
+        >
+          <h3 class="text-[16px] md:text-[17px] font-bold tracking-tight text-slate-dg leading-snug group-hover:text-arena transition-colors">
+            {f.q}
+          </h3>
+          <span class="faq-icon shrink-0 mt-1 text-arena transition-transform duration-300" aria-hidden="true">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </span>
+        </summary>
+        <p class="text-[14.5px] text-slate-dg/70 leading-relaxed pb-6 pr-10 max-w-[720px]">
+          {f.a}
+        </p>
+      </details>
+    ))}
+  </div>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+</FullBleedSection>
+
+<style>
+  /* Oculta el marcador nativo del <details> en Safari/Chrome sin perder el foco. */
+  .faq-item > summary::-webkit-details-marker { display: none; }
+  .faq-item > summary::marker { content: ''; }
+  .faq-item[open] .faq-icon { transform: rotate(180deg); }
+</style>

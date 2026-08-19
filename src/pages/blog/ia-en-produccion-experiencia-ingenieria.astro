@@ -4,6 +4,7 @@ import PageHero from '../../components/PageHero.astro';
 import FullBleedSection from '../../components/FullBleedSection.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import Button from '../../components/Button.astro';
+import FaqSection from '../../components/FaqSection.astro';
 
 const pubDate = '23 de julio de 2026';
 const readTime = '5 min de lectura';
@@ -39,44 +40,24 @@ const articleSchema = {
 };
 
 // JSON-LD: FAQ — citation surface para LLMs y rich results Google
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: '¿Cómo se reduce el riesgo al preparar una licitación?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Leyendo el pliego completo y sus adendas en vez de muestrearlo, con criterios consistentes. En un caso real eso permitió detectar una exigencia de equipamiento ubicada fuera de los términos de referencia y del cuadro de precios, cuyo costo representaba el 16% del monto de la oferta; cambios de adendas que alteraban la estrategia económica; riesgos geotécnicos no explicitados; e inconsistencias del propio pliego. Una propuesta presentada sin esa partida compite con un número al que le falta la sexta parte.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '¿Por qué es difícil revisar un pliego de licitación completo?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Porque exige leer el pliego y sus adendas, cruzar cada requisito de calificación contra los antecedentes de la empresa, armar los formularios técnicos y financieros en el formato oficial, costear con la estructura de personal exigida, y sostener la coherencia entre piezas que se cuentan por decenas y se tocan entre sí. Contra ese volumen el calendario empuja a priorizar y muestrear, y lo que queda sin leer es lo que nadie sabe que se perdió.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '¿Cómo se usa IA en la preparación de licitaciones sin perder criterio técnico?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Con un equipo de especialistas asistidos por IA, no un único asistente que intenta resolver todo. Cada especialista cubre una función acotada: unos analizan pliegos y adendas, otros verifican requisitos de calificación, otros revisan la consistencia entre formularios o apoyan los modelos de cálculo. Ninguno decide: entrar a una licitación, con qué precio y qué se firma, es siempre resolución de una persona. Convierte la herramienta en una capacidad operativa.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '¿Qué recibe el cliente al final del trabajo?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Una propuesta más completa y con menor riesgo. Documentación armada sobre el archivo oficial del pliego, con el barrido de exigencias hecho sobre el documento entero. Y planillas trazables y modificables: el costeo vive en un modelo de cálculo único, con hojas espejo de cada formulario oficial tirando del mismo motor y controles cruzados que se verifican solos. Al mover una tarifa, un plazo o una dedicación, el modelo recalcula la cadena entera y muestra dónde impactó.',
-      },
-    },
-  ],
-};
+const faqs = [
+  {
+    q: '¿Cómo se reduce el riesgo al preparar una licitación?',
+    a: 'Leyendo el pliego completo y sus adendas en vez de muestrearlo, con criterios consistentes. En un caso real eso permitió detectar una exigencia de equipamiento ubicada fuera de los términos de referencia y del cuadro de precios, cuyo costo representaba el 16% del monto de la oferta; cambios de adendas que alteraban la estrategia económica; riesgos geotécnicos no explicitados; e inconsistencias del propio pliego. Una propuesta presentada sin esa partida compite con un número al que le falta la sexta parte.',
+  },
+  {
+    q: '¿Por qué es difícil revisar un pliego de licitación completo?',
+    a: 'Porque exige leer el pliego y sus adendas, cruzar cada requisito de calificación contra los antecedentes de la empresa, armar los formularios técnicos y financieros en el formato oficial, costear con la estructura de personal exigida, y sostener la coherencia entre piezas que se cuentan por decenas y se tocan entre sí. Contra ese volumen el calendario empuja a priorizar y muestrear, y lo que queda sin leer es lo que nadie sabe que se perdió.',
+  },
+  {
+    q: '¿Cómo se usa IA en la preparación de licitaciones sin perder criterio técnico?',
+    a: 'Con un equipo de especialistas asistidos por IA, no un único asistente que intenta resolver todo. Cada especialista cubre una función acotada: unos analizan pliegos y adendas, otros verifican requisitos de calificación, otros revisan la consistencia entre formularios o apoyan los modelos de cálculo. Ninguno decide: entrar a una licitación, con qué precio y qué se firma, es siempre resolución de una persona. Convierte la herramienta en una capacidad operativa.',
+  },
+  {
+    q: '¿Qué recibe el cliente al final del trabajo?',
+    a: 'Una propuesta más completa y con menor riesgo. Documentación armada sobre el archivo oficial del pliego, con el barrido de exigencias hecho sobre el documento entero. Y planillas trazables y modificables: el costeo vive en un modelo de cálculo único, con hojas espejo de cada formulario oficial tirando del mismo motor y controles cruzados que se verifican solos. Al mover una tarifa, un plazo o una dedicación, el modelo recalcula la cadena entera y muestra dónde impactó.',
+  },
+];
 
 const breadcrumbs = [
   { name: 'Inicio', url: '/' },
@@ -93,7 +74,6 @@ const breadcrumbs = [
 >
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(articleSchema)} />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
   </Fragment>
 
   <PageHero
@@ -327,6 +307,8 @@ const breadcrumbs = [
   </style>
 
   <!-- CTA final — conversión comercial -->
+  <FaqSection faqs={faqs} lang="es" bg="cream" />
+
   <section class="relative py-20 md:py-24 overflow-hidden">
     <div class="absolute inset-0 bg-slate-dg"></div>
     <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>

@@ -4,6 +4,7 @@ import PageHero from '../../../components/PageHero.astro';
 import FullBleedSection from '../../../components/FullBleedSection.astro';
 import SectionHeader from '../../../components/SectionHeader.astro';
 import Button from '../../../components/Button.astro';
+import FaqSection from '../../../components/FaqSection.astro';
 import { nav } from '../../../i18n/ui';
 
 const N = nav('en');
@@ -48,37 +49,20 @@ const serviceSchema = {
   },
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  inLanguage: 'en',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'How accurate is a drone survey, and can the result be audited?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Accuracy depends on flight planning and, above all, on ground control. DG flies with its own drones and ties the model to Paraguay’s National Geodetic Network through surveyed control points, so levels and coordinates are traceable against the official reference system rather than internally consistent only. That traceability is what allows a third party to re-check the quantities: without it, a model can be precise and still be wrong by a fixed offset.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How are earthworks quantities verified on site?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'By comparing surfaces. The site is flown at different dates and the resulting terrain models are differenced, producing cut and fill volumes across the entire area rather than at isolated cross-sections. Those volumes are then reconciled against the design. This measures what was actually executed over the whole site, which is a different question from what a spot measurement or a contractor’s claim reports.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What deliverables come out of an aerial survey?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'A digital terrain model (DTM) and surface model (DSM), a georeferenced orthomosaic, a point cloud, contours, profiles and planimetry, and cut-and-fill quantities where earthworks control is in scope. Deliverables are provided in the formats design teams use, including DWG and DXF, so they drop straight into the engineering workflow.',
-      },
-    }
-  ],
-};
+const faqs = [
+  {
+    q: 'How accurate is a drone survey, and can the result be audited?',
+    a: 'Accuracy depends on flight planning and, above all, on ground control. DG flies with its own drones and ties the model to Paraguay’s National Geodetic Network through surveyed control points, so levels and coordinates are traceable against the official reference system rather than internally consistent only. That traceability is what allows a third party to re-check the quantities: without it, a model can be precise and still be wrong by a fixed offset.',
+  },
+  {
+    q: 'How are earthworks quantities verified on site?',
+    a: 'By comparing surfaces. The site is flown at different dates and the resulting terrain models are differenced, producing cut and fill volumes across the entire area rather than at isolated cross-sections. Those volumes are then reconciled against the design. This measures what was actually executed over the whole site, which is a different question from what a spot measurement or a contractor’s claim reports.',
+  },
+  {
+    q: 'What deliverables come out of an aerial survey?',
+    a: 'A digital terrain model (DTM) and surface model (DSM), a georeferenced orthomosaic, a point cloud, contours, profiles and planimetry, and cut-and-fill quantities where earthworks control is in scope. Deliverables are provided in the formats design teams use, including DWG and DXF, so they drop straight into the engineering workflow.',
+  },
+];
 ---
 
 <Base
@@ -89,7 +73,6 @@ const faqSchema = {
 >
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)} />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
   </Fragment>
 
   <PageHero
@@ -170,6 +153,8 @@ const faqSchema = {
       </div>
     </div>
   </FullBleedSection>
+
+  <FaqSection faqs={faqs} lang="en" bg="cream" />
 
   <section class="relative py-20 md:py-28 overflow-hidden">
     <div class="absolute inset-0 bg-slate-dg"></div>
