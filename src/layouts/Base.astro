@@ -1,5 +1,4 @@
 ---
-import { ClientRouter } from 'astro:transitions';
 import { t, nav, counterpart, switchTarget, langFromPath, type Lang } from '../i18n/ui';
 
 interface Props {
@@ -34,7 +33,8 @@ const L = t(lang);
 const N = nav(lang);
 
 const canonicalURL = new URL(Astro.url.pathname, 'https://dgingenieriapy.com');
-const isHome = Astro.url.pathname === '/';
+// El home de CADA idioma emite WebSite. Con '/' hardcodeado, /en/ se quedaba sin el.
+const isHome = Astro.url.pathname === N.home;
 
 // hreflang — solo si la pagina tiene contraparte real (ver i18n/ui.ts).
 const altPath = counterpart(Astro.url.pathname);
@@ -278,8 +278,6 @@ const websiteSchema = {
   <!-- Slot para schemas adicionales por pagina (Article, FAQ, HowTo, etc) -->
   <slot name="head" />
 
-  <!-- Smooth page transitions -->
-  <ClientRouter />
 </head>
 <body class="bg-cream text-slate-dg">
 
@@ -321,6 +319,8 @@ const websiteSchema = {
         id="mobile-toggle"
         class="md:hidden flex flex-col gap-[5px] p-2 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arena"
         aria-label={L('nav.openMenu')}
+        data-open-label={L('nav.openMenu')}
+        data-close-label={L('nav.closeMenu')}
         aria-expanded="false"
         aria-controls="mobile-menu"
       >
@@ -433,7 +433,11 @@ const websiteSchema = {
       toggle.addEventListener('click', () => {
         const open = menu.classList.toggle('hidden');
         toggle.setAttribute('aria-expanded', String(!open));
-        toggle.setAttribute('aria-label', !open ? 'Cerrar menú' : 'Abrir menú');
+        // Los rotulos vienen del diccionario via data-*, no hardcodeados:
+        // con el string fijo, el sitio EN anunciaba 'Cerrar menu' en español.
+        const openLabel = toggle.dataset.openLabel || 'Open menu';
+        const closeLabel = toggle.dataset.closeLabel || 'Close menu';
+        toggle.setAttribute('aria-label', !open ? closeLabel : openLabel);
       });
     }
 
