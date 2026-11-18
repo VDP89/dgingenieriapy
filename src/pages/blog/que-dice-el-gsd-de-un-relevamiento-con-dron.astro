@@ -1,0 +1,276 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FullBleedSection from '../../components/FullBleedSection.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Button from '../../components/Button.astro';
+
+const pubDate = '15 de diciembre de 2026';
+const readTime = '5 min de lectura';
+
+const titulo = "Qué dice y qué no dice el GSD de un relevamiento con dron";
+const desc = "El GSD expresa el tamaño de píxel de un relevamiento con dron, no su exactitud. Qué cifras del procesamiento miden qué cosa y qué hace falta para declarar exactitud vertical, a partir de un relevamiento de un corredor vial.";
+const ogImg = 'https://dgingenieriapy.com/img/insight-gsd-dron.jpg';
+
+// JSON-LD: Article — pieza editorial citable + entity SEO
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: titulo,
+  description: desc,
+  image: ogImg,
+  author: { '@id': 'https://victordelpuerto.com/#person' },
+  publisher: {
+    '@type': 'Organization',
+    '@id': 'https://dgingenieriapy.com/#organization',
+    name: 'DG Ingeniería SRL',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://dgingenieriapy.com/img/dg-isotipo.png',
+    },
+  },
+  datePublished: '2026-12-15',
+  dateModified: '2026-12-15',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://dgingenieriapy.com/blog/que-dice-el-gsd-de-un-relevamiento-con-dron/',
+  },
+  inLanguage: 'es-PY',
+  articleSection: 'Relevamiento aéreo',
+  keywords: 'GSD, relevamiento con dron, aerofotogrametría, exactitud vertical, puntos de control, ortofoto, modelo digital del terreno, relevamiento aéreo en Paraguay',
+};
+
+const breadcrumbs = [
+  { name: 'Inicio', url: '/' },
+  { name: 'Insights', url: '/blog' },
+  { name: titulo, url: '/blog/que-dice-el-gsd-de-un-relevamiento-con-dron' },
+];
+---
+
+<Base
+  title={titulo}
+  description={desc}
+  ogImage={ogImg}
+  preloadImg="/img/sector-relevamiento.webp"
+  breadcrumbs={breadcrumbs}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(articleSchema)} />
+  </Fragment>
+
+  <PageHero
+    img="/img/sector-relevamiento.jpg"
+    imgAlt="Relevamiento aéreo con drones para infraestructura en Paraguay"
+    kicker="Insights · Relevamiento aéreo"
+    title="Qué dice y qué no dice el GSD"
+    titleAccent="de un relevamiento con dron"
+    subtitle="El GSD expresa el tamaño de píxel de un relevamiento con dron, no su exactitud. Qué cifras del procesamiento miden qué cosa y qué hace falta para declarar exactitud vertical."
+    height="md"
+  >
+    <Button href="/contacto" variant="primary" magnetic>Realizar consulta</Button>
+    <Button href="/sectores/relevamiento-aereo" variant="ghost-dark">Ver el servicio</Button>
+  </PageHero>
+
+  <!-- Meta info -->
+  <section class="border-b border-slate-dg/10 bg-cream">
+    <div class="max-w-[820px] mx-auto px-5 md:px-8 py-5 flex items-center gap-5 text-[12.5px] text-slate-dg/55 tracking-wide">
+      <span class="font-semibold uppercase tracking-[2px] text-slate-dg/70 text-[11px]">Insight #5</span>
+      <span aria-hidden="true">·</span>
+      <span>{pubDate}</span>
+      <span aria-hidden="true">·</span>
+      <span>{readTime}</span>
+    </div>
+  </section>
+
+  <!-- Introducción -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+      <p class="text-[19px] text-slate-dg leading-[1.7] font-medium">
+        Cuando se encarga un relevamiento aerofotogramétrico, la primera cifra que aparece en la propuesta y en el informe es el GSD, la distancia de muestreo en el terreno. Es una cifra útil: mide la resolución de la imagen, no la exactitud del terreno.
+      </p>
+
+      <p>
+        Esta nota separa lo que dice el GSD de lo que no dice, y ordena las otras cifras de un procesamiento según lo que realmente miden. El ejemplo es un relevamiento con dron de un corredor vial urbano y periurbano que DG ejecutó como base cartográfica para el proyecto ejecutivo de una ruta, con un alcance ampliado de 1.720 ha y ortofotos como producto final.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- 1. Un vuelo, muchas cifras -->
+  <FullBleedSection bg="cream" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+      <SectionHeader title="1. Un vuelo, muchas cifras" />
+
+      <p>
+        Un relevamiento con dron produce una lista larga de números: tamaño de píxel, error de reproyección, error de posición de cámara, precisión del posicionamiento, densidad de la nube de puntos. Todos son verdaderos y todos sirven. El problema aparece cuando se los usa para responder una pregunta que no contestan.
+      </p>
+
+      <p>
+        La pregunta que le importa al proyectista es concreta: si toma una cota del modelo, cuánto puede diferir de la cota real del terreno. Ninguna de las cifras anteriores, por sí sola, responde eso.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- 2. Qué es el GSD -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+      <SectionHeader title="2. Qué es el GSD" />
+
+      <p>
+        El GSD es el tamaño que cubre un píxel de la imagen sobre el terreno. Depende de la cámara y de la altura de vuelo: a mayor altura, píxel más grande. En este relevamiento se voló con un dron de ala fija con despegue vertical y una cámara full-frame de 42 MP, a 200 m de altura.
+      </p>
+
+      <p>
+        El GSD dice cuánto detalle se puede ver en la ortofoto: qué tamaño mínimo tiene un objeto para distinguirse. Es la resolución de la imagen. Por eso es el dato correcto para decidir si una ortofoto sirve para dibujar un cordón, una alcantarilla o un borde de calzada.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- 3. Qué no dice el GSD -->
+  <FullBleedSection bg="cream" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+      <SectionHeader title="3. Qué no dice el GSD" />
+
+      <p>
+        El GSD no dice cuánto se aparta la cota del modelo de la cota real. Una imagen puede tener un píxel de pocos centímetros y, al mismo tiempo, un modelo del terreno desplazado en altura por un error de apoyo, de procesamiento o de referencia. La resolución y la exactitud son propiedades distintas.
+      </p>
+
+      <p>
+        Para declarar exactitud vertical hace falta comparar el modelo contra puntos medidos en el terreno que no se usaron para construirlo. El criterio que aplica DG es no declarar exactitud vertical sin al menos 30 puntos de control independientes. Sin ese control, el informe expresa el GSD como lo que es, el tamaño de píxel, y deja la exactitud vertical como dato no determinado.
+      </p>
+
+      <figure class="!mt-10">
+        <img
+          src="/img/insight-gsd-dron-figura.jpg"
+          alt="Axonometría ilustrativa de un relevamiento con dron: un dron de ala fija sobre un bloque de terreno, con fajas de vuelo, huellas solapadas y puntos de control, y dos detalles, uno del píxel que define el GSD y otro de la diferencia entre el modelo y el terreno medido."
+          width="1400" height="1092" loading="lazy" decoding="async"
+          class="w-full h-auto border border-slate-dg/10 bg-cream p-3 md:p-5"
+        />
+        <figcaption class="mt-3 text-[13px] leading-[1.5] text-slate-dg/60">
+          Esquema ilustrativo del relevamiento con dron: el GSD es el lado de un píxel; la exactitud vertical se mide contra puntos de control. Sin escala.
+        </figcaption>
+      </figure>
+    </article>
+  </FullBleedSection>
+
+  <!-- 4. Lo que miden las cifras del procesamiento -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+      <SectionHeader title="4. Lo que miden las cifras del procesamiento" />
+
+      <p>
+        Las otras cifras del informe de procesamiento también tienen un alcance preciso.
+      </p>
+
+      <p>
+        El error de reproyección mide la consistencia interna del bloque: cuánto difiere, en píxeles, la posición de un punto en cada foto de la posición que le asigna el modelo. En este relevamiento fue de 0,978 px. Indica que las fotos encajan entre sí; no indica dónde quedó el bloque respecto del terreno.
+      </p>
+
+      <p>
+        El error medio de posición de cámara, de 3,25 cm, compara la posición de cada toma calculada en el ajuste con la registrada por el posicionamiento del dron. Es un control del vuelo, no del terreno.
+      </p>
+
+      <p>
+        El posicionamiento cinemático posprocesado, con estación base sobre mojón, dio 100 % de soluciones fijas, con una precisión media de 0,02 m en horizontal y 0,04 m en vertical. Es la precisión de la posición de la cámara, no la exactitud de la superficie del terreno.
+      </p>
+
+      <p>
+        La nube densa sumó 1.794 millones de puntos, con 84 puntos por metro cuadrado. Es densidad: cuántos puntos describen la superficie, no qué tan cerca están de la superficie real.
+      </p>
+
+      <p>
+        Cada cifra responde una pregunta distinta: unas hablan del detalle, otras de la coherencia del bloque, otras del vuelo. La exactitud del terreno se mide aparte.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- 5. La red de bases se decide por cálculo -->
+  <FullBleedSection bg="cream" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+      <SectionHeader title="5. La red de bases se decide por cálculo" />
+
+      <p>
+        El apoyo terrestre del relevamiento fue una red de 40 mojones provista por el estudio, con distancias irregulares entre puntos. Elegir sobre qué mojones montar las estaciones base es una decisión de cálculo: con 4 estaciones, la línea base máxima quedó en 2,90 km, y agregar más estaciones no mejoraba ese valor.
+      </p>
+
+      <p>
+        Esa elección también define la logística. La campaña se completó en 2 jornadas, y lo que fijó la duración no fueron las baterías del dron sino las mudanzas de la base entre mojones. Se procesaron 5.482 tomas contra 5.510 previstas, un desvío de 0,5 %.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- 6. Del producto al CAD -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+      <SectionHeader title="6. Del producto al CAD" />
+
+      <p>
+        Una ortofoto de alta resolución sobre un corredor extenso tiene que poder abrirse en el programa con el que trabaja el proyectista. Un cuadro único de 6.400 MP bloquea el programa de CAD. Por eso la ortofoto se entrega en cuadros de 20.000 × 20.000 px, divididos en mitades de 200 MP como máximo. Es un criterio de entrega, no de procesamiento.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- 7. Canales y puentes -->
+  <FullBleedSection bg="cream" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+      <SectionHeader title="7. Canales y puentes" />
+
+      <p>
+        En este proyecto, el LiDAR complementario del corredor lo realizó un tercero; DG lo revisó y lo informó. Canales y puentes no se resuelven con la malla de 2 m: para esos elementos se usa la topografía de campo. El LiDAR se contrasta con la topografía de campo y con los mojones. El vuelo fotogramétrico, por su parte, entrega el corredor completo antes de entrar a campo.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- 8. Qué pedir en un relevamiento con dron -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+      <SectionHeader title="8. Qué pedir en un relevamiento con dron" />
+
+      <p>
+        Del recorrido anterior salen cuatro pedidos concretos para quien encarga un relevamiento:
+      </p>
+
+      <ol class="list-decimal pl-6 space-y-3 marker:text-slate-dg/60 marker:font-semibold">
+        <li class="pl-1">Que el informe declare el GSD como tamaño de píxel y no como exactitud.</li>
+        <li class="pl-1">Que la exactitud vertical se declare solo con control independiente, de al menos 30 puntos, o se informe como no determinada.</li>
+        <li class="pl-1">Que las cifras del procesamiento se presenten con lo que cada una mide: consistencia del bloque, posición de la cámara, densidad.</li>
+        <li class="pl-1">Que el entregable en CAD venga dividido en cuadros que el programa pueda abrir.</li>
+      </ol>
+    </article>
+  </FullBleedSection>
+
+  <!-- 9. Relevamiento aéreo y modelo del terreno -->
+  <FullBleedSection bg="cream-deep" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+      <SectionHeader title="9. Relevamiento aéreo y modelo del terreno" />
+
+      <p>
+        DG ejecuta relevamientos aerofotogramétricos con drones, modelos digitales del terreno, ortomosaicos y control de movimiento de suelos, con apoyo topográfico vinculado a la referencia oficial.
+      </p>
+
+      <p>
+        Conocé el detalle del servicio en <a href="/sectores/relevamiento-aereo" class="text-slate-dg font-medium underline decoration-arena decoration-2 underline-offset-4 hover:decoration-slate-dg">la página de Relevamiento aéreo</a> y escribinos si tu proyecto necesita una base cartográfica.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <style>
+    /* Justify de prosa solo en el cuerpo del Insight, no en hero/CTA */
+    article p {
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+  </style>
+
+  <section class="relative py-16 md:py-20 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
+        <Button href="/blog" variant="ghost-dark" size="lg">Ver más Insights</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>
