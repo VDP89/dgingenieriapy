@@ -3,6 +3,22 @@ import Base from '../../layouts/Base.astro';
 
 const published = [
   {
+    href: '/blog/que-dice-el-gsd-de-un-relevamiento-con-dron',
+    tag: 'Relevamiento aéreo',
+    title: 'Qué dice y qué no dice el GSD de un relevamiento con dron',
+    desc: 'El GSD expresa el tamaño de píxel de un relevamiento con dron, no su exactitud. Qué cifras del procesamiento miden qué cosa y qué hace falta para declarar exactitud vertical, a partir de un relevamiento de un corredor vial.',
+    date: '15 de diciembre de 2026',
+    read: '5 min',
+  },
+  {
+    href: '/blog/lagunas-sin-salida-el-nivel-fija-las-cotas',
+    tag: 'Urbanizaciones',
+    title: 'Lagunas sin salida: el nivel de la laguna fija las cotas del barrio',
+    desc: 'En un barrio sobre terreno bajo, con lagunas de retención y sin descarga definida, el nivel de la laguna fija las cotas del barrio y el caudal pico fija el diámetro de las bocas. Criterio aplicado en un proyecto en curso en el Chaco.',
+    date: '1 de diciembre de 2026',
+    read: '5 min',
+  },
+  {
     href: '/blog/energia-paraguay-lo-que-la-tarifa-no-dice',
     tag: 'Energía',
     title: 'Lo que la tarifa eléctrica no le dice a un inversor extranjero',
@@ -69,7 +85,7 @@ const upcoming = [
             href={item.href}
             class="group rounded-xl border border-slate-dg/12 bg-white p-8 md:p-10 hover:border-arena/40 hover:shadow-md transition-all"
           >
-            <div class="flex items-center gap-3 mb-4 text-[11px] tracking-[2px] uppercase">
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4 text-[11px] tracking-[2px] uppercase">
               <span class="font-bold text-arena">{item.tag}</span>
               <span class="text-slate-dg/30" aria-hidden="true">·</span>
               <span class="text-slate-dg/55">{item.date}</span>
