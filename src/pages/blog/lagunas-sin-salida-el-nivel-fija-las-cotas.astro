@@ -1,0 +1,250 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FullBleedSection from '../../components/FullBleedSection.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Button from '../../components/Button.astro';
+
+const pubDate = '1 de diciembre de 2026';
+const readTime = '5 min de lectura';
+
+const titulo = "Lagunas sin salida: el nivel de la laguna fija las cotas del barrio";
+const desc = "En un barrio sobre terreno bajo, con lagunas de retención y sin descarga definida, el nivel de la laguna fija las cotas del barrio y el caudal pico fija el diámetro de las bocas. Criterio aplicado en un proyecto en curso en el Chaco.";
+const ogImg = 'https://dgingenieriapy.com/img/insight-lagunas-sin-salida.jpg';
+
+// JSON-LD: Article — pieza editorial citable + entity SEO
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: titulo,
+  description: desc,
+  image: ogImg,
+  author: { '@id': 'https://victordelpuerto.com/#person' },
+  publisher: {
+    '@type': 'Organization',
+    '@id': 'https://dgingenieriapy.com/#organization',
+    name: 'DG Ingeniería SRL',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://dgingenieriapy.com/img/dg-isotipo.png',
+    },
+  },
+  datePublished: '2026-12-01',
+  dateModified: '2026-12-01',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://dgingenieriapy.com/blog/lagunas-sin-salida-el-nivel-fija-las-cotas/',
+  },
+  inLanguage: 'es-PY',
+  articleSection: 'Urbanizaciones y drenaje',
+  keywords: 'drenaje de urbanizaciones, lagunas de retención, nivelación y movimiento de suelos, cotas de barrio, terreno bajo, urbanizaciones en Paraguay, ingeniería de sitio',
+};
+
+const breadcrumbs = [
+  { name: 'Inicio', url: '/' },
+  { name: 'Insights', url: '/blog' },
+  { name: titulo, url: '/blog/lagunas-sin-salida-el-nivel-fija-las-cotas' },
+];
+---
+
+<Base
+  title={titulo}
+  description={desc}
+  ogImage={ogImg}
+  preloadImg="/img/sector-urb.webp"
+  breadcrumbs={breadcrumbs}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(articleSchema)} />
+  </Fragment>
+
+  <PageHero
+    img="/img/sector-urb.jpg"
+    imgAlt="Desarrollo urbano y loteamiento en Paraguay"
+    kicker="Insights · Urbanizaciones"
+    title="Lagunas sin salida:"
+    titleAccent="el nivel de la laguna fija las cotas del barrio"
+    subtitle="En un barrio sobre terreno bajo, con lagunas de retención y sin descarga definida, el nivel de la laguna fija las cotas del barrio y el caudal pico fija el diámetro de las bocas."
+    height="md"
+  >
+    <Button href="/contacto" variant="primary" magnetic>Realizar consulta</Button>
+    <Button href="/sectores/urbanizaciones" variant="ghost-dark">Ver el servicio</Button>
+  </PageHero>
+
+  <!-- Meta info -->
+  <section class="border-b border-slate-dg/10 bg-cream">
+    <div class="max-w-[820px] mx-auto px-5 md:px-8 py-5 flex items-center gap-5 text-[12.5px] text-slate-dg/55 tracking-wide">
+      <span class="font-semibold uppercase tracking-[2px] text-arena/85 text-[11px]">Insight #4</span>
+      <span aria-hidden="true">·</span>
+      <span>{pubDate}</span>
+      <span aria-hidden="true">·</span>
+      <span>{readTime}</span>
+    </div>
+  </section>
+
+  <!-- Introducción -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+      <p class="text-[19px] text-slate-dg leading-[1.7] font-medium">
+        En el drenaje de un barrio intervienen dos magnitudes: el caudal pico, que fija el diámetro de las bocas, y el nivel de la laguna. En un terreno bajo, donde todo el escurrimiento termina en lagunas de retención y el conjunto no tiene una descarga definida, el nivel de la laguna es la magnitud que ordena el proyecto. De ese nivel salen las cotas del barrio. El caudal pico sigue importando, pero para otra cosa: el tamaño de las bocas.
+      </p>
+
+      <p>
+        Esta nota explica ese criterio a partir de un proyecto en curso en el Chaco, una urbanización organizada por barrios, en el que DG integra el equipo del proyecto con la nivelación y el movimiento de suelos, el drenaje del barrio, el relevamiento aéreo de la zona y un visor 3D del nivel de agua. La hidrología de la zona de influencia la aporta un hidrólogo externo, cuya memoria llevará su propia firma, aún pendiente. Las cifras que siguen son las del estudio en su etapa actual.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- 1. El problema: terreno bajo y lagunas que reciben todo -->
+  <FullBleedSection bg="cream" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+      <SectionHeader title="1. El problema: terreno bajo y lagunas que reciben todo" />
+
+      <p>
+        El barrio ocupa terreno bajo. Las lagunas de retención reciben por gravedad toda el agua de calles y lotes. El conjunto de cinco barrios suma 36,0 ha de lagunas dentro de 192,7 ha y no tiene, por ahora, una descarga definida.
+      </p>
+
+      <p>
+        Con esa configuración, el estudio verificó qué pasa con una lluvia de 300 mm si el sistema no tiene salida: el nivel de las lagunas sube 1,02 m. Con ese nivel como referencia se fijan las cotas del barrio.
+      </p>
+
+      <p>
+        A eso se suma una condición del relleno: tiene que dejar cada calle y cada lote con salida hacia una laguna, sin concentrar agua en el lindero.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- 2. Por qué el nivel manda sobre el caudal pico -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+      <SectionHeader title="2. Por qué el nivel manda sobre el caudal pico" />
+
+      <p>
+        El criterio que ordena el proyecto es simple de enunciar: todo drenaje por gravedad termina en una laguna; el nivel de la laguna fija las cotas del barrio y el caudal pico fija el diámetro de las bocas.
+      </p>
+
+      <p>
+        En este proyecto, el nivel de la laguna fija las cotas del barrio y el caudal pico fija el diámetro de las bocas. Con una lluvia de 300 mm y sin salida, ese nivel sube 1,02 m: es la referencia con la que se comparan las cotas de calles y lotes.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- 3. Cómo baja el criterio a calles y lotes -->
+  <FullBleedSection bg="cream" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+      <SectionHeader title="3. Cómo baja el criterio a calles y lotes" />
+
+      <p>
+        Fijado el nivel, la nivelación tiene que garantizar que el agua llegue a la laguna sin quedarse en el camino. En este barrio, la rasante de cada calle escurre sin saltos hacia las salidas de diseño. Las bocas van paralelas a la calle, en los dos cordones.
+      </p>
+
+      <p>
+        El relleno del barrio es de 484.094 m³.
+      </p>
+
+      <p>
+        Los bajos del borde salen por el talud exterior con una escalera de hormigón y un delantal de piedra al pie. El talud exterior es variable según el espacio libre hasta el perímetro, con un máximo de 1:3.
+      </p>
+
+      <p>
+        El juego de planos entregado suma 26 láminas.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- 4. El fondo del paquete de pavimento -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+      <SectionHeader title="4. El fondo del paquete de pavimento" />
+
+      <p>
+        El nivel de la laguna también condiciona la estructura de las calles. El fondo del paquete de pavimento se fija con el mayor de dos valores: el nivel sostenido de la laguna más 0,60 m, o el nivel máximo más 0,15 m.
+      </p>
+
+      <p>
+        Es un criterio de práctica, sin norma que lo establezca, a validar con ensayos.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- 5. El sistema macro: una salida y un canal que crece por etapas -->
+  <FullBleedSection bg="cream" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+      <SectionHeader title="5. El sistema macro: una salida y un canal que crece por etapas" />
+
+      <p>
+        Lo que vale para un barrio vale para el conjunto. El sistema macro se plantea con lagunas interconectadas, una sola salida con compuertas y un canal troncal con fondo definitivo desde la primera etapa, que se ensancha a medida que avanzan los barrios.
+      </p>
+
+      <p>
+        El canal troncal tiene 2.259 m, más 2.135 m hasta el cauce receptor. Se dimensiona para 2 m³/s con 1,05 m de tirante, fondo de 3 m, taludes 1:1,5 y una pendiente de 0,05 %. Para canales y cuencas externas, los períodos de retorno de diseño son de 10 y 25 años.
+      </p>
+
+      <p>
+        Con la salida en funcionamiento, el pico queda 0,10 m más bajo y a las 43 h el nivel ya bajó 0,40 m. Sin salida, con una lluvia de 300 mm, el nivel de las lagunas sube 1,02 m.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- 6. Ver el agua en el tiempo -->
+  <FullBleedSection bg="white" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+      <SectionHeader title="6. Ver el agua en el tiempo" />
+
+      <p>
+        Un plano en planta muestra dónde están las calles, las bocas y las lagunas, pero no cómo evoluciona el nivel durante y después de la lluvia. Para quienes gestionan el proyecto, esa evolución es la información que decide.
+      </p>
+
+      <p>
+        Por eso el estudio se acompaña con un visor 3D armado como un solo archivo HTML, que abre en un navegador o en un celular, sin instalación. Muestra el terreno, las lagunas con su nivel en el tiempo, flechas de escurrimiento por calle y por lote, y las bocas con su ficha y su perfil.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- 7. Lo que el criterio no resuelve solo -->
+  <FullBleedSection bg="cream" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+      <SectionHeader title="7. Lo que el criterio no resuelve solo" />
+
+      <p>
+        El nivel de la laguna depende de la hidrología de la zona de influencia, que en este proyecto aporta un hidrólogo externo con firma propia, aún pendiente. El criterio del fondo del pavimento es de práctica y espera la confirmación de los ensayos. El proyecto está en curso: las cifras de esta nota corresponden a la etapa actual del estudio y pueden ajustarse cuando se cierren esas definiciones.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <!-- 8. Ingeniería de sitio para urbanizaciones -->
+  <FullBleedSection bg="cream-deep" padding="md">
+    <article class="max-w-[760px] mx-auto text-[16.5px] text-slate-dg/82 leading-[1.78] space-y-6">
+      <SectionHeader title="8. Ingeniería de sitio para urbanizaciones" />
+
+      <p>
+        DG trabaja la ingeniería de sitio de urbanizaciones y loteamientos: nivelación y movimiento de suelos, drenaje pluvial, vialidad interna, relevamiento aéreo y coordinación de redes, desde la prefactibilidad hasta la obra.
+      </p>
+
+      <p>
+        Conocé el detalle del servicio en <a href="/sectores/urbanizaciones" class="text-arena underline decoration-arena/30 underline-offset-2 hover:decoration-arena">https://dgingenieriapy.com/sectores/urbanizaciones/</a> y escribinos si tu desarrollo está sobre terreno bajo o con lagunas de retención.
+      </p>
+    </article>
+  </FullBleedSection>
+
+  <style>
+    /* Justify de prosa solo en el cuerpo del Insight, no en hero/CTA */
+    article p {
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+  </style>
+
+  <section class="relative py-16 md:py-20 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-dg"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/contacto" variant="primary" size="lg">Realizar consulta</Button>
+        <Button href="/blog" variant="ghost-dark" size="lg">Ver más Insights</Button>
+      </div>
+    </div>
+  </section>
+
+</Base>
